@@ -13,6 +13,8 @@
 		EBF4A60520F8056400DAC145 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF4A60320F8056400DAC145 /* Main.storyboard */; };
 		EBF4A61120F8056400DAC145 /* The_Dark_PlaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A61020F8056400DAC145 /* The_Dark_PlaceTests.swift */; };
 		EBF4A61D20F8058B00DAC145 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A61C20F8058B00DAC145 /* GameView.swift */; };
+		EBF4A62020F80D6400DAC145 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A61F20F80D6400DAC145 /* Renderer.swift */; };
+		EBF4A62320F80E0B00DAC145 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A62220F80E0B00DAC145 /* Engine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,8 @@
 		EBF4A61020F8056400DAC145 /* The_Dark_PlaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Dark_PlaceTests.swift; sourceTree = "<group>"; };
 		EBF4A61220F8056400DAC145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBF4A61C20F8058B00DAC145 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		EBF4A61F20F80D6400DAC145 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		EBF4A62220F80E0B00DAC145 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 		EBF4A5F920F8056300DAC145 /* The Dark Place */ = {
 			isa = PBXGroup;
 			children = (
+				EBF4A62120F80DEC00DAC145 /* Core */,
 				EBF4A61E20F80B2B00DAC145 /* Display */,
 				EBF4A61B20F8056A00DAC145 /* Other Files */,
 			);
@@ -108,10 +113,19 @@
 		EBF4A61E20F80B2B00DAC145 /* Display */ = {
 			isa = PBXGroup;
 			children = (
+				EBF4A61F20F80D6400DAC145 /* Renderer.swift */,
 				EBF4A61C20F8058B00DAC145 /* GameView.swift */,
 				EBF4A60320F8056400DAC145 /* Main.storyboard */,
 			);
 			path = Display;
+			sourceTree = "<group>";
+		};
+		EBF4A62120F80DEC00DAC145 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EBF4A62220F80E0B00DAC145 /* Engine.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,9 +228,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF4A62020F80D6400DAC145 /* Renderer.swift in Sources */,
 				EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */,
 				EBF4A61D20F8058B00DAC145 /* GameView.swift in Sources */,
 				EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */,
+				EBF4A62320F80E0B00DAC145 /* Engine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
