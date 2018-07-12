@@ -8,9 +8,9 @@ class GameView: MTKView {
         
         self.device = MTLCreateSystemDefaultDevice()
         
-        Engine.Initialize(device!)
+        self.renderer = Renderer(self)
         
-        self.renderer = Renderer()
+        Engine.Initialize(device!)
         
         self.delegate = renderer
     }

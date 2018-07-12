@@ -11,6 +11,16 @@ class Engine {
     public static func Initialize(_ device: MTLDevice){
         self._device = device
         self._commandQueue = device.makeCommandQueue()
+        
+        self.initializeLibraries()
+    }
+    
+    private static func initializeLibraries(){
+        
+        TextureLibrary.Initialize()
+        
+        RenderPassDescriptorLibrary.Initialize()
+        
     }
     
 }
