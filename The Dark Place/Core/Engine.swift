@@ -13,14 +13,23 @@ class Engine {
         self._commandQueue = device.makeCommandQueue()
         
         self.initializeLibraries()
+        self.initializeManagers()
     }
     
     private static func initializeLibraries(){
         
-        TextureLibrary.Initialize()
+        ShaderLibrary.Initialize()
         
-        RenderPassDescriptorLibrary.Initialize()
+        VertexDescriptorLibrary.Intialize()
+
+        RenderPipelineStateLibrary.Initialize()
         
+        MeshLibrary.Initialize()
+        
+    }
+    
+    private static func initializeManagers(){
+        SceneManager.Initialize(.VillageScene)
     }
     
 }

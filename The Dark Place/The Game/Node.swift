@@ -8,9 +8,9 @@ class Node {
         children.append(child)
     }
     
-    public func update(_ deltaTime: Float){
+    public func update(deltaTime: Float){
         for child in children{
-            child.update(deltaTime)
+            child.update(deltaTime: deltaTime)
         }
     }
     
