@@ -6,6 +6,12 @@ class View {
         return _screenSize
     }
     
+    public static var ShouldUpdateViewValues: Bool = true
+    
+    public static var AspectRatio: Float {
+        return self.ScreenWidth / self.ScreenHeight
+    }
+    
     public static var ScreenWidth: Float {
         return _screenSize.getWidth()
     }

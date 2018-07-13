@@ -36,6 +36,7 @@ public struct Basic_RenderPipelineState: RenderPipelineState {
         renderPipelineDescriptor.vertexFunction = ShaderLibrary.Vertex(.Basic)
         renderPipelineDescriptor.fragmentFunction = ShaderLibrary.Fragment(.Basic)
         renderPipelineDescriptor.vertexDescriptor = VertexDescriptorLibrary.Descriptor(.Basic)
+        renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
         do{
             renderPipelineState = try Engine.Device.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
         }catch let error as NSError {

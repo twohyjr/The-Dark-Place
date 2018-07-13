@@ -31,3 +31,12 @@ struct Vertex: sizeable{
     var normal: float3
     var textureCoordinate: float2
 }
+
+struct ModelConstants: sizeable{
+    var modelMatrix = matrix_identity_float4x4
+}
+
+struct SceneConstants: sizeable {
+    var viewMatrix = matrix_identity_float4x4
+    var projectionMatrix = matrix_identity_float4x4
+}

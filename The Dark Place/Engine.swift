@@ -21,6 +21,8 @@ class Engine {
         ShaderLibrary.Initialize()
         
         VertexDescriptorLibrary.Intialize()
+        
+        DepthStencilStateLibrary.Initialize()
 
         RenderPipelineStateLibrary.Initialize()
         
