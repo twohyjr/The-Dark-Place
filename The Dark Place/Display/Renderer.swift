@@ -2,7 +2,6 @@ import MetalKit
 
 class Renderer: NSObject {
     
-    
     init(_ view: MTKView) {
        View.setScreenSize(view.bounds.size)
     }

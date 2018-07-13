@@ -19,6 +19,9 @@
 		EBF4A62F20F8175500DAC145 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A62E20F8175500DAC145 /* Size.swift */; };
 		EBF4A63120F818DE00DAC145 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A63020F818DE00DAC145 /* View.swift */; };
 		EBF4A63320F81B9700DAC145 /* TextureLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A63220F81B9700DAC145 /* TextureLibrary.swift */; };
+		EBF4A63620F823FE00DAC145 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A63520F823FE00DAC145 /* Node.swift */; };
+		EBF4A63820F8363400DAC145 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A63720F8363400DAC145 /* Renderable.swift */; };
+		EBF4A63B20F83A4700DAC145 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A63A20F83A4700DAC145 /* GameObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		EBF4A62E20F8175500DAC145 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		EBF4A63020F818DE00DAC145 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		EBF4A63220F81B9700DAC145 /* TextureLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLibrary.swift; sourceTree = "<group>"; };
+		EBF4A63520F823FE00DAC145 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		EBF4A63720F8363400DAC145 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
+		EBF4A63A20F83A4700DAC145 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,7 @@
 			children = (
 				EBF4A62120F80DEC00DAC145 /* Core */,
 				EBF4A62720F813C600DAC145 /* Libraries */,
+				EBF4A63420F823F200DAC145 /* The Game */,
 				EBF4A61E20F80B2B00DAC145 /* Display */,
 				EBF4A61B20F8056A00DAC145 /* Other Files */,
 			);
@@ -154,6 +161,24 @@
 				EBF4A62E20F8175500DAC145 /* Size.swift */,
 			);
 			path = Types;
+			sourceTree = "<group>";
+		};
+		EBF4A63420F823F200DAC145 /* The Game */ = {
+			isa = PBXGroup;
+			children = (
+				EBF4A63520F823FE00DAC145 /* Node.swift */,
+				EBF4A63A20F83A4700DAC145 /* GameObject.swift */,
+				EBF4A63920F8363900DAC145 /* Protocol */,
+			);
+			path = "The Game";
+			sourceTree = "<group>";
+		};
+		EBF4A63920F8363900DAC145 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				EBF4A63720F8363400DAC145 /* Renderable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,11 +282,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF4A63120F818DE00DAC145 /* View.swift in Sources */,
+				EBF4A63620F823FE00DAC145 /* Node.swift in Sources */,
 				EBF4A62020F80D6400DAC145 /* Renderer.swift in Sources */,
 				EBF4A62920F813D700DAC145 /* RenderPassDescriptorLibrary.swift in Sources */,
 				EBF4A62F20F8175500DAC145 /* Size.swift in Sources */,
+				EBF4A63820F8363400DAC145 /* Renderable.swift in Sources */,
 				EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */,
 				EBF4A61D20F8058B00DAC145 /* GameView.swift in Sources */,
+				EBF4A63B20F83A4700DAC145 /* GameObject.swift in Sources */,
 				EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */,
 				EBF4A63320F81B9700DAC145 /* TextureLibrary.swift in Sources */,
 				EBF4A62320F80E0B00DAC145 /* Engine.swift in Sources */,
