@@ -1,11 +1,9 @@
-import simd
+import MetalKit
 
 class TerrainMeshGenerator{
-    
-    
     public static func GenerateTerrainMesh(gridSize: Int, cellsWide: Int, cellsBack: Int)->Mesh{
         let terrainMesh = CustomMesh()
-        
+
         //Gives you the location to place the next vertex
         let stepValueX: Float = Float(gridSize) / Float(cellsWide)
         let stepValueY: Float = Float(gridSize) / Float(cellsBack)
@@ -14,7 +12,6 @@ class TerrainMeshGenerator{
             for column in 0..<cellsBack{
                 var origin = float2(Float(Float(column) / Float(cellsWide)) * Float(gridSize),
                                     Float(Float(row) / Float(cellsBack)) * Float(gridSize))
-                
                 let vTopRight = float3(origin.x + stepValueX, 0, origin.y)
                 let vTopLeft = float3(origin.x, 0, origin.y)
                 let vBottomLeft = float3(origin.x, 0, origin.y + stepValueY)
@@ -34,5 +31,4 @@ class TerrainMeshGenerator{
         
         return terrainMesh
     }
-    
 }

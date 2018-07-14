@@ -56,18 +56,19 @@ extension Camera {
 }
 
 public class Debug_Camera: Camera {
-    var position: float3 = float3(3.75, 3.5, 10.06)
-    var pitch: Float = 0.34
-    var yaw: Float = -0.46
+    var position: float3 = float3(0.0, 5.750003, 11.666658)
+    var pitch: Float = 0.48
+    var yaw: Float = 0
     var roll: Float = 0
     
     var speed: Float = 5
     var cameraType: CameraTypes = CameraTypes.Debug
+    var zoom: Float = 45
     
     private var _projectionMatrix = matrix_identity_float4x4
     var projectionMatrix: matrix_float4x4 {
         if(View.ShouldUpdateViewValues){
-            _projectionMatrix = matrix_float4x4.init(perspectiveDegreesFov: 45,
+            _projectionMatrix = matrix_float4x4.init(perspectiveDegreesFov: zoom,
                                                      aspectRatio: View.AspectRatio,
                                                      nearZ: 0.1,
                                                      farZ: 1000)
@@ -101,8 +102,8 @@ public class Debug_Camera: Camera {
         }
         
         if(Mouse.IsMouseButtonPressed(button: .left)){
-            self.pitch += Mouse.GetDY() * 0.02
-            self.yaw += Mouse.GetDX() * 0.02
+            self.pitch += Mouse.GetDY() * 0.002
+            self.yaw += Mouse.GetDX() * 0.002
         }
     }
 }

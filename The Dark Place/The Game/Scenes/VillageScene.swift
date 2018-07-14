@@ -10,10 +10,12 @@ class VillageScene: Scene {
         addChild(VillageTerrain())
         
     }
-
     
     override func update(deltaTime: Float) {
-        print(debugCamera.position)
+        let dWheel = Mouse.GetDWheel() * 0.5
+        if(debugCamera.zoom + dWheel < 47 && debugCamera.zoom + dWheel > 10) {
+            debugCamera.zoom += dWheel
+        }
         super.update(deltaTime: deltaTime)
     }
 }

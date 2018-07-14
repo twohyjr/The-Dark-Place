@@ -10,7 +10,7 @@ class Terrain: GameObject {
     }
     
     override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
-        renderCommandEncoder.setTriangleFillMode(.lines)
+//        renderCommandEncoder.setTriangleFillMode(.lines)
         super.render(renderCommandEncoder: renderCommandEncoder)
     }
     
