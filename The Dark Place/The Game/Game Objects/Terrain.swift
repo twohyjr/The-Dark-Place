@@ -10,6 +10,13 @@ class Terrain: GameObject {
         self.position.x -= Float(gridSize / 2)
         self.position.z -= Float(gridSize / 2)
         self.position.y -= Float(1)
+        
+        
+        let cube = Cube()
+        cube.position.x = -1
+        addChild(cube)
     }
+    
+    
     
 }
