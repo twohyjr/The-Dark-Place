@@ -4,7 +4,7 @@ enum MeshTypes {
     case Triangle_Custom
     case Quad_Custom
     case Cube_Custom
-    case Skybox_Custom
+    case BoundingBox
 }
 
 class MeshLibrary {
@@ -19,7 +19,7 @@ class MeshLibrary {
         meshes.updateValue(Triangle_CustomMesh(), forKey: .Triangle_Custom)
         meshes.updateValue(Quad_CustomMesh(), forKey: .Quad_Custom)
         meshes.updateValue(Cube_CustomMesh(), forKey: .Cube_Custom)
-        meshes.updateValue(Skybox_CustomMesh(), forKey: .Skybox_Custom)
+        meshes.updateValue(BoundingBoxMesh(mins: float3(-1,-1,-1), maxs: float3(1,1,1)), forKey: .BoundingBox)
     }
     
     public static func Mesh(_ meshType: MeshTypes)->Mesh{
@@ -33,9 +33,10 @@ protocol Mesh {
     var indexBuffer: MTLBuffer! { get }
     var vertexCount: Int! { get }
     var indexCount: Int! { get }
+    var boundingBox: BoundingBox! { get }
     
     var primitiveType: MTLPrimitiveType! { get }
-    func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder)
+    func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder, lineMode: Bool)
 }
 
 class CustomMesh: Mesh {
@@ -45,26 +46,44 @@ class CustomMesh: Mesh {
     var indexBuffer: MTLBuffer!
     var primitiveType: MTLPrimitiveType!
     var indexType: MTLIndexType!
+    var boundingBox: BoundingBox!
     var vertexCount: Int! {
         return vertices.count
     }
     var indexCount: Int! {
         return indices.count
     }
+    private var minPositions = float3(0)
+    private var maxPositions = float3(0)
     
     init() {
-        setPrimitiveType()
+        setPrimitiveType(MTLPrimitiveType.triangle)
         setIndexType()
         createVertices()
         createIndices()
         createBuffers()
     }
     
+    private func generateBoundingBox(){
+        boundingBox = BoundingBox(mins: minPositions, maxs: maxPositions)
+    }
+    
     internal func addVertex(position: float3,
                             color: float4 = float4(0.25, 0.25, 0.25, 1.0),
                             normal: float3 = float3(0,1,0),
                             textureCoordinate: float2 = float2(0,0)){
+        updateMinsAndMaxes(position)
         vertices.append(Vertex(position: position, color: color, normal: normal, textureCoordinate: textureCoordinate))
+    }
+    
+    func updateMinsAndMaxes(_ position: float3){
+        if(position.x > self.maxPositions.x){ maxPositions.x = position.x }
+        if(position.y > self.maxPositions.y){ maxPositions.y = position.y }
+        if(position.z > self.maxPositions.z){ maxPositions.z = position.z }
+        
+        if(position.x < self.minPositions.x){ self.minPositions.x = position.x }
+        if(position.y < self.minPositions.y){ self.minPositions.y = position.y }
+        if(position.z < self.minPositions.z){ self.minPositions.z = position.z }
     }
     
     func createVertices(){ }
@@ -72,8 +91,8 @@ class CustomMesh: Mesh {
     func createIndices(){ }
     
     //If you want to set the mesh to a different primitive type you can override this function
-    func setPrimitiveType(){
-        primitiveType = MTLPrimitiveType.triangle
+    func setPrimitiveType(_ primitiveType: MTLPrimitiveType){
+        self.primitiveType = primitiveType
     }
     
     func setIndexType(){
@@ -89,7 +108,12 @@ class CustomMesh: Mesh {
         }
     }
     
-    func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder){
+    func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder, lineMode: Bool = false){
+        if(lineMode){
+            renderCommandEncoder.setTriangleFillMode(.lines)
+        }else{
+            renderCommandEncoder.setTriangleFillMode(.fill)
+        }
         if(indexCount == 0){
             renderCommandEncoder.drawPrimitives(type: primitiveType, vertexStart: 0, vertexCount: vertexCount)
         }else{
@@ -186,48 +210,54 @@ class Cube_CustomMesh: CustomMesh {
     }
 }
 
-class Skybox_CustomMesh: CustomMesh {
+class BoundingBoxMesh: CustomMesh{
+    private var mins: float3!
+    private var maxs: float3!
+    init(mins: float3, maxs: float3){
+        self.mins = mins
+        self.maxs = maxs
+    }
+    
+    override func setPrimitiveType(_ primitiveType: MTLPrimitiveType) {
+        self.primitiveType = MTLPrimitiveType.lineStrip
+    }
+    
     override func createVertices() {
-        // +Y
-        addVertex(position: float3(-0.5,  0.5,  0.5), normal: float3(0.0, -1.0,  0.0))
-        addVertex(position: float3( 0.5,  0.5,  0.5), normal: float3(0.0, -1.0,  0.0))
-        addVertex(position: float3( 0.5,  0.5, -0.5), normal: float3(0.0, -1.0,  0.0))
-        addVertex(position: float3(-0.5,  0.5, -0.5), normal: float3(0.0, -1.0,  0.0))
-        // -Y
-        addVertex(position: float3(-0.5, -0.5, -0.5), normal: float3(0.0,  1.0,  0.0))
-        addVertex(position: float3( 0.5, -0.5, -0.5), normal: float3(0.0,  1.0,  0.0))
-        addVertex(position: float3( 0.5, -0.5,  0.5), normal: float3(0.0,  1.0,  0.0))
-        addVertex(position: float3(-0.5, -0.5,  0.5), normal: float3(0.0,  1.0,  0.0))
-        // +Z
-        addVertex(position: float3(-0.5, -0.5,  0.5), normal: float3(0.0,  0.0, -1.0))
-        addVertex(position: float3( 0.5, -0.5,  0.5), normal: float3(0.0,  0.0, -1.0))
-        addVertex(position: float3( 0.5,  0.5,  0.5), normal: float3(0.0,  0.0, -1.0))
-        addVertex(position: float3(-0.5,  0.5,  0.5), normal: float3(0.0,  0.0, -1.0))
-        // -Z
-        addVertex(position: float3( 0.5, -0.5, -0.5), normal: float3(0.0,  0.0,  1.0))
-        addVertex(position: float3(-0.5, -0.5, -0.5), normal: float3(0.0,  0.0,  1.0))
-        addVertex(position: float3(-0.5,  0.5, -0.5), normal: float3(0.0,  0.0,  1.0))
-        addVertex(position: float3( 0.5,  0.5, -0.5), normal: float3(0.0,  0.0,  1.0))
-        // -X
-        addVertex(position: float3(-0.5, -0.5, -0.5), normal: float3(1.0,  0.0,  0.0))
-        addVertex(position: float3(-0.5, -0.5,  0.5), normal: float3(1.0,  0.0,  0.0))
-        addVertex(position: float3(-0.5,  0.5,  0.5), normal: float3(1.0,  0.0,  0.0))
-        addVertex(position: float3(-0.5,  0.5, -0.5), normal: float3(1.0,  0.0,  0.0))
-        // +X
-        addVertex(position: float3( 0.5, -0.5,  0.5), normal: float3(1.0,  0.0,  0.0))
-        addVertex(position: float3( 0.5, -0.5, -0.5), normal: float3(1.0,  0.0,  0.0))
-        addVertex(position: float3( 0.5,  0.5, -0.5), normal: float3(1.0,  0.0,  0.0))
-        addVertex(position: float3( 0.5,  0.5,  0.5), normal: float3(1.0,  0.0,  0.0))
+        //Front Right Top 0
+        addVertex(position: float3(maxs.x, maxs.y, maxs.z))
+
+        //Front Left Top 1
+        addVertex(position: float3(mins.x, maxs.y, maxs.z))
+        
+        //Front Left Bottom 2
+        addVertex(position: float3(mins.x, mins.y, maxs.z))
+        
+        //Front Right Bottom 3
+        addVertex(position: float3(maxs.x, mins.y, maxs.z))
+        
+        
+        
+        //Back Left Top 4
+        addVertex(position: float3(mins.x, maxs.y, mins.z))
+        
+        //Back Left Bottom 5
+        addVertex(position: float3(mins.x, mins.y, mins.z))
+        
+        //Back Right Top 6
+        addVertex(position: float3(maxs.x, maxs.y, mins.z))
+        
+        //Back Right Bottom 7
+        addVertex(position: float3(maxs.x, mins.y, mins.z))
     }
     
     override func createIndices() {
         indices = [
-            0,  3,  2,  2,  1,  0,
-            4,  7,  6,  6,  5,  4,
-            8, 11, 10, 10,  9,  8,
-            12, 15, 14, 14, 13, 12,
-            16, 19, 18, 18, 17, 16,
-            20, 23, 22, 22, 21, 20
+            0, 1, 2, 3, 0, //Front (Ends on FRT)
+            0, 6, 7, 3, 7, //Right (Ends on BRB)
+            5, 2, 1, //Bottom (Ends on FLT)
+            4, 5, 2, 1, 4, //Left (Ends on BLT)
+            6 //Top & Back
         ]
     }
+    
 }

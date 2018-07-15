@@ -5,8 +5,8 @@ class GameObject: Node {
     var modelConstants = ModelConstants()
     var texture: MTLTexture?
     var renderPipelineState: MTLRenderPipelineState!
-    
     var mesh: Mesh!
+    var useLines: Bool = false
     
     init(meshType: MeshTypes) {
         super.init()
@@ -43,6 +43,6 @@ extension GameObject: Renderable{
         renderCommandEncoder.setRenderPipelineState(renderPipelineState)
         renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer, offset: 0, index: 0)
         
-        mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)
+        mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder, lineMode: useLines)
     }
 }

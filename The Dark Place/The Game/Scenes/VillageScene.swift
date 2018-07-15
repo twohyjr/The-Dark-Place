@@ -20,7 +20,7 @@ class VillageScene: Scene {
     
     private func addTerrain(){
         terrain = Terrain(gridSize: gridSize, cellsWide: 50, cellsBack: 50)
-        addChild(terrain)
+//        addChild(terrain)
     }
     
     //Temp function
@@ -35,10 +35,6 @@ class VillageScene: Scene {
         let cube3 = Cube()
         cube3.position.x += 3
         addChild(cube3)
-        
-        
-        
-    
     }
 
     
