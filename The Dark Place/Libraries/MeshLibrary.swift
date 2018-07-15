@@ -33,7 +33,6 @@ protocol Mesh {
     var indexBuffer: MTLBuffer! { get }
     var vertexCount: Int! { get }
     var indexCount: Int! { get }
-    var boundingBox: BoundingBox! { get }
     
     var primitiveType: MTLPrimitiveType! { get }
     func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder, lineMode: Bool)
@@ -46,7 +45,6 @@ class CustomMesh: Mesh {
     var indexBuffer: MTLBuffer!
     var primitiveType: MTLPrimitiveType!
     var indexType: MTLIndexType!
-    var boundingBox: BoundingBox!
     var vertexCount: Int! {
         return vertices.count
     }
@@ -62,13 +60,6 @@ class CustomMesh: Mesh {
         createVertices()
         createIndices()
         createBuffers()
-        if(createBoundingBox){
-            generateBoundingBox()
-        }
-    }
-    
-    private func generateBoundingBox(){
-        boundingBox = BoundingBox(mins: minPositions, maxs: maxPositions)
     }
     
     internal func addVertex(position: float3,
