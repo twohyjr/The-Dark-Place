@@ -56,12 +56,15 @@ class CustomMesh: Mesh {
     private var minPositions = float3(0)
     private var maxPositions = float3(0)
     
-    init() {
+    init(createBoundingBox: Bool = true) {
         setPrimitiveType(MTLPrimitiveType.triangle)
         setIndexType()
         createVertices()
         createIndices()
         createBuffers()
+        if(createBoundingBox){
+            generateBoundingBox()
+        }
     }
     
     private func generateBoundingBox(){
@@ -216,6 +219,7 @@ class BoundingBoxMesh: CustomMesh{
     init(mins: float3, maxs: float3){
         self.mins = mins
         self.maxs = maxs
+        super.init(createBoundingBox: false)
     }
     
     override func setPrimitiveType(_ primitiveType: MTLPrimitiveType) {
@@ -234,9 +238,7 @@ class BoundingBoxMesh: CustomMesh{
         
         //Front Right Bottom 3
         addVertex(position: float3(maxs.x, mins.y, maxs.z))
-        
-        
-        
+
         //Back Left Top 4
         addVertex(position: float3(mins.x, maxs.y, mins.z))
         

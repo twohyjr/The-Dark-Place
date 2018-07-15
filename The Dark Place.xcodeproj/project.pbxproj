@@ -40,8 +40,6 @@
 		EBF4A64720F83DF100DAC145 /* VertexDescriptorLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A64620F83DF100DAC145 /* VertexDescriptorLibrary.swift */; };
 		EBF4A64B20F83F3500DAC145 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A64A20F83F3500DAC145 /* Scene.swift */; };
 		EBF4A64D20F83F7E00DAC145 /* VillageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A64C20F83F7E00DAC145 /* VillageScene.swift */; };
-		EBFA17FD20F860C700E8320C /* heightmap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBFA17FC20F860C700E8320C /* heightmap.jpg */; };
-		EBFA180720F8D62500E8320C /* flatbottom.png in Resources */ = {isa = PBXBuildFile; fileRef = EBFA180620F8D62500E8320C /* flatbottom.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,8 +91,6 @@
 		EBF4A64620F83DF100DAC145 /* VertexDescriptorLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexDescriptorLibrary.swift; sourceTree = "<group>"; };
 		EBF4A64A20F83F3500DAC145 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		EBF4A64C20F83F7E00DAC145 /* VillageScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageScene.swift; sourceTree = "<group>"; };
-		EBFA17FC20F860C700E8320C /* heightmap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = heightmap.jpg; sourceTree = "<group>"; };
-		EBFA180620F8D62500E8320C /* flatbottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flatbottom.png; path = ../../../../../../Desktop/flatbottom.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +166,6 @@
 		EBF4A5F920F8056300DAC145 /* The Dark Place */ = {
 			isa = PBXGroup;
 			children = (
-				EBFA17FA20F8606D00E8320C /* Assets */,
 				EBF4A62120F80DEC00DAC145 /* Core */,
 				EBF4A62220F80E0B00DAC145 /* Engine.swift */,
 				EBF4A64E20F83FE900DAC145 /* Managers */,
@@ -296,23 +291,6 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		EBFA17FA20F8606D00E8320C /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				EBFA17FB20F8607600E8320C /* res */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		EBFA17FB20F8607600E8320C /* res */ = {
-			isa = PBXGroup;
-			children = (
-				EBFA17FC20F860C700E8320C /* heightmap.jpg */,
-				EBFA180620F8D62500E8320C /* flatbottom.png */,
-			);
-			path = res;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -394,9 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBFA17FD20F860C700E8320C /* heightmap.jpg in Resources */,
 				EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */,
-				EBFA180720F8D62500E8320C /* flatbottom.png in Resources */,
 				EBF4A60520F8056400DAC145 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
