@@ -7,11 +7,9 @@ class Terrain: GameObject {
         self.mesh = TerrainMeshGenerator.GenerateTerrainMesh(gridSize: gridSize,
                                                              cellsWide: cellsWide,
                                                              cellsBack: cellsBack)
-    }
-    
-    override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
-//        renderCommandEncoder.setTriangleFillMode(.lines)
-        super.render(renderCommandEncoder: renderCommandEncoder)
+        self.position.x -= Float(gridSize / 2)
+        self.position.z -= Float(gridSize / 2)
+        self.position.y -= Float(1)
     }
     
 }

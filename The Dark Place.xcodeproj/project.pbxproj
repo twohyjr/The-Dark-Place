@@ -10,7 +10,6 @@
 		EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1820F8403800E61EFA /* SceneManager.swift */; };
 		EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1A20F840C000E61EFA /* GameManager.swift */; };
 		EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1D20F8431100E61EFA /* BasicShaders.metal */; };
-		EB614D2020F846EC00E61EFA /* VillageTerrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1F20F846EC00E61EFA /* VillageTerrain.swift */; };
 		EB614D2220F8505300E61EFA /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2120F8505300E61EFA /* CameraManager.swift */; };
 		EB614D2520F8509600E61EFA /* Maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2420F8509600E61EFA /* Maths.swift */; };
 		EB614D2820F8514100E61EFA /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2720F8514100E61EFA /* Keyboard.swift */; };
@@ -19,6 +18,7 @@
 		EB614D2E20F8536700E61EFA /* DepthStencilStateLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2D20F8536700E61EFA /* DepthStencilStateLibrary.swift */; };
 		EB614D3020F85C2800E61EFA /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2F20F85C2800E61EFA /* Terrain.swift */; };
 		EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */; };
+		EBF1452C20FAF98600B89FE9 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1452B20FAF98600B89FE9 /* Cube.swift */; };
 		EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */; };
 		EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FE20F8056300DAC145 /* The_Dark_Place.xcdatamodeld */; };
 		EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF4A60120F8056400DAC145 /* Assets.xcassets */; };
@@ -57,7 +57,6 @@
 		EB614D1820F8403800E61EFA /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		EB614D1A20F840C000E61EFA /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		EB614D1D20F8431100E61EFA /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
-		EB614D1F20F846EC00E61EFA /* VillageTerrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageTerrain.swift; sourceTree = "<group>"; };
 		EB614D2120F8505300E61EFA /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		EB614D2420F8509600E61EFA /* Maths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maths.swift; sourceTree = "<group>"; };
 		EB614D2720F8514100E61EFA /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		EB614D2D20F8536700E61EFA /* DepthStencilStateLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthStencilStateLibrary.swift; sourceTree = "<group>"; };
 		EB614D2F20F85C2800E61EFA /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainMeshGenerator.swift; sourceTree = "<group>"; };
+		EBF1452B20FAF98600B89FE9 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		EBF4A5F720F8056300DAC145 /* The Dark Place.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dark Place.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF4A5FF20F8056300DAC145 /* The_Dark_Place.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = The_Dark_Place.xcdatamodel; sourceTree = "<group>"; };
@@ -268,8 +268,8 @@
 			isa = PBXGroup;
 			children = (
 				EBF4A63A20F83A4700DAC145 /* GameObject.swift */,
-				EB614D1F20F846EC00E61EFA /* VillageTerrain.swift */,
 				EB614D2F20F85C2800E61EFA /* Terrain.swift */,
+				EBF1452B20FAF98600B89FE9 /* Cube.swift */,
 			);
 			path = "Game Objects";
 			sourceTree = "<group>";
@@ -417,6 +417,7 @@
 				EBF4A63620F823FE00DAC145 /* Node.swift in Sources */,
 				EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */,
 				EBF4A62020F80D6400DAC145 /* Renderer.swift in Sources */,
+				EBF1452C20FAF98600B89FE9 /* Cube.swift in Sources */,
 				EBF4A64120F83C7B00DAC145 /* MeshLibrary.swift in Sources */,
 				EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */,
 				EBF4A62F20F8175500DAC145 /* Size.swift in Sources */,
@@ -438,7 +439,6 @@
 				EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */,
 				EB614D2A20F8515900E61EFA /* Mouse.swift in Sources */,
 				EB614D2C20F8516100E61EFA /* KeyCodes.swift in Sources */,
-				EB614D2020F846EC00E61EFA /* VillageTerrain.swift in Sources */,
 				EBF4A64720F83DF100DAC145 /* VertexDescriptorLibrary.swift in Sources */,
 				EBF4A62320F80E0B00DAC145 /* Engine.swift in Sources */,
 			);

@@ -105,6 +105,11 @@ public class Debug_Camera: Camera {
             self.pitch += Mouse.GetDY() * 0.002
             self.yaw += Mouse.GetDX() * 0.002
         }
+        
+        let dWheel = Mouse.GetDWheel() * 0.5
+        if(self.zoom + dWheel < 47 && self.zoom + dWheel > 10) {
+            self.zoom += dWheel
+        }
     }
 }
 
