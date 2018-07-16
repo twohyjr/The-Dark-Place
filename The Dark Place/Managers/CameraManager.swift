@@ -56,7 +56,7 @@ extension Camera {
 }
 
 public class Debug_Camera: Camera {
-    var position: float3 = float3(0.0, 5.750003, 11.666658)
+    var position: float3 = float3(0)
     var pitch: Float = 0.48
     var yaw: Float = 0
     var roll: Float = 0

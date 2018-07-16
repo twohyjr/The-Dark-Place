@@ -1,6 +1,7 @@
 import MetalKit
 
 enum SceneTypes{
+    case Practice
     case VillageScene
 }
 
@@ -19,6 +20,8 @@ class SceneManager{
         switch sceneType {
         case .VillageScene:
             _currentScene = VillageScene()
+        case .Practice:
+            _currentScene = PracticeScene()
         }
     }
     
