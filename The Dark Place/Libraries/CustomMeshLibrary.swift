@@ -32,7 +32,7 @@ protocol CustomMesh {
     var indexCount: Int! { get }
     
     var primitiveType: MTLPrimitiveType! { get }
-    var boundingBox: BoundingBox! { get }
+    var boundingBoxes: [BoundingBox]! { get }
     func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder)
 }
 

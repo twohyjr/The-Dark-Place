@@ -11,7 +11,4 @@ class Terrain: GameObject {
         self.position.z -= Float(gridSize / 2)
         self.material.color = float4(0.7, 0.7, 0.7, 1.0)
     }
-    
-    
-    
 }

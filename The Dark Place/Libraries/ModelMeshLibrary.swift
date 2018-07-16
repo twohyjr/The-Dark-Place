@@ -27,27 +27,26 @@ class ModelMeshLibrary {
     public static func Mesh(_ meshType: ModelMeshTypes)->Mesh{
         return _meshes[meshType]!
     }
-    
 }
 
 protocol Mesh {
-    var boundingBox: BoundingBox! { get }
+    var boundingBoxes: [BoundingBox]! { get }
     var meshes: [MDLMesh] { get }
 }
 
 public class ModelMesh: Mesh {
     var meshes: [MDLMesh] = []
-    var boundingBox: BoundingBox!
+    var boundingBoxes: [BoundingBox]! = []
     
     init(_ modelName: String) {
         meshes = ModelLoader.CreateMtkMeshArrayFromWavefront(modelName)
-        if(meshes.count > 0){
-            boundingBox = BoundingBox(mins: (meshes.first?.boundingBox.minBounds)!,
-                                      maxs: (meshes.first?.boundingBox.minBounds)!)
-        }else{
-            boundingBox = BoundingBox()
-        }
         
+        for mesh in meshes {
+            print(mesh.boundingBox.minBounds)
+            let boundingBox = BoundingBox(mins: mesh.boundingBox.minBounds,
+                                          maxs: mesh.boundingBox.minBounds)
+            boundingBoxes.append(boundingBox)
+        }
     }
 }
 
