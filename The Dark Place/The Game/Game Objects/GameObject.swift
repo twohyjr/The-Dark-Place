@@ -4,10 +4,11 @@ class GameObject: Node {
     
     var modelConstants = ModelConstants()
     var renderPipelineState: MTLRenderPipelineState!
-    var mesh: MyMesh!
+    var mesh: CustomMesh!
     var useLines: Bool = false
+    var material = Material()
     
-    init(meshType: MeshTypes) {
+    init(meshType: CustomMeshTypes) {
         super.init()
         mesh = MeshLibrary.Mesh(meshType)
         
@@ -39,6 +40,7 @@ extension GameObject: Renderable{
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
         
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
+        renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
         renderCommandEncoder.setRenderPipelineState(renderPipelineState)
         renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer, offset: 0, index: 0)
         

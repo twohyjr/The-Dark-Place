@@ -1,6 +1,6 @@
 import MetalKit
 
-class Quad_CustomMesh: CustomMesh {
+class Quad_CustomMesh: CustomModelMesh {
     //Origin: Bottom Left
     override func createVertices() {
         //Top Right

@@ -1,6 +1,6 @@
 import MetalKit
 
-enum MeshTypes {
+enum CustomMeshTypes {
     case Triangle_Custom
     case Quad_Custom
     case Cube_Custom
@@ -8,7 +8,7 @@ enum MeshTypes {
 
 class MeshLibrary {
     
-    private static var meshes: [MeshTypes:MyMesh] = [:]
+    private static var meshes: [CustomMeshTypes:CustomMesh] = [:]
     
     public static func Initialize(){
         createDefaultMeshes()
@@ -20,14 +20,14 @@ class MeshLibrary {
         meshes.updateValue(Cube_CustomMesh(), forKey: .Cube_Custom)
     }
     
-    public static func Mesh(_ meshType: MeshTypes)->MyMesh{
+    public static func Mesh(_ meshType: CustomMeshTypes)->CustomMesh{
         return meshes[meshType]!
     }
     
 }
 
 
-protocol MyMesh {
+protocol CustomMesh {
     var vertexBuffer: MTLBuffer! { get }
     var indexBuffer: MTLBuffer! { get }
     var vertexCount: Int! { get }

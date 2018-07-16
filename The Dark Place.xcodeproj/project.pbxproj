@@ -26,11 +26,14 @@
 		EBF1458620FC4B8700B89FE9 /* ModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1458520FC4B8700B89FE9 /* ModelLoader.swift */; };
 		EBF1458B20FC4E6700B89FE9 /* ModelMeshLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1458A20FC4E6700B89FE9 /* ModelMeshLibrary.swift */; };
 		EBF1458D20FC4F8100B89FE9 /* ModelGameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1458C20FC4F8100B89FE9 /* ModelGameObject.swift */; };
-		EBF1458F20FC50DE00B89FE9 /* Tent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1458E20FC50DE00B89FE9 /* Tent.swift */; };
+		EBF1458F20FC50DE00B89FE9 /* Tents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1458E20FC50DE00B89FE9 /* Tents.swift */; };
 		EBF1459820FC519400B89FE9 /* Tent_01.obj in Resources */ = {isa = PBXBuildFile; fileRef = EBF1459620FC519400B89FE9 /* Tent_01.obj */; };
 		EBF1459920FC519400B89FE9 /* Tent_01.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBF1459720FC519400B89FE9 /* Tent_01.mtl */; };
 		EBF1459C20FC5ACF00B89FE9 /* Tent_Poles_01.obj in Resources */ = {isa = PBXBuildFile; fileRef = EBF1459A20FC5ACF00B89FE9 /* Tent_Poles_01.obj */; };
 		EBF1459D20FC5ACF00B89FE9 /* Tent_Poles_01.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBF1459B20FC5ACF00B89FE9 /* Tent_Poles_01.mtl */; };
+		EBF145A020FC5D8800B89FE9 /* Campfire_01.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBF1459E20FC5D8800B89FE9 /* Campfire_01.mtl */; };
+		EBF145A120FC5D8800B89FE9 /* Campfire_01.obj in Resources */ = {isa = PBXBuildFile; fileRef = EBF1459F20FC5D8800B89FE9 /* Campfire_01.obj */; };
+		EBF145A320FC5D9700B89FE9 /* Campfire.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF145A220FC5D9700B89FE9 /* Campfire.swift */; };
 		EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */; };
 		EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FE20F8056300DAC145 /* The_Dark_Place.xcdatamodeld */; };
 		EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF4A60120F8056400DAC145 /* Assets.xcassets */; };
@@ -45,7 +48,7 @@
 		EBF4A63820F8363400DAC145 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A63720F8363400DAC145 /* Renderable.swift */; };
 		EBF4A63B20F83A4700DAC145 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A63A20F83A4700DAC145 /* GameObject.swift */; };
 		EBF4A63F20F83C0700DAC145 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A63E20F83C0700DAC145 /* Types.swift */; };
-		EBF4A64120F83C7B00DAC145 /* MeshLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A64020F83C7B00DAC145 /* MeshLibrary.swift */; };
+		EBF4A64120F83C7B00DAC145 /* CustomMeshLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A64020F83C7B00DAC145 /* CustomMeshLibrary.swift */; };
 		EBF4A64320F83D7700DAC145 /* RenderPipelineStateLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A64220F83D7700DAC145 /* RenderPipelineStateLibrary.swift */; };
 		EBF4A64520F83DC600DAC145 /* ShaderLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A64420F83DC600DAC145 /* ShaderLibrary.swift */; };
 		EBF4A64720F83DF100DAC145 /* VertexDescriptorLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A64620F83DF100DAC145 /* VertexDescriptorLibrary.swift */; };
@@ -83,11 +86,14 @@
 		EBF1458520FC4B8700B89FE9 /* ModelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoader.swift; sourceTree = "<group>"; };
 		EBF1458A20FC4E6700B89FE9 /* ModelMeshLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMeshLibrary.swift; sourceTree = "<group>"; };
 		EBF1458C20FC4F8100B89FE9 /* ModelGameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelGameObject.swift; sourceTree = "<group>"; };
-		EBF1458E20FC50DE00B89FE9 /* Tent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tent.swift; sourceTree = "<group>"; };
+		EBF1458E20FC50DE00B89FE9 /* Tents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tents.swift; sourceTree = "<group>"; };
 		EBF1459620FC519400B89FE9 /* Tent_01.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tent_01.obj; sourceTree = "<group>"; };
 		EBF1459720FC519400B89FE9 /* Tent_01.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tent_01.mtl; sourceTree = "<group>"; };
 		EBF1459A20FC5ACF00B89FE9 /* Tent_Poles_01.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tent_Poles_01.obj; sourceTree = "<group>"; };
 		EBF1459B20FC5ACF00B89FE9 /* Tent_Poles_01.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tent_Poles_01.mtl; sourceTree = "<group>"; };
+		EBF1459E20FC5D8800B89FE9 /* Campfire_01.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Campfire_01.mtl; sourceTree = "<group>"; };
+		EBF1459F20FC5D8800B89FE9 /* Campfire_01.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Campfire_01.obj; sourceTree = "<group>"; };
+		EBF145A220FC5D9700B89FE9 /* Campfire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campfire.swift; sourceTree = "<group>"; };
 		EBF4A5F720F8056300DAC145 /* The Dark Place.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dark Place.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF4A5FF20F8056300DAC145 /* The_Dark_Place.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = The_Dark_Place.xcdatamodel; sourceTree = "<group>"; };
@@ -107,7 +113,7 @@
 		EBF4A63720F8363400DAC145 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		EBF4A63A20F83A4700DAC145 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		EBF4A63E20F83C0700DAC145 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
-		EBF4A64020F83C7B00DAC145 /* MeshLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshLibrary.swift; sourceTree = "<group>"; };
+		EBF4A64020F83C7B00DAC145 /* CustomMeshLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMeshLibrary.swift; sourceTree = "<group>"; };
 		EBF4A64220F83D7700DAC145 /* RenderPipelineStateLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderPipelineStateLibrary.swift; sourceTree = "<group>"; };
 		EBF4A64420F83DC600DAC145 /* ShaderLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderLibrary.swift; sourceTree = "<group>"; };
 		EBF4A64620F83DF100DAC145 /* VertexDescriptorLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexDescriptorLibrary.swift; sourceTree = "<group>"; };
@@ -208,6 +214,8 @@
 		EBF1459520FC516B00B89FE9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EBF1459E20FC5D8800B89FE9 /* Campfire_01.mtl */,
+				EBF1459F20FC5D8800B89FE9 /* Campfire_01.obj */,
 				EBF1459B20FC5ACF00B89FE9 /* Tent_Poles_01.mtl */,
 				EBF1459A20FC5ACF00B89FE9 /* Tent_Poles_01.obj */,
 				EBF1459720FC519400B89FE9 /* Tent_01.mtl */,
@@ -301,7 +309,7 @@
 				EBF4A64620F83DF100DAC145 /* VertexDescriptorLibrary.swift */,
 				EB614D2D20F8536700E61EFA /* DepthStencilStateLibrary.swift */,
 				EBF4A64420F83DC600DAC145 /* ShaderLibrary.swift */,
-				EBF4A64020F83C7B00DAC145 /* MeshLibrary.swift */,
+				EBF4A64020F83C7B00DAC145 /* CustomMeshLibrary.swift */,
 				EBF1458A20FC4E6700B89FE9 /* ModelMeshLibrary.swift */,
 				EBF1457720FC488200B89FE9 /* Meshes */,
 			);
@@ -343,7 +351,8 @@
 				EBF1458C20FC4F8100B89FE9 /* ModelGameObject.swift */,
 				EB614D2F20F85C2800E61EFA /* Terrain.swift */,
 				EBF1452B20FAF98600B89FE9 /* Cube.swift */,
-				EBF1458E20FC50DE00B89FE9 /* Tent.swift */,
+				EBF1458E20FC50DE00B89FE9 /* Tents.swift */,
+				EBF145A220FC5D9700B89FE9 /* Campfire.swift */,
 			);
 			path = "Game Objects";
 			sourceTree = "<group>";
@@ -450,10 +459,12 @@
 			files = (
 				EBF1459820FC519400B89FE9 /* Tent_01.obj in Resources */,
 				EBF1459920FC519400B89FE9 /* Tent_01.mtl in Resources */,
+				EBF145A020FC5D8800B89FE9 /* Campfire_01.mtl in Resources */,
 				EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */,
 				EBF1459D20FC5ACF00B89FE9 /* Tent_Poles_01.mtl in Resources */,
 				EBF1459C20FC5ACF00B89FE9 /* Tent_Poles_01.obj in Resources */,
 				EBF4A60520F8056400DAC145 /* Main.storyboard in Resources */,
+				EBF145A120FC5D8800B89FE9 /* Campfire_01.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +489,7 @@
 				EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */,
 				EBF4A62020F80D6400DAC145 /* Renderer.swift in Sources */,
 				EBF1452C20FAF98600B89FE9 /* Cube.swift in Sources */,
-				EBF4A64120F83C7B00DAC145 /* MeshLibrary.swift in Sources */,
+				EBF4A64120F83C7B00DAC145 /* CustomMeshLibrary.swift in Sources */,
 				EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */,
 				EBF4A62F20F8175500DAC145 /* Size.swift in Sources */,
 				EBF1458020FC48B900B89FE9 /* CustomMesh.swift in Sources */,
@@ -488,6 +499,7 @@
 				EBF4A63820F8363400DAC145 /* Renderable.swift in Sources */,
 				EBF4A63F20F83C0700DAC145 /* Types.swift in Sources */,
 				EBF4A64B20F83F3500DAC145 /* Scene.swift in Sources */,
+				EBF145A320FC5D9700B89FE9 /* Campfire.swift in Sources */,
 				EB614D2820F8514100E61EFA /* Keyboard.swift in Sources */,
 				EBF1458D20FC4F8100B89FE9 /* ModelGameObject.swift in Sources */,
 				EB614D2220F8505300E61EFA /* CameraManager.swift in Sources */,
@@ -495,7 +507,7 @@
 				EB614D2520F8509600E61EFA /* Maths.swift in Sources */,
 				EB614D2E20F8536700E61EFA /* DepthStencilStateLibrary.swift in Sources */,
 				EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */,
-				EBF1458F20FC50DE00B89FE9 /* Tent.swift in Sources */,
+				EBF1458F20FC50DE00B89FE9 /* Tents.swift in Sources */,
 				EBF4A64320F83D7700DAC145 /* RenderPipelineStateLibrary.swift in Sources */,
 				EBF1458B20FC4E6700B89FE9 /* ModelMeshLibrary.swift in Sources */,
 				EBF4A64D20F83F7E00DAC145 /* VillageScene.swift in Sources */,

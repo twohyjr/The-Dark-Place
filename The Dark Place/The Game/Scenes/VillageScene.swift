@@ -8,9 +8,11 @@ class VillageScene: Scene {
     override func buildScene() {
         setCameras()
         
-//        addTerrain()
+        addTerrain()
         
-        addTent()
+        addTents()
+        
+        addCampfire()
     }
     
     private func setCameras(){
@@ -24,11 +26,24 @@ class VillageScene: Scene {
     }
     
 
-    private func addTent(){
+    private func addTents(){
         let tent = Tent()
         tent.rotation = float3(0.0, 3.3833308, 0.0)
         tent.position.x = -1
         addChild(tent)
+        
+        let tentWithPoles = TentWithPoles()
+        tentWithPoles.rotation = float3(0.0, 3.0, 0.0)
+        tentWithPoles.position.x = -1
+        tentWithPoles.position.x = 3
+        addChild(tentWithPoles)
+    }
+    
+    private func addCampfire(){
+        let campfire = Campfire()
+        campfire.position.x = 0
+        campfire.position.z = 4
+        addChild(campfire)
     }
 
 }

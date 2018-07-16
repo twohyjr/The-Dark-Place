@@ -3,23 +3,25 @@ import MetalKit
 enum ModelMeshTypes {
     case Tent
     case TentWithPoles
+    case Campfire
 }
 
 class ModelMeshLibrary {
     
-    private static var meshes: [ModelMeshTypes:Mesh] = [:]
+    private static var _meshes: [ModelMeshTypes:Mesh] = [:]
     
     public static func Initialize(){
         createDefaultMeshes()
     }
     
     private static func createDefaultMeshes(){
-        meshes.updateValue(ModelMesh("Tent_01"), forKey: .Tent)
-        meshes.updateValue(ModelMesh("Tent_Poles_01"), forKey: .TentWithPoles)
+        _meshes.updateValue(ModelMesh("Tent_01"), forKey: .Tent)
+        _meshes.updateValue(ModelMesh("Tent_Poles_01"), forKey: .TentWithPoles)
+        _meshes.updateValue(ModelMesh("Campfire_01"), forKey: .Campfire)
     }
     
     public static func Mesh(_ meshType: ModelMeshTypes)->Mesh{
-        return meshes[meshType]!
+        return _meshes[meshType]!
     }
     
 }

@@ -1,6 +1,6 @@
 import MetalKit
 
-class CustomMesh: MyMesh {
+class CustomModelMesh: CustomMesh {
     var vertices: [Vertex] = []
     var indices: [UInt16] = []
     var vertexBuffer: MTLBuffer!
