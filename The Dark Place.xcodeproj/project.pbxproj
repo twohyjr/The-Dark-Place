@@ -23,7 +23,12 @@
 		EBF1457C20FC48A700B89FE9 /* Cube_CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457B20FC48A700B89FE9 /* Cube_CustomMesh.swift */; };
 		EBF1457E20FC48B300B89FE9 /* Quad_CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457D20FC48B300B89FE9 /* Quad_CustomMesh.swift */; };
 		EBF1458020FC48B900B89FE9 /* CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457F20FC48B900B89FE9 /* CustomMesh.swift */; };
-		EBF1458320FC499F00B89FE9 /* ModelMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1458220FC499F00B89FE9 /* ModelMesh.swift */; };
+		EBF1458620FC4B8700B89FE9 /* ModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1458520FC4B8700B89FE9 /* ModelLoader.swift */; };
+		EBF1458B20FC4E6700B89FE9 /* ModelMeshLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1458A20FC4E6700B89FE9 /* ModelMeshLibrary.swift */; };
+		EBF1458D20FC4F8100B89FE9 /* ModelGameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1458C20FC4F8100B89FE9 /* ModelGameObject.swift */; };
+		EBF1458F20FC50DE00B89FE9 /* Tent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1458E20FC50DE00B89FE9 /* Tent.swift */; };
+		EBF1459820FC519400B89FE9 /* Tent_01.obj in Resources */ = {isa = PBXBuildFile; fileRef = EBF1459620FC519400B89FE9 /* Tent_01.obj */; };
+		EBF1459920FC519400B89FE9 /* Tent_01.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBF1459720FC519400B89FE9 /* Tent_01.mtl */; };
 		EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */; };
 		EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FE20F8056300DAC145 /* The_Dark_Place.xcdatamodeld */; };
 		EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF4A60120F8056400DAC145 /* Assets.xcassets */; };
@@ -73,7 +78,12 @@
 		EBF1457B20FC48A700B89FE9 /* Cube_CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube_CustomMesh.swift; sourceTree = "<group>"; };
 		EBF1457D20FC48B300B89FE9 /* Quad_CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quad_CustomMesh.swift; sourceTree = "<group>"; };
 		EBF1457F20FC48B900B89FE9 /* CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMesh.swift; sourceTree = "<group>"; };
-		EBF1458220FC499F00B89FE9 /* ModelMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMesh.swift; sourceTree = "<group>"; };
+		EBF1458520FC4B8700B89FE9 /* ModelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoader.swift; sourceTree = "<group>"; };
+		EBF1458A20FC4E6700B89FE9 /* ModelMeshLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMeshLibrary.swift; sourceTree = "<group>"; };
+		EBF1458C20FC4F8100B89FE9 /* ModelGameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelGameObject.swift; sourceTree = "<group>"; };
+		EBF1458E20FC50DE00B89FE9 /* Tent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tent.swift; sourceTree = "<group>"; };
+		EBF1459620FC519400B89FE9 /* Tent_01.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tent_01.obj; sourceTree = "<group>"; };
+		EBF1459720FC519400B89FE9 /* Tent_01.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tent_01.mtl; sourceTree = "<group>"; };
 		EBF4A5F720F8056300DAC145 /* The Dark Place.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dark Place.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF4A5FF20F8056300DAC145 /* The_Dark_Place.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = The_Dark_Place.xcdatamodel; sourceTree = "<group>"; };
@@ -173,12 +183,31 @@
 			path = CustomMeshes;
 			sourceTree = "<group>";
 		};
-		EBF1458120FC498D00B89FE9 /* ModelMeshes */ = {
+		EBF1458420FC4B7500B89FE9 /* Loaders */ = {
 			isa = PBXGroup;
 			children = (
-				EBF1458220FC499F00B89FE9 /* ModelMesh.swift */,
+				EBF1458520FC4B8700B89FE9 /* ModelLoader.swift */,
 			);
-			path = ModelMeshes;
+			name = Loaders;
+			path = "New Group2";
+			sourceTree = "<group>";
+		};
+		EBF1459020FC514C00B89FE9 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EBF1459520FC516B00B89FE9 /* Models */,
+			);
+			name = Assets;
+			path = "New Group3";
+			sourceTree = "<group>";
+		};
+		EBF1459520FC516B00B89FE9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EBF1459720FC519400B89FE9 /* Tent_01.mtl */,
+				EBF1459620FC519400B89FE9 /* Tent_01.obj */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EBF4A5EE20F8056300DAC145 = {
@@ -202,10 +231,12 @@
 		EBF4A5F920F8056300DAC145 /* The Dark Place */ = {
 			isa = PBXGroup;
 			children = (
+				EBF1459020FC514C00B89FE9 /* Assets */,
 				EBF4A62120F80DEC00DAC145 /* Core */,
 				EBF4A64E20F83FE900DAC145 /* Managers */,
 				EBF4A62720F813C600DAC145 /* Libraries */,
 				EB614D3320F85C7700E61EFA /* Generators */,
+				EBF1458420FC4B7500B89FE9 /* Loaders */,
 				EBF4A63420F823F200DAC145 /* The Game */,
 				EB614D1C20F842F500E61EFA /* Shaders */,
 				EBF4A61E20F80B2B00DAC145 /* Display */,
@@ -265,8 +296,8 @@
 				EB614D2D20F8536700E61EFA /* DepthStencilStateLibrary.swift */,
 				EBF4A64420F83DC600DAC145 /* ShaderLibrary.swift */,
 				EBF4A64020F83C7B00DAC145 /* MeshLibrary.swift */,
+				EBF1458A20FC4E6700B89FE9 /* ModelMeshLibrary.swift */,
 				EBF1457720FC488200B89FE9 /* Meshes */,
-				EBF1458120FC498D00B89FE9 /* ModelMeshes */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -303,8 +334,10 @@
 			isa = PBXGroup;
 			children = (
 				EBF4A63A20F83A4700DAC145 /* GameObject.swift */,
+				EBF1458C20FC4F8100B89FE9 /* ModelGameObject.swift */,
 				EB614D2F20F85C2800E61EFA /* Terrain.swift */,
 				EBF1452B20FAF98600B89FE9 /* Cube.swift */,
+				EBF1458E20FC50DE00B89FE9 /* Tent.swift */,
 			);
 			path = "Game Objects";
 			sourceTree = "<group>";
@@ -409,6 +442,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF1459820FC519400B89FE9 /* Tent_01.obj in Resources */,
+				EBF1459920FC519400B89FE9 /* Tent_01.mtl in Resources */,
 				EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */,
 				EBF4A60520F8056400DAC145 /* Main.storyboard in Resources */,
 			);
@@ -442,21 +477,24 @@
 				EBF1457C20FC48A700B89FE9 /* Cube_CustomMesh.swift in Sources */,
 				EBF1457A20FC489E00B89FE9 /* Triangle_CustomMesh.swift in Sources */,
 				EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */,
-				EBF1458320FC499F00B89FE9 /* ModelMesh.swift in Sources */,
 				EBF4A63820F8363400DAC145 /* Renderable.swift in Sources */,
 				EBF4A63F20F83C0700DAC145 /* Types.swift in Sources */,
 				EBF4A64B20F83F3500DAC145 /* Scene.swift in Sources */,
 				EB614D2820F8514100E61EFA /* Keyboard.swift in Sources */,
+				EBF1458D20FC4F8100B89FE9 /* ModelGameObject.swift in Sources */,
 				EB614D2220F8505300E61EFA /* CameraManager.swift in Sources */,
 				EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */,
 				EB614D2520F8509600E61EFA /* Maths.swift in Sources */,
 				EB614D2E20F8536700E61EFA /* DepthStencilStateLibrary.swift in Sources */,
 				EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */,
+				EBF1458F20FC50DE00B89FE9 /* Tent.swift in Sources */,
 				EBF4A64320F83D7700DAC145 /* RenderPipelineStateLibrary.swift in Sources */,
+				EBF1458B20FC4E6700B89FE9 /* ModelMeshLibrary.swift in Sources */,
 				EBF4A64D20F83F7E00DAC145 /* VillageScene.swift in Sources */,
 				EBF4A64520F83DC600DAC145 /* ShaderLibrary.swift in Sources */,
 				EBF4A61D20F8058B00DAC145 /* GameView.swift in Sources */,
 				EBF4A63B20F83A4700DAC145 /* GameObject.swift in Sources */,
+				EBF1458620FC4B8700B89FE9 /* ModelLoader.swift in Sources */,
 				EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */,
 				EB614D2A20F8515900E61EFA /* Mouse.swift in Sources */,
 				EB614D2C20F8516100E61EFA /* KeyCodes.swift in Sources */,

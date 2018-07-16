@@ -26,6 +26,7 @@ class MeshLibrary {
     
 }
 
+
 protocol MyMesh {
     var vertexBuffer: MTLBuffer! { get }
     var indexBuffer: MTLBuffer! { get }

@@ -3,7 +3,6 @@ import MetalKit
 class GameObject: Node {
     
     var modelConstants = ModelConstants()
-    var texture: MTLTexture?
     var renderPipelineState: MTLRenderPipelineState!
     var mesh: MyMesh!
     var useLines: Bool = false

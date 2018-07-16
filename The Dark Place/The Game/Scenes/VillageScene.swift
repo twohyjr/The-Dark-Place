@@ -10,7 +10,7 @@ class VillageScene: Scene {
         
         addTerrain()
         
-        addCube()
+        addTent()
     }
     
     private func setCameras(){
@@ -23,9 +23,9 @@ class VillageScene: Scene {
         addChild(terrain)
     }
     
-    private func addCube(){
-        let cube = Cube()
-        cube.position.x = -1
-        addChild(cube)
+    private func addTent(){
+        let tent = Tent()
+        tent.position.x = -1
+        addChild(tent)
     }
 }

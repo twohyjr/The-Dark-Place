@@ -28,6 +28,8 @@ class Engine {
         
         MeshLibrary.Initialize()
         
+        ModelMeshLibrary.Initialize()
+        
     }
     
     private static func initializeManagers(){
