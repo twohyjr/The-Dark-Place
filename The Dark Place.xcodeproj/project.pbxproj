@@ -34,6 +34,12 @@
 		EBF145A020FC5D8800B89FE9 /* Campfire_01.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBF1459E20FC5D8800B89FE9 /* Campfire_01.mtl */; };
 		EBF145A120FC5D8800B89FE9 /* Campfire_01.obj in Resources */ = {isa = PBXBuildFile; fileRef = EBF1459F20FC5D8800B89FE9 /* Campfire_01.obj */; };
 		EBF145A320FC5D9700B89FE9 /* Campfire.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF145A220FC5D9700B89FE9 /* Campfire.swift */; };
+		EBF145A620FC5F3A00B89FE9 /* Mushroom_Red_01.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBF145A420FC5F3A00B89FE9 /* Mushroom_Red_01.mtl */; };
+		EBF145A720FC5F3A00B89FE9 /* Mushroom_Red_01.obj in Resources */ = {isa = PBXBuildFile; fileRef = EBF145A520FC5F3A00B89FE9 /* Mushroom_Red_01.obj */; };
+		EBF145A920FC5F6900B89FE9 /* RedMushroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF145A820FC5F6900B89FE9 /* RedMushroom.swift */; };
+		EBF145AC20FCD13E00B89FE9 /* Large_Oak_Green_01.obj in Resources */ = {isa = PBXBuildFile; fileRef = EBF145AA20FCD13E00B89FE9 /* Large_Oak_Green_01.obj */; };
+		EBF145AD20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBF145AB20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl */; };
+		EBF145AF20FCD14E00B89FE9 /* LargeGreenOak.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF145AE20FCD14E00B89FE9 /* LargeGreenOak.swift */; };
 		EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */; };
 		EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FE20F8056300DAC145 /* The_Dark_Place.xcdatamodeld */; };
 		EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF4A60120F8056400DAC145 /* Assets.xcassets */; };
@@ -94,6 +100,12 @@
 		EBF1459E20FC5D8800B89FE9 /* Campfire_01.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Campfire_01.mtl; sourceTree = "<group>"; };
 		EBF1459F20FC5D8800B89FE9 /* Campfire_01.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Campfire_01.obj; sourceTree = "<group>"; };
 		EBF145A220FC5D9700B89FE9 /* Campfire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campfire.swift; sourceTree = "<group>"; };
+		EBF145A420FC5F3A00B89FE9 /* Mushroom_Red_01.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Mushroom_Red_01.mtl; sourceTree = "<group>"; };
+		EBF145A520FC5F3A00B89FE9 /* Mushroom_Red_01.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Mushroom_Red_01.obj; sourceTree = "<group>"; };
+		EBF145A820FC5F6900B89FE9 /* RedMushroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedMushroom.swift; sourceTree = "<group>"; };
+		EBF145AA20FCD13E00B89FE9 /* Large_Oak_Green_01.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Large_Oak_Green_01.obj; sourceTree = "<group>"; };
+		EBF145AB20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Large_Oak_Green_01.mtl; sourceTree = "<group>"; };
+		EBF145AE20FCD14E00B89FE9 /* LargeGreenOak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeGreenOak.swift; sourceTree = "<group>"; };
 		EBF4A5F720F8056300DAC145 /* The Dark Place.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dark Place.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF4A5FF20F8056300DAC145 /* The_Dark_Place.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = The_Dark_Place.xcdatamodel; sourceTree = "<group>"; };
@@ -214,6 +226,10 @@
 		EBF1459520FC516B00B89FE9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EBF145AB20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl */,
+				EBF145AA20FCD13E00B89FE9 /* Large_Oak_Green_01.obj */,
+				EBF145A420FC5F3A00B89FE9 /* Mushroom_Red_01.mtl */,
+				EBF145A520FC5F3A00B89FE9 /* Mushroom_Red_01.obj */,
 				EBF1459E20FC5D8800B89FE9 /* Campfire_01.mtl */,
 				EBF1459F20FC5D8800B89FE9 /* Campfire_01.obj */,
 				EBF1459B20FC5ACF00B89FE9 /* Tent_Poles_01.mtl */,
@@ -353,6 +369,8 @@
 				EBF1452B20FAF98600B89FE9 /* Cube.swift */,
 				EBF1458E20FC50DE00B89FE9 /* Tents.swift */,
 				EBF145A220FC5D9700B89FE9 /* Campfire.swift */,
+				EBF145A820FC5F6900B89FE9 /* RedMushroom.swift */,
+				EBF145AE20FCD14E00B89FE9 /* LargeGreenOak.swift */,
 			);
 			path = "Game Objects";
 			sourceTree = "<group>";
@@ -460,10 +478,14 @@
 				EBF1459820FC519400B89FE9 /* Tent_01.obj in Resources */,
 				EBF1459920FC519400B89FE9 /* Tent_01.mtl in Resources */,
 				EBF145A020FC5D8800B89FE9 /* Campfire_01.mtl in Resources */,
+				EBF145AC20FCD13E00B89FE9 /* Large_Oak_Green_01.obj in Resources */,
 				EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */,
 				EBF1459D20FC5ACF00B89FE9 /* Tent_Poles_01.mtl in Resources */,
 				EBF1459C20FC5ACF00B89FE9 /* Tent_Poles_01.obj in Resources */,
 				EBF4A60520F8056400DAC145 /* Main.storyboard in Resources */,
+				EBF145A620FC5F3A00B89FE9 /* Mushroom_Red_01.mtl in Resources */,
+				EBF145A720FC5F3A00B89FE9 /* Mushroom_Red_01.obj in Resources */,
+				EBF145AD20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl in Resources */,
 				EBF145A120FC5D8800B89FE9 /* Campfire_01.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +524,7 @@
 				EBF145A320FC5D9700B89FE9 /* Campfire.swift in Sources */,
 				EB614D2820F8514100E61EFA /* Keyboard.swift in Sources */,
 				EBF1458D20FC4F8100B89FE9 /* ModelGameObject.swift in Sources */,
+				EBF145A920FC5F6900B89FE9 /* RedMushroom.swift in Sources */,
 				EB614D2220F8505300E61EFA /* CameraManager.swift in Sources */,
 				EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */,
 				EB614D2520F8509600E61EFA /* Maths.swift in Sources */,
@@ -518,6 +541,7 @@
 				EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */,
 				EB614D2A20F8515900E61EFA /* Mouse.swift in Sources */,
 				EB614D2C20F8516100E61EFA /* KeyCodes.swift in Sources */,
+				EBF145AF20FCD14E00B89FE9 /* LargeGreenOak.swift in Sources */,
 				EBF4A64720F83DF100DAC145 /* VertexDescriptorLibrary.swift in Sources */,
 				EBF4A62320F80E0B00DAC145 /* Engine.swift in Sources */,
 			);

@@ -13,6 +13,8 @@ class VillageScene: Scene {
         addTents()
         
         addCampfire()
+        
+        addMushrooms()
     }
     
     private func setCameras(){
@@ -44,6 +46,15 @@ class VillageScene: Scene {
         campfire.position.x = 0
         campfire.position.z = 4
         addChild(campfire)
+    }
+    
+    private func addMushrooms(){
+        for i in -5..<5 {
+            let redMushroom = RedMushroom()
+            redMushroom.position.x = Float(i)
+            redMushroom.position.z = 6
+            addChild(redMushroom)
+        }
     }
 
 }
