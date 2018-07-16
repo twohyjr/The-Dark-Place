@@ -2,6 +2,7 @@ import MetalKit
 
 enum ModelMeshTypes {
     case Tent
+    case TentWithPoles
 }
 
 class ModelMeshLibrary {
@@ -14,6 +15,7 @@ class ModelMeshLibrary {
     
     private static func createDefaultMeshes(){
         meshes.updateValue(ModelMesh("Tent_01"), forKey: .Tent)
+        meshes.updateValue(ModelMesh("Tent_Poles_01"), forKey: .TentWithPoles)
     }
     
     public static func Mesh(_ meshType: ModelMeshTypes)->Mesh{

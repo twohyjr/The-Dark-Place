@@ -30,6 +30,7 @@ extension ModelGameObject: Renderable {
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder) {
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
+        renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
         for i in 0..<modelMesh.meshes.count {
             var mdlMesh: MDLMesh! = nil
             var mtkMesh: MTKMesh! = nil
@@ -39,18 +40,23 @@ extension ModelGameObject: Renderable {
             }catch{
                 print(error)
             }
-            
             let vertexBuffer: MTKMeshBuffer = mtkMesh.vertexBuffers.first!
             renderCommandEncoder.setVertexBuffer(vertexBuffer.buffer, offset: 0, index: 0)
             for j in 0..<mtkMesh.submeshes.count{
-                let submesh = mtkMesh.submeshes[j]
-                renderCommandEncoder.drawIndexedPrimitives(type: submesh.primitiveType,
-                                                           indexCount: submesh.indexCount,
-                                                           indexType: submesh.indexType,
-                                                           indexBuffer: submesh.indexBuffer.buffer,
-                                                           indexBufferOffset: submesh.indexBuffer.offset)
+                
+                let mtkSubmesh = mtkMesh.submeshes[j]
+                let mdlSubmeshes = mdlMesh.submeshes as? [MDLSubmesh]
+                let color = mdlSubmeshes![j].material?.properties(with: MDLMaterialSemantic.baseColor).first?.float4Value
+                var material = Material()
+                material.color = color!
+                renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
+                renderCommandEncoder.drawIndexedPrimitives(type: mtkSubmesh.primitiveType,
+                                                           indexCount: mtkSubmesh.indexCount,
+                                                           indexType: mtkSubmesh.indexType,
+                                                           indexBuffer: mtkSubmesh.indexBuffer.buffer,
+                                                           indexBufferOffset: mtkSubmesh.indexBuffer.offset)
             }
-//            print((mdlMesh.submeshes as! [MDLSubmesh]).first?.material?.properties(with: MDLMaterialSemantic.baseColor).first?.float4Value)
+//            print()
         }
 //        for _ in modelMesh.meshes {
 //            var mdlMesh: MDLMesh! = nil

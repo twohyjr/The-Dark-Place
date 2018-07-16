@@ -8,7 +8,7 @@ class VillageScene: Scene {
     override func buildScene() {
         setCameras()
         
-        addTerrain()
+//        addTerrain()
         
         addTent()
     }
@@ -23,9 +23,12 @@ class VillageScene: Scene {
         addChild(terrain)
     }
     
+
     private func addTent(){
         let tent = Tent()
+        tent.rotation = float3(0.0, 3.3833308, 0.0)
         tent.position.x = -1
         addChild(tent)
     }
+
 }

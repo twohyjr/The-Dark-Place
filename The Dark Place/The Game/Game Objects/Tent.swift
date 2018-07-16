@@ -8,3 +8,11 @@ class Tent: ModelGameObject {
     }
     
 }
+
+class TentWithPoles: ModelGameObject {
+    
+    init() {
+        super.init(.TentWithPoles)
+    }
+    
+}
