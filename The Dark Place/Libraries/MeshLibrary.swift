@@ -8,7 +8,7 @@ enum MeshTypes {
 
 class MeshLibrary {
     
-    private static var meshes: [MeshTypes:Mesh] = [:]
+    private static var meshes: [MeshTypes:MyMesh] = [:]
     
     public static func Initialize(){
         createDefaultMeshes()
@@ -20,13 +20,13 @@ class MeshLibrary {
         meshes.updateValue(Cube_CustomMesh(), forKey: .Cube_Custom)
     }
     
-    public static func Mesh(_ meshType: MeshTypes)->Mesh{
+    public static func Mesh(_ meshType: MeshTypes)->MyMesh{
         return meshes[meshType]!
     }
     
 }
 
-protocol Mesh {
+protocol MyMesh {
     var vertexBuffer: MTLBuffer! { get }
     var indexBuffer: MTLBuffer! { get }
     var vertexCount: Int! { get }

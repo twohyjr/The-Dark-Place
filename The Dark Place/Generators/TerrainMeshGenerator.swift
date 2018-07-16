@@ -1,7 +1,7 @@
 import MetalKit
 
 class TerrainMeshGenerator{
-    public static func GenerateTerrainMesh(gridSize: Int, cellsWide: Int, cellsBack: Int)->Mesh{
+    public static func GenerateTerrainMesh(gridSize: Int, cellsWide: Int, cellsBack: Int)->MyMesh{
         let terrainMesh = CustomMesh()
 
         //Gives you the location to place the next vertex

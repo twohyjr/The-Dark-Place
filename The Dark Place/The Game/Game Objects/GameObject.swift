@@ -5,7 +5,7 @@ class GameObject: Node {
     var modelConstants = ModelConstants()
     var texture: MTLTexture?
     var renderPipelineState: MTLRenderPipelineState!
-    var mesh: Mesh!
+    var mesh: MyMesh!
     var useLines: Bool = false
     
     init(meshType: MeshTypes) {

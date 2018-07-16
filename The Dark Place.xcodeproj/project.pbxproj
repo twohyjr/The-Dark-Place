@@ -23,6 +23,7 @@
 		EBF1457C20FC48A700B89FE9 /* Cube_CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457B20FC48A700B89FE9 /* Cube_CustomMesh.swift */; };
 		EBF1457E20FC48B300B89FE9 /* Quad_CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457D20FC48B300B89FE9 /* Quad_CustomMesh.swift */; };
 		EBF1458020FC48B900B89FE9 /* CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457F20FC48B900B89FE9 /* CustomMesh.swift */; };
+		EBF1458320FC499F00B89FE9 /* ModelMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1458220FC499F00B89FE9 /* ModelMesh.swift */; };
 		EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */; };
 		EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FE20F8056300DAC145 /* The_Dark_Place.xcdatamodeld */; };
 		EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF4A60120F8056400DAC145 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		EBF1457B20FC48A700B89FE9 /* Cube_CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube_CustomMesh.swift; sourceTree = "<group>"; };
 		EBF1457D20FC48B300B89FE9 /* Quad_CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quad_CustomMesh.swift; sourceTree = "<group>"; };
 		EBF1457F20FC48B900B89FE9 /* CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMesh.swift; sourceTree = "<group>"; };
+		EBF1458220FC499F00B89FE9 /* ModelMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMesh.swift; sourceTree = "<group>"; };
 		EBF4A5F720F8056300DAC145 /* The Dark Place.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dark Place.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF4A5FF20F8056300DAC145 /* The_Dark_Place.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = The_Dark_Place.xcdatamodel; sourceTree = "<group>"; };
@@ -171,6 +173,14 @@
 			path = CustomMeshes;
 			sourceTree = "<group>";
 		};
+		EBF1458120FC498D00B89FE9 /* ModelMeshes */ = {
+			isa = PBXGroup;
+			children = (
+				EBF1458220FC499F00B89FE9 /* ModelMesh.swift */,
+			);
+			path = ModelMeshes;
+			sourceTree = "<group>";
+		};
 		EBF4A5EE20F8056300DAC145 = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +266,7 @@
 				EBF4A64420F83DC600DAC145 /* ShaderLibrary.swift */,
 				EBF4A64020F83C7B00DAC145 /* MeshLibrary.swift */,
 				EBF1457720FC488200B89FE9 /* Meshes */,
+				EBF1458120FC498D00B89FE9 /* ModelMeshes */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -431,6 +442,7 @@
 				EBF1457C20FC48A700B89FE9 /* Cube_CustomMesh.swift in Sources */,
 				EBF1457A20FC489E00B89FE9 /* Triangle_CustomMesh.swift in Sources */,
 				EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */,
+				EBF1458320FC499F00B89FE9 /* ModelMesh.swift in Sources */,
 				EBF4A63820F8363400DAC145 /* Renderable.swift in Sources */,
 				EBF4A63F20F83C0700DAC145 /* Types.swift in Sources */,
 				EBF4A64B20F83F3500DAC145 /* Scene.swift in Sources */,
