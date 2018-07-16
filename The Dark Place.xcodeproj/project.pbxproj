@@ -19,6 +19,10 @@
 		EB614D3020F85C2800E61EFA /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2F20F85C2800E61EFA /* Terrain.swift */; };
 		EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */; };
 		EBF1452C20FAF98600B89FE9 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1452B20FAF98600B89FE9 /* Cube.swift */; };
+		EBF1457A20FC489E00B89FE9 /* Triangle_CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457920FC489E00B89FE9 /* Triangle_CustomMesh.swift */; };
+		EBF1457C20FC48A700B89FE9 /* Cube_CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457B20FC48A700B89FE9 /* Cube_CustomMesh.swift */; };
+		EBF1457E20FC48B300B89FE9 /* Quad_CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457D20FC48B300B89FE9 /* Quad_CustomMesh.swift */; };
+		EBF1458020FC48B900B89FE9 /* CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457F20FC48B900B89FE9 /* CustomMesh.swift */; };
 		EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */; };
 		EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FE20F8056300DAC145 /* The_Dark_Place.xcdatamodeld */; };
 		EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF4A60120F8056400DAC145 /* Assets.xcassets */; };
@@ -64,6 +68,10 @@
 		EB614D2F20F85C2800E61EFA /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainMeshGenerator.swift; sourceTree = "<group>"; };
 		EBF1452B20FAF98600B89FE9 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
+		EBF1457920FC489E00B89FE9 /* Triangle_CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle_CustomMesh.swift; sourceTree = "<group>"; };
+		EBF1457B20FC48A700B89FE9 /* Cube_CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube_CustomMesh.swift; sourceTree = "<group>"; };
+		EBF1457D20FC48B300B89FE9 /* Quad_CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quad_CustomMesh.swift; sourceTree = "<group>"; };
+		EBF1457F20FC48B900B89FE9 /* CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMesh.swift; sourceTree = "<group>"; };
 		EBF4A5F720F8056300DAC145 /* The Dark Place.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dark Place.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF4A5FF20F8056300DAC145 /* The_Dark_Place.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = The_Dark_Place.xcdatamodel; sourceTree = "<group>"; };
@@ -141,6 +149,26 @@
 				EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */,
 			);
 			path = Generators;
+			sourceTree = "<group>";
+		};
+		EBF1457720FC488200B89FE9 /* Meshes */ = {
+			isa = PBXGroup;
+			children = (
+				EBF1457820FC488B00B89FE9 /* CustomMeshes */,
+			);
+			name = Meshes;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		EBF1457820FC488B00B89FE9 /* CustomMeshes */ = {
+			isa = PBXGroup;
+			children = (
+				EBF1457F20FC48B900B89FE9 /* CustomMesh.swift */,
+				EBF1457920FC489E00B89FE9 /* Triangle_CustomMesh.swift */,
+				EBF1457B20FC48A700B89FE9 /* Cube_CustomMesh.swift */,
+				EBF1457D20FC48B300B89FE9 /* Quad_CustomMesh.swift */,
+			);
+			path = CustomMeshes;
 			sourceTree = "<group>";
 		};
 		EBF4A5EE20F8056300DAC145 = {
@@ -225,8 +253,9 @@
 				EBF4A64220F83D7700DAC145 /* RenderPipelineStateLibrary.swift */,
 				EBF4A64620F83DF100DAC145 /* VertexDescriptorLibrary.swift */,
 				EB614D2D20F8536700E61EFA /* DepthStencilStateLibrary.swift */,
-				EBF4A64020F83C7B00DAC145 /* MeshLibrary.swift */,
 				EBF4A64420F83DC600DAC145 /* ShaderLibrary.swift */,
+				EBF4A64020F83C7B00DAC145 /* MeshLibrary.swift */,
+				EBF1457720FC488200B89FE9 /* Meshes */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -390,6 +419,7 @@
 			files = (
 				EBF4A63120F818DE00DAC145 /* View.swift in Sources */,
 				EB614D3020F85C2800E61EFA /* Terrain.swift in Sources */,
+				EBF1457E20FC48B300B89FE9 /* Quad_CustomMesh.swift in Sources */,
 				EBF4A63620F823FE00DAC145 /* Node.swift in Sources */,
 				EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */,
 				EBF4A62020F80D6400DAC145 /* Renderer.swift in Sources */,
@@ -397,6 +427,9 @@
 				EBF4A64120F83C7B00DAC145 /* MeshLibrary.swift in Sources */,
 				EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */,
 				EBF4A62F20F8175500DAC145 /* Size.swift in Sources */,
+				EBF1458020FC48B900B89FE9 /* CustomMesh.swift in Sources */,
+				EBF1457C20FC48A700B89FE9 /* Cube_CustomMesh.swift in Sources */,
+				EBF1457A20FC489E00B89FE9 /* Triangle_CustomMesh.swift in Sources */,
 				EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */,
 				EBF4A63820F8363400DAC145 /* Renderable.swift in Sources */,
 				EBF4A63F20F83C0700DAC145 /* Types.swift in Sources */,
