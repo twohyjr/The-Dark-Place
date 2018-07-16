@@ -24,6 +24,7 @@ class VillageScene: Scene {
     
     private func addTerrain(){
         terrain = Terrain(gridSize: gridSize, cellsWide: 50, cellsBack: 50)
+        terrain.lineModeOn(true)
         addChild(terrain)
     }
     

@@ -15,13 +15,14 @@ class CustomModelMesh: CustomMesh {
     }
     private var minPositions = float3(0)
     private var maxPositions = float3(0)
-    
-    init(createBoundingBox: Bool = true) {
+    var boundingBox: BoundingBox!
+    init() {
         setPrimitiveType(MTLPrimitiveType.triangle)
         setIndexType()
         createVertices()
         createIndices()
         createBuffers()
+        self.boundingBox = BoundingBox(mins: minPositions, maxs: maxPositions)
     }
     
     internal func addVertex(position: float3,
@@ -64,12 +65,7 @@ class CustomModelMesh: CustomMesh {
         }
     }
     
-    func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder, lineMode: Bool = false){
-        if(lineMode){
-            renderCommandEncoder.setTriangleFillMode(.lines)
-        }else{
-            renderCommandEncoder.setTriangleFillMode(.fill)
-        }
+    func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder){
         if(indexCount == 0){
             renderCommandEncoder.drawPrimitives(type: primitiveType, vertexStart: 0, vertexCount: vertexCount)
         }else{

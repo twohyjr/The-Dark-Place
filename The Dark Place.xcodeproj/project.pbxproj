@@ -40,6 +40,7 @@
 		EBF145AC20FCD13E00B89FE9 /* Large_Oak_Green_01.obj in Resources */ = {isa = PBXBuildFile; fileRef = EBF145AA20FCD13E00B89FE9 /* Large_Oak_Green_01.obj */; };
 		EBF145AD20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBF145AB20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl */; };
 		EBF145AF20FCD14E00B89FE9 /* LargeGreenOak.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF145AE20FCD14E00B89FE9 /* LargeGreenOak.swift */; };
+		EBF145B120FD04BC00B89FE9 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF145B020FD04BC00B89FE9 /* BoundingBox.swift */; };
 		EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */; };
 		EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FE20F8056300DAC145 /* The_Dark_Place.xcdatamodeld */; };
 		EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF4A60120F8056400DAC145 /* Assets.xcassets */; };
@@ -106,6 +107,7 @@
 		EBF145AA20FCD13E00B89FE9 /* Large_Oak_Green_01.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Large_Oak_Green_01.obj; sourceTree = "<group>"; };
 		EBF145AB20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Large_Oak_Green_01.mtl; sourceTree = "<group>"; };
 		EBF145AE20FCD14E00B89FE9 /* LargeGreenOak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeGreenOak.swift; sourceTree = "<group>"; };
+		EBF145B020FD04BC00B89FE9 /* BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
 		EBF4A5F720F8056300DAC145 /* The Dark Place.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dark Place.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF4A5FF20F8056300DAC145 /* The_Dark_Place.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = The_Dark_Place.xcdatamodel; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			children = (
 				EBF4A62E20F8175500DAC145 /* Size.swift */,
 				EBF4A63E20F83C0700DAC145 /* Types.swift */,
+				EBF145B020FD04BC00B89FE9 /* BoundingBox.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				EBF1452C20FAF98600B89FE9 /* Cube.swift in Sources */,
 				EBF4A64120F83C7B00DAC145 /* CustomMeshLibrary.swift in Sources */,
 				EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */,
+				EBF145B120FD04BC00B89FE9 /* BoundingBox.swift in Sources */,
 				EBF4A62F20F8175500DAC145 /* Size.swift in Sources */,
 				EBF1458020FC48B900B89FE9 /* CustomMesh.swift in Sources */,
 				EBF1457C20FC48A700B89FE9 /* Cube_CustomMesh.swift in Sources */,

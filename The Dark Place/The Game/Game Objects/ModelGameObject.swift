@@ -4,12 +4,16 @@ class ModelGameObject: Node {
     var modelConstants = ModelConstants()
     var renderPipelineState: MTLRenderPipelineState!
     var modelMesh: Mesh!
-    var useLines: Bool = false
+    private var fillMode: MTLTriangleFillMode = .fill
     
     init(_ modelMeshType: ModelMeshTypes){
         super.init()
         modelMesh = ModelMeshLibrary.Mesh(modelMeshType)
         setRenderPipelineState()
+    }
+    
+    public func lineModeOn(_ isOn: Bool){
+        self.fillMode = isOn ? MTLTriangleFillMode.lines : MTLTriangleFillMode.fill
     }
     
     override func update(deltaTime: Float){
@@ -28,6 +32,7 @@ class ModelGameObject: Node {
 
 extension ModelGameObject: Renderable {
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder) {
+        renderCommandEncoder.setTriangleFillMode(fillMode)
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
@@ -43,7 +48,6 @@ extension ModelGameObject: Renderable {
             let vertexBuffer: MTKMeshBuffer = mtkMesh.vertexBuffers.first!
             renderCommandEncoder.setVertexBuffer(vertexBuffer.buffer, offset: 0, index: 0)
             for j in 0..<mtkMesh.submeshes.count{
-                
                 let mtkSubmesh = mtkMesh.submeshes[j]
                 let mdlSubmeshes = mdlMesh.submeshes as? [MDLSubmesh]
                 let color = mdlSubmeshes![j].material?.properties(with: MDLMaterialSemantic.baseColor).first?.float4Value
@@ -56,21 +60,6 @@ extension ModelGameObject: Renderable {
                                                            indexBuffer: mtkSubmesh.indexBuffer.buffer,
                                                            indexBufferOffset: mtkSubmesh.indexBuffer.offset)
             }
-//            print()
         }
-//        for _ in modelMesh.meshes {
-//            var mdlMesh: MDLMesh! = nil
-//            var mtkMesh: MTKMesh! = nil
-//            do{
-//                mtkMesh = try MTKMesh.init(mesh: meshes.first!, device: Engine.Device)
-//                mdlMesh = meshes.first
-//            }catch{
-//                print(error)
-//            }
-
-//        mtkMesh.vertexBuffers.first?.buffer
-//        mtkMesh.submeshes.first?.indexBuffer
-//        (mdlMesh.submeshes as! [MDLSubmesh]).first?.material?.properties(with: MDLMaterialSemantic.baseColor).first?.color
-//        }
     }
 }

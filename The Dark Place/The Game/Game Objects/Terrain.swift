@@ -9,7 +9,6 @@ class Terrain: GameObject {
                                                              cellsBack: cellsBack)
         self.position.x -= Float(gridSize / 2)
         self.position.z -= Float(gridSize / 2)
-        self.position.y -= Float(1)
         self.material.color = float4(0.7, 0.7, 0.7, 1.0)
     }
     

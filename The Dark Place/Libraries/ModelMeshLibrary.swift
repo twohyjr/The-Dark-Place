@@ -31,16 +31,26 @@ class ModelMeshLibrary {
 }
 
 protocol Mesh {
+    var boundingBox: BoundingBox! { get }
     var meshes: [MDLMesh] { get }
 }
 
 public class ModelMesh: Mesh {
     var meshes: [MDLMesh] = []
+    var boundingBox: BoundingBox!
     
     init(_ modelName: String) {
         meshes = ModelLoader.CreateMtkMeshArrayFromWavefront(modelName)
+        if(meshes.count > 0){
+            boundingBox = BoundingBox(mins: (meshes.first?.boundingBox.minBounds)!,
+                                      maxs: (meshes.first?.boundingBox.minBounds)!)
+        }else{
+            boundingBox = BoundingBox()
+        }
+        
     }
 }
+
 
 
 

@@ -23,9 +23,7 @@ class MeshLibrary {
     public static func Mesh(_ meshType: CustomMeshTypes)->CustomMesh{
         return meshes[meshType]!
     }
-    
 }
-
 
 protocol CustomMesh {
     var vertexBuffer: MTLBuffer! { get }
@@ -34,7 +32,8 @@ protocol CustomMesh {
     var indexCount: Int! { get }
     
     var primitiveType: MTLPrimitiveType! { get }
-    func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder, lineMode: Bool)
+    var boundingBox: BoundingBox! { get }
+    func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder)
 }
 
 
