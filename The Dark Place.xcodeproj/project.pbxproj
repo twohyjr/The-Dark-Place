@@ -165,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				EBF4A62120F80DEC00DAC145 /* Core */,
-				EBF4A62220F80E0B00DAC145 /* Engine.swift */,
 				EBF4A64E20F83FE900DAC145 /* Managers */,
 				EBF4A62720F813C600DAC145 /* Libraries */,
 				EB614D3320F85C7700E61EFA /* Generators */,
@@ -212,6 +211,7 @@
 		EBF4A62120F80DEC00DAC145 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				EBF4A62220F80E0B00DAC145 /* Engine.swift */,
 				EB614D2620F8513200E61EFA /* Input */,
 				EB614D2320F8508700E61EFA /* Math */,
 				EBF4A62D20F8174E00DAC145 /* Types */,
@@ -244,8 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				EBF4A63520F823FE00DAC145 /* Node.swift */,
-				EBF4A64820F83F1E00DAC145 /* Game Objects */,
 				EBF4A64920F83F2A00DAC145 /* Scenes */,
+				EBF4A64820F83F1E00DAC145 /* Game Objects */,
 				EBF4A63920F8363900DAC145 /* Protocol */,
 			);
 			path = "The Game";

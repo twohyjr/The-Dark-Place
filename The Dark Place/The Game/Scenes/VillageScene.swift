@@ -9,6 +9,8 @@ class VillageScene: Scene {
         setCameras()
         
         addTerrain()
+        
+        addCube()
     }
     
     private func setCameras(){
@@ -19,5 +21,11 @@ class VillageScene: Scene {
     private func addTerrain(){
         terrain = Terrain(gridSize: gridSize, cellsWide: 50, cellsBack: 50)
         addChild(terrain)
+    }
+    
+    private func addCube(){
+        let cube = Cube()
+        cube.position.x = -1
+        addChild(cube)
     }
 }
