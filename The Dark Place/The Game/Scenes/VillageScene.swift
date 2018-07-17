@@ -26,16 +26,8 @@ class VillageScene: Scene {
     }
     
     private func addTerrain(){
-        terrain = Terrain(gridSize: gridSize, cellsWide: 50, cellsBack: 50, textureType: .CartoonSand)
-//        terrain.lineModeOn(true)
-        terrain.position.y -= 0.1
+        terrain = Terrain(gridSize: gridSize, cellsWide: 50, cellsBack: 50, textureType: .CartoonGrass)
         addChild(terrain)
-        
-        let terrain2 = Terrain(gridSize: gridSize, cellsWide: 50, cellsBack: 50, textureType: .CartoonGrass)
-        terrain2.position.x = Float(gridSize) / 2.0
-        addChild(terrain2)
-        
-        
     }
 
     private func addTents(){
