@@ -18,6 +18,9 @@
 		EB614D2E20F8536700E61EFA /* DepthStencilStateLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2D20F8536700E61EFA /* DepthStencilStateLibrary.swift */; };
 		EB614D3020F85C2800E61EFA /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2F20F85C2800E61EFA /* Terrain.swift */; };
 		EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */; };
+		EBDB6E4320FD9E740061E7A3 /* cartoon_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */; };
+		EBDB6E4520FD9FE10061E7A3 /* TerrainShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = EBDB6E4420FD9FE10061E7A3 /* TerrainShader.metal */; };
+		EBDB6E4720FDA5620061E7A3 /* TextureLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */; };
 		EBF1452C20FAF98600B89FE9 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1452B20FAF98600B89FE9 /* Cube.swift */; };
 		EBF1457A20FC489E00B89FE9 /* Triangle_CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457920FC489E00B89FE9 /* Triangle_CustomMesh.swift */; };
 		EBF1457C20FC48A700B89FE9 /* Cube_CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457B20FC48A700B89FE9 /* Cube_CustomMesh.swift */; };
@@ -85,6 +88,9 @@
 		EB614D2D20F8536700E61EFA /* DepthStencilStateLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthStencilStateLibrary.swift; sourceTree = "<group>"; };
 		EB614D2F20F85C2800E61EFA /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainMeshGenerator.swift; sourceTree = "<group>"; };
+		EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cartoon_grass.png; sourceTree = "<group>"; };
+		EBDB6E4420FD9FE10061E7A3 /* TerrainShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TerrainShader.metal; sourceTree = "<group>"; };
+		EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLibrary.swift; sourceTree = "<group>"; };
 		EBF1452B20FAF98600B89FE9 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		EBF1457920FC489E00B89FE9 /* Triangle_CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle_CustomMesh.swift; sourceTree = "<group>"; };
 		EBF1457B20FC48A700B89FE9 /* Cube_CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube_CustomMesh.swift; sourceTree = "<group>"; };
@@ -157,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				EB614D1D20F8431100E61EFA /* BasicShaders.metal */,
+				EBDB6E4420FD9FE10061E7A3 /* TerrainShader.metal */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -185,6 +192,14 @@
 				EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */,
 			);
 			path = Generators;
+			sourceTree = "<group>";
+		};
+		EBDB6E4120FD9D940061E7A3 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		EBF1457720FC488200B89FE9 /* Meshes */ = {
@@ -219,6 +234,7 @@
 		EBF1459020FC514C00B89FE9 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				EBDB6E4120FD9D940061E7A3 /* Images */,
 				EBF1459520FC516B00B89FE9 /* Models */,
 			);
 			name = Assets;
@@ -329,6 +345,7 @@
 				EBF4A64420F83DC600DAC145 /* ShaderLibrary.swift */,
 				EBF4A64020F83C7B00DAC145 /* CustomMeshLibrary.swift */,
 				EBF1458A20FC4E6700B89FE9 /* ModelMeshLibrary.swift */,
+				EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */,
 				EBF1457720FC488200B89FE9 /* Meshes */,
 			);
 			path = Libraries;
@@ -479,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF1459820FC519400B89FE9 /* Tent_01.obj in Resources */,
+				EBDB6E4320FD9E740061E7A3 /* cartoon_grass.png in Resources */,
 				EBF1459920FC519400B89FE9 /* Tent_01.mtl in Resources */,
 				EBF145A020FC5D8800B89FE9 /* Campfire_01.mtl in Resources */,
 				EBF145AC20FCD13E00B89FE9 /* Large_Oak_Green_01.obj in Resources */,
@@ -531,7 +549,9 @@
 				EBF145A920FC5F6900B89FE9 /* RedMushroom.swift in Sources */,
 				EB614D2220F8505300E61EFA /* CameraManager.swift in Sources */,
 				EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */,
+				EBDB6E4520FD9FE10061E7A3 /* TerrainShader.metal in Sources */,
 				EB614D2520F8509600E61EFA /* Maths.swift in Sources */,
+				EBDB6E4720FDA5620061E7A3 /* TextureLibrary.swift in Sources */,
 				EB614D2E20F8536700E61EFA /* DepthStencilStateLibrary.swift in Sources */,
 				EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */,
 				EBF1458F20FC50DE00B89FE9 /* Tents.swift in Sources */,

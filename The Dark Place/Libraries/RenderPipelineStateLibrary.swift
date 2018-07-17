@@ -2,6 +2,7 @@ import MetalKit
 
 enum RenderPipelineStateTypes {
     case Basic
+    case VillageTerrain
 }
 
 class RenderPipelineStateLibrary {
@@ -14,6 +15,7 @@ class RenderPipelineStateLibrary {
     
     private static func createDefaultRenderPipelineStates(){
         renderPipelineStates.updateValue(Basic_RenderPipelineState(), forKey: .Basic)
+        renderPipelineStates.updateValue(VillageTerrain_RenderPipelineState(), forKey: .VillageTerrain)
     }
     
     public static func PipelineState(_ renderPipelineStateType: RenderPipelineStateTypes)->MTLRenderPipelineState{
@@ -35,6 +37,24 @@ public struct Basic_RenderPipelineState: RenderPipelineState {
         renderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
         renderPipelineDescriptor.vertexFunction = ShaderLibrary.Vertex(.Basic)
         renderPipelineDescriptor.fragmentFunction = ShaderLibrary.Fragment(.Basic)
+        renderPipelineDescriptor.vertexDescriptor = VertexDescriptorLibrary.Descriptor(.Basic)
+        renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
+        do{
+            renderPipelineState = try Engine.Device.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
+        }catch let error as NSError {
+            print("ERROR::CREATE::RENDER_PIPELINE_STATE::__\(name)__::\(error)")
+        }
+    }
+}
+
+public struct VillageTerrain_RenderPipelineState: RenderPipelineState {
+    var name: String = "Village Terrain Render Pipeline State"
+    var renderPipelineState: MTLRenderPipelineState!
+    init(){
+        let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
+        renderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        renderPipelineDescriptor.vertexFunction = ShaderLibrary.Vertex(.VillageTerrain)
+        renderPipelineDescriptor.fragmentFunction = ShaderLibrary.Fragment(.VillageTerrain)
         renderPipelineDescriptor.vertexDescriptor = VertexDescriptorLibrary.Descriptor(.Basic)
         renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
         do{

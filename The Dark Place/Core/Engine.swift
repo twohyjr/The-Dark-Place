@@ -28,12 +28,14 @@ class Engine {
         
         MeshLibrary.Initialize()
         
+        TextureLibrary.Initialize()
+        
         ModelMeshLibrary.Initialize()
         
     }
     
     private static func initializeManagers(){
-        SceneManager.Initialize(.Practice)
+        SceneManager.Initialize(.VillageScene)
     }
     
 }

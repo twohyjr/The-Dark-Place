@@ -25,11 +25,13 @@ class ModelLoader {
         assetVertexDescriptor.attributes[3] = textureCoordiantes
         
         let bufferAllocator = MTKMeshBufferAllocator(device: Engine.Device)
+        
+        //TODO: Unable to find ear error??? Yo no say
         let asset = MDLAsset(url: url!, vertexDescriptor: assetVertexDescriptor, bufferAllocator: bufferAllocator)
         do{
             meshes = try MTKMesh.newMeshes(asset: asset, device: Engine.Device).modelIOMeshes
         }catch let error as NSError{
-            print(error)
+            print("ERROR::CREATING::MESH_FROM_WAVEFRONT::--\(modelName)--::\(error)")
         }
         
         return meshes
