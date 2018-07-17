@@ -15,18 +15,12 @@ class CustomModelMesh: CustomMesh {
     }
     private var minPositions = float3(0)
     private var maxPositions = float3(0)
-    var boundingBoxes: [BoundingBox]! = []
     init() {
         setPrimitiveType(MTLPrimitiveType.triangle)
         setIndexType()
         createVertices()
         createIndices()
         createBuffers()
-        addBoundingBoxes()
-    }
-    
-    private func addBoundingBoxes(){
-        self.boundingBoxes.append(BoundingBox(mins: minPositions, maxs: maxPositions))
     }
     
     internal func addVertex(position: float3,

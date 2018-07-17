@@ -9,8 +9,6 @@ class PracticeScene: Scene {
         setCameras()
         
         addTerrain()
-        
-        addTent()
     }
     
     
@@ -24,10 +22,5 @@ class PracticeScene: Scene {
         terrain = Terrain(gridSize: gridSize, cellsWide: 50, cellsBack: 50)
         terrain.lineModeOn(true)
         addChild(terrain)
-    }
-
-    private func addTent(){
-        let tent = Tent()
-        addChild(tent)
     }
 }

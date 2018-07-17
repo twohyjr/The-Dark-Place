@@ -30,23 +30,15 @@ class ModelMeshLibrary {
 }
 
 protocol Mesh {
-    var boundingBoxes: [BoundingBox]! { get }
     var meshes: [MDLMesh] { get }
 }
 
 public class ModelMesh: Mesh {
     var meshes: [MDLMesh] = []
-    var boundingBoxes: [BoundingBox]! = []
+    var center: float3 = float3(0)
     
     init(_ modelName: String) {
         meshes = ModelLoader.CreateMtkMeshArrayFromWavefront(modelName)
-        
-        for mesh in meshes {
-            print(mesh.boundingBox.minBounds)
-            let boundingBox = BoundingBox(mins: mesh.boundingBox.minBounds,
-                                          maxs: mesh.boundingBox.minBounds)
-            boundingBoxes.append(boundingBox)
-        }
     }
 }
 

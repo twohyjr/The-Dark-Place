@@ -7,7 +7,6 @@ class GameObject: Node {
     var mesh: CustomMesh!
     var material = Material()
     private var fillMode: MTLTriangleFillMode = .fill
-
     
     init(meshType: CustomMeshTypes) {
         super.init()
