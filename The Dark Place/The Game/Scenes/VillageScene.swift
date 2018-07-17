@@ -15,19 +15,28 @@ class VillageScene: Scene {
         addCampfire()
         
         addMushrooms()
+        
+        addTrees()
     }
     
     private func setCameras(){
         let debugCamera = Debug_Camera()
+        debugCamera.position = float3(-0.25000003, 6.0833354, 12.749988)
         addCamera(camera: debugCamera)
     }
     
     private func addTerrain(){
-        terrain = Terrain(gridSize: gridSize, cellsWide: 50, cellsBack: 50)
-        terrain.lineModeOn(true)
+        terrain = Terrain(gridSize: gridSize, cellsWide: 50, cellsBack: 50, textureType: .CartoonSand)
+//        terrain.lineModeOn(true)
+        terrain.position.y -= 0.1
         addChild(terrain)
+        
+        let terrain2 = Terrain(gridSize: gridSize, cellsWide: 50, cellsBack: 50, textureType: .CartoonGrass)
+        terrain2.position.x = Float(gridSize) / 2.0
+        addChild(terrain2)
+        
+        
     }
-    
 
     private func addTents(){
         let tent = Tent()
@@ -56,6 +65,14 @@ class VillageScene: Scene {
             redMushroom.position.z = 6
             addChild(redMushroom)
         }
+    }
+    
+    private func addTrees(){
+        let tree1 = LargeGreenOak()
+        tree1.scale.y = 2
+        tree1.position.z = -5
+        tree1.position.x = -2
+        addChild(tree1)
     }
 
 }

@@ -2,6 +2,7 @@ import MetalKit
 
 enum TextureTypes {
     case CartoonGrass
+    case CartoonSand
 }
 
 class TextureLibrary {
@@ -14,6 +15,8 @@ class TextureLibrary {
     
     private static func createDefaultTextures(){
         meshes.updateValue(FileTexture("cartoon_grass.png"), forKey: .CartoonGrass)
+        meshes.updateValue(FileTexture("cartoon_sand.png"), forKey: .CartoonSand)
+
     }
     
     public static func Texture(_ textureType: TextureTypes)->MTLTexture{

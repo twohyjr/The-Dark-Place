@@ -19,7 +19,7 @@ class PracticeScene: Scene {
     }
     
     private func addTerrain(){
-        terrain = Terrain(gridSize: gridSize, cellsWide: 50, cellsBack: 50)
+        terrain = Terrain(gridSize: gridSize, cellsWide: 50, cellsBack: 50, textureType: .CartoonGrass)
         addChild(terrain)
     }
 }

@@ -21,6 +21,7 @@
 		EBDB6E4320FD9E740061E7A3 /* cartoon_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */; };
 		EBDB6E4520FD9FE10061E7A3 /* TerrainShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = EBDB6E4420FD9FE10061E7A3 /* TerrainShader.metal */; };
 		EBDB6E4720FDA5620061E7A3 /* TextureLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */; };
+		EBDB6E4920FE5D160061E7A3 /* cartoon_sand.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDB6E4820FE5D160061E7A3 /* cartoon_sand.png */; };
 		EBF1452C20FAF98600B89FE9 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1452B20FAF98600B89FE9 /* Cube.swift */; };
 		EBF1457A20FC489E00B89FE9 /* Triangle_CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457920FC489E00B89FE9 /* Triangle_CustomMesh.swift */; };
 		EBF1457C20FC48A700B89FE9 /* Cube_CustomMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1457B20FC48A700B89FE9 /* Cube_CustomMesh.swift */; };
@@ -91,6 +92,7 @@
 		EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cartoon_grass.png; sourceTree = "<group>"; };
 		EBDB6E4420FD9FE10061E7A3 /* TerrainShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TerrainShader.metal; sourceTree = "<group>"; };
 		EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLibrary.swift; sourceTree = "<group>"; };
+		EBDB6E4820FE5D160061E7A3 /* cartoon_sand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cartoon_sand.png; sourceTree = "<group>"; };
 		EBF1452B20FAF98600B89FE9 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		EBF1457920FC489E00B89FE9 /* Triangle_CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle_CustomMesh.swift; sourceTree = "<group>"; };
 		EBF1457B20FC48A700B89FE9 /* Cube_CustomMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube_CustomMesh.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */,
+				EBDB6E4820FE5D160061E7A3 /* cartoon_sand.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				EBF4A60520F8056400DAC145 /* Main.storyboard in Resources */,
 				EBF145A620FC5F3A00B89FE9 /* Mushroom_Red_01.mtl in Resources */,
 				EBF145A720FC5F3A00B89FE9 /* Mushroom_Red_01.obj in Resources */,
+				EBDB6E4920FE5D160061E7A3 /* cartoon_sand.png in Resources */,
 				EBF145AD20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl in Resources */,
 				EBF145A120FC5D8800B89FE9 /* Campfire_01.obj in Resources */,
 			);

@@ -42,5 +42,5 @@ fragment half4 village_terrain_fragment_shader(const TerrainRasterizerData rd [[
                                                texture2d<float> texture [[ texture(0) ]]){
     float4 color = texture.sample(sampler2d, rd.textureCoordinate);
     
-    return half4(color.r, color.g, color.b, color.a);
+    return half4(color.b, color.g, color.r, color.a);
 }
