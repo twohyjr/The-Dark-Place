@@ -34,7 +34,7 @@ public struct Basic_RenderPipelineState: RenderPipelineState {
     var renderPipelineState: MTLRenderPipelineState!
     init(){
         let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
-        renderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        renderPipelineDescriptor.colorAttachments[0].pixelFormat = .rgb10a2Unorm
         renderPipelineDescriptor.vertexFunction = ShaderLibrary.Vertex(.Basic)
         renderPipelineDescriptor.fragmentFunction = ShaderLibrary.Fragment(.Basic)
         renderPipelineDescriptor.vertexDescriptor = VertexDescriptorLibrary.Descriptor(.Basic)
@@ -52,9 +52,27 @@ public struct VillageTerrain_RenderPipelineState: RenderPipelineState {
     var renderPipelineState: MTLRenderPipelineState!
     init(){
         let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
-        renderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        renderPipelineDescriptor.colorAttachments[0].pixelFormat = .rgb10a2Unorm
         renderPipelineDescriptor.vertexFunction = ShaderLibrary.Vertex(.VillageTerrain)
         renderPipelineDescriptor.fragmentFunction = ShaderLibrary.Fragment(.VillageTerrain)
+        renderPipelineDescriptor.vertexDescriptor = VertexDescriptorLibrary.Descriptor(.Basic)
+        renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
+        do{
+            renderPipelineState = try Engine.Device.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
+        }catch let error as NSError {
+            print("ERROR::CREATE::RENDER_PIPELINE_STATE::__\(name)__::\(error)")
+        }
+    }
+}
+
+public struct LitBasic_RenderPipelineState: RenderPipelineState {
+    var name: String = "Village Terrain Render Pipeline State"
+    var renderPipelineState: MTLRenderPipelineState!
+    init(){
+        let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
+        renderPipelineDescriptor.colorAttachments[0].pixelFormat = .rgb10a2Unorm
+        renderPipelineDescriptor.vertexFunction = ShaderLibrary.Vertex(.LitBasic)
+        renderPipelineDescriptor.fragmentFunction = ShaderLibrary.Fragment(.LitBasic)
         renderPipelineDescriptor.vertexDescriptor = VertexDescriptorLibrary.Descriptor(.Basic)
         renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
         do{

@@ -23,7 +23,9 @@ struct SceneConstants {
 };
 
 struct Material {
-    float4 color;
+    float3 ambient; //Ka
+    float3 diffuse; //Kd
+    float3 specular; //Ks
 };
 
 vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
@@ -41,7 +43,30 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
 
 fragment half4 basic_fragment_shader(const RasterizerData rastData [[ stage_in ]],
                                      constant Material &material [[ buffer(1) ]]){
-    float4 color = material.color;
+    float4 color = float4(material.diffuse,1);
+   
+    
+    return half4(color.r, color.g, color.b, color.a);
+}
+
+
+vertex RasterizerData lit_basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
+                                              constant SceneConstants &sceneConstants [[ buffer(1) ]],
+                                              constant ModelConstants &modelConstants [[ buffer(2) ]]){
+    RasterizerData rd;
+    
+    float4x4 mvp = sceneConstants.projectionMatrix * sceneConstants.viewMatrix * modelConstants.modelMatrix;
+    
+    rd.position = mvp * float4(vertexIn.position, 1);
+    rd.color = vertexIn.color;
+    
+    return rd;
+}
+
+fragment half4 lit_basic_fragment_shader(const RasterizerData rastData [[ stage_in ]],
+                                     constant Material &material [[ buffer(1) ]]){
+    float4 color = float4(material.diffuse,1);
+    
     
     return half4(color.r, color.g, color.b, color.a);
 }

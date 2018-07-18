@@ -42,5 +42,7 @@ struct SceneConstants: sizeable {
 }
 
 struct Material: sizeable {
-    var color = float4(1)
+    var ambient = float3(1) //Ka
+    var diffuse = float3(0) //Kd
+    var specular = float3(3) //Ks
 }

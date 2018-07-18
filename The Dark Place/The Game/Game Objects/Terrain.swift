@@ -10,7 +10,7 @@ class Terrain: GameObject {
                                                              cellsBack: cellsBack)
         self.position.x -= Float(gridSize) / 2.0
         self.position.z -= Float(gridSize) / 2.0
-        self.material.color = float4(0.7, 0.7, 0.7, 1.0)
+        self.material.diffuse = float3(0.7, 0.7, 0.7)
     }
     
     override func render(renderCommandEncoder: MTLRenderCommandEncoder) {

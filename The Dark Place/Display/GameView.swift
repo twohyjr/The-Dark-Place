@@ -10,6 +10,8 @@ class GameView: MTKView {
         
         self.renderer = Renderer(self)
         
+        self.colorPixelFormat = .rgb10a2Unorm
+        
         Engine.Initialize(device!)
         
         self.depthStencilPixelFormat = .depth32Float
