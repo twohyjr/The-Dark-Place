@@ -28,6 +28,13 @@ struct Material {
     float3 specular; //Ks
 };
 
+struct Light {
+    float3 position;
+    float3 ambientIntensity;
+    float3 diffuseIntensity;
+    float3 specularIntensity;
+};
+
 vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
                                           constant SceneConstants &sceneConstants [[ buffer(1) ]],
                                           constant ModelConstants &modelConstants [[ buffer(2) ]]){
@@ -64,10 +71,13 @@ vertex RasterizerData lit_basic_vertex_shader(const VertexIn vertexIn [[ stage_i
 }
 
 fragment half4 lit_basic_fragment_shader(const RasterizerData rastData [[ stage_in ]],
-                                     constant Material &material [[ buffer(1) ]]){
+                                         constant Material &material [[ buffer(1) ]],
+                                         constant Light *lights [[ buffer(2) ]]){
     float4 color = float4(material.diffuse,1);
-    
-    
+    if(sizeof(lights) > 0){
+        Light light = lights[0];
+        color = float4(light.position,1);
+    }
     return half4(color.r, color.g, color.b, color.a);
 }
 

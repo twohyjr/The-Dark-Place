@@ -17,6 +17,7 @@ class VillageScene: Scene {
         addMushrooms()
         
         addTrees()
+
     }
     
     private func setCameras(){

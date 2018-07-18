@@ -2,6 +2,7 @@ import MetalKit
 
 enum RenderPipelineStateTypes {
     case Basic
+    case LitBasic
     case VillageTerrain
 }
 
@@ -15,6 +16,7 @@ class RenderPipelineStateLibrary {
     
     private static func createDefaultRenderPipelineStates(){
         renderPipelineStates.updateValue(Basic_RenderPipelineState(), forKey: .Basic)
+        renderPipelineStates.updateValue(LitBasic_RenderPipelineState(), forKey: .LitBasic)
         renderPipelineStates.updateValue(VillageTerrain_RenderPipelineState(), forKey: .VillageTerrain)
     }
     

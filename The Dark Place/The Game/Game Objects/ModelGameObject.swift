@@ -26,14 +26,14 @@ class ModelGameObject: Node {
     }
     
     internal func setRenderPipelineState(){
-        renderPipelineState = RenderPipelineStateLibrary.PipelineState(.Basic)
+        renderPipelineState = RenderPipelineStateLibrary.PipelineState(.LitBasic)
     }
 }
 
 extension ModelGameObject: Renderable {
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder) {
         renderCommandEncoder.setTriangleFillMode(fillMode)
-        renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
+        renderCommandEncoder.setRenderPipelineState(renderPipelineState)
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
         for i in 0..<modelMesh.meshes.count {

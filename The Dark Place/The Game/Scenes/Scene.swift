@@ -3,12 +3,16 @@ import MetalKit
 class Scene: Node {
     
     var sceneConstants = SceneConstants()
+    var lights: [Light] = []
     private var cameraManager = CameraManager()
 
     override init(){
         super.init()
         setupCameras()
         buildScene()
+        var light = Light()
+        light.position = float3(1,0,0)
+        lights.append(light)
     }
     
     func buildScene() { }
@@ -38,6 +42,7 @@ class Scene: Node {
     
     override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
         renderCommandEncoder.setVertexBytes(&sceneConstants, length: SceneConstants.stride, index: 1)
+        renderCommandEncoder.setFragmentBytes(lights, length: Light.stride(lights.count), index: 2)
         super.render(renderCommandEncoder: renderCommandEncoder)
     }
     

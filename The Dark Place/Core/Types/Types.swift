@@ -46,3 +46,10 @@ struct Material: sizeable {
     var diffuse = float3(0) //Kd
     var specular = float3(3) //Ks
 }
+
+struct Light: sizeable {
+    var position = float3(0)
+    var ambientIntensity = float3(0)
+    var diffuseIntensity = float3(0)
+    var specularIntensity = float3(0)
+}
