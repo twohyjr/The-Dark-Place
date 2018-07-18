@@ -18,6 +18,7 @@ class VillageScene: Scene {
         
         addTrees()
 
+        addLight(lightName: "sun", light: Sun())
     }
     
     private func setCameras(){
