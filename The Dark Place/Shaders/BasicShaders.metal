@@ -26,10 +26,10 @@ struct SceneConstants {
 };
 
 struct Material {
+    float shininess;
     float3 ambient; //Ka
     float3 diffuse; //Kd
     float3 specular; //Ks
-    float shininess;
 };
 
 vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
