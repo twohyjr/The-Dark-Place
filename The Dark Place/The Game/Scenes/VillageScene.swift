@@ -26,7 +26,7 @@ class VillageScene: Scene {
     }
     
     private func addTerrain(){
-        terrain = Terrain(gridSize: gridSize, cellsWide: 1, cellsBack: 1, textureType: .CartoonGrass)
+        terrain = Terrain(gridSize: gridSize, cellsWide: 10, cellsBack: 10, textureType: .CartoonGrass)
         addChild(terrain)
     }
 

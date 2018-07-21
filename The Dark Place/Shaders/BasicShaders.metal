@@ -32,40 +32,43 @@ struct Material {
     float3 specular; //Ks
 };
 
+struct Light {
+    float3 position;
+    float ambientIntensity;
+};
+
+struct LightData {
+    int lightCount;
+    device Light *lights;
+};
+
 vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
                                           constant SceneConstants &sceneConstants [[ buffer(1) ]],
                                           constant ModelConstants &modelConstants [[ buffer(2) ]]){
     RasterizerData rd;
     
+    //Model View Projection Matrix
     float4x4 mvp = sceneConstants.projectionMatrix * sceneConstants.viewMatrix * modelConstants.modelMatrix;
     
-    rd.position = mvp * float4(vertexIn.position, 1);
+    //The vertex position with relation to the mvp matrix
+    float4 position = mvp * float4(vertexIn.position,1);
+    
+    //The normal on the surface of the object with relation to the eye
+    float3 surfaceNormal = normalize(sceneConstants.viewMatrix * float4(modelConstants.normalMatrix * vertexIn.normal,1)).xyz;
+    
+    rd.position = position;
+    rd.textureCoordinate = vertexIn.textureCoordinate;
+    rd.surfaceNormal = surfaceNormal;
     rd.color = vertexIn.color;
     
     return rd;
 }
 
 fragment half4 basic_fragment_shader(const RasterizerData rastData [[ stage_in ]],
-                                     constant Material &material [[ buffer(1) ]]){
+                                     constant Material &material [[ buffer(1) ]],
+                                     constant LightData &lightData [[ buffer(2) ]]){
     float4 color = float4(material.diffuse,1);
-   
     
     return half4(color.r, color.g, color.b, color.a);
-}
-
-
-vertex RasterizerData lit_basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
-                                              constant SceneConstants &sceneConstants [[ buffer(1) ]],
-                                              constant ModelConstants &modelConstants [[ buffer(2) ]]){
-    RasterizerData rd;
-    
-    float4x4 mvp = sceneConstants.projectionMatrix * sceneConstants.viewMatrix * modelConstants.modelMatrix;
-    float3 surfaceNormal = normalize(sceneConstants.viewMatrix * float4(modelConstants.normalMatrix * vertexIn.normal,1)).xyz;
-    rd.surfaceNormal = surfaceNormal;
-    rd.textureCoordinate = vertexIn.textureCoordinate;
-    rd.position = mvp * float4(vertexIn.position, 1);
-    rd.color = vertexIn.color;
-    
-    return rd;
 }
 
