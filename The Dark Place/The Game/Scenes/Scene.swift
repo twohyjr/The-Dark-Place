@@ -4,7 +4,6 @@ class Scene: Node {
     
     var sceneConstants = SceneConstants()
     private var cameraManager = CameraManager()
-    private var lightManager = LightManager()
 
     override init(){
         super.init()
@@ -13,14 +12,6 @@ class Scene: Node {
     }
     
     func buildScene() { }
-    
-    //Light Stuff
-    func addLight(lightName: String, light: Light){
-        lightManager.addLight(lightName: lightName, light: light)
-    }
-    func updateLights(deltaTime: Float){
-        lightManager.updateLights(deltaTime: deltaTime)
-    }
     
     //Camera Stuff
     func setupCameras() { }
@@ -46,8 +37,8 @@ class Scene: Node {
     }
     
     override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
+        renderCommandEncoder.setTriangleFillMode(.lines)
         renderCommandEncoder.setVertexBytes(&sceneConstants, length: SceneConstants.stride, index: 1)
-        renderCommandEncoder.setFragmentBytes(lightManager.getAllLightData(), length: LightData.stride(lightManager.lightCount), index: 2)
         super.render(renderCommandEncoder: renderCommandEncoder)
     }
     

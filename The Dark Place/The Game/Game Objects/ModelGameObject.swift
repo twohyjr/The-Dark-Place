@@ -2,14 +2,12 @@ import MetalKit
 
 class ModelGameObject: Node {
     var modelConstants = ModelConstants()
-    var renderPipelineState: MTLRenderPipelineState!
     var modelMesh: Mesh!
     private var fillMode: MTLTriangleFillMode = .fill
     
     init(_ modelMeshType: ModelMeshTypes){
         super.init()
         modelMesh = ModelMeshLibrary.Mesh(modelMeshType)
-        setRenderPipelineState()
     }
     
     public func lineModeOn(_ isOn: Bool){
@@ -23,17 +21,14 @@ class ModelGameObject: Node {
     
     private func updateModelConstants(){
         modelConstants.modelMatrix = self.modelMatrix
-    }
-    
-    internal func setRenderPipelineState(){
-        renderPipelineState = RenderPipelineStateLibrary.PipelineState(.LitBasic)
+        modelConstants.normalMatrix = self.modelMatrix.upperLeftMatrix
     }
 }
 
 extension ModelGameObject: Renderable {
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder) {
+        renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
         renderCommandEncoder.setTriangleFillMode(fillMode)
-        renderCommandEncoder.setRenderPipelineState(renderPipelineState)
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
         for i in 0..<modelMesh.meshes.count {

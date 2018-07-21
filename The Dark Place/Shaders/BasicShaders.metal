@@ -11,10 +11,13 @@ struct VertexIn{
 struct RasterizerData {
     float4 position [[ position ]];
     float4 color;
+    float3 surfaceNormal;
+    float2 textureCoordinate;
 };
 
 struct ModelConstants{
     float4x4 modelMatrix;
+    float3x3 normalMatrix;
 };
 
 struct SceneConstants {
@@ -26,13 +29,7 @@ struct Material {
     float3 ambient; //Ka
     float3 diffuse; //Kd
     float3 specular; //Ks
-};
-
-struct LightData {
-    float3 position;
-    float3 ambientIntensity;
-    float3 diffuseIntensity;
-    float3 specularIntensity;
+    float shininess;
 };
 
 vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
@@ -63,21 +60,12 @@ vertex RasterizerData lit_basic_vertex_shader(const VertexIn vertexIn [[ stage_i
     RasterizerData rd;
     
     float4x4 mvp = sceneConstants.projectionMatrix * sceneConstants.viewMatrix * modelConstants.modelMatrix;
-    
+    float3 surfaceNormal = normalize(sceneConstants.viewMatrix * float4(modelConstants.normalMatrix * vertexIn.normal,1)).xyz;
+    rd.surfaceNormal = surfaceNormal;
+    rd.textureCoordinate = vertexIn.textureCoordinate;
     rd.position = mvp * float4(vertexIn.position, 1);
     rd.color = vertexIn.color;
     
     return rd;
-}
-
-fragment half4 lit_basic_fragment_shader(const RasterizerData rastData [[ stage_in ]],
-                                         constant Material &material [[ buffer(1) ]],
-                                         constant LightData *lights [[ buffer(2) ]]){
-    float4 color = float4(material.diffuse,1);
-    if(sizeof(lights) > 0){
-        LightData lightData = lights[0];
-        color = float4(lightData.position,1);
-    }
-    return half4(color.r, color.g, color.b, color.a);
 }
 

@@ -27,7 +27,6 @@ class SceneManager{
     
     private static func updateScene(deltaTime: Float){
         _currentScene.updateCameras(deltaTime: deltaTime)
-        _currentScene.updateLights(deltaTime: deltaTime)
         _currentScene.update(deltaTime: deltaTime)
     }
     

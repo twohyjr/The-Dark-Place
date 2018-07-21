@@ -34,6 +34,7 @@ struct Vertex: sizeable{
 
 struct ModelConstants: sizeable{
     var modelMatrix = matrix_identity_float4x4
+    var normalMatrix = matrix_identity_float3x3
 }
 
 struct SceneConstants: sizeable {
@@ -42,14 +43,8 @@ struct SceneConstants: sizeable {
 }
 
 struct Material: sizeable {
+    var shininess: Float = 0.1
     var ambient = float3(1) //Ka
     var diffuse = float3(0) //Kd
     var specular = float3(3) //Ks
-}
-
-struct LightData: sizeable {
-    var position = float3(0)
-    var ambientIntensity = float3(1) //La
-    var diffuseIntensity = float3(1) //Ld
-    var specularIntensity = float3(1) //Ls
 }

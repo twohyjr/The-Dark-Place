@@ -17,8 +17,6 @@ class VillageScene: Scene {
         addMushrooms()
         
         addTrees()
-
-        addLight(lightName: "sun", light: Sun())
     }
     
     private func setCameras(){
@@ -28,7 +26,7 @@ class VillageScene: Scene {
     }
     
     private func addTerrain(){
-        terrain = Terrain(gridSize: gridSize, cellsWide: 50, cellsBack: 50, textureType: .CartoonGrass)
+        terrain = Terrain(gridSize: gridSize, cellsWide: 1, cellsBack: 1, textureType: .CartoonGrass)
         addChild(terrain)
     }
 

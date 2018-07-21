@@ -2,7 +2,6 @@ import MetalKit
 
 enum RenderPipelineStateTypes {
     case Basic
-    case LitBasic
     case VillageTerrain
 }
 
@@ -16,7 +15,6 @@ class RenderPipelineStateLibrary {
     
     private static func createDefaultRenderPipelineStates(){
         renderPipelineStates.updateValue(Basic_RenderPipelineState(), forKey: .Basic)
-        renderPipelineStates.updateValue(LitBasic_RenderPipelineState(), forKey: .LitBasic)
         renderPipelineStates.updateValue(VillageTerrain_RenderPipelineState(), forKey: .VillageTerrain)
     }
     
@@ -67,20 +65,3 @@ public struct VillageTerrain_RenderPipelineState: RenderPipelineState {
     }
 }
 
-public struct LitBasic_RenderPipelineState: RenderPipelineState {
-    var name: String = "Village Terrain Render Pipeline State"
-    var renderPipelineState: MTLRenderPipelineState!
-    init(){
-        let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
-        renderPipelineDescriptor.colorAttachments[0].pixelFormat = .rgb10a2Unorm
-        renderPipelineDescriptor.vertexFunction = ShaderLibrary.Vertex(.LitBasic)
-        renderPipelineDescriptor.fragmentFunction = ShaderLibrary.Fragment(.LitBasic)
-        renderPipelineDescriptor.vertexDescriptor = VertexDescriptorLibrary.Descriptor(.Basic)
-        renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
-        do{
-            renderPipelineState = try Engine.Device.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
-        }catch let error as NSError {
-            print("ERROR::CREATE::RENDER_PIPELINE_STATE::__\(name)__::\(error)")
-        }
-    }
-}
