@@ -40,6 +40,9 @@ struct Light {
     float brightness;
     float3 position;
     float3 color;
+    float ambientStrength;
+    float diffuseStrength;
+    float specularStrength;
 };
 
 vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
@@ -69,30 +72,44 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
 
 fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                      constant Material &material [[ buffer(1) ]],
-                                     constant Light *lights [[ buffer(2) ]]){
+                                     constant Light *lights [[ buffer(2) ]],
+                                     constant int &lightCount [[ buffer(3) ]]){
     
     
-    Light light = lights[0];
+    
     
     float4 color = float4(material.diffuse,1);
+    float3 totalAmbient = 0;
+    float3 totalDiffuse = 0;
+    float3 totalSpecular = 0;
     
-    //Ambient
-    float3 ambientStrength = 0.1;
-    float3 ambient = material.ambient * ambientStrength * light.color * light.brightness;
-    
-    //Diffuse
-    float3 norm = normalize(rd.surfaceNormal);
-    float3 lightDirection = normalize(light.position - rd.worldPosition);
-    float diff = max(dot(norm, lightDirection), 0.2);
-    float3 diffuse = material.diffuse * diff * light.color * light.brightness;
-    
-    float specularStrength = 0.5;
-    float3 viewDirection = normalize(rd.eyePosition - rd.worldPosition);
-    float3 reflectDirection = reflect(-lightDirection, norm);
-    float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), 32);
-    float3 specular = material.specular * specularStrength * spec * light.color * light.brightness;
-    
-    float4 result = float4(ambient + diffuse + specular, color.a) * color;
+    for(int i = 0; i < lightCount; i++){
+        Light light = lights[i];
+        
+        //Ambient
+        float3 ambientStrength = light.ambientStrength;
+        float3 ambient = material.ambient * ambientStrength * light.color * light.brightness;
+        
+        //Diffuse
+        float diffuseStrength = light.diffuseStrength;
+        float3 norm = normalize(rd.surfaceNormal);
+        float3 lightDirection = normalize(light.position - rd.worldPosition);
+        float brightness = max(dot(norm, lightDirection), 0.0);
+        float3 diffuse = material.diffuse * diffuseStrength * brightness * light.color * light.brightness;
+        
+        //Specular
+        float specularStrength = light.specularStrength;
+        float3 viewDirection = normalize(rd.eyePosition - rd.worldPosition);
+        float3 reflectDirection = reflect(-lightDirection, norm);
+        float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), 32);
+        float3 specular = material.specular * specularStrength * spec * light.color * light.brightness;
+        
+        totalAmbient += ambient / lightCount;
+        totalDiffuse += diffuse / lightCount;
+        totalSpecular += specular / lightCount;
+    }
+
+    float4 result = float4(totalAmbient + totalDiffuse + totalSpecular, color.a) * color;
 
     return half4(result.r, result.g, result.b, result.a);
 }
