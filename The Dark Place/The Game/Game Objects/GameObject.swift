@@ -28,6 +28,7 @@ class GameObject: Node {
     
     private func updateModelConstants(){
         modelConstants.modelMatrix = self.modelMatrix
+        modelConstants.normalMatrix = self.modelMatrix.upperLeftMatrix
     }
 }
 
@@ -39,7 +40,6 @@ extension GameObject: Renderable{
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
-        renderCommandEncoder.setRenderPipelineState(renderPipelineState)
         renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer, offset: 0, index: 0)
         
         mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)

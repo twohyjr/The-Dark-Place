@@ -12,9 +12,11 @@ class Terrain: GameObject {
         self.position.z -= Float(gridSize) / 2.0
         self.material.diffuse = float3(0.7, 0.7, 0.7)
     }
-    
+
     override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
+        
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.VillageTerrain))
+        renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
         renderCommandEncoder.setTriangleFillMode(fillMode)
         renderCommandEncoder.setFragmentTexture(texture, index: 0)
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
