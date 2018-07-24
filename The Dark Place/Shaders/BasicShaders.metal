@@ -67,8 +67,8 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     float4 color = float4(material.diffuse,1);
     
     float3 lightColor = float3(1);
-    float lightBrightness = 1.5;
-    float3 lightPosition = float3(0,200,500);
+    float lightBrightness = 1.8;
+    float3 lightPosition = float3(400,100,250);
     
     //Ambient
     float3 ambientStrength = 0.1;
@@ -77,7 +77,7 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     //Diffuse
     float3 norm = normalize(rd.surfaceNormal);
     float3 lightDirection = normalize(lightPosition - rd.worldPosition);
-    float diff = max(dot(norm, lightDirection), 0.4);
+    float diff = max(dot(norm, lightDirection), 0.2);
     float3 diffuse = material.diffuse * diff * lightColor * lightBrightness;
     
     float specularStrength = 0.5;
@@ -85,12 +85,6 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     float3 reflectDirection = reflect(-lightDirection, norm);
     float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), 32);
     float3 specular = material.specular * specularStrength * spec * lightColor * lightBrightness;
-    
-//    float specularStrength = 0.5f;
-//    vec3 viewDir = normalize(viewPos - FragPos);
-//    vec3 reflectDir = reflect(-lightDir, norm);
-//    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
-//    vec3 specular = specularStrength * spec * lightColor;
     
     float4 result = float4(ambient + diffuse + specular, color.a) * color;
 

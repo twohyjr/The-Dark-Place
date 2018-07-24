@@ -21,7 +21,7 @@ class VillageScene: Scene {
     
     private func setCameras(){
         let debugCamera = Debug_Camera()
-        debugCamera.position = float3(-1.4901161e-08, 8.833336, 14.749981)
+        debugCamera.position = float3(-1.4901161e-08, 10.499996, 16.08331)
         debugCamera.pitch = 0.5
         addCamera(camera: debugCamera)
     }
@@ -61,11 +61,16 @@ class VillageScene: Scene {
     }
     
     private func addTrees(){
-        let tree1 = LargeGreenOak()
-        tree1.scale.y = 2
-        tree1.position.z = -5
-        tree1.position.x = -2
-        addChild(tree1)
+        
+        for i in -5..<5{
+            let tree1 = LargeGreenOak()
+            tree1.scale.y = 2
+            tree1.position.z = (cos(Float(i * 3)) - 3) * 1.3
+            tree1.position.x = (Float(i) - 0.5) * 1.5
+            addChild(tree1)
+        }
+        
+       
     }
 
 }
