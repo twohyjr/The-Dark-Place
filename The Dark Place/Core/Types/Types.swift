@@ -48,3 +48,15 @@ struct Material: sizeable {
     var diffuse = float3(0) //Kd
     var specular = float3(3) //Ks
 }
+
+struct Light{
+    var position = float3(0,0,0)
+    var ambientIntensity: Float = 1.0
+}
+
+struct LightData: sizeable {
+    var lightCount: Int {
+        return lights.count
+    }
+    var lights: [Light] = []
+}

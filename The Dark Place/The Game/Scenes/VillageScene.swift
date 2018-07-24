@@ -2,7 +2,7 @@ import MetalKit
 
 class VillageScene: Scene {
     
-    var gridSize: Int = 25
+    var gridSize: Int = 15
     var terrain: Terrain!
     
     override func buildScene() {
@@ -21,7 +21,8 @@ class VillageScene: Scene {
     
     private func setCameras(){
         let debugCamera = Debug_Camera()
-        debugCamera.position = float3(-0.25000003, 6.0833354, 12.749988)
+        debugCamera.position = float3(-1.4901161e-08, 8.833336, 14.749981)
+        debugCamera.pitch = 0.5
         addCamera(camera: debugCamera)
     }
     

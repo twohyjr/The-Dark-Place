@@ -13,6 +13,7 @@ struct RasterizerData {
     float4 color;
     float3 surfaceNormal;
     float2 textureCoordinate;
+    float3 worldPosition;
 };
 
 struct ModelConstants{
@@ -32,16 +33,6 @@ struct Material {
     float3 specular; //Ks
 };
 
-struct Light {
-    float3 position;
-    float ambientIntensity;
-};
-
-struct LightData {
-    int lightCount;
-    device Light *lights;
-};
-
 vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
                                           constant SceneConstants &sceneConstants [[ buffer(1) ]],
                                           constant ModelConstants &modelConstants [[ buffer(2) ]]){
@@ -53,22 +44,42 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
     //The vertex position with relation to the mvp matrix
     float4 position = mvp * float4(vertexIn.position,1);
     
-    //The normal on the surface of the object with relation to the eye
-    float3 surfaceNormal = normalize(sceneConstants.viewMatrix * float4(modelConstants.normalMatrix * vertexIn.normal,1)).xyz;
-    
     rd.position = position;
     rd.textureCoordinate = vertexIn.textureCoordinate;
-    rd.surfaceNormal = surfaceNormal;
+    rd.surfaceNormal = float4(modelConstants.normalMatrix * vertexIn.normal,1).xyz;
+    
     rd.color = vertexIn.color;
+    rd.worldPosition = float3(modelConstants.modelMatrix * position).xyz;
     
     return rd;
 }
 
-fragment half4 basic_fragment_shader(const RasterizerData rastData [[ stage_in ]],
-                                     constant Material &material [[ buffer(1) ]],
-                                     constant LightData &lightData [[ buffer(2) ]]){
+
+
+
+fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
+                                     constant Material &material [[ buffer(1) ]]){
+    
     float4 color = float4(material.diffuse,1);
     
-    return half4(color.r, color.g, color.b, color.a);
+    float3 lightColor = float3(1);
+    float3 lightPosition = float3(0,200,500);
+    
+    //Ambient
+    float3 ambientStrength = 0.1;
+    float3 ambient = ambientStrength * lightColor;
+    
+    //Diffuse
+    float3 norm = normalize(rd.surfaceNormal);
+    float3 lightDirection = normalize(lightPosition - rd.worldPosition);
+    float diff = max(dot(norm, lightDirection), 0.0);
+    float3 diffuse = diff * lightColor;
+    
+    float4 result = float4(ambient + diffuse, color.a) * color;
+    
+    
+   
+    
+    return half4(result.r, result.g, result.b, result.a);
 }
 
