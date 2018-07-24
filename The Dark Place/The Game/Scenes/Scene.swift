@@ -34,6 +34,8 @@ class Scene: Node {
     func setSceneConstants(){
         sceneConstants.viewMatrix = cameraManager.CurrentCamera.viewMatrix
         sceneConstants.projectionMatrix = cameraManager.CurrentCamera.projectionMatrix
+        sceneConstants.inverseViewMatrix = cameraManager.CurrentCamera.viewMatrix.inverse
+        sceneConstants.eyePosition = cameraManager.CurrentCamera.position
     }
     
     override func update(deltaTime: Float) {

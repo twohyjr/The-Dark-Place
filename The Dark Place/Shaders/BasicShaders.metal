@@ -14,6 +14,7 @@ struct RasterizerData {
     float3 surfaceNormal;
     float2 textureCoordinate;
     float3 worldPosition;
+    float3 eyePosition;
 };
 
 struct ModelConstants{
@@ -24,6 +25,8 @@ struct ModelConstants{
 struct SceneConstants {
     float4x4 viewMatrix;
     float4x4 projectionMatrix;
+    float3 eyePosition;
+    float4x4 inverseViewMatrix;
 };
 
 struct Material {
@@ -50,6 +53,7 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
     
     rd.color = vertexIn.color;
     rd.worldPosition = float3(modelConstants.modelMatrix * position).xyz;
+    rd.eyePosition = sceneConstants.eyePosition;
     
     return rd;
 }
@@ -63,23 +67,33 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     float4 color = float4(material.diffuse,1);
     
     float3 lightColor = float3(1);
+    float lightBrightness = 1.5;
     float3 lightPosition = float3(0,200,500);
     
     //Ambient
     float3 ambientStrength = 0.1;
-    float3 ambient = ambientStrength * lightColor;
+    float3 ambient = material.ambient * ambientStrength * lightColor * lightBrightness;
     
     //Diffuse
     float3 norm = normalize(rd.surfaceNormal);
     float3 lightDirection = normalize(lightPosition - rd.worldPosition);
-    float diff = max(dot(norm, lightDirection), 0.0);
-    float3 diffuse = diff * lightColor;
+    float diff = max(dot(norm, lightDirection), 0.4);
+    float3 diffuse = material.diffuse * diff * lightColor * lightBrightness;
     
-    float4 result = float4(ambient + diffuse, color.a) * color;
+    float specularStrength = 0.5;
+    float3 viewDirection = normalize(rd.eyePosition - rd.worldPosition);
+    float3 reflectDirection = reflect(-lightDirection, norm);
+    float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), 32);
+    float3 specular = material.specular * specularStrength * spec * lightColor * lightBrightness;
     
+//    float specularStrength = 0.5f;
+//    vec3 viewDir = normalize(viewPos - FragPos);
+//    vec3 reflectDir = reflect(-lightDir, norm);
+//    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+//    vec3 specular = specularStrength * spec * lightColor;
     
-   
-    
+    float4 result = float4(ambient + diffuse + specular, color.a) * color;
+
     return half4(result.r, result.g, result.b, result.a);
 }
 
