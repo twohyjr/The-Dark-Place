@@ -36,6 +36,12 @@ struct Material {
     float3 specular; //Ks
 };
 
+struct Light {
+    float brightness;
+    float3 position;
+    float3 color;
+};
+
 vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
                                           constant SceneConstants &sceneConstants [[ buffer(1) ]],
                                           constant ModelConstants &modelConstants [[ buffer(2) ]]){
@@ -62,29 +68,29 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
 
 
 fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
-                                     constant Material &material [[ buffer(1) ]]){
+                                     constant Material &material [[ buffer(1) ]],
+                                     constant Light *lights [[ buffer(2) ]]){
+    
+    
+    Light light = lights[0];
     
     float4 color = float4(material.diffuse,1);
     
-    float3 lightColor = float3(1);
-    float lightBrightness = 1.8;
-    float3 lightPosition = float3(400,100,250);
-    
     //Ambient
     float3 ambientStrength = 0.1;
-    float3 ambient = material.ambient * ambientStrength * lightColor * lightBrightness;
+    float3 ambient = material.ambient * ambientStrength * light.color * light.brightness;
     
     //Diffuse
     float3 norm = normalize(rd.surfaceNormal);
-    float3 lightDirection = normalize(lightPosition - rd.worldPosition);
+    float3 lightDirection = normalize(light.position - rd.worldPosition);
     float diff = max(dot(norm, lightDirection), 0.2);
-    float3 diffuse = material.diffuse * diff * lightColor * lightBrightness;
+    float3 diffuse = material.diffuse * diff * light.color * light.brightness;
     
     float specularStrength = 0.5;
     float3 viewDirection = normalize(rd.eyePosition - rd.worldPosition);
     float3 reflectDirection = reflect(-lightDirection, norm);
     float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), 32);
-    float3 specular = material.specular * specularStrength * spec * lightColor * lightBrightness;
+    float3 specular = material.specular * specularStrength * spec * light.color * light.brightness;
     
     float4 result = float4(ambient + diffuse + specular, color.a) * color;
 

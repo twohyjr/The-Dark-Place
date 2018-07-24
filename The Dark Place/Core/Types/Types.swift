@@ -51,14 +51,8 @@ struct Material: sizeable {
     var specular = float3(3) //Ks
 }
 
-struct Light{
-    var position = float3(0,0,0)
-    var ambientIntensity: Float = 1.0
-}
-
-struct LightData: sizeable {
-    var lightCount: Int {
-        return lights.count
-    }
-    var lights: [Light] = []
+struct Light: sizeable{
+    var brightness: Float = 1.0
+    var position = float3(0)
+    var color = float3(1)
 }
