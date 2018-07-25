@@ -5,8 +5,6 @@ class VillageScene: Scene {
     var gridSize: Int = 15
     var terrain: Terrain!
     
-    let cube = Cube()
-    var light = Light()
     override func buildScene() {
         setCameras()
         
@@ -19,14 +17,6 @@ class VillageScene: Scene {
         addMushrooms()
         
         addTrees()
-        
-        addLights()
-        
-        
-        cube.position = light.position
-        cube.position.y += 0.2
-        cube.scale = float3(0.3)
-        addChild(cube)
     }
     
     private func setCameras(){
@@ -34,19 +24,6 @@ class VillageScene: Scene {
         debugCamera.position = float3(-1.4901161e-08, 10.499996, 16.08331)
         debugCamera.pitch = 0.5
         addCamera(camera: debugCamera)
-    }
-    
-    func addLights(){
-        light.position = float3(0,5,0)
-        light.brightness = 1
-        light.color = float3(1)
-        addLight(light)
-        
-        //        var light2 = Light()
-        //        light2.position = float3(-400,100,250)
-        //        light2.brightness = 1
-        //        light2.color = float3(1,0,0)
-        //        lights.append(light2)
     }
     
     private func addTerrain(){

@@ -10,6 +10,18 @@ class Scene: Node {
         super.init()
         setupCameras()
         buildScene()
+        
+        var light = Light()
+        light.position = float3(400,100,250)
+        light.brightness = 1
+        light.color = float3(1)
+        lights.append(light)
+        
+        var light2 = Light()
+        light2.position = float3(-400,100,250)
+        light2.brightness = 0.8
+        light2.color = float3(1)
+        lights.append(light2)
     }
     
     func buildScene() { }
@@ -33,15 +45,7 @@ class Scene: Node {
         sceneConstants.eyePosition = cameraManager.CurrentCamera.position
     }
     
-    func addLight(_ light: Light){
-        lights.append(light)
-    }
-    
     override func update(deltaTime: Float) {
-        if(lights.count == 0){
-            addLight(Light())
-        }
-        
         setSceneConstants()
         
         super.update(deltaTime: deltaTime)
