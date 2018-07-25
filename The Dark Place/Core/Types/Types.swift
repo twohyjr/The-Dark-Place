@@ -24,7 +24,6 @@ extension float2: sizeable { }
 extension float3: sizeable { }
 extension float4: sizeable { }
 extension UInt16: sizeable { }
-extension Int: sizeable { }
 
 struct Vertex: sizeable{
     var position: float3
@@ -56,7 +55,4 @@ struct Light: sizeable{
     var brightness: Float = 1.0
     var position = float3(0)
     var color = float3(1)
-    var ambientStrength: Float = 1.0
-    var diffuseStrength: Float = 1.0
-    var specularStrength: Float = 1.0
 }

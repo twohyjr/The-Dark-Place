@@ -45,7 +45,7 @@ extension ModelGameObject: Renderable {
             for j in 0..<mtkMesh.submeshes.count{
                 let mtkSubmesh = mtkMesh.submeshes[j]
                 let mdlSubmeshes = mdlMesh.submeshes as? [MDLSubmesh]
-                let ambient = float3(1)
+                let ambient = float3(0)
                 let diffuse = mdlSubmeshes![j].material?.properties(with: MDLMaterialSemantic.baseColor).first?.float3Value
                 let specular = mdlSubmeshes![j].material?.properties(with: MDLMaterialSemantic.specular).first?.float3Value
                 var material = Material()
