@@ -1,46 +1,5 @@
-#include <metal_stdlib>
+#include "SharedTypes.metal"
 using namespace metal;
-
-struct VertexIn{
-    float3 position [[ attribute(0) ]];
-    float4 color [[ attribute(1) ]];
-    float3 normal [[ attribute(2) ]];
-    float2 textureCoordinate [[ attribute(3) ]];
-};
-
-struct RasterizerData {
-    float4 position [[ position ]];
-    float4 color;
-    float3 surfaceNormal;
-    float2 textureCoordinate;
-    float3 worldPosition;
-    float3 eyePosition;
-};
-
-struct ModelConstants{
-    float4x4 modelMatrix;
-    float3x3 normalMatrix;
-};
-
-struct SceneConstants {
-    float4x4 viewMatrix;
-    float4x4 projectionMatrix;
-    float3 eyePosition;
-    float4x4 inverseViewMatrix;
-};
-
-struct Material {
-    float shininess;
-    float3 ambient; //Ka
-    float3 diffuse; //Kd
-    float3 specular; //Ks
-};
-
-struct Light {
-    float brightness;
-    float3 position;
-    float3 color;
-};
 
 vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
                                           constant SceneConstants &sceneConstants [[ buffer(1) ]],
@@ -63,9 +22,6 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
     
     return rd;
 }
-
-
-
 
 fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                      constant Material &material [[ buffer(1) ]],

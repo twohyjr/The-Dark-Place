@@ -18,6 +18,7 @@
 		EB614D2E20F8536700E61EFA /* DepthStencilStateLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2D20F8536700E61EFA /* DepthStencilStateLibrary.swift */; };
 		EB614D3020F85C2800E61EFA /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2F20F85C2800E61EFA /* Terrain.swift */; };
 		EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */; };
+		EB6AEE50210D1F4400C291AA /* SharedTypes.metal in Sources */ = {isa = PBXBuildFile; fileRef = EB6AEE4F210D1F4400C291AA /* SharedTypes.metal */; };
 		EBDB6E4320FD9E740061E7A3 /* cartoon_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */; };
 		EBDB6E4520FD9FE10061E7A3 /* TerrainShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = EBDB6E4420FD9FE10061E7A3 /* TerrainShader.metal */; };
 		EBDB6E4720FDA5620061E7A3 /* TextureLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */; };
@@ -89,6 +90,7 @@
 		EB614D2D20F8536700E61EFA /* DepthStencilStateLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthStencilStateLibrary.swift; sourceTree = "<group>"; };
 		EB614D2F20F85C2800E61EFA /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainMeshGenerator.swift; sourceTree = "<group>"; };
+		EB6AEE4F210D1F4400C291AA /* SharedTypes.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SharedTypes.metal; sourceTree = "<group>"; };
 		EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cartoon_grass.png; sourceTree = "<group>"; };
 		EBDB6E4420FD9FE10061E7A3 /* TerrainShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TerrainShader.metal; sourceTree = "<group>"; };
 		EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLibrary.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		EB614D1C20F842F500E61EFA /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				EB6AEE4F210D1F4400C291AA /* SharedTypes.metal */,
 				EB614D1D20F8431100E61EFA /* BasicShaders.metal */,
 				EBDB6E4420FD9FE10061E7A3 /* TerrainShader.metal */,
 			);
@@ -543,6 +546,7 @@
 				EBF1457C20FC48A700B89FE9 /* Cube_CustomMesh.swift in Sources */,
 				EBF145B320FD0B3400B89FE9 /* PracticeScene.swift in Sources */,
 				EBF1457A20FC489E00B89FE9 /* Triangle_CustomMesh.swift in Sources */,
+				EB6AEE50210D1F4400C291AA /* SharedTypes.metal in Sources */,
 				EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */,
 				EBF4A63820F8363400DAC145 /* Renderable.swift in Sources */,
 				EBF4A63F20F83C0700DAC145 /* Types.swift in Sources */,
