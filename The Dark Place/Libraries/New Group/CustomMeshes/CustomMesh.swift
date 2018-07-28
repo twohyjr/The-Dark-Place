@@ -56,10 +56,10 @@ class CustomModelMesh: CustomMesh {
     
     func createBuffers(){
         if(vertexCount > 0){
-            vertexBuffer = Engine.Device.makeBuffer(bytes: vertices, length: Vertex.stride(vertices.count), options: [])
+            vertexBuffer = Engine.Device.makeBuffer(bytes: vertices, length: Vertex.stride(vertices.count), options: .storageModeShared)
         }
         if(indexCount > 0){
-            indexBuffer = Engine.Device.makeBuffer(bytes: indices, length: UInt16.stride(indexCount), options: [])
+            indexBuffer = Engine.Device.makeBuffer(bytes: indices, length: UInt16.stride(indexCount), options: .storageModeShared)
         }
     }
     

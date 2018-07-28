@@ -14,11 +14,16 @@ class Terrain: GameObject {
     }
     
     override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
+        renderCommandEncoder.pushDebugGroup("Terrain Render Call")
+        
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.VillageTerrain))
         renderCommandEncoder.setTriangleFillMode(fillMode)
-        renderCommandEncoder.setFragmentTexture(texture, index: 0)
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer, offset: 0, index: 0)
+        renderCommandEncoder.setFragmentTexture(texture, index: 0)
+        renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
         mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)
+        
+        renderCommandEncoder.popDebugGroup()
     }
 }

@@ -18,7 +18,8 @@ constexpr sampler sampler2d(address::clamp_to_zero,
                     compare_func::less);
 
 fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_in ]],
-                                               texture2d<float> texture [[ texture(0) ]]){
+                                               texture2d<float> texture [[ texture(0) ]],
+                                               constant Material &Material [[ buffer(1) ]]){
     float4 color = texture.sample(sampler2d, rd.textureCoordinate);
     
     return half4(color.b, color.g, color.r, color.a);

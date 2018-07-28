@@ -5,7 +5,7 @@ class GameObject: Node {
     var modelConstants = ModelConstants()
     var renderPipelineState: MTLRenderPipelineState!
     var mesh: CustomMesh!
-    private var material = Material()
+    var material = Material()
     var color: float3 = float3(1)
     var specularity: float3 = float3(0.1)
     internal var fillMode: MTLTriangleFillMode = .fill
