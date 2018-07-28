@@ -5,7 +5,9 @@ class GameObject: Node {
     var modelConstants = ModelConstants()
     var renderPipelineState: MTLRenderPipelineState!
     var mesh: CustomMesh!
-    var material = Material()
+    private var material = Material()
+    var color: float3 = float3(1)
+    var specularity: float3 = float3(0.1)
     internal var fillMode: MTLTriangleFillMode = .fill
     
     init(meshType: CustomMeshTypes) {
@@ -28,6 +30,9 @@ class GameObject: Node {
     
     private func updateModelConstants(){
         modelConstants.modelMatrix = self.modelMatrix
+        modelConstants.normalMatrix = self.modelMatrix.upperLeftMatrix
+        material.diffuse = color
+        material.specular = specularity
     }
 }
 
@@ -39,7 +44,6 @@ extension GameObject: Renderable{
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
-        renderCommandEncoder.setRenderPipelineState(renderPipelineState)
         renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer, offset: 0, index: 0)
         
         mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)

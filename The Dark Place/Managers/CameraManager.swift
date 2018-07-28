@@ -110,9 +110,6 @@ public class Debug_Camera: Camera {
         if(self.zoom + dWheel < 47 && self.zoom + dWheel > 10) {
             self.zoom += dWheel
         }
-        print(position)
-        print(pitch)
-        
     }
 }
 

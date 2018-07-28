@@ -69,11 +69,8 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
 
 fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                      constant Material &material [[ buffer(1) ]],
-                                     constant Light *lights [[ buffer(2) ]]){
-    
-    
-    Light light = lights[0];
-    
+                                     constant Light &light [[ buffer(2) ]]){
+
     float4 color = float4(material.diffuse,1);
     
     //Ambient
@@ -86,6 +83,7 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     float diff = max(dot(norm, lightDirection), 0.2);
     float3 diffuse = material.diffuse * diff * light.color * light.brightness;
     
+    //Specular
     float specularStrength = 0.5;
     float3 viewDirection = normalize(rd.eyePosition - rd.worldPosition);
     float3 reflectDirection = reflect(-lightDirection, norm);

@@ -4,9 +4,13 @@ class VillageScene: Scene {
     
     var gridSize: Int = 15
     var terrain: Terrain!
-    
+    var sun = Cube()
     override func buildScene() {
         setCameras()
+        
+        setLight()
+        
+        addSun()
         
         addTerrain()
         
@@ -26,6 +30,17 @@ class VillageScene: Scene {
         addCamera(camera: debugCamera)
     }
     
+    private func setLight(){
+        light.position = float3(0,3,0)
+        light.brightness = 1.8
+    }
+    
+    private func addSun(){
+        sun.scale = float3(0.5)
+        sun.color = float3(0.4,0,1)
+        addChild(sun)
+    }
+    
     private func addTerrain(){
         terrain = Terrain(gridSize: gridSize, cellsWide: 10, cellsBack: 10, textureType: .CartoonGrass)
         addChild(terrain)
@@ -35,12 +50,13 @@ class VillageScene: Scene {
         let tent = Tent()
         tent.rotation = float3(0.0, 3.3833308, 0.0)
         tent.position.x = -1
+        tent.position.y = -0.01
         addChild(tent)
         
         let tentWithPoles = TentWithPoles()
         tentWithPoles.rotation = float3(0.0, 3.0, 0.0)
-        tentWithPoles.position.x = -1
         tentWithPoles.position.x = 3
+        
         addChild(tentWithPoles)
     }
     
@@ -61,7 +77,6 @@ class VillageScene: Scene {
     }
     
     private func addTrees(){
-        
         for i in -5..<5{
             let tree1 = LargeGreenOak()
             tree1.scale.y = 2
@@ -69,8 +84,14 @@ class VillageScene: Scene {
             tree1.position.x = (Float(i) - 0.5) * 1.5
             addChild(tree1)
         }
-        
-       
+    }
+    
+    var time: Float = 0
+    override func update(deltaTime: Float) {
+        time += deltaTime
+//        light.position.y += cos(time) / 4
+        sun.position = light.position
+        super.update(deltaTime: deltaTime)
     }
 
 }
