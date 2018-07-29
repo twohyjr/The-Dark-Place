@@ -37,7 +37,7 @@ class GameObject: Node {
 }
 
 extension GameObject: Renderable{
-    func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder) {
+    func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder, light: inout Light) {
         
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
         renderCommandEncoder.setTriangleFillMode(fillMode)

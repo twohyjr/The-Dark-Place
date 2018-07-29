@@ -13,10 +13,11 @@ class Terrain: GameObject {
         self.color = float3(0.7, 0.7, 0.7)
     }
     
-    override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
+    override func render(renderCommandEncoder: MTLRenderCommandEncoder, light: inout Light) {
         renderCommandEncoder.pushDebugGroup("Terrain Render Call")
         
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.VillageTerrain))
+        renderCommandEncoder.setFragmentBytes(&light, length: Light.stride, index: 2)
         renderCommandEncoder.setTriangleFillMode(fillMode)
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer, offset: 0, index: 0)

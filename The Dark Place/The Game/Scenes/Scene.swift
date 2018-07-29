@@ -39,11 +39,11 @@ class Scene: Node {
         super.update(deltaTime: deltaTime)
     }
     
-    override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
+    func render(renderCommandEncoder: MTLRenderCommandEncoder) {
         renderCommandEncoder.setTriangleFillMode(.lines)
         renderCommandEncoder.setVertexBytes(&sceneConstants, length: SceneConstants.stride, index: 1)
         renderCommandEncoder.setFragmentBytes(&light, length: Light.stride, index: 2)
-        super.render(renderCommandEncoder: renderCommandEncoder)
+        super.render(renderCommandEncoder: renderCommandEncoder, light: &light)
     }
     
 }
