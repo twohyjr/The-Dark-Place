@@ -10,17 +10,17 @@ class VillageScene: Scene {
         
         setLight()
         
-        addSun()
+//        addSun()
         
         addTerrain()
-        
-        addTents()
-        
-        addCampfire()
-        
-        addMushrooms()
-        
-        addTrees()
+//        
+//        addTents()
+//        
+//        addCampfire()
+//        
+//        addMushrooms()
+//        
+//        addTrees()
     }
     
     private func setCameras(){
@@ -31,8 +31,7 @@ class VillageScene: Scene {
     }
     
     private func setLight(){
-        light.position = float3(0,3,0)
-        light.brightness = 1.8
+        light.position = float3(0,4,3)
     }
     
     private func addSun(){

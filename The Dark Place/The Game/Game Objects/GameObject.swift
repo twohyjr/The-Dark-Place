@@ -8,15 +8,18 @@ class GameObject: Node {
     var material = Material()
     var color: float3 = float3(1)
     var specularity: float3 = float3(0.1)
-    internal var fillMode: MTLTriangleFillMode = .fill
+    var shininess: Float = 0.5
+    private var fillMode: MTLTriangleFillMode = .fill
     
     init(meshType: CustomMeshTypes) {
         super.init()
         mesh = MeshLibrary.Mesh(meshType)
+        setRenderPipelineState()
     }
     
     override init(){
         super.init()
+        setRenderPipelineState()
     }
     
     public func lineModeOn(_ isOn: Bool){
@@ -33,13 +36,18 @@ class GameObject: Node {
         modelConstants.normalMatrix = self.modelMatrix.upperLeftMatrix
         material.diffuse = color
         material.specular = specularity
+        material.shininess = shininess
+    }
+    
+    internal func setRenderPipelineState(){
+        renderPipelineState = RenderPipelineStateLibrary.PipelineState(.Basic)
     }
 }
 
 extension GameObject: Renderable{
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder, light: inout Light) {
         
-        renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
+        renderCommandEncoder.setRenderPipelineState(renderPipelineState)
         renderCommandEncoder.setTriangleFillMode(fillMode)
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)

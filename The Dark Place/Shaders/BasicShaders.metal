@@ -6,19 +6,17 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
                                           constant ModelConstants &modelConstants [[ buffer(2) ]]){
     RasterizerData rd;
     
-    //Model View Projection Matrix
-    float4x4 mvp = sceneConstants.projectionMatrix * sceneConstants.viewMatrix * modelConstants.modelMatrix;
+    //Vertex Position Descriptors
+    float4x4 transformationMatrix = modelConstants.modelMatrix;
+    float4 worldPosition = transformationMatrix * float4(vertexIn.position, 1.0);
+    rd.position = sceneConstants.projectionMatrix * sceneConstants.viewMatrix * worldPosition;
+    rd.worldPosition = worldPosition.xyz;
+    rd.surfaceNormal = (transformationMatrix * float4(vertexIn.normal, 0.0)).xyz;
+    rd.toCameraVector = (sceneConstants.inverseViewMatrix * float4(0.0,0.0,0.0,1.0)).xyz - worldPosition.xyz;
     
-    //The vertex position with relation to the mvp matrix
-    float4 position = mvp * float4(vertexIn.position,1);
-    
-    rd.position = position;
-    rd.textureCoordinate = vertexIn.textureCoordinate;
-    rd.surfaceNormal = float4(modelConstants.normalMatrix * vertexIn.normal,1).xyz;
-    
+    //Coloring
     rd.color = vertexIn.color;
-    rd.worldPosition = float3(modelConstants.modelMatrix * position).xyz;
-    rd.eyePosition = sceneConstants.eyePosition;
+    rd.textureCoordinate = vertexIn.textureCoordinate;
     
     return rd;
 }
@@ -26,26 +24,34 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
 fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                      constant Material &material [[ buffer(1) ]],
                                      constant Light &light [[ buffer(2) ]]){
-
     float4 color = float4(material.diffuse,1);
+    float3 toLightVector = light.position - rd.worldPosition;
     
-    //Ambient
-    float3 ambient = material.ambient * light.color * light.brightness;
+    float3 unitNormal = normalize(rd.surfaceNormal);
+    float3 unitLightVector = normalize(toLightVector);
     
-    //Diffuse
-    float3 norm = normalize(rd.surfaceNormal);
-    float3 lightDirection = normalize(light.position - rd.worldPosition);
-    float diff = max(dot(norm, lightDirection), 0.2);
-    float3 diffuse = material.diffuse * diff * light.color * light.brightness;
+    float3 ambient = light.color * material.ambient;
     
-    //Specular
-    float3 viewDirection = normalize(rd.eyePosition - rd.worldPosition);
-    float3 reflectDirection = reflect(-lightDirection, norm);
-    float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), 32);
-    float3 specular = material.specular * spec * light.color * light.brightness;
+    float nDot1 = dot(unitNormal, unitLightVector);
+    float brightness = max(nDot1, 0.1);
+    float3 diffuse = brightness * light.color * material.diffuse;
     
-    float4 result = float4(ambient + diffuse + specular, color.a) * color;
+    float3 unitVectorToCamera = normalize(rd.toCameraVector);
+    float3 lightDirection = -unitLightVector;
+    float3 reflectedLightDirection = reflect(lightDirection, unitNormal);
+    float specularFactor = saturate(dot(reflectedLightDirection, unitVectorToCamera));
+    specularFactor = max(specularFactor, 0.05);
+    float dampedFactor = pow(specularFactor, material.shininess);
+    float3 finalSpecular = dampedFactor * material.specular * light.color;
+    
+    color = color * (float4(diffuse, 1.0) + float4(finalSpecular, 1.0) + float4(ambient,1));
+    
+    if (color.a == 0.0){
+        discard_fragment();
+    }
+    
+    return half4(color.x, color.y, color.z, 1);
 
-    return half4(result.r, result.g, result.b, result.a);
+
 }
 

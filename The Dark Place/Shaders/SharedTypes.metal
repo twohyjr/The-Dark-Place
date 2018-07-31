@@ -12,6 +12,7 @@ struct RasterizerData {
     float4 position [[ position ]];
     float4 color;
     float3 surfaceNormal;
+    float3 toCameraVector;
     float2 textureCoordinate;
     float3 worldPosition;
     float3 eyePosition;
