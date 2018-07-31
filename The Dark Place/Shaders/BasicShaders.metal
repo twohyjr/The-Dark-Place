@@ -27,24 +27,26 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     float4 color = float4(material.diffuse,1);
     float3 toLightVector = light.position - rd.worldPosition;
     
+    //Ambient
     float3 unitNormal = normalize(rd.surfaceNormal);
     float3 unitLightVector = normalize(toLightVector);
-    
     float3 ambient = light.color * material.ambient;
     
+    //Diffuse
     float nDot1 = dot(unitNormal, unitLightVector);
     float brightness = max(nDot1, 0.1);
-    float3 diffuse = brightness * light.color * material.diffuse;
+    float3 diffuse = brightness * light.color * light.brightness;
     
+    //Specular
     float3 unitVectorToCamera = normalize(rd.toCameraVector);
     float3 lightDirection = -unitLightVector;
     float3 reflectedLightDirection = reflect(lightDirection, unitNormal);
     float specularFactor = saturate(dot(reflectedLightDirection, unitVectorToCamera));
-    specularFactor = max(specularFactor, 0.05);
+    specularFactor = max(specularFactor, 0.1);
     float dampedFactor = pow(specularFactor, material.shininess);
     float3 finalSpecular = dampedFactor * material.specular * light.color;
     
-    color = color * (float4(diffuse, 1.0) + float4(finalSpecular, 1.0) + float4(ambient,1));
+    color = color * (float4(diffuse, 1.0) + float4(finalSpecular, 1.0) + float4(ambient,1)) * light.brightness;
     
     if (color.a == 0.0){
         discard_fragment();

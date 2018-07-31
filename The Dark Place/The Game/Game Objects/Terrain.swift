@@ -1,33 +1,49 @@
 import MetalKit
 
-class Terrain: GameObject {
-    private var texture: MTLTexture!
+class Terrain: Node {
+    private var _texture: MTLTexture!
+    private var _mesh: CustomMesh!
+    private var _modelConstants = ModelConstants()
+    private var _material = Material()
+
+    //Lighting
+    var shininess: Float = 10
+    var ambient: Float = 1
+    var diffuse: Float = 1
+    var specular: Float = 1
     
     init(gridSize: Int, cellsWide: Int, cellsBack: Int, textureType: TextureTypes){
         super.init()
-        self.texture = TextureLibrary.Texture(textureType)
-        self.mesh = TerrainMeshGenerator.GenerateTerrainMesh(gridSize: gridSize,
+        self._texture = TextureLibrary.Texture(textureType)
+        self._mesh = TerrainMeshGenerator.GenerateTerrainMesh(gridSize: gridSize,
                                                              cellsWide: cellsWide,
                                                              cellsBack: cellsBack)
         self.position.x -= Float(gridSize) / 2.0
         self.position.z -= Float(gridSize) / 2.0
-        self.color = float3(0.7, 0.7, 0.7)
-        self.material.shininess = 30
     }
     
-    override func setRenderPipelineState() {
-        renderPipelineState = RenderPipelineStateLibrary.PipelineState(.VillageTerrain)
+    override func update(deltaTime: Float) {
+        _modelConstants.modelMatrix = self.modelMatrix
+        _modelConstants.normalMatrix = self.modelMatrix.upperLeftMatrix
+        _material.shininess = shininess
+        _material.ambient = float3(ambient)
+        _material.diffuse = float3(diffuse)
+        _material.specular = float3(specular)
+        super.update(deltaTime: deltaTime)
     }
-    
-    override func render(renderCommandEncoder: MTLRenderCommandEncoder, light: inout Light) {
+}
+
+extension Terrain: Renderable {
+    func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder, light: inout Light) {
         renderCommandEncoder.pushDebugGroup("Terrain Render Call")
-        renderCommandEncoder.setRenderPipelineState(renderPipelineState)
-        renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer, offset: 0, index: 0)
-        renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
-        renderCommandEncoder.setFragmentTexture(texture, index: 0)
-        renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
+        
+        renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.VillageTerrain))
+        renderCommandEncoder.setVertexBuffer(_mesh.vertexBuffer, offset: 0, index: 0)
+        renderCommandEncoder.setVertexBytes(&_modelConstants, length: ModelConstants.stride, index: 2)
+        renderCommandEncoder.setFragmentTexture(_texture, index: 0)
+        renderCommandEncoder.setFragmentBytes(&_material, length: Material.stride, index: 1)
         renderCommandEncoder.setFragmentBytes(&light, length: Light.stride, index: 2)
-        mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)
+        _mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)
         
         renderCommandEncoder.popDebugGroup()
     }

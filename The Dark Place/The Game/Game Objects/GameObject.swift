@@ -2,13 +2,15 @@ import MetalKit
 
 class GameObject: Node {
     
-    var modelConstants = ModelConstants()
     var renderPipelineState: MTLRenderPipelineState!
     var mesh: CustomMesh!
-    var material = Material()
+    var modelConstants = ModelConstants()
+    
+    internal var material = Material()
     var color: float3 = float3(1)
     var specularity: float3 = float3(0.1)
     var shininess: Float = 0.5
+    
     private var fillMode: MTLTriangleFillMode = .fill
     
     init(meshType: CustomMeshTypes) {
@@ -46,7 +48,7 @@ class GameObject: Node {
 
 extension GameObject: Renderable{
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder, light: inout Light) {
-        
+        renderCommandEncoder.pushDebugGroup("Game Object Render Call")
         renderCommandEncoder.setRenderPipelineState(renderPipelineState)
         renderCommandEncoder.setTriangleFillMode(fillMode)
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
@@ -55,5 +57,7 @@ extension GameObject: Renderable{
         renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer, offset: 0, index: 0)
         
         mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)
+        
+        renderCommandEncoder.popDebugGroup()
     }
 }

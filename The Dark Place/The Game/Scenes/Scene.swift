@@ -40,9 +40,11 @@ class Scene: Node {
     }
     
     func render(renderCommandEncoder: MTLRenderCommandEncoder) {
+        renderCommandEncoder.pushDebugGroup("Scene Render Call")
         renderCommandEncoder.setVertexBytes(&sceneConstants, length: SceneConstants.stride, index: 1)
         renderCommandEncoder.setFragmentBytes(&light, length: Light.stride, index: 2)
         super.render(renderCommandEncoder: renderCommandEncoder, light: &light)
+        renderCommandEncoder.popDebugGroup()
     }
     
 }

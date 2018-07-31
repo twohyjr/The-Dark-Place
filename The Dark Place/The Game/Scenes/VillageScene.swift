@@ -13,14 +13,14 @@ class VillageScene: Scene {
 //        addSun()
         
         addTerrain()
-//        
-//        addTents()
-//        
-//        addCampfire()
-//        
-//        addMushrooms()
-//        
-//        addTrees()
+        
+        addTents()
+        
+        addCampfire()
+        
+        addMushrooms()
+        
+        addTrees()
     }
     
     private func setCameras(){

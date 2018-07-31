@@ -389,8 +389,8 @@
 			isa = PBXGroup;
 			children = (
 				EBF4A63A20F83A4700DAC145 /* GameObject.swift */,
-				EBF1458C20FC4F8100B89FE9 /* ModelGameObject.swift */,
 				EB614D2F20F85C2800E61EFA /* Terrain.swift */,
+				EBF1458C20FC4F8100B89FE9 /* ModelGameObject.swift */,
 				EBF1452B20FAF98600B89FE9 /* Cube.swift */,
 				EBF1458E20FC50DE00B89FE9 /* Tents.swift */,
 				EBF145A220FC5D9700B89FE9 /* Campfire.swift */,
