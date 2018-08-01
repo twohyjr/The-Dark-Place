@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB1B983F211139160076BBB8 /* SamplerStateLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B983E211139160076BBB8 /* SamplerStateLibrary.swift */; };
 		EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1820F8403800E61EFA /* SceneManager.swift */; };
 		EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1A20F840C000E61EFA /* GameManager.swift */; };
 		EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1D20F8431100E61EFA /* BasicShaders.metal */; };
@@ -78,6 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB1B983E211139160076BBB8 /* SamplerStateLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplerStateLibrary.swift; sourceTree = "<group>"; };
 		EB614D1820F8403800E61EFA /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		EB614D1A20F840C000E61EFA /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		EB614D1D20F8431100E61EFA /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
@@ -161,6 +163,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB1B9840211142380076BBB8 /* Object Base Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EBF4A63A20F83A4700DAC145 /* GameObject.swift */,
+				EBF1458C20FC4F8100B89FE9 /* ModelGameObject.swift */,
+				EB614D2F20F85C2800E61EFA /* Terrain.swift */,
+			);
+			path = "Object Base Classes";
+			sourceTree = "<group>";
+		};
 		EB614D1C20F842F500E61EFA /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,6 +357,7 @@
 				EBF4A64220F83D7700DAC145 /* RenderPipelineStateLibrary.swift */,
 				EBF4A64620F83DF100DAC145 /* VertexDescriptorLibrary.swift */,
 				EB614D2D20F8536700E61EFA /* DepthStencilStateLibrary.swift */,
+				EB1B983E211139160076BBB8 /* SamplerStateLibrary.swift */,
 				EBF4A64420F83DC600DAC145 /* ShaderLibrary.swift */,
 				EBF4A64020F83C7B00DAC145 /* CustomMeshLibrary.swift */,
 				EBF1458A20FC4E6700B89FE9 /* ModelMeshLibrary.swift */,
@@ -385,9 +398,7 @@
 		EBF4A64820F83F1E00DAC145 /* Game Objects */ = {
 			isa = PBXGroup;
 			children = (
-				EBF4A63A20F83A4700DAC145 /* GameObject.swift */,
-				EB614D2F20F85C2800E61EFA /* Terrain.swift */,
-				EBF1458C20FC4F8100B89FE9 /* ModelGameObject.swift */,
+				EB1B9840211142380076BBB8 /* Object Base Classes */,
 				EBF1452B20FAF98600B89FE9 /* Cube.swift */,
 				EBF1458E20FC50DE00B89FE9 /* Tents.swift */,
 				EBF145A220FC5D9700B89FE9 /* Campfire.swift */,
@@ -561,6 +572,7 @@
 				EBF1458F20FC50DE00B89FE9 /* Tents.swift in Sources */,
 				EBF4A64320F83D7700DAC145 /* RenderPipelineStateLibrary.swift in Sources */,
 				EBF1458B20FC4E6700B89FE9 /* ModelMeshLibrary.swift in Sources */,
+				EB1B983F211139160076BBB8 /* SamplerStateLibrary.swift in Sources */,
 				EBF4A64D20F83F7E00DAC145 /* VillageScene.swift in Sources */,
 				EBF4A64520F83DC600DAC145 /* ShaderLibrary.swift in Sources */,
 				EBF4A61D20F8058B00DAC145 /* GameView.swift in Sources */,

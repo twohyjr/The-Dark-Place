@@ -8,8 +8,6 @@ class PracticeScene: Scene {
     override func buildScene() {
         setCameras()
         
-        setLight()
-        
         addSun()
         
         addTerrain()
@@ -22,11 +20,6 @@ class PracticeScene: Scene {
         debugCamera.position = float3(-1.4901161e-08, 10.499996, 16.08331)
         debugCamera.pitch = 0.5
         addCamera(camera: debugCamera)
-    }
-    
-    private func setLight(){
-        light.position = float3(0,3,0)
-        light.brightness = 1.8
     }
     
     private func addSun(){
@@ -49,14 +42,6 @@ class PracticeScene: Scene {
             tree1.position.x = (Float(i) - 0.5) * 1.5
             addChild(tree1)
         }
-    }
-    
-    var time: Float = 0
-    override func update(deltaTime: Float) {
-        time += deltaTime
-        //        light.position.y += cos(time) / 4
-        sun.position = light.position
-        super.update(deltaTime: deltaTime)
     }
     
 }

@@ -31,7 +31,7 @@ class VillageScene: Scene {
     }
     
     private func setLight(){
-        light.position = float3(0,4,3)
+//        light.position = float3(0,4,3)
     }
     
     private func addSun(){
@@ -83,14 +83,6 @@ class VillageScene: Scene {
             tree1.position.x = (Float(i) - 0.5) * 1.5
             addChild(tree1)
         }
-    }
-    
-    var time: Float = 0
-    override func update(deltaTime: Float) {
-        time += deltaTime
-//        light.position.y += cos(time) / 4
-        sun.position = light.position
-        super.update(deltaTime: deltaTime)
     }
 
 }

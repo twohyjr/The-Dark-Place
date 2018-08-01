@@ -47,7 +47,8 @@ vertex RasterizerData village_terrain_vertex_shader(const VertexIn vertexIn [[ s
 //------- FRAGMENT SHADERS ------------
 fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                      constant Material &material [[ buffer(1) ]],
-                                     constant Light &light [[ buffer(2) ]]){
+                                     constant Light *lights [[ buffer(2) ]]){
+    Light light = lights[0];
     float4 color = float4(material.diffuse,1);
     float3 toLightVector = light.position - rd.worldPosition;
     
@@ -66,8 +67,10 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
 
 fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                                texture2d<float> texture [[ texture(0) ]],
+                                               sampler sampler2d [[ sampler(0) ]],
                                                constant Material &material [[ buffer(1) ]],
-                                               constant Light &light [[ buffer(2) ]]){
+                                               constant Light *lights [[ buffer(2) ]]){
+    Light light = lights[0];
     float4 color = texture.sample(sampler2d, rd.textureCoordinate);
     
     float3 toLightVector = light.position - rd.worldPosition;

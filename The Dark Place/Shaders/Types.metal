@@ -43,8 +43,4 @@ struct Light {
     float3 color;    
 };
 
-constexpr sampler sampler2d(address::clamp_to_zero,
-                            filter::linear,
-                            compare_func::less);
-
 

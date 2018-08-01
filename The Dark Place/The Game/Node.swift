@@ -28,13 +28,13 @@ class Node {
         }
     }
     
-    func render(renderCommandEncoder: MTLRenderCommandEncoder, light: inout Light){
+    func render(renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [Light]){
         for child in children{
-            child.render(renderCommandEncoder: renderCommandEncoder, light: &light)
+            child.render(renderCommandEncoder: renderCommandEncoder, lights: &lights)
         }
         
         if let renderable = self as? Renderable {
-            renderable.doRender(renderCommandEncoder, light: &light)
+            renderable.doRender(renderCommandEncoder, lights: &lights)
         }
     }
     
