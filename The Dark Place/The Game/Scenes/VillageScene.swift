@@ -31,6 +31,7 @@ class VillageScene: Scene {
     
     private func addSun(){
         lamp.position.y = 5
+        lamp.brightness = 0.8
         addChild(lamp)
     }
     
