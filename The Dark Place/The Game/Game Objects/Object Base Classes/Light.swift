@@ -1,5 +1,0 @@
-import MetalKit
-
-//class Light {
-//
-//}

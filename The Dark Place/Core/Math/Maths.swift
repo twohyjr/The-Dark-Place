@@ -20,6 +20,10 @@ public func toDegrees(_ radians: Float) -> Float{
     return radians * (180 / Float.pi)
 }
 
+func randomBounded(lowerBound: Int, upperBound: Int) -> Int {
+    return lowerBound + Int(arc4random_uniform(UInt32(upperBound - lowerBound)))
+}
+
 extension matrix_float4x4{
     
     init(orthographicLeft left: Float, right: Float, bottom: Float, top: Float, near: Float, far: Float) {

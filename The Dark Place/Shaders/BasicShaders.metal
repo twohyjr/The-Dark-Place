@@ -61,8 +61,6 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     }
     
     return half4(color.x, color.y, color.z, 1);
-    
-    
 }
 
 fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_in ]],

@@ -1,10 +1,17 @@
 import MetalKit
 
+class LightCollection {
+    
+}
+
 class Scene: Node {
     
     var sceneConstants = SceneConstants()
     private var cameraManager = CameraManager()
-    var lights: [LightData] = [LightData()]
+    private var lightDatas: [LightData] {
+        get{ return LightManager.LightData }
+        set{ }  // Do nothing here.  Need to be able to pass a non read only property to the render command encoder
+    }
 
     override init(){
         super.init()
@@ -22,8 +29,13 @@ class Scene: Node {
             cameraManager.setCamera(camera.cameraType)
         }
     }
+    
     func updateCameras(deltaTime: Float){
         cameraManager.updateCameras(deltaTime: deltaTime)
+    }
+    
+    func updateLights(deltaTime: Float){
+        LightManager.UpdateLights(deltaTime: deltaTime)
     }
     
     func setSceneConstants(){
@@ -42,8 +54,8 @@ class Scene: Node {
     func render(renderCommandEncoder: MTLRenderCommandEncoder) {
         renderCommandEncoder.pushDebugGroup("Scene Render Call")
         renderCommandEncoder.setVertexBytes(&sceneConstants, length: SceneConstants.stride, index: 1)
-        renderCommandEncoder.setFragmentBytes(&lights, length: LightData.stride, index: 2)
-        super.render(renderCommandEncoder: renderCommandEncoder, lights: &lights)
+        renderCommandEncoder.setFragmentBytes(lightDatas, length: LightData.stride, index: 2)
+        super.render(renderCommandEncoder: renderCommandEncoder, lights: &lightDatas)
         renderCommandEncoder.popDebugGroup()
     }
     
