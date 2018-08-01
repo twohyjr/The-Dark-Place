@@ -29,10 +29,15 @@ class ModelGameObject: Node {
 
 extension ModelGameObject: Renderable {
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [LightData]) {
+        renderCommandEncoder.pushDebugGroup("Model Game Object Render Call")
+
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
         renderCommandEncoder.setTriangleFillMode(fillMode)
         renderCommandEncoder.setVertexBytes(&_modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
+        renderCommandEncoder.setFragmentBytes(lights,
+                                              length: LightData.stride(lights.count),
+                                              index: 2)
         for i in 0..<_modelMesh.meshes.count {
             var mdlMesh: MDLMesh! = nil
             var mtkMesh: MTKMesh! = nil
@@ -60,6 +65,7 @@ extension ModelGameObject: Renderable {
                                                            indexBuffer: mtkSubmesh.indexBuffer.buffer,
                                                            indexBufferOffset: mtkSubmesh.indexBuffer.offset)
             }
+            renderCommandEncoder.popDebugGroup()
         }
     }
 }

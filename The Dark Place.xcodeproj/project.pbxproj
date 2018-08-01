@@ -12,6 +12,7 @@
 		EB1B984821117F350076BBB8 /* Sun.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B984721117F350076BBB8 /* Sun.swift */; };
 		EB1B984A21117FAA0076BBB8 /* LightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B984921117FAA0076BBB8 /* LightManager.swift */; };
 		EB1B984F211186700076BBB8 /* LampObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B984E211186700076BBB8 /* LampObject.swift */; };
+		EB1B9851211260E40076BBB8 /* Lightable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B9850211260E40076BBB8 /* Lightable.swift */; };
 		EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1820F8403800E61EFA /* SceneManager.swift */; };
 		EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1A20F840C000E61EFA /* GameManager.swift */; };
 		EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1D20F8431100E61EFA /* BasicShaders.metal */; };
@@ -88,6 +89,7 @@
 		EB1B984721117F350076BBB8 /* Sun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sun.swift; sourceTree = "<group>"; };
 		EB1B984921117FAA0076BBB8 /* LightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightManager.swift; sourceTree = "<group>"; };
 		EB1B984E211186700076BBB8 /* LampObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampObject.swift; sourceTree = "<group>"; };
+		EB1B9850211260E40076BBB8 /* Lightable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lightable.swift; sourceTree = "<group>"; };
 		EB614D1820F8403800E61EFA /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		EB614D1A20F840C000E61EFA /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		EB614D1D20F8431100E61EFA /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				EBF4A63720F8363400DAC145 /* Renderable.swift */,
+				EB1B9850211260E40076BBB8 /* Lightable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */,
 				EBF4A62F20F8175500DAC145 /* Size.swift in Sources */,
 				EBF1458020FC48B900B89FE9 /* CustomMesh.swift in Sources */,
+				EB1B9851211260E40076BBB8 /* Lightable.swift in Sources */,
 				EBF1457C20FC48A700B89FE9 /* Cube_CustomMesh.swift in Sources */,
 				EB1B984F211186700076BBB8 /* LampObject.swift in Sources */,
 				EBF145B320FD0B3400B89FE9 /* PracticeScene.swift in Sources */,

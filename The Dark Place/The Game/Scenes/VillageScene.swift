@@ -4,7 +4,8 @@ class VillageScene: Scene {
     
     var gridSize: Int = 15
     var terrain: Terrain!
-    var lamp = LampObject()
+    var lamp1 = LampObject()
+    var lamp2 = LampObject()
     override func buildScene() {
         setCameras()
         
@@ -30,9 +31,14 @@ class VillageScene: Scene {
     
     
     private func addSun(){
-        lamp.position.y = 5
-        lamp.brightness = 0.8
-        addChild(lamp)
+        lamp1.position = float3(-5,5,0)
+        lamp1.brightness = 0.8
+        lamp1.color = float3(1,0,0)
+        addChild(lamp1)
+        
+        lamp2.position = float3(5,5,0)
+        lamp2.brightness = 0.8
+        addChild(lamp2)
     }
     
     private func addTerrain(){

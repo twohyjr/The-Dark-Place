@@ -43,7 +43,9 @@ extension Terrain: Renderable {
         renderCommandEncoder.setFragmentSamplerState(SamplerStateLibrary.SamplerState(.Basic), index: 0)
         renderCommandEncoder.setFragmentTexture(_texture, index: 0)
         renderCommandEncoder.setFragmentBytes(&_material, length: Material.stride, index: 1)
-        renderCommandEncoder.setFragmentBytes(&lights, length: LightData.stride, index: 2)
+        renderCommandEncoder.setFragmentBytes(lights,
+                                              length: LightData.stride(lights.count),
+                                              index: 2)
         _mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)
         
         renderCommandEncoder.popDebugGroup()

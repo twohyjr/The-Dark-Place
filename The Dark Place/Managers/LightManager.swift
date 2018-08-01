@@ -4,8 +4,11 @@ class LightManager {
     private static var _lights: [String:Light] = [:]
     
     public static var LightData: [LightData] {
-        let val: [Light] = Array(_lights.values)
-        return val.lazy.map { c in c.lightData }
+        var result: [LightData] = []
+        for light in _lights {
+            result.append(light.value.lightData)
+        }
+        return result
     }
     
     public static func AddLight(lightName: String, light: Light){

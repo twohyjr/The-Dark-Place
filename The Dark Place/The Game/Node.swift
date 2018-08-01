@@ -22,10 +22,6 @@ class Node {
         children.append(child)
     }
     
-    func addLight(_ lightName: String, light: Light){
-        LightManager.AddLight(lightName: lightName, light: light)
-    }
-    
     func update(deltaTime: Float){
         for child in children{
             child.update(deltaTime: deltaTime)
