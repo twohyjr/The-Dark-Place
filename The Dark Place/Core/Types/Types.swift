@@ -51,7 +51,7 @@ struct Material: sizeable {
     var specular = float3(3) //Ks
 }
 
-struct Light: sizeable{
+struct LightData: sizeable{
     var brightness: Float = 1.0
     var position = float3(0)
     var color = float3(1)

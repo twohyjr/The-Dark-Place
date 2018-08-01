@@ -34,7 +34,7 @@ class Terrain: Node {
 }
 
 extension Terrain: Renderable {
-    func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [Light]) {
+    func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [LightData]) {
         renderCommandEncoder.pushDebugGroup("Terrain Render Call")
         
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.VillageTerrain))
@@ -43,7 +43,7 @@ extension Terrain: Renderable {
         renderCommandEncoder.setFragmentSamplerState(SamplerStateLibrary.SamplerState(.Basic), index: 0)
         renderCommandEncoder.setFragmentTexture(_texture, index: 0)
         renderCommandEncoder.setFragmentBytes(&_material, length: Material.stride, index: 1)
-        renderCommandEncoder.setFragmentBytes(&lights, length: Light.stride, index: 2)
+        renderCommandEncoder.setFragmentBytes(&lights, length: LightData.stride, index: 2)
         _mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)
         
         renderCommandEncoder.popDebugGroup()

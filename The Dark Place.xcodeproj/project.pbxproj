@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EB1B983F211139160076BBB8 /* SamplerStateLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B983E211139160076BBB8 /* SamplerStateLibrary.swift */; };
+		EB1B984221114AFB0076BBB8 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B984121114AFB0076BBB8 /* Light.swift */; };
 		EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1820F8403800E61EFA /* SceneManager.swift */; };
 		EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1A20F840C000E61EFA /* GameManager.swift */; };
 		EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1D20F8431100E61EFA /* BasicShaders.metal */; };
@@ -80,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		EB1B983E211139160076BBB8 /* SamplerStateLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplerStateLibrary.swift; sourceTree = "<group>"; };
+		EB1B984121114AFB0076BBB8 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		EB614D1820F8403800E61EFA /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		EB614D1A20F840C000E61EFA /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		EB614D1D20F8431100E61EFA /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				EBF4A63A20F83A4700DAC145 /* GameObject.swift */,
 				EBF1458C20FC4F8100B89FE9 /* ModelGameObject.swift */,
 				EB614D2F20F85C2800E61EFA /* Terrain.swift */,
+				EB1B984121114AFB0076BBB8 /* Light.swift */,
 			);
 			path = "Object Base Classes";
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				EBF4A64D20F83F7E00DAC145 /* VillageScene.swift in Sources */,
 				EBF4A64520F83DC600DAC145 /* ShaderLibrary.swift in Sources */,
 				EBF4A61D20F8058B00DAC145 /* GameView.swift in Sources */,
+				EB1B984221114AFB0076BBB8 /* Light.swift in Sources */,
 				EBF4A63B20F83A4700DAC145 /* GameObject.swift in Sources */,
 				EBF1458620FC4B8700B89FE9 /* ModelLoader.swift in Sources */,
 				EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */,

@@ -28,7 +28,7 @@ class ModelGameObject: Node {
 }
 
 extension ModelGameObject: Renderable {
-    func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [Light]) {
+    func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [LightData]) {
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
         renderCommandEncoder.setTriangleFillMode(fillMode)
         renderCommandEncoder.setVertexBytes(&_modelConstants, length: ModelConstants.stride, index: 2)

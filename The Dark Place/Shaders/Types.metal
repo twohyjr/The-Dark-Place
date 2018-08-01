@@ -37,7 +37,7 @@ struct Material {
     float3 specular; //Ks
 };
 
-struct Light {
+struct LightData {
     float brightness;
     float3 position;
     float3 color;    

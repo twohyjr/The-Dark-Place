@@ -28,7 +28,7 @@ class Node {
         }
     }
     
-    func render(renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [Light]){
+    func render(renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [LightData]){
         for child in children{
             child.render(renderCommandEncoder: renderCommandEncoder, lights: &lights)
         }

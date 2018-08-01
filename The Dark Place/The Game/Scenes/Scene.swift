@@ -4,7 +4,7 @@ class Scene: Node {
     
     var sceneConstants = SceneConstants()
     private var cameraManager = CameraManager()
-    var lights: [Light] = [Light()]
+    var lights: [LightData] = [LightData()]
 
     override init(){
         super.init()
@@ -42,7 +42,7 @@ class Scene: Node {
     func render(renderCommandEncoder: MTLRenderCommandEncoder) {
         renderCommandEncoder.pushDebugGroup("Scene Render Call")
         renderCommandEncoder.setVertexBytes(&sceneConstants, length: SceneConstants.stride, index: 1)
-        renderCommandEncoder.setFragmentBytes(&lights, length: Light.stride, index: 2)
+        renderCommandEncoder.setFragmentBytes(&lights, length: LightData.stride, index: 2)
         super.render(renderCommandEncoder: renderCommandEncoder, lights: &lights)
         renderCommandEncoder.popDebugGroup()
     }
