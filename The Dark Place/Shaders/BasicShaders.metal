@@ -84,17 +84,6 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     if(material.isLit){
         color *= (float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0) + float4(totalAmbient,1));
     }
-    
-    float fogDensity = 0.01;
-    float fogGradient = 2.0;
-    float3 skyColor = float3(0);
-    
-    float distance = length(rd.position.xyz);
-    float visibility = exp(-pow((distance * fogDensity), fogGradient));
-    visibility = clamp(visibility, 0.0, 1.0);
-    
-    color = mix(float4(skyColor, 1), color, visibility);
-    
 
     return half4(color.r, color.g, color.b, 1);
 }
