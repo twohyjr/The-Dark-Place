@@ -49,6 +49,8 @@ struct Material: sizeable {
     var ambient = float3(1) //Ka
     var diffuse = float3(0) //Kd
     var specular = float3(3) //Ks
+    var isLit: Bool = true
+    var color = float4(1);
 }
 
 struct LightData: sizeable{

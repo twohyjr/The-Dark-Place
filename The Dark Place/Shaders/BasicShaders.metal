@@ -1,6 +1,8 @@
 #include "Types.metal"
 using namespace metal;
 
+#define MAX_LIGHTS 4
+
 //------- FUNCTION DEFINITIONS ------------
 float4 applyPhongLighting(float4 color, Material material, LightData light, float3 surfaceNormal, float3 toLightVector, float3 toCameraVector);
 
@@ -48,13 +50,13 @@ vertex RasterizerData village_terrain_vertex_shader(const VertexIn vertexIn [[ s
 fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                      constant Material &material [[ buffer(1) ]],
                                      constant LightData *lightDatas [[ buffer(2) ]]){
-    float4 color = float4(material.diffuse,1);
+    float4 color = material.isLit ? float4(material.diffuse,1) : material.color;
     
     float3 totalAmbient = float3(0.0);
     float3 totalDiffuse = float3(0.0);
     float3 totalSpecular = float3(0.0);
     
-    for(int i = 0; i < 2; i++){
+    for(int i = 0; i < MAX_LIGHTS; i++){
         LightData lightData = lightDatas[i];
         
         //Ambient
@@ -62,12 +64,12 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
         float3 unitLightVector = normalize(toLightVector);
         float3 unitNormal = normalize(rd.surfaceNormal);
         float3 ambient = lightData.color * material.ambient * lightData.brightness;
-        totalAmbient += ambient;
+        totalAmbient += ambient / 4;
         
         //Diffuse
         float nDot1 = dot(unitNormal, unitLightVector);
         float brightness = max(nDot1, 0.1);
-        float3 diffuse = brightness * lightData.color * lightData.brightness;
+        float3 diffuse = brightness * lightData.color * material.diffuse * lightData.brightness;
         totalDiffuse += diffuse;
         
         //Specular
@@ -80,10 +82,12 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
         float3 specular = dampedFactor * material.specular * lightData.color * lightData.brightness;
         totalSpecular += specular;
     }
+    if(material.isLit){
+        
+        color *= (float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0) + float4(totalAmbient,1));
+    }
 
-    color *= (float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0) + float4(totalAmbient,1));
-
-    return half4(color.x, color.y, color.z, 1);
+    return half4(color.r, color.g, color.b, 1);
 }
 
 fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_in ]],
@@ -93,11 +97,12 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
                                                constant LightData *lightDatas [[ buffer(2) ]]){
     float4 color = texture.sample(sampler2d, rd.textureCoordinate);
     
+    
     float3 totalAmbient = float3(0.0);
     float3 totalDiffuse = float3(0.0);
     float3 totalSpecular = float3(0.0);
     
-    for(int i = 0; i < 2; i++){
+    for(int i = 0; i < MAX_LIGHTS; i++){
         LightData lightData = lightDatas[i];
         
         //Ambient
@@ -105,12 +110,12 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
         float3 unitLightVector = normalize(toLightVector);
         float3 unitNormal = normalize(rd.surfaceNormal);
         float3 ambient = lightData.color * material.ambient * lightData.brightness;
-        totalAmbient += ambient;
+        totalAmbient += ambient / 4;
         
         //Diffuse
         float nDot1 = dot(unitNormal, unitLightVector);
         float brightness = max(nDot1, 0.1);
-        float3 diffuse = brightness * lightData.color * lightData.brightness;
+        float3 diffuse = brightness * lightData.color * material.diffuse * lightData.brightness;
         totalDiffuse += diffuse;
         
         //Specular
@@ -123,8 +128,12 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
         float3 specular = dampedFactor * material.specular * lightData.color * lightData.brightness;
         totalSpecular += specular;
     }
+    if(material.isLit){
+        
+        color *= (float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0) + float4(totalAmbient,1));
+    }
     
-    color *= (float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0) + float4(totalAmbient,1));
+    return half4(color.r, color.g, color.b, 1);
     
     return half4(color.x, color.y, color.z, 1);
 }

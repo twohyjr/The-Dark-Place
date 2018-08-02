@@ -38,6 +38,7 @@ class VillageScene: Scene {
         
         lamp2.position = float3(5,5,0)
         lamp2.brightness = 0.8
+        lamp2.color = float3(1)
         addChild(lamp2)
     }
     
@@ -84,6 +85,15 @@ class VillageScene: Scene {
             tree1.position.x = (Float(i) - 0.5) * 1.5
             addChild(tree1)
         }
+    }
+    
+    var time: Float = 0.0
+    override func update(deltaTime: Float) {
+        time += deltaTime
+        
+        lamp1.position.x = cos(time) * 5
+        lamp2.position.x = -cos(time) * 5
+        super.update(deltaTime: deltaTime)
     }
 
 }
