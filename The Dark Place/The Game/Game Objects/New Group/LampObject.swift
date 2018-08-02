@@ -9,8 +9,8 @@ class LampObject: GameObject {
     
     var brightness: Float = 1
     
-    override init() {
-        super.init(meshType: .Cube_Custom)
+    init(_ meshType: CustomMeshTypes) {
+        super.init(meshType: meshType)
         self.scale = float3(0.1)
         self.material.isLit = false
         lightName = LightManager.AddLightAndGetName()

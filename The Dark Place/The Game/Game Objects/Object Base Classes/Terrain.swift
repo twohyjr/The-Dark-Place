@@ -8,9 +8,9 @@ class Terrain: Node {
 
     //Lighting
     var shininess: Float = 10
-    var ambient: Float = 1
+    var ambient: Float = 0
     var diffuse: Float = 1
-    var specular: Float = 1
+    var specular: Float = 0
     
     init(gridSize: Int, cellsWide: Int, cellsBack: Int, textureType: TextureTypes){
         super.init()
