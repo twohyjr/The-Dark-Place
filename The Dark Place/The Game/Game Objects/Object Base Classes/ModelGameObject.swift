@@ -38,6 +38,10 @@ extension ModelGameObject: Renderable {
         renderCommandEncoder.setFragmentBytes(lights,
                                               length: LightData.stride(lights.count),
                                               index: 2)
+        
+        var lightCount = lights.count
+        renderCommandEncoder.setFragmentBytes(&lightCount, length: Int.stride, index: 3)
+        
         for i in 0..<_modelMesh.meshes.count {
             var mdlMesh: MDLMesh! = nil
             var mtkMesh: MTKMesh! = nil
