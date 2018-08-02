@@ -55,9 +55,12 @@ extension GameObject: Renderable{
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
         renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer, offset: 0, index: 0)
+        
         renderCommandEncoder.setFragmentBytes(lights,
                                               length: LightData.stride(lights.count),
                                               index: 2)
+        var lightCount = lights.count
+        renderCommandEncoder.setFragmentBytes(&lightCount, length: Int.stride, index: 3)
 
         
         mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)

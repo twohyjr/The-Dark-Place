@@ -1,8 +1,6 @@
 #include "Types.metal"
 using namespace metal;
 
-#define MAX_LIGHTS 4
-
 //------- FUNCTION DEFINITIONS ------------
 float4 applyPhongLighting(float4 color, Material material, LightData light, float3 surfaceNormal, float3 toLightVector, float3 toCameraVector);
 
@@ -49,14 +47,15 @@ vertex RasterizerData village_terrain_vertex_shader(const VertexIn vertexIn [[ s
 //------- FRAGMENT SHADERS ------------
 fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                      constant Material &material [[ buffer(1) ]],
-                                     constant LightData *lightDatas [[ buffer(2) ]]){
+                                     constant LightData *lightDatas [[ buffer(2) ]],
+                                     constant int &lightCount [[ buffer(3) ]]){
     float4 color = material.isLit ? float4(material.diffuse,1) : material.color;
     
     float3 totalAmbient = float3(0.0);
     float3 totalDiffuse = float3(0.0);
     float3 totalSpecular = float3(0.0);
     
-    for(int i = 0; i < MAX_LIGHTS; i++){
+    for(int i = 0; i < lightCount; i++){
         LightData lightData = lightDatas[i];
         
         //Ambient
@@ -94,7 +93,8 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
                                                texture2d<float> texture [[ texture(0) ]],
                                                sampler sampler2d [[ sampler(0) ]],
                                                constant Material &material [[ buffer(1) ]],
-                                               constant LightData *lightDatas [[ buffer(2) ]]){
+                                               constant LightData *lightDatas [[ buffer(2) ]],
+                                               constant int &lightCount [[ buffer(3) ]]){
     float4 color = texture.sample(sampler2d, rd.textureCoordinate);
     
     
@@ -102,7 +102,7 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
     float3 totalDiffuse = float3(0.0);
     float3 totalSpecular = float3(0.0);
     
-    for(int i = 0; i < MAX_LIGHTS; i++){
+    for(int i = 0; i < lightCount; i++){
         LightData lightData = lightDatas[i];
         
         //Ambient

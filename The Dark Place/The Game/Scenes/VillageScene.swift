@@ -4,8 +4,9 @@ class VillageScene: Scene {
     
     var gridSize: Int = 15
     var terrain: Terrain!
-    var lamp1 = LampObject(.Cube_Custom)
-    var lamp2 = LampObject(.Cube_Custom)
+    var sunBackLeft = LampObject(.Cube_Custom)
+    var sunBackRight = LampObject(.Cube_Custom)
+    var sunMiddleBack = LampObject(.Cube_Custom)
     override func buildScene() {
         setCameras()
         
@@ -31,19 +32,22 @@ class VillageScene: Scene {
     
     
     private func addSun(){
-        lamp1.position = float3(-5,5,0)
-        lamp1.brightness = 1
-        lamp1.color = float3(1,0,0)
-        addChild(lamp1)
+        sunBackLeft.position = float3(-1000, 500, 1000)
+        sunBackLeft.brightness = 0.7
+        addChild(sunBackLeft)
         
-        lamp2.position = float3(5,5,0)
-        lamp2.brightness = 0.7
-        lamp2.color = float3(1)
-        addChild(lamp2)
+        sunBackRight.position = float3(1000, 500, 1000)
+        sunBackRight.brightness = 0.7
+        addChild(sunBackRight)
+        
+        sunMiddleBack.position = float3(0, 100, 1000)
+        sunMiddleBack.brightness = 0.2
+        addChild(sunMiddleBack)
     }
     
     private func addTerrain(){
         terrain = Terrain(gridSize: gridSize, cellsWide: 10, cellsBack: 10, textureType: .CartoonGrass)
+        terrain.diffuse = 1.5
         addChild(terrain)
     }
 
@@ -69,10 +73,14 @@ class VillageScene: Scene {
     }
     
     private func addMushrooms(){
-        for i in -5..<5 {
+        var mushroomCount: Int = 20
+        var count: Int{
+            return Int(mushroomCount / 2)
+        }
+        for _ in -count..<count {
             let redMushroom = RedMushroom()
-            redMushroom.position.x = Float(i)
-            redMushroom.position.z = 6
+            redMushroom.position.x = Float.random(min: Float(-gridSize / 2), max: Float(gridSize / 2))
+            redMushroom.position.z = Float.random(min: Float(-gridSize / 2), max: Float(gridSize / 2))
             addChild(redMushroom)
         }
     }
@@ -86,14 +94,4 @@ class VillageScene: Scene {
             addChild(tree1)
         }
     }
-    
-    var time: Float = 0.0
-    override func update(deltaTime: Float) {
-        time += deltaTime
-        
-        lamp1.position.x = cos(time) * 5
-        lamp2.position.x = -cos(time) * 5
-        super.update(deltaTime: deltaTime)
-    }
-
 }
