@@ -4,11 +4,11 @@ class VillageScene: Scene {
     
     var gridSize: Int = 15
     var terrain: Terrain!
-    let campfire = Campfire()
     var sunBackLeft = LampObject(.Cube_Custom)
     var sunBackRight = LampObject(.Cube_Custom)
     var sunMiddleBack = LampObject(.Cube_Custom)
     let campfireLight = LampObject(.Cube_Custom)
+    let campfire = Campfire()
     override func buildScene() {
         setCameras()
         
@@ -49,13 +49,6 @@ class VillageScene: Scene {
         sunMiddleBack.position = float3(0, 100, 1000)
         sunMiddleBack.brightness = 0.2
         addChild(sunMiddleBack)
-        
-        campfireLight.position = campfire.position
-        campfireLight.color = float3(0.9,0.15,0.01)
-        campfireLight.brightness = 0.4
-        campfireLight.showObject = false
-        campfireLight.attenuation = float3(0.001, 0.01, 0.02);
-        addChild(campfireLight)
     }
     
     private func addTerrain(){
@@ -79,8 +72,8 @@ class VillageScene: Scene {
     }
     
     private func addCampfire(){
-        campfire.position.x = 0
-        campfire.position.z = 4
+        campfire.position.x = -0.5
+        campfire.position.z = 4.5
         addChild(campfire)
     }
     
@@ -105,13 +98,5 @@ class VillageScene: Scene {
             tree1.position.x = (Float(i) - 0.5) * 1.5
             addChild(tree1)
         }
-    }
-    
-    var time: Float = 0.0
-    override func update(deltaTime: Float) {
-        time += deltaTime
-        campfireLight.brightness = ((cos(time) / 2) * (sin(time) / 2) + 1.5) * Float.random(min: 0.4, max: 0.5)
-        
-        super.update(deltaTime: deltaTime)
     }
 }
