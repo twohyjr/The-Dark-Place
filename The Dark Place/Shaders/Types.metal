@@ -8,20 +8,14 @@ struct VertexIn{
     float2 textureCoordinate [[ attribute(3) ]];
 };
 
-struct RasterizerData {
-    float4 position [[ position ]];
-    float4 color;
-    float3 surfaceNormal;
-    float3 toCameraVector;
-    float2 textureCoordinate;
-    float3 worldPosition;
-    float3 eyePosition;
-    float3 skyColor;
-};
-
 struct ModelConstants{
     float4x4 modelMatrix;
     float3x3 normalMatrix;
+};
+
+struct Fog {
+    float fogGradient;
+    float fogDensity;
 };
 
 struct SceneConstants {
@@ -30,6 +24,7 @@ struct SceneConstants {
     float4x4 projectionMatrix;
     float3 eyePosition;
     float4x4 inverseViewMatrix;
+    Fog fog;
 };
 
 struct Material {
@@ -48,4 +43,16 @@ struct LightData {
     float3 attenuation;
 };
 
+struct RasterizerData {
+    float4 position [[ position ]];
+    float4 color;
+    float3 surfaceNormal;
+    float3 toCameraVector;
+    float2 textureCoordinate;
+    float3 worldPosition;
+    float3 eyePosition;
+    float3 skyColor;
+    float fogDensity;
+    float fogGradient;
+};
 

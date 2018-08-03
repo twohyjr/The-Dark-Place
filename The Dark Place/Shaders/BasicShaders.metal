@@ -23,6 +23,9 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
     rd.textureCoordinate = vertexIn.textureCoordinate;
     rd.skyColor = sceneConstants.skyColor;
     
+    rd.fogDensity = sceneConstants.fog.fogDensity;
+    rd.fogGradient = sceneConstants.fog.fogGradient;
+    
     return rd;
 }
 
@@ -59,13 +62,14 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     for(int i = 0; i < lightCount; i++){
         LightData lightData = lightDatas[i];
         
-        //Ambient
         float3 toLightVector = lightData.position - rd.worldPosition;
+        float3 unitLightVector = normalize(toLightVector);
         float distance = length(toLightVector);
         float3 attenuation = lightData.attenuation;
         float attenuationFactor = attenuation.x + (attenuation.y * distance) + (attenuation.z * distance * distance);
-        float3 unitLightVector = normalize(toLightVector);
         float3 unitNormal = normalize(rd.surfaceNormal);
+        
+        //Ambient
         float3 ambient = (lightData.color * material.ambient) / attenuationFactor;
         totalAmbient += ambient * lightData.brightness;
         

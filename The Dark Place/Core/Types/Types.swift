@@ -38,12 +38,18 @@ struct ModelConstants: sizeable{
     var normalMatrix = matrix_identity_float3x3
 }
 
+struct Fog {
+    var fogGradient: Float = 0
+    var fogDensity: Float = 0
+}
+
 struct SceneConstants: sizeable {
     var skyColor = Renderer.SkyColor
     var viewMatrix = matrix_identity_float4x4
     var projectionMatrix = matrix_identity_float4x4
     var eyePosition: float3 = float3(0)
     var inverseViewMatrix = matrix_identity_float4x4
+    var fog = Fog()
 }
 
 struct Material: sizeable {
