@@ -42,7 +42,8 @@ struct Material {
 struct LightData {
     float brightness;
     float3 position;
-    float3 color;    
+    float3 color;
+    float3 attenuation;
 };
 
 

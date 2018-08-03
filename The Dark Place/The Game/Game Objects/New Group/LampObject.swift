@@ -8,6 +8,7 @@ class LampObject: GameObject {
     var showObject: Bool = true
     
     var brightness: Float = 1
+    var attenuation = float3(1,0,0)
     
     init(_ meshType: CustomMeshTypes) {
         super.init(meshType: meshType)
@@ -20,6 +21,7 @@ class LampObject: GameObject {
         LightManager.GetLight(lightName).position = self.position
         LightManager.GetLight(lightName).brightness = self.brightness
         LightManager.GetLight(lightName).color = self.color
+        LightManager.GetLight(lightName).attenuation = self.attenuation
         self.material.color = float4(self.color.x, self.color.y, self.color.z, 1)
         
         super.update(deltaTime: deltaTime)

@@ -58,4 +58,5 @@ struct LightData: sizeable{
     var brightness: Float = 1.0
     var position = float3(0)
     var color = float3(1)
+    var attenuation = float3(1,0,0)
 }

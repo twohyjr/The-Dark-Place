@@ -45,8 +45,10 @@ class VillageScene: Scene {
         addChild(sunMiddleBack)
         
         let redLight = LampObject(.Cube_Custom)
-        redLight.position = float3(0,5,50)
+        redLight.position = float3(0,5,0)
         redLight.color = float3(1,0,0)
+        redLight.brightness = 0.2
+        redLight.attenuation = float3(0.01, 0.001, 0.002);
         addChild(redLight)
     }
     
