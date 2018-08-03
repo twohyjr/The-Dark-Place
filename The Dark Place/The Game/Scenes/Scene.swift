@@ -12,6 +12,7 @@ class Scene: Node {
         get{ return LightManager.LightData }
         set{ }  // Do nothing here.  Need to be able to pass a non read only property to the render command encoder
     }
+    var fog = Fog()
 
     override init(){
         super.init()
@@ -43,6 +44,8 @@ class Scene: Node {
         sceneConstants.projectionMatrix = cameraManager.CurrentCamera.projectionMatrix
         sceneConstants.inverseViewMatrix = cameraManager.CurrentCamera.viewMatrix.inverse
         sceneConstants.eyePosition = cameraManager.CurrentCamera.position
+        sceneConstants.fog.density = self.fog.density
+        sceneConstants.fog.gradient = self.fog.gradient
     }
     
     override func update(deltaTime: Float) {

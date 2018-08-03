@@ -39,8 +39,8 @@ struct ModelConstants: sizeable{
 }
 
 struct Fog {
-    var fogGradient: Float = 0
-    var fogDensity: Float = 0
+    var gradient: Float = 20
+    var density: Float = 0.001
 }
 
 struct SceneConstants: sizeable {

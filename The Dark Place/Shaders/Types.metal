@@ -14,8 +14,8 @@ struct ModelConstants{
 };
 
 struct Fog {
-    float fogGradient;
-    float fogDensity;
+    float gradient;
+    float density;
 };
 
 struct SceneConstants {
@@ -52,7 +52,6 @@ struct RasterizerData {
     float3 worldPosition;
     float3 eyePosition;
     float3 skyColor;
-    float fogDensity;
-    float fogGradient;
+    float visibility;
 };
 

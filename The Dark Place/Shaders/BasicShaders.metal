@@ -23,8 +23,10 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
     rd.textureCoordinate = vertexIn.textureCoordinate;
     rd.skyColor = sceneConstants.skyColor;
     
-    rd.fogDensity = sceneConstants.fog.fogDensity;
-    rd.fogGradient = sceneConstants.fog.fogGradient;
+    Fog fog = sceneConstants.fog;
+    float viewDistance = length(rd.worldPosition);
+    float visibility = exp(-pow((viewDistance * fog.density), fog.gradient));
+    rd.visibility = clamp(visibility, 0.0, 1.0);
     
     return rd;
 }
@@ -89,9 +91,12 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
         float3 specular = (dampedFactor * material.specular * lightData.color) / attenuationFactor;
         totalSpecular = totalSpecular + specular * lightData.brightness;
     }
+    
     if(material.isLit){
         color *= (float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0) + float4(totalAmbient,1));
     }
+    
+    color = mix(float4(rd.skyColor, 1), color, rd.visibility);
 
     return half4(color.r, color.g, color.b, 1);
 }
