@@ -65,14 +65,14 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
         float attenuationFactor = attenuation.x + (attenuation.y * distance) + (attenuation.z * distance * distance);
         float3 unitLightVector = normalize(toLightVector);
         float3 unitNormal = normalize(rd.surfaceNormal);
-        float3 ambient = lightData.color * material.ambient * lightData.brightness;
-        totalAmbient += ambient / attenuationFactor;
+        float3 ambient = (lightData.color * material.ambient) / attenuationFactor;
+        totalAmbient += ambient * lightData.brightness;
         
         //Diffuse
         float nDot1 = dot(unitNormal, unitLightVector);
         float brightness = max(nDot1, 0.1);
-        float3 diffuse = brightness * lightData.color * material.diffuse * lightData.brightness;
-        totalDiffuse += diffuse / attenuationFactor;
+        float3 diffuse = (brightness * lightData.color * material.diffuse) / attenuationFactor;
+        totalDiffuse = totalDiffuse + diffuse * lightData.brightness;
         
         //Specular
         float3 unitVectorToCamera = normalize(rd.toCameraVector);
@@ -81,8 +81,8 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
         float specularFactor = saturate(dot(reflectedLightDirection, unitVectorToCamera));
         specularFactor = max(specularFactor, 0.1);
         float dampedFactor = pow(specularFactor, material.shininess);
-        float3 specular = dampedFactor * material.specular * lightData.color * lightData.brightness;
-        totalSpecular += specular / attenuationFactor;
+        float3 specular = (dampedFactor * material.specular * lightData.color) / attenuationFactor;
+        totalSpecular = totalSpecular + specular * lightData.brightness;
     }
     if(material.isLit){
         color *= (float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0) + float4(totalAmbient,1));
