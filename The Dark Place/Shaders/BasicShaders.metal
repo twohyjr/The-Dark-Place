@@ -127,8 +127,8 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
         float3 specular = dampedFactor * material.specular * lightData.color * lightData.brightness;
         totalSpecular += specular;
     }
+    
     if(material.isLit){
-        
         color *= (float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0) + float4(totalAmbient,1));
     }
     

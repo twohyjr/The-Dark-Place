@@ -33,16 +33,21 @@ class VillageScene: Scene {
     
     private func addSun(){
         sunBackLeft.position = float3(-1000, 500, 1000)
-        sunBackLeft.brightness = 0.7
+        sunBackLeft.brightness = 0.2
         addChild(sunBackLeft)
         
         sunBackRight.position = float3(1000, 500, 1000)
-        sunBackRight.brightness = 0.7
+        sunBackRight.brightness = 0.2
         addChild(sunBackRight)
         
         sunMiddleBack.position = float3(0, 100, 1000)
         sunMiddleBack.brightness = 0.2
         addChild(sunMiddleBack)
+        
+        let redLight = LampObject(.Cube_Custom)
+        redLight.position = float3(0,5,50)
+        redLight.color = float3(1,0,0)
+        addChild(redLight)
     }
     
     private func addTerrain(){
