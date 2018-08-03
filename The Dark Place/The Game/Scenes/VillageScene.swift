@@ -30,13 +30,12 @@ class VillageScene: Scene {
         addCamera(camera: debugCamera)
     }
     
-    
     private func addSun(){
-        sunBackLeft.position = float3(-1000, 500, 1000)
+        sunBackLeft.position = float3(-1000, 300, 1000)
         sunBackLeft.brightness = 0.6
         addChild(sunBackLeft)
         
-        sunBackRight.position = float3(1000, 500, 1000)
+        sunBackRight.position = float3(1000, 700, 1000)
         sunBackRight.brightness = 0.6
         addChild(sunBackRight)
         
@@ -45,7 +44,7 @@ class VillageScene: Scene {
         addChild(sunMiddleBack)
         
         let redLight = LampObject(.Cube_Custom)
-        redLight.position = float3(0,5,500)
+        redLight.position = float3(0,5,0)
         redLight.color = float3(1,0,0)
         redLight.brightness = 1
         redLight.showObject = false
