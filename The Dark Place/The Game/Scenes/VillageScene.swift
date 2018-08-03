@@ -33,11 +33,11 @@ class VillageScene: Scene {
     
     private func addSun(){
         sunBackLeft.position = float3(-1000, 500, 1000)
-        sunBackLeft.brightness = 0.2
+        sunBackLeft.brightness = 0.6
         addChild(sunBackLeft)
         
         sunBackRight.position = float3(1000, 500, 1000)
-        sunBackRight.brightness = 0.2
+        sunBackRight.brightness = 0.6
         addChild(sunBackRight)
         
         sunMiddleBack.position = float3(0, 100, 1000)
