@@ -39,6 +39,7 @@ struct ModelConstants: sizeable{
 }
 
 struct SceneConstants: sizeable {
+    var skyColor = Renderer.SkyColor
     var viewMatrix = matrix_identity_float4x4
     var projectionMatrix = matrix_identity_float4x4
     var eyePosition: float3 = float3(0)

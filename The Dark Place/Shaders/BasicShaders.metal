@@ -21,6 +21,7 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
     //Coloring
     rd.color = vertexIn.color;
     rd.textureCoordinate = vertexIn.textureCoordinate;
+    rd.skyColor = sceneConstants.skyColor;
     
     return rd;
 }

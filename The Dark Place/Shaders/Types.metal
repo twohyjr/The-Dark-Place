@@ -16,6 +16,7 @@ struct RasterizerData {
     float2 textureCoordinate;
     float3 worldPosition;
     float3 eyePosition;
+    float3 skyColor;
 };
 
 struct ModelConstants{
@@ -24,6 +25,7 @@ struct ModelConstants{
 };
 
 struct SceneConstants {
+    float3 skyColor;
     float4x4 viewMatrix;
     float4x4 projectionMatrix;
     float3 eyePosition;
