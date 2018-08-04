@@ -18,6 +18,11 @@ class Scene: Node {
         super.init()
         setupCameras()
         buildScene()
+        
+        let w = WorldGenerator()
+        for o in w.getObjects() {
+            addChild(o)
+        }
     }
     
     func buildScene() { }
