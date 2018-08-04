@@ -53,7 +53,7 @@ public struct VillageTerrain_RenderPipelineState: RenderPipelineState {
     init(){
         let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
         renderPipelineDescriptor.colorAttachments[0].pixelFormat = .rgb10a2Unorm
-        renderPipelineDescriptor.vertexFunction = ShaderLibrary.Vertex(.VillageTerrain)
+        renderPipelineDescriptor.vertexFunction = ShaderLibrary.Vertex(.Basic)
         renderPipelineDescriptor.fragmentFunction = ShaderLibrary.Fragment(.VillageTerrain)
         renderPipelineDescriptor.vertexDescriptor = VertexDescriptorLibrary.Descriptor(.Basic)
         renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float

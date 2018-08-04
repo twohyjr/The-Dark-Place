@@ -44,8 +44,8 @@ class Scene: Node {
         sceneConstants.projectionMatrix = cameraManager.CurrentCamera.projectionMatrix
         sceneConstants.inverseViewMatrix = cameraManager.CurrentCamera.viewMatrix.inverse
         sceneConstants.eyePosition = cameraManager.CurrentCamera.position
-        sceneConstants.fog.density = self.fog.density
-        sceneConstants.fog.gradient = self.fog.gradient
+        sceneConstants.fog.density = fog.density
+        sceneConstants.fog.gradient = fog.gradient
     }
     
     override func update(deltaTime: Float) {

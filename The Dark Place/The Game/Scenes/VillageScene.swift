@@ -11,6 +11,8 @@ class VillageScene: Scene {
     override func buildScene() {
         setCameras()
         
+        setFog()
+        
         addTerrain()
         
         addTents()
@@ -25,8 +27,8 @@ class VillageScene: Scene {
     }
     
     private func setFog(){
-        fog.density = 0.001
-        fog.gradient = 0.01
+        self.fog.gradient = 0
+        self.fog.density = 1
     }
     
     private func setCameras(){
@@ -38,11 +40,11 @@ class VillageScene: Scene {
     
     private func addLights(){
         sunBackLeft.position = float3(-1000, 300, 1000)
-        sunBackLeft.brightness = 0.4
+        sunBackLeft.brightness = 0.7
         addChild(sunBackLeft)
         
         sunBackRight.position = float3(1000, 700, 1000)
-        sunBackRight.brightness = 0.4
+        sunBackRight.brightness = 0.7
         addChild(sunBackRight)
         
         sunMiddleBack.position = float3(0, 100, 1000)
@@ -98,4 +100,5 @@ class VillageScene: Scene {
             addChild(tree1)
         }
     }
+
 }

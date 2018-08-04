@@ -3,7 +3,6 @@ import MetalKit
 enum VertexShaderTypes{
     case Basic
     case LitBasic
-    case VillageTerrain
 }
 
 enum FragmentShaderTypes {
@@ -25,7 +24,6 @@ class ShaderLibrary {
     
     public static func createDefaultShaders(){
         addVertexShader(.Basic, Shader(functionName: "basic_vertex_shader", label: "Basic Vertex Shader"))
-        addVertexShader(.VillageTerrain, Shader(functionName: "village_terrain_vertex_shader", label: "Village Terrain Vertex Shader"))
         
         addFragmentShader(.Basic, Shader(functionName: "basic_fragment_shader", label: "Basic Fragment Shader"))
         addFragmentShader(.VillageTerrain, Shader(functionName: "village_terrain_fragment_shader", label: "Village Terrain Fragment Shader"))
