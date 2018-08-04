@@ -1,7 +1,7 @@
 
 import MetalKit
 
-class LampObject: GameObject {
+class LampGameObject: GameObject {
     
     var light = Light()
     var lightName: String!
@@ -38,4 +38,4 @@ class LampObject: GameObject {
     }
 }
 
-extension LampObject: Lightable { }
+extension LampGameObject: Lightable { }

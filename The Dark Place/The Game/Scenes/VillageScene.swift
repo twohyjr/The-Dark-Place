@@ -4,9 +4,9 @@ class VillageScene: Scene {
     
     var gridSize: Int = 15
     var terrain: Terrain!
-    var sunBackLeft = LampObject(.Cube_Custom)
-    var sunBackRight = LampObject(.Cube_Custom)
-    var sunMiddleBack = LampObject(.Cube_Custom)
+    var sunBackLeft = LampGameObject(.Cube_Custom)
+    var sunBackRight = LampGameObject(.Cube_Custom)
+    var sunMiddleBack = LampGameObject(.Cube_Custom)
     let campfire = Campfire()
     override func buildScene() {
         setCameras()

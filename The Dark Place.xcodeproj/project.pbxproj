@@ -11,7 +11,7 @@
 		EB1B984221114AFB0076BBB8 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B984121114AFB0076BBB8 /* Light.swift */; };
 		EB1B984821117F350076BBB8 /* Sun.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B984721117F350076BBB8 /* Sun.swift */; };
 		EB1B984A21117FAA0076BBB8 /* LightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B984921117FAA0076BBB8 /* LightManager.swift */; };
-		EB1B984F211186700076BBB8 /* LampObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B984E211186700076BBB8 /* LampObject.swift */; };
+		EB1B984F211186700076BBB8 /* LampGameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B984E211186700076BBB8 /* LampGameObject.swift */; };
 		EB1B9851211260E40076BBB8 /* Lightable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B9850211260E40076BBB8 /* Lightable.swift */; };
 		EB1B9859211515240076BBB8 /* LampModelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B9858211515240076BBB8 /* LampModelObject.swift */; };
 		EB1B985B211515DB0076BBB8 /* Campfire.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B985A211515DB0076BBB8 /* Campfire.swift */; };
@@ -89,7 +89,7 @@
 		EB1B984121114AFB0076BBB8 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		EB1B984721117F350076BBB8 /* Sun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sun.swift; sourceTree = "<group>"; };
 		EB1B984921117FAA0076BBB8 /* LightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightManager.swift; sourceTree = "<group>"; };
-		EB1B984E211186700076BBB8 /* LampObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampObject.swift; sourceTree = "<group>"; };
+		EB1B984E211186700076BBB8 /* LampGameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampGameObject.swift; sourceTree = "<group>"; };
 		EB1B9850211260E40076BBB8 /* Lightable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lightable.swift; sourceTree = "<group>"; };
 		EB1B9858211515240076BBB8 /* LampModelObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampModelObject.swift; sourceTree = "<group>"; };
 		EB1B985A211515DB0076BBB8 /* Campfire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campfire.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 			children = (
 				EB1B984121114AFB0076BBB8 /* Light.swift */,
 				EB1B984721117F350076BBB8 /* Sun.swift */,
-				EB1B984E211186700076BBB8 /* LampObject.swift */,
+				EB1B984E211186700076BBB8 /* LampGameObject.swift */,
 				EB1B9858211515240076BBB8 /* LampModelObject.swift */,
 				EB1B985A211515DB0076BBB8 /* Campfire.swift */,
 			);
@@ -581,7 +581,7 @@
 				EBF1458020FC48B900B89FE9 /* CustomMesh.swift in Sources */,
 				EB1B9851211260E40076BBB8 /* Lightable.swift in Sources */,
 				EBF1457C20FC48A700B89FE9 /* Cube_CustomMesh.swift in Sources */,
-				EB1B984F211186700076BBB8 /* LampObject.swift in Sources */,
+				EB1B984F211186700076BBB8 /* LampGameObject.swift in Sources */,
 				EBF145B320FD0B3400B89FE9 /* PracticeScene.swift in Sources */,
 				EBF1457A20FC489E00B89FE9 /* Triangle_CustomMesh.swift in Sources */,
 				EB6AEE50210D1F4400C291AA /* Types.metal in Sources */,
