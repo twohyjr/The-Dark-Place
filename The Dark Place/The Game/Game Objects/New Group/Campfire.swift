@@ -4,11 +4,10 @@ class Campfire: LampModelObject {
     
     init() {
         super.init(.Campfire)
-        
         self.color = float3(0.9,0.15,0)
         self.brightness = 2
-        self.attenuation = float3(0.0, 0.1, 0.002);
-        self.lightPosition.y = 0.2
+        self.attenuation = float3(0.0006, 0.06, 0.0002);
+        self.lightPosition.y = 0.1
         self.scale = float3(1.3)
     }
     

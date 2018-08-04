@@ -7,7 +7,6 @@ class VillageScene: Scene {
     var sunBackLeft = LampObject(.Cube_Custom)
     var sunBackRight = LampObject(.Cube_Custom)
     var sunMiddleBack = LampObject(.Cube_Custom)
-    let campfireLight = LampObject(.Cube_Custom)
     let campfire = Campfire()
     override func buildScene() {
         setCameras()
