@@ -37,7 +37,7 @@ class Engine {
     }
     
     private static func initializeManagers(){
-        SceneManager.Initialize(.VillageScene)
+        SceneManager.Initialize(.Practice)
     }
     
 }
