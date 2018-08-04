@@ -13,7 +13,7 @@ class Renderer: NSObject {
     }
     
     init(_ view: MTKView) {
-       View.setScreenSize(view.bounds.size)
+        View.setScreenSize(view.bounds.size)
     }
     
 }

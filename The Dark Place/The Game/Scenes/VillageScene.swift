@@ -27,8 +27,8 @@ class VillageScene: Scene {
     }
     
     private func setFog(){
-        self.fog.gradient = 0
-        self.fog.density = 1
+        self.fog.gradient = 6.5663
+        self.fog.density = 0.0324
     }
     
     private func setCameras(){
@@ -100,5 +100,7 @@ class VillageScene: Scene {
             addChild(tree1)
         }
     }
+    
+
 
 }

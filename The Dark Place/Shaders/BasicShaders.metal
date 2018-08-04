@@ -75,7 +75,7 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
         color *= (float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0) + float4(totalAmbient,1));
     }
     
-    color = mix(float4(rd.skyColor, 1), color, max(rd.visibility, 0.1));
+    color = mix(float4(rd.skyColor, 1), color, rd.visibility);
 
     return half4(color.r, color.g, color.b, 1);
 }
@@ -127,7 +127,7 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
         color *= (float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0) + float4(totalAmbient,1));
     }
     
-    color = mix(float4(rd.skyColor, 1), color, max(rd.visibility, 0.1));
+    color = mix(float4(rd.skyColor, 1), color, rd.visibility);
     
     return half4(color.r, color.g, color.b, 1);
 
