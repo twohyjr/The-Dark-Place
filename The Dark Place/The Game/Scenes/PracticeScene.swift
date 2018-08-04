@@ -4,7 +4,7 @@ class PracticeScene: Scene {
     
     var gridSize: Int = 15
     var terrain: Terrain!
-    var sunBackLeft = LampGameObject(.Cube_Custom)
+    var sunBackLeft = LampGameObject()
 
     override func buildScene() {
         setCameras()

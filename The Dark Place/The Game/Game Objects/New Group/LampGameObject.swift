@@ -17,6 +17,14 @@ class LampGameObject: GameObject {
         lightName = LightManager.AddLightAndGetName()
     }
     
+    override init() {
+        super.init(meshType: .Cube_Custom)
+        self.scale = float3(0.1)
+        self.material.isLit = false
+        self.showObject = false
+        lightName = LightManager.AddLightAndGetName()
+    }
+    
     override func update(deltaTime: Float) {
         LightManager.GetLight(lightName).position = self.position
         LightManager.GetLight(lightName).brightness = self.brightness
