@@ -20,7 +20,8 @@
 		EB1B9862211527A80076BBB8 /* Tent_01.obj in Resources */ = {isa = PBXBuildFile; fileRef = EB1B9860211527A70076BBB8 /* Tent_01.obj */; };
 		EB1B9863211527A80076BBB8 /* Tent_01.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EB1B9861211527A70076BBB8 /* Tent_01.mtl */; };
 		EB1B9869211566C00076BBB8 /* WorldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B9868211566C00076BBB8 /* WorldGenerator.swift */; };
-		EB1B986C21156C410076BBB8 /* ItemPlacementMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B986B21156C410076BBB8 /* ItemPlacementMap.png */; };
+		EB1B9878211643B00076BBB8 /* ItemPlacementMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B9877211643B00076BBB8 /* ItemPlacementMap.png */; };
+		EB1B987A2116480F0076BBB8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B98792116480F0076BBB8 /* Extensions.swift */; };
 		EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1820F8403800E61EFA /* SceneManager.swift */; };
 		EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1A20F840C000E61EFA /* GameManager.swift */; };
 		EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1D20F8431100E61EFA /* BasicShaders.metal */; };
@@ -100,7 +101,8 @@
 		EB1B9860211527A70076BBB8 /* Tent_01.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tent_01.obj; sourceTree = "<group>"; };
 		EB1B9861211527A70076BBB8 /* Tent_01.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tent_01.mtl; sourceTree = "<group>"; };
 		EB1B9868211566C00076BBB8 /* WorldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldGenerator.swift; sourceTree = "<group>"; };
-		EB1B986B21156C410076BBB8 /* ItemPlacementMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ItemPlacementMap.png; sourceTree = "<group>"; };
+		EB1B9877211643B00076BBB8 /* ItemPlacementMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ItemPlacementMap.png; sourceTree = "<group>"; };
+		EB1B98792116480F0076BBB8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EB614D1820F8403800E61EFA /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		EB614D1A20F840C000E61EFA /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		EB614D1D20F8431100E61EFA /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
@@ -205,7 +207,7 @@
 		EB1B986A21156C230076BBB8 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				EB1B986B21156C410076BBB8 /* ItemPlacementMap.png */,
+				EB1B9877211643B00076BBB8 /* ItemPlacementMap.png */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -411,6 +413,7 @@
 			children = (
 				EBF4A62E20F8175500DAC145 /* Size.swift */,
 				EBF4A63E20F83C0700DAC145 /* Types.swift */,
+				EB1B98792116480F0076BBB8 /* Extensions.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -553,7 +556,7 @@
 				EBDB6E4320FD9E740061E7A3 /* cartoon_grass.png in Resources */,
 				EBF145AC20FCD13E00B89FE9 /* Large_Oak_Green_01.obj in Resources */,
 				EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */,
-				EB1B986C21156C410076BBB8 /* ItemPlacementMap.png in Resources */,
+				EB1B9878211643B00076BBB8 /* ItemPlacementMap.png in Resources */,
 				EB1B9862211527A80076BBB8 /* Tent_01.obj in Resources */,
 				EBF1459D20FC5ACF00B89FE9 /* Tent_Poles_01.mtl in Resources */,
 				EB1B9863211527A80076BBB8 /* Tent_01.mtl in Resources */,
@@ -629,6 +632,7 @@
 				EB614D2A20F8515900E61EFA /* Mouse.swift in Sources */,
 				EB614D2C20F8516100E61EFA /* KeyCodes.swift in Sources */,
 				EB1B9869211566C00076BBB8 /* WorldGenerator.swift in Sources */,
+				EB1B987A2116480F0076BBB8 /* Extensions.swift in Sources */,
 				EBF145AF20FCD14E00B89FE9 /* LargeGreenOak.swift in Sources */,
 				EBF4A64720F83DF100DAC145 /* VertexDescriptorLibrary.swift in Sources */,
 				EB1B985B211515DB0076BBB8 /* Campfire.swift in Sources */,

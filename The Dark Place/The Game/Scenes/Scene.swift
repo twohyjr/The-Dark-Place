@@ -8,6 +8,7 @@ class Scene: Node {
     
     var sceneConstants = SceneConstants()
     private var cameraManager = CameraManager()
+    var worldData: WorldData!
     private var lightDatas: [LightData] {
         get{ return LightManager.LightData }
         set{ }  // Do nothing here.  Need to be able to pass a non read only property to the render command encoder
@@ -19,10 +20,6 @@ class Scene: Node {
         setupCameras()
         buildScene()
         
-        let w = WorldGenerator()
-        for o in w.getObjects() {
-            addChild(o)
-        }
     }
     
     func buildScene() { }

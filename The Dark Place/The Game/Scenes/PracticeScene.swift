@@ -28,7 +28,12 @@ class PracticeScene: Scene {
     }
     
     private func addTerrain(){
-        terrain = Terrain(gridSize: gridSize, cellsWide: 10, cellsBack: 10, textureType: .CartoonGrass)
+        worldData = WorldGenerator.getWorldData(itemPlacementMapName: "ItemPlacementMap")
+        print(worldData.objects.count)
+        for o in worldData.objects {
+            addChild(o)
+        }
+        terrain = Terrain(gridSize: worldData.worldWidth, cellsWide: 100, cellsBack: 100, textureType: .CartoonGrass)
         terrain.diffuse = 1.5
         addChild(terrain)
     }
