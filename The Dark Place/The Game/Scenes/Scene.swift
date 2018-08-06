@@ -8,6 +8,7 @@ class Scene: Node {
     
     var sceneConstants = SceneConstants()
     private var cameraManager = CameraManager()
+
     private var lightDatas: [LightData] {
         get{ return LightManager.LightData }
         set{ }  // Do nothing here.  Need to be able to pass a non read only property to the render command encoder
@@ -18,7 +19,6 @@ class Scene: Node {
         super.init()
         setupCameras()
         buildScene()
-        
     }
     
     func buildScene() { }
@@ -31,7 +31,7 @@ class Scene: Node {
             cameraManager.setCamera(camera.cameraType)
         }
     }
-    
+
     func updateCameras(deltaTime: Float){
         cameraManager.updateCameras(deltaTime: deltaTime)
     }
@@ -47,6 +47,13 @@ class Scene: Node {
         sceneConstants.eyePosition = cameraManager.CurrentCamera.position
         sceneConstants.fog.density = fog.density
         sceneConstants.fog.gradient = fog.gradient
+    }
+    
+    func addWorldItems(_ worldItemsGenerator: WorldItemsGenerator){
+        let worldItemData = worldItemsGenerator.generateWorldItemData()
+        for item in worldItemData.worldItems {
+            addChild(item)
+        }
     }
     
     override func update(deltaTime: Float) {

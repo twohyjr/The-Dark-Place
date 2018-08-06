@@ -3,27 +3,30 @@ import MetalKit
 class VillageScene: Scene {
     
     var gridSize: Int = 15
-    var terrain: Terrain!
     var sunBackLeft = LampGameObject(.Cube_Custom)
-//    var sunBackRight = LampGameObject(.Cube_Custom)
-//    var sunMiddleBack = LampGameObject(.Cube_Custom)
+    var sunBackRight = LampGameObject()
+
     let campfire = Campfire()
     override func buildScene() {
+        setupWorld()
+        
         setCameras()
         
         setFog()
-        
-        addTerrain()
         
         addTents()
         
         addCampfire()
         
-        addMushrooms()
-        
-        addTrees()
-        
         addLights()
+        
+        super.buildScene()
+    }
+    
+    private func setupWorld(){
+        let itemGenerator = WorldItemsGenerator()
+        .withItemPlacementMap("VillageSceneItemMap")
+        addWorldItems(itemGenerator)
     }
     
     private func setFog(){
@@ -42,21 +45,14 @@ class VillageScene: Scene {
         sunBackLeft.position = float3(-1000, 300, 1000)
         sunBackLeft.brightness = 0.5
         addChild(sunBackLeft)
-//
-//        sunBackRight.position = float3(1000, 700, 1000)
-//        sunBackRight.brightness = 0.2
-//        addChild(sunBackRight)
+
+        sunBackRight.position = float3(1000, 700, 1000)
+        sunBackRight.brightness = 1
+        addChild(sunBackRight)
 //
 //        sunMiddleBack.position = float3(0, 100, 1000)
 //        sunMiddleBack.brightness = 0.1
 //        addChild(sunMiddleBack)
-    }
-    
-    private func addTerrain(){
-        let terrainData = TerrainData(width: 10, depth: 10)
-        terrain = Terrain(gridSize: gridSize, terrainData: terrainData, textureType: .CartoonGrass)
-        terrain.diffuse = 1.5
-        addChild(terrain)
     }
 
     private func addTents(){
@@ -77,29 +73,6 @@ class VillageScene: Scene {
         campfire.position.x = -0.5
         campfire.position.z = 4.5
         addChild(campfire)
-    }
-    
-    private func addMushrooms(){
-        var mushroomCount: Int = 20
-        var count: Int{
-            return Int(mushroomCount / 2)
-        }
-        for _ in -count..<count {
-            let redMushroom = RedMushroom()
-            redMushroom.position.x = Float.random(min: Float(-gridSize / 2), max: Float(gridSize / 2))
-            redMushroom.position.z = Float.random(min: Float(-gridSize / 2), max: Float(gridSize / 2))
-            addChild(redMushroom)
-        }
-    }
-    
-    private func addTrees(){
-        for i in -5..<5{
-            let tree1 = LargeGreenOak()
-            tree1.scale.y = 2
-            tree1.position.z = (cos(Float(i * 3)) - 3) * 1.3
-            tree1.position.x = (Float(i) - 0.5) * 1.5
-            addChild(tree1)
-        }
     }
     
 

@@ -3,15 +3,20 @@ import MetalKit
 class PracticeScene: Scene {
     
     var gridSize: Int = 15
-    var terrain: Terrain!
     var light = LampGameObject()
 
     override func buildScene() {
+        createScene()
+        
         setCameras()
         
-        addTerrain()
-        
         addLights()
+    }
+    
+    private func createScene(){
+        let itemGenerator = WorldItemsGenerator()
+            .withItemPlacementMap("VillageSceneItemMap")
+        addWorldItems(itemGenerator)
     }
     
     private func setCameras(){
@@ -22,24 +27,9 @@ class PracticeScene: Scene {
     }
     
     private func addLights(){
-        light.position = float3(-1000, 0, 0)
+        light.position = float3(0, 100, 200)
+        light.brightness = 2.0
         addChild(light)
     }
-    
-    private func addTerrain(){
-        let worldData = WorldGenerator.GetWorldData(itemMapName: "PracticeSceneItemMap", terrainHeightMap: "PracticeSceneHeightMap", maxTerrainHeight: 10)
-        
-        let itemData = worldData.itemData
-        let terrainData = worldData.terrainData
-        
-        for item in (itemData?.worldItems)!{
-            addChild(item)
-        }
-        terrain = Terrain(gridSize: worldData.itemData.width,
-                          terrainData: terrainData!,
-                          textureType: .CartoonGrass)
-        terrain.diffuse = 2
-        addChild(terrain)
-    }
-    
+
 }

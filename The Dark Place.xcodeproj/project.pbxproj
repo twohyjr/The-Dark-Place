@@ -23,6 +23,8 @@
 		EB1B987A2116480F0076BBB8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B98792116480F0076BBB8 /* Extensions.swift */; };
 		EB1B987E21180AB60076BBB8 /* PracticeSceneHeightMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B987D21180AB60076BBB8 /* PracticeSceneHeightMap.png */; };
 		EB1B988221180FFB0076BBB8 /* PracticeSceneItemMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B988121180FFB0076BBB8 /* PracticeSceneItemMap.png */; };
+		EB1B98882118C6AA0076BBB8 /* VillageSceneTerrainMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B98872118C6AA0076BBB8 /* VillageSceneTerrainMap.png */; };
+		EB1B988A2118C6BF0076BBB8 /* VillageSceneItemMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B98892118C6BF0076BBB8 /* VillageSceneItemMap.png */; };
 		EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1820F8403800E61EFA /* SceneManager.swift */; };
 		EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1A20F840C000E61EFA /* GameManager.swift */; };
 		EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1D20F8431100E61EFA /* BasicShaders.metal */; };
@@ -105,6 +107,8 @@
 		EB1B98792116480F0076BBB8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EB1B987D21180AB60076BBB8 /* PracticeSceneHeightMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PracticeSceneHeightMap.png; sourceTree = "<group>"; };
 		EB1B988121180FFB0076BBB8 /* PracticeSceneItemMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PracticeSceneItemMap.png; path = ../../../../../../Desktop/PracticeSceneItemMap.png; sourceTree = "<group>"; };
+		EB1B98872118C6AA0076BBB8 /* VillageSceneTerrainMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VillageSceneTerrainMap.png; sourceTree = "<group>"; };
+		EB1B98892118C6BF0076BBB8 /* VillageSceneItemMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VillageSceneItemMap.png; sourceTree = "<group>"; };
 		EB614D1820F8403800E61EFA /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		EB614D1A20F840C000E61EFA /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		EB614D1D20F8431100E61EFA /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 			children = (
 				EB1B988121180FFB0076BBB8 /* PracticeSceneItemMap.png */,
 				EB1B987D21180AB60076BBB8 /* PracticeSceneHeightMap.png */,
+				EB1B98872118C6AA0076BBB8 /* VillageSceneTerrainMap.png */,
+				EB1B98892118C6BF0076BBB8 /* VillageSceneItemMap.png */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -561,9 +567,11 @@
 				EBF145AC20FCD13E00B89FE9 /* Large_Oak_Green_01.obj in Resources */,
 				EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */,
 				EB1B987E21180AB60076BBB8 /* PracticeSceneHeightMap.png in Resources */,
+				EB1B98882118C6AA0076BBB8 /* VillageSceneTerrainMap.png in Resources */,
 				EB1B9862211527A80076BBB8 /* Tent_01.obj in Resources */,
 				EBF1459D20FC5ACF00B89FE9 /* Tent_Poles_01.mtl in Resources */,
 				EB1B9863211527A80076BBB8 /* Tent_01.mtl in Resources */,
+				EB1B988A2118C6BF0076BBB8 /* VillageSceneItemMap.png in Resources */,
 				EB1B985E2115273E0076BBB8 /* Campfire_01.mtl in Resources */,
 				EBF1459C20FC5ACF00B89FE9 /* Tent_Poles_01.obj in Resources */,
 				EBF4A60520F8056400DAC145 /* Main.storyboard in Resources */,
