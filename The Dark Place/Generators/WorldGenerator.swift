@@ -65,7 +65,6 @@ class WorldGenerator {
                 let posX =  Float((wide / 2) + x) - Float(wide)
                 let posZ = Float((depth  / 2) + z) - Float(depth)
                 let posY = terrainData.getHeightAt(x: x, z: z)
-                
                 let object = getObjectNode(color)
                 if(object != nil){
                     object?.position.x = posX
@@ -77,6 +76,8 @@ class WorldGenerator {
         }
         return result
     }
+
+    
     private static func getTerrainData(terrainHeightMap: String, maxHeight: Float)->TerrainData{
         let bmp = NSImage.getBitmapFromResource(resourceName: terrainHeightMap)
         let width = bmp.pixelsWide
