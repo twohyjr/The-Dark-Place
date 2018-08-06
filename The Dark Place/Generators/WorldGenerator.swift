@@ -7,8 +7,8 @@ struct WorldData {
 }
 
 struct WorldItemValues {
-    static let Mushroom = float4(255,0,0,255)
-    static let LargeGreenOak = float4(0,255,0,255)
+    static let Mushroom = float4(1,0,0,1)
+    static let LargeGreenOak = float4(0,1,0,1)
 }
 
 class WorldGenerator {
@@ -38,14 +38,12 @@ class WorldGenerator {
     }
     
     private static func getObjectNode(_ color: float4)->Node?{
-        let fullColor = color * 255
         var result: Node! = nil
-        
-        if(fullColor == WorldItemValues.Mushroom){
+        if(color == WorldItemValues.Mushroom){
             result = RedMushroom()
         }
         
-        if(fullColor == WorldItemValues.LargeGreenOak){
+        if(color == WorldItemValues.LargeGreenOak){
             result = LargeGreenOak()
         }
         

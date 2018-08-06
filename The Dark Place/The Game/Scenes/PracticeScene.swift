@@ -28,7 +28,7 @@ class PracticeScene: Scene {
     }
     
     private func addTerrain(){
-        let worldData = WorldGenerator.GetWorldData(itemMapName: "ItemPlacementMap", terrainHeightMap: "")
+        let worldData = WorldGenerator.GetWorldData(itemMapName: "PracticeSceneItemMap", terrainHeightMap: "")
         for item in worldData.worldItems{
             addChild(item)
         }
