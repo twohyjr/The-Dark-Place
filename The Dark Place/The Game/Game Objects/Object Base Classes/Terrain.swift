@@ -12,12 +12,11 @@ class Terrain: Node {
     var diffuse: Float = 1
     var specular: Float = 0
     
-    init(gridSize: Int, cellsWide: Int, cellsBack: Int, textureType: TextureTypes){
+    init(gridSize: Int, terrainData: TerrainData, textureType: TextureTypes){
         super.init()
         self._texture = TextureLibrary.Texture(textureType)
         self._mesh = TerrainMeshGenerator.GenerateTerrainMesh(gridSize: gridSize,
-                                                             cellsWide: cellsWide,
-                                                             cellsBack: cellsBack)
+                                                              terrainData: terrainData)
         self.position.x -= Float(gridSize) / 2.0
         self.position.z -= Float(gridSize) / 2.0
     }

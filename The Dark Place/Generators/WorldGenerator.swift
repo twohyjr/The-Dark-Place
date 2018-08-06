@@ -74,7 +74,6 @@ class WorldGenerator {
         }
         return result
     }
-    
     private static func getTerrainData(terrainHeightMap: String, maxHeight: Float)->TerrainData{
         let bmp = NSImage.getBitmapFromResource(resourceName: terrainHeightMap)
         let width = bmp.pixelsWide

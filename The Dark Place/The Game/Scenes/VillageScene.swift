@@ -53,7 +53,8 @@ class VillageScene: Scene {
     }
     
     private func addTerrain(){
-        terrain = Terrain(gridSize: gridSize, cellsWide: 10, cellsBack: 10, textureType: .CartoonGrass)
+        let terrainData = TerrainData(width: 10, depth: 10)
+        terrain = Terrain(gridSize: gridSize, terrainData: terrainData, textureType: .CartoonGrass)
         terrain.diffuse = 1.5
         addChild(terrain)
     }

@@ -1,8 +1,10 @@
 import MetalKit
 
 class TerrainMeshGenerator{
-    public static func GenerateTerrainMesh(gridSize: Int, cellsWide: Int, cellsBack: Int)->CustomMesh{
+    public static func GenerateTerrainMesh(gridSize: Int, terrainData: TerrainData)->CustomMesh{
         let terrainMesh = CustomModelMesh()
+        let cellsWide = terrainData.width
+        let cellsBack = terrainData.depth
 
         //Gives you the location to place the next vertex
         let stepValueX: Float = Float(gridSize) / Float(cellsWide)

@@ -29,10 +29,16 @@ class PracticeScene: Scene {
     
     private func addTerrain(){
         let worldData = WorldGenerator.GetWorldData(itemMapName: "PracticeSceneItemMap", terrainHeightMap: "PracticeSceneHeightMap", maxTerrainHeight: 1.0)
-        for item in worldData.itemData.worldItems{
+        
+        let itemData = worldData.itemData
+        let terrainData = worldData.terrainData
+        
+        for item in (itemData?.worldItems)!{
             addChild(item)
         }
-        terrain = Terrain(gridSize: worldData.itemData.width, cellsWide: worldData.terrainData.width, cellsBack: worldData.terrainData.depth, textureType: .CartoonGrass)
+        terrain = Terrain(gridSize: worldData.itemData.width,
+                          terrainData: terrainData!,
+                          textureType: .CartoonGrass)
         terrain.diffuse = 1.5
         addChild(terrain)
     }
