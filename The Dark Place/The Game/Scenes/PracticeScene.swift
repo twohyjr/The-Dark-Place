@@ -4,7 +4,7 @@ class PracticeScene: Scene {
     
     var gridSize: Int = 15
     var terrain: Terrain!
-    var sunBackLeft = LampGameObject()
+    var light = LampGameObject()
 
     override func buildScene() {
         setCameras()
@@ -22,13 +22,12 @@ class PracticeScene: Scene {
     }
     
     private func addLights(){
-        sunBackLeft.position = float3(0, 100, 0)
-        sunBackLeft.brightness = 0.5
-        addChild(sunBackLeft)
+        light.position = float3(-1000, 0, 0)
+        addChild(light)
     }
     
     private func addTerrain(){
-        let worldData = WorldGenerator.GetWorldData(itemMapName: "PracticeSceneItemMap", terrainHeightMap: "PracticeSceneHeightMap", maxTerrainHeight: 10.0)
+        let worldData = WorldGenerator.GetWorldData(itemMapName: "PracticeSceneItemMap", terrainHeightMap: "PracticeSceneHeightMap", maxTerrainHeight: 10)
         
         let itemData = worldData.itemData
         let terrainData = worldData.terrainData
@@ -39,7 +38,7 @@ class PracticeScene: Scene {
         terrain = Terrain(gridSize: worldData.itemData.width,
                           terrainData: terrainData!,
                           textureType: .CartoonGrass)
-        terrain.diffuse = 1.5
+        terrain.diffuse = 2
         addChild(terrain)
     }
     
