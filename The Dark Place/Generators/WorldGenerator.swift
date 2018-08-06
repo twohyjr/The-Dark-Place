@@ -28,10 +28,10 @@ struct TerrainData{
         terrainHeights = Array(repeating: Array(repeating: 0, count: width + 1), count: depth + 1)
     }
     mutating public func addHeight(x: Int, z: Int, value: Float){
-        terrainHeights[x][z] = value
+        terrainHeights[z][x] = value
     }
     public func getHeightAt(x: Int, z: Int)->Float{
-        return terrainHeights[x][z]
+        return terrainHeights[z][x]
     }
 
 }
@@ -46,13 +46,13 @@ class WorldGenerator {
     public static func GetWorldData(itemMapName: String, terrainHeightMap: String, maxTerrainHeight: Float)->WorldData {
         var worldData = WorldData()
         
-        worldData.itemData = getWorldItems(itemMapName)
         worldData.terrainData = getTerrainData(terrainHeightMap: terrainHeightMap, maxHeight: maxTerrainHeight)
+        worldData.itemData = getWorldItems(itemMapName: itemMapName, terrainData: worldData.terrainData)
         
         return worldData
     }
     
-    private static func getWorldItems(_ itemMapName: String)->ItemData{
+    private static func getWorldItems(itemMapName: String, terrainData: TerrainData)->ItemData{
         var result = ItemData()
         let bmp = NSImage.getBitmapFromResource(resourceName: itemMapName)
         let wide = bmp.pixelsWide
@@ -64,10 +64,13 @@ class WorldGenerator {
                 let color = getColor(bmp: bmp, x: x, y: z)
                 let posX =  Float((wide / 2) + x) - Float(wide)
                 let posZ = Float((depth  / 2) + z) - Float(depth)
+                let posY = terrainData.getHeightAt(x: x, z: z)
+                
                 let object = getObjectNode(color)
                 if(object != nil){
                     object?.position.x = posX
                     object?.position.z = posZ
+                    object?.position.y = posY
                     result.worldItems.append(object!)
                 }
             }
@@ -83,9 +86,8 @@ class WorldGenerator {
             for x in 0..<width {
                 var pixel: Int = 0
                 bmp.getPixel(&pixel, atX: x, y: z)
-                var height: Float = Float(pixel)
-                height += Float(255)
-                height /= Float(255 / 2)
+                var height: Float = Float(pixel) //255 = white
+                height /= Float(255)
                 height *= maxHeight
                 result.addHeight(x: x, z: z, value: height)
             }

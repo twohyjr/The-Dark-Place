@@ -61,7 +61,7 @@ public class Debug_Camera: Camera {
     var yaw: Float = 0
     var roll: Float = 0
     
-    var speed: Float = 5
+    var speed: Float = 20
     var cameraType: CameraTypes = CameraTypes.Debug
     var zoom: Float = 45
     

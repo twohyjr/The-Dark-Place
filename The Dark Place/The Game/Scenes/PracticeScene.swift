@@ -22,13 +22,13 @@ class PracticeScene: Scene {
     }
     
     private func addLights(){
-        sunBackLeft.position = float3(-1000, 300, 1000)
-        sunBackLeft.brightness = 2
+        sunBackLeft.position = float3(0, 100, 0)
+        sunBackLeft.brightness = 0.5
         addChild(sunBackLeft)
     }
     
     private func addTerrain(){
-        let worldData = WorldGenerator.GetWorldData(itemMapName: "PracticeSceneItemMap", terrainHeightMap: "PracticeSceneHeightMap", maxTerrainHeight: 1.0)
+        let worldData = WorldGenerator.GetWorldData(itemMapName: "PracticeSceneItemMap", terrainHeightMap: "PracticeSceneHeightMap", maxTerrainHeight: 10.0)
         
         let itemData = worldData.itemData
         let terrainData = worldData.terrainData
