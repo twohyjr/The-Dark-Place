@@ -8,8 +8,8 @@ class TerrainMeshGenerator{
         let stepValueX: Float = Float(gridSize) / Float(cellsWide)
         let stepValueY: Float = Float(gridSize) / Float(cellsBack)
         
-        for row in 0..<cellsWide{
-            for column in 0..<cellsBack{
+        for column in 0..<cellsWide{
+            for row in 0..<cellsBack{
                 var origin = float2(Float(Float(column) / Float(cellsWide)) * Float(gridSize),
                                     Float(Float(row) / Float(cellsBack)) * Float(gridSize))
                 let vTopRight = float3(origin.x + stepValueX, 0, origin.y)

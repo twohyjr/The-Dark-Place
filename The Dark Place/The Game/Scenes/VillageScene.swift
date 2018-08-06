@@ -40,7 +40,7 @@ class VillageScene: Scene {
     
     private func addLights(){
         sunBackLeft.position = float3(-1000, 300, 1000)
-        sunBackLeft.brightness = 0.0001
+        sunBackLeft.brightness = 0.5
         addChild(sunBackLeft)
 //
 //        sunBackRight.position = float3(1000, 700, 1000)
