@@ -48,13 +48,6 @@ struct WorldItemValues {
     static let LargeGreenOak = float4(0,1,0,1)
 }
 
-class TerrainBuilder {
-    private var _terrainHeightMap: String = ""
-    private var _terrainMaxHeight: Float = 0.0
-    private var _terrainGridDimensions = int2(1)
-    private var _baseTextureType: TextureTypes! = nil
-}
-
 class WorldItemsGenerator {
     
     private var _itemPlacementMap: String = ""
@@ -80,16 +73,18 @@ class WorldItemsGenerator {
             let bmp = NSImage.getBitmapFromResource(resourceName: itemMapName)
             let wide = bmp.pixelsWide
             let depth = bmp.pixelsHigh
+            
             for z in 0..<depth{
                 for x in 0..<wide {
                     let color = getColor(bmp: bmp, x: x, y: z)
-                    let posX =  Float((wide / 2) + x) - Float(wide)
-                    let posZ = Float((depth  / 2) + z) - Float(depth)
-                    let posY = terrainData != nil ? terrainData?.getHeightAt(x: x - 1, z: z + 1) : 0
                     let object = getObjectNode(color)
+                    
+                    let posX: Float =  Float(x) - (9 / 2) - 0.25
+                    let posZ: Float = Float(z) - (9 / 2) + 0.25
+                    let posY = terrainData != nil ? terrainData?.getHeightAt(x: x, z: z) : 0
                     if(object != nil){
-                        object?.position.x = posX - 1
-                        object?.position.z = posZ + 1
+                        object?.position.x = posX
+                        object?.position.z = posZ
                         object?.position.y = posY!
                         result.worldItems.append(object!)
                     }
@@ -119,37 +114,56 @@ class WorldItemsGenerator {
         return result
     }
 }
-//    func generateScene()->WorldData {
-//        var worldData = WorldData()
-//
-//        worldData.terrainData = getTerrainData(terrainHeightMap: _terrainHeightMap, maxHeight: _terrainMaxHeight)
-//
-//        return worldData
-//    }
+
+class TerrainGenerator {
+    private var _terrainHeightMap: String = ""
+    private var _maxHeight: Float = 1.0
+    private var _cellsWide: Int = 1
+    private var _cellsDeep: Int = 1
     
-//    private func getTerrainData(terrainHeightMap: String, maxHeight: Float)->TerrainData{
-//        var result: TerrainData!
-//        if terrainHeightMap != "" {
-//            let bmp = NSImage.getBitmapFromResource(resourceName: terrainHeightMap)
-//            let width = bmp.pixelsWide
-//            let depth = bmp.pixelsHigh
-//            result = TerrainData(width: width, depth: depth)
-//            for z in 0..<depth {
-//                for x in 0..<width {
-//                    var pixel: Int = 0
-//                    bmp.getPixel(&pixel, atX: x, y: z)
-//                    var height: Float = Float(pixel) //255 = white
-//                    height /= Float(255)
-//                    height *= maxHeight
-//                    result.addHeight(x: x, z: z, value: height)
-//                }
-//            }
-//        }else{
-//            result = TerrainData(width: Int(_terrainGridDimensions.x), depth: Int(_terrainGridDimensions.y))
-//        }
-//
-//        return result
-//    }
+    public func withHeightMap(_ heightMap: String)->TerrainGenerator{
+        self._terrainHeightMap = heightMap
+        return self
+    }
+    
+    public func withMaxTerrainHeight(_ maxHeight: Float)->TerrainGenerator{
+        self._maxHeight = maxHeight
+        return self
+    }
+    
+    public func withTerrainSize(_ cellsWide: Int, _ cellsDeep: Int)->TerrainGenerator{
+        self._cellsWide = cellsWide
+        self._cellsDeep = cellsDeep
+        return self
+    }
+    
+    public func generateTerrainData()->TerrainData{
+        var result: TerrainData!
+        if _terrainHeightMap != "" {
+            let bmp = NSImage.getBitmapFromResource(resourceName: _terrainHeightMap)
+            let width = bmp.pixelsWide - 1
+            let depth = bmp.pixelsHigh - 1
+            result = TerrainData(width: width, depth: depth)
+            for z in 0..<depth + 1 {
+                for x in 0..<width + 1 {
+                    var pixel: Int = 0
+                    bmp.getPixel(&pixel, atX: x, y: z)
+                    var height: Float = Float(pixel) //255 = white
+                    height /= Float(255)
+                    height *= _maxHeight
+                    result.addHeight(x: x, z: z, value: height)
+                }
+            }
+        }else{
+            result = TerrainData(width: _cellsWide, depth: _cellsDeep)
+        }
+        return result
+    }
+}
+
+
+    
+
 
 
 

@@ -109,7 +109,7 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
         //Diffuse
         float nDot1 = dot(unitNormal, unitLightVector);
         float brightness = max(nDot1, 0.1);
-        float3 diffuse = (brightness * lightData.color * material.diffuse) / attenuationFactor;
+        float3 diffuse = (brightness * material.diffuse * lightData.color) / attenuationFactor;
         totalDiffuse = totalDiffuse + diffuse * lightData.brightness;
         
         //Specular

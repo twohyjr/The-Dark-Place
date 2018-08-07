@@ -14,9 +14,19 @@ class PracticeScene: Scene {
     }
     
     private func createScene(){
+
+        let terrainGenerator = TerrainGenerator()
+            .withHeightMap("VillageSceneTerrainMap")
+        
+        let terrainData = terrainGenerator.generateTerrainData()
+        let terrain = Terrain(gridSize: terrainData.width, terrainData: terrainData, textureType: .CartoonGrass)
+        addChild(terrain)
+        
         let itemGenerator = WorldItemsGenerator()
             .withItemPlacementMap("VillageSceneItemMap")
+            .withTerrainData(terrainData)
         addWorldItems(itemGenerator)
+        
     }
     
     private func setCameras(){
@@ -28,7 +38,6 @@ class PracticeScene: Scene {
     
     private func addLights(){
         light.position = float3(0, 100, 200)
-        light.brightness = 2.0
         addChild(light)
     }
 
