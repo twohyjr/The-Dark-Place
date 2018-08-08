@@ -19,12 +19,13 @@
 		EB1B985F2115273E0076BBB8 /* Campfire_01.obj in Resources */ = {isa = PBXBuildFile; fileRef = EB1B985D2115273D0076BBB8 /* Campfire_01.obj */; };
 		EB1B9862211527A80076BBB8 /* Tent_01.obj in Resources */ = {isa = PBXBuildFile; fileRef = EB1B9860211527A70076BBB8 /* Tent_01.obj */; };
 		EB1B9863211527A80076BBB8 /* Tent_01.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EB1B9861211527A70076BBB8 /* Tent_01.mtl */; };
-		EB1B9869211566C00076BBB8 /* WorldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B9868211566C00076BBB8 /* WorldGenerator.swift */; };
+		EB1B9869211566C00076BBB8 /* TerrainData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B9868211566C00076BBB8 /* TerrainData.swift */; };
 		EB1B987A2116480F0076BBB8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B98792116480F0076BBB8 /* Extensions.swift */; };
 		EB1B987E21180AB60076BBB8 /* PracticeSceneHeightMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B987D21180AB60076BBB8 /* PracticeSceneHeightMap.png */; };
 		EB1B988221180FFB0076BBB8 /* PracticeSceneItemMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B988121180FFB0076BBB8 /* PracticeSceneItemMap.png */; };
 		EB1B98882118C6AA0076BBB8 /* VillageSceneTerrainMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B98872118C6AA0076BBB8 /* VillageSceneTerrainMap.png */; };
 		EB1B988A2118C6BF0076BBB8 /* VillageSceneItemMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B98892118C6BF0076BBB8 /* VillageSceneItemMap.png */; };
+		EB1B988C211AADD10076BBB8 /* WorldItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B988B211AADD10076BBB8 /* WorldItemData.swift */; };
 		EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1820F8403800E61EFA /* SceneManager.swift */; };
 		EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1A20F840C000E61EFA /* GameManager.swift */; };
 		EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1D20F8431100E61EFA /* BasicShaders.metal */; };
@@ -103,12 +104,13 @@
 		EB1B985D2115273D0076BBB8 /* Campfire_01.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Campfire_01.obj; sourceTree = "<group>"; };
 		EB1B9860211527A70076BBB8 /* Tent_01.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tent_01.obj; sourceTree = "<group>"; };
 		EB1B9861211527A70076BBB8 /* Tent_01.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tent_01.mtl; sourceTree = "<group>"; };
-		EB1B9868211566C00076BBB8 /* WorldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldGenerator.swift; sourceTree = "<group>"; };
+		EB1B9868211566C00076BBB8 /* TerrainData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainData.swift; sourceTree = "<group>"; };
 		EB1B98792116480F0076BBB8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EB1B987D21180AB60076BBB8 /* PracticeSceneHeightMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PracticeSceneHeightMap.png; sourceTree = "<group>"; };
 		EB1B988121180FFB0076BBB8 /* PracticeSceneItemMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PracticeSceneItemMap.png; path = ../../../../../../Desktop/PracticeSceneItemMap.png; sourceTree = "<group>"; };
 		EB1B98872118C6AA0076BBB8 /* VillageSceneTerrainMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VillageSceneTerrainMap.png; sourceTree = "<group>"; };
 		EB1B98892118C6BF0076BBB8 /* VillageSceneItemMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VillageSceneItemMap.png; sourceTree = "<group>"; };
+		EB1B988B211AADD10076BBB8 /* WorldItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldItemData.swift; sourceTree = "<group>"; };
 		EB614D1820F8403800E61EFA /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		EB614D1A20F840C000E61EFA /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		EB614D1D20F8431100E61EFA /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
@@ -252,7 +254,6 @@
 			isa = PBXGroup;
 			children = (
 				EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */,
-				EB1B9868211566C00076BBB8 /* WorldGenerator.swift */,
 			);
 			path = Generators;
 			sourceTree = "<group>";
@@ -423,6 +424,8 @@
 				EBF4A62E20F8175500DAC145 /* Size.swift */,
 				EBF4A63E20F83C0700DAC145 /* Types.swift */,
 				EB1B98792116480F0076BBB8 /* Extensions.swift */,
+				EB1B9868211566C00076BBB8 /* TerrainData.swift */,
+				EB1B988B211AADD10076BBB8 /* WorldItemData.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				EBF4A64120F83C7B00DAC145 /* CustomMeshLibrary.swift in Sources */,
 				EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */,
 				EBF4A62F20F8175500DAC145 /* Size.swift in Sources */,
+				EB1B988C211AADD10076BBB8 /* WorldItemData.swift in Sources */,
 				EBF1458020FC48B900B89FE9 /* CustomMesh.swift in Sources */,
 				EB1B9851211260E40076BBB8 /* Lightable.swift in Sources */,
 				EBF1457C20FC48A700B89FE9 /* Cube_CustomMesh.swift in Sources */,
@@ -643,7 +647,7 @@
 				EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */,
 				EB614D2A20F8515900E61EFA /* Mouse.swift in Sources */,
 				EB614D2C20F8516100E61EFA /* KeyCodes.swift in Sources */,
-				EB1B9869211566C00076BBB8 /* WorldGenerator.swift in Sources */,
+				EB1B9869211566C00076BBB8 /* TerrainData.swift in Sources */,
 				EB1B987A2116480F0076BBB8 /* Extensions.swift in Sources */,
 				EBF145AF20FCD14E00B89FE9 /* LargeGreenOak.swift in Sources */,
 				EBF4A64720F83DF100DAC145 /* VertexDescriptorLibrary.swift in Sources */,

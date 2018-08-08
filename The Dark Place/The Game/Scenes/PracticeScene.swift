@@ -25,6 +25,7 @@ class PracticeScene: Scene {
         let itemGenerator = WorldItemsGenerator()
             .withItemPlacementMap("VillageSceneItemMap")
             .withTerrainData(terrainData)
+        
         addWorldItems(itemGenerator)
         
     }
