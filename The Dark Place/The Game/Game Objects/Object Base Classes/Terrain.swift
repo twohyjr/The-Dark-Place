@@ -37,6 +37,7 @@ extension Terrain: Renderable {
         renderCommandEncoder.pushDebugGroup("Terrain Render Call")
         
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.VillageTerrain))
+        renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
         renderCommandEncoder.setVertexBuffer(_mesh.vertexBuffer, offset: 0, index: 0)
         renderCommandEncoder.setVertexBytes(&_modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setFragmentSamplerState(SamplerStateLibrary.SamplerState(.Basic), index: 0)

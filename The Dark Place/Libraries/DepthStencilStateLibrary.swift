@@ -45,6 +45,7 @@ class LessNoDepthStencilState: DepthStencilState {
     init() {
         let depthStencilDescriptor = MTLDepthStencilDescriptor()
         depthStencilDescriptor.isDepthWriteEnabled = true
+        
         depthStencilDescriptor.depthCompareFunction = .less
         depthStencilState = Engine.Device.makeDepthStencilState(descriptor: depthStencilDescriptor)!
     }

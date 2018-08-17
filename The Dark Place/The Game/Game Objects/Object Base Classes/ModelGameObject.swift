@@ -33,8 +33,8 @@ extension ModelGameObject: Renderable {
 
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
         renderCommandEncoder.setTriangleFillMode(fillMode)
-        renderCommandEncoder.setVertexBytes(&_modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
+        renderCommandEncoder.setVertexBytes(&_modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setFragmentBytes(lights,
                                               length: LightData.stride(lights.count),
                                               index: 2)
