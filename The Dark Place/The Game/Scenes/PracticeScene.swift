@@ -16,14 +16,15 @@ class PracticeScene: Scene {
     private func createScene(){
 
         let terrainGenerator = TerrainGenerator()
-            .withHeightMap("VillageSceneTerrainMap")
+            .withHeightMap("PracticeSceneHeightMap")
+            .withMaxTerrainHeight(5)
         
         let terrainData = terrainGenerator.generateTerrainData()
         let terrain = Terrain(gridSize: terrainData.width, terrainData: terrainData, textureType: .CartoonGrass)
         addChild(terrain)
         
         let itemGenerator = WorldItemsGenerator()
-            .withItemPlacementMap("VillageSceneItemMap")
+            .withItemPlacementMap("PracticeSceneItemMap")
             .withTerrainData(terrainData)
         
         addWorldItems(itemGenerator)

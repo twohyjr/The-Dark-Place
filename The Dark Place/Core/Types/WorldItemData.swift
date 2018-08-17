@@ -35,9 +35,11 @@ class WorldItemsGenerator {
                 for x in 0..<wide {
                     let color = getColor(bmp: bmp, x: x, y: z)
                     let object = getObjectNode(color)
+                    let width: Float = Float((terrainData?.width)!)
+                    let depth: Float = Float((terrainData?.depth)!) 
                     
-                    let posX: Float =  Float(x) - (9 / 2) - 0.25
-                    let posZ: Float = Float(z) - (9 / 2) + 0.25
+                    let posX: Float =  Float(x) - width / Float(2) - 0.25
+                    let posZ: Float = Float(z) - depth / Float(2) + 0.25
                     let posY = terrainData != nil ? terrainData?.getHeightAt(x: x, z: z) : 0
                     if(object != nil){
                         object?.position.x = posX
