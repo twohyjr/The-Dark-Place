@@ -1,8 +1,6 @@
 import MetalKit
 
 class GameObject: Node {
-    
-    var renderPipelineState: MTLRenderPipelineState!
     var mesh: CustomMesh!
     var modelConstants = ModelConstants()
     
@@ -16,12 +14,10 @@ class GameObject: Node {
     init(meshType: CustomMeshTypes) {
         super.init()
         mesh = MeshLibrary.Mesh(meshType)
-        setRenderPipelineState()
     }
     
     override init(){
         super.init()
-        setRenderPipelineState()
     }
     
     public func lineModeOn(_ isOn: Bool){
@@ -40,29 +36,25 @@ class GameObject: Node {
         material.specular = specularity
         material.shininess = shininess
     }
-    
-    internal func setRenderPipelineState(){
-        renderPipelineState = RenderPipelineStateLibrary.PipelineState(.Basic)
-    }
 }
 
 extension GameObject: Renderable{
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [LightData]) {
         renderCommandEncoder.pushDebugGroup("Game Object Render Call")
-        renderCommandEncoder.setRenderPipelineState(renderPipelineState)
-        renderCommandEncoder.setTriangleFillMode(fillMode)
-        renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
-        renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
-        renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
-        renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer, offset: 0, index: 0)
         
+        renderCommandEncoder.setTriangleFillMode(fillMode)
+        renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
+        renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
+        renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer, offset: 0, index: 0)
+        renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
+        
+        renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
         renderCommandEncoder.setFragmentBytes(lights,
                                               length: LightData.stride(lights.count),
                                               index: 2)
         var lightCount = lights.count
         renderCommandEncoder.setFragmentBytes(&lightCount, length: Int.stride, index: 3)
 
-        
         mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)
         
         renderCommandEncoder.popDebugGroup()
