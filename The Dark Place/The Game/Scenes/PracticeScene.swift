@@ -14,21 +14,23 @@ class PracticeScene: Scene {
     
     private func setCameras(){
         let camera = Drag_Camera()
-        camera.position = float3(1, 5.499996, 9.08331)
-        camera.pitch = 0.5
+        camera.position = float3(0, 0, 4)
         addCamera(camera: camera)
     }
     
+    let pyramid = QuadPyramid()
     private func createScene(){
-        let tentWithPoles = TentWithPoles()
-        tentWithPoles.rotation = float3(0.0, 3.0, 0.0)
-        tentWithPoles.position.x = 3
-        addChild(tentWithPoles)
+        addChild(pyramid)
     }
 
     private func addLights(){
-        light.position = float3(10, 10, 10)
+        light.position = float3(0)
         addChild(light)
+    }
+    
+    override func update(deltaTime: Float) {
+        super.update(deltaTime: deltaTime)
+//        self.pyramid.rotation.x -= deltaTime
     }
 
 }

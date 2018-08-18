@@ -105,11 +105,11 @@ public class Drag_Camera: Camera {
         }
         
         if(Keyboard.IsKeyPressed(.a)){
-            self.position.x += deltaTime * movementSpeed
+            self.position.x -= deltaTime * movementSpeed
         }
         
         if(Keyboard.IsKeyPressed(.d)){
-            self.position.x -= deltaTime * movementSpeed
+            self.position.x += deltaTime * movementSpeed
         }
     }
     

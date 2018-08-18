@@ -133,5 +133,11 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
 
 }
 
+vertex BoundingRasterizerData bounding_box_vertex(const VertexIn vIn [[stage_in]]){
+    BoundingRasterizerData brd;
+    
+    return brd;
+}
+
 
 

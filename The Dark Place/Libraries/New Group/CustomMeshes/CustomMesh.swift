@@ -1,5 +1,16 @@
 import MetalKit
 
+protocol CustomMesh {
+    var vertexBuffer: MTLBuffer! { get }
+    var indexBuffer: MTLBuffer! { get }
+    var vertexCount: Int! { get }
+    var indexCount: Int! { get }
+    
+    var primitiveType: MTLPrimitiveType! { get }
+    func update(modelConstants: ModelConstants)
+    func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder)
+}
+
 class CustomModelMesh: CustomMesh {
     var vertices: [Vertex] = []
     var indices: [UInt16] = []
@@ -7,6 +18,7 @@ class CustomModelMesh: CustomMesh {
     var indexBuffer: MTLBuffer!
     var primitiveType: MTLPrimitiveType!
     var indexType: MTLIndexType!
+    var boundingBox: BoundingBox = BoundingBox()
     var vertexCount: Int! {
         return vertices.count
     }
@@ -15,30 +27,24 @@ class CustomModelMesh: CustomMesh {
     }
     private var minPositions = float3(0)
     private var maxPositions = float3(0)
-    init() {
+    init(isBoundingBox: Bool = false) {
         setPrimitiveType(MTLPrimitiveType.triangle)
         setIndexType()
         createVertices()
         createIndices()
         createBuffers()
+        
+        if(!isBoundingBox){
+            boundingBox.generateBoundingBoxMesh()            
+        }
     }
     
     internal func addVertex(position: float3,
                             color: float4 = float4(0.25, 0.25, 0.25, 1.0),
                             normal: float3 = float3(0,1,0),
                             textureCoordinate: float2 = float2(0,0)){
-        updateMinsAndMaxes(position)
+        boundingBox.updateMinsAndMaxes(position)
         vertices.append(Vertex(position: position, color: color, normal: normal, textureCoordinate: textureCoordinate))
-    }
-    
-    func updateMinsAndMaxes(_ position: float3){
-        if(position.x > self.maxPositions.x){ maxPositions.x = position.x }
-        if(position.y > self.maxPositions.y){ maxPositions.y = position.y }
-        if(position.z > self.maxPositions.z){ maxPositions.z = position.z }
-        
-        if(position.x < self.minPositions.x){ self.minPositions.x = position.x }
-        if(position.y < self.minPositions.y){ self.minPositions.y = position.y }
-        if(position.z < self.minPositions.z){ self.minPositions.z = position.z }
     }
     
     func createVertices(){ }
@@ -63,7 +69,13 @@ class CustomModelMesh: CustomMesh {
         }
     }
     
+    func update(modelConstants: ModelConstants) {
+        boundingBox.update(modelConstants: modelConstants)
+    }
+    
     func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder){
+        boundingBox.draw(renderCommandEncoder: renderCommandEncoder)
+        
         if(indexCount == 0){
             renderCommandEncoder.drawPrimitives(type: primitiveType, vertexStart: 0, vertexCount: vertexCount)
         }else{
