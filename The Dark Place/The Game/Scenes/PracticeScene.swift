@@ -13,10 +13,10 @@ class PracticeScene: Scene {
     }
     
     private func setCameras(){
-        let debugCamera = Debug_Camera()
-        debugCamera.position = float3(1, 5.499996, 9.08331)
-        debugCamera.pitch = 0.5
-        addCamera(camera: debugCamera)
+        let camera = Drag_Camera()
+        camera.position = float3(1, 5.499996, 9.08331)
+        camera.pitch = 0.5
+        addCamera(camera: camera)
     }
     
     private func createScene(){
@@ -25,9 +25,7 @@ class PracticeScene: Scene {
         tentWithPoles.position.x = 3
         addChild(tentWithPoles)
     }
-    
 
-    
     private func addLights(){
         light.position = float3(10, 10, 10)
         addChild(light)
