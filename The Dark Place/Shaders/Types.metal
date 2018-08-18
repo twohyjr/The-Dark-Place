@@ -55,8 +55,3 @@ struct RasterizerData {
     float visibility;
 };
 
-struct BoundingRasterizerData {
-    float4 position [[ position ]];
-    float4 color;
-};
-

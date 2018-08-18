@@ -8,8 +8,8 @@ class GameObject: Node {
     
     internal var material = Material()
     var color: float3 = float3(1)
-    var specularity: float3 = float3(0.33)
-    var shininess: Float = 1
+    var specularity: float3 = float3(0.1)
+    var shininess: Float = 0.5
     
     private var fillMode: MTLTriangleFillMode = .fill
     
@@ -39,8 +39,6 @@ class GameObject: Node {
         material.diffuse = color
         material.specular = specularity
         material.shininess = shininess
-        
-        mesh.update(modelConstants: modelConstants)
     }
     
     internal func setRenderPipelineState(){
@@ -64,6 +62,7 @@ extension GameObject: Renderable{
         var lightCount = lights.count
         renderCommandEncoder.setFragmentBytes(&lightCount, length: Int.stride, index: 3)
 
+        
         mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)
         
         renderCommandEncoder.popDebugGroup()
