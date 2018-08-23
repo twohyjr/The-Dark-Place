@@ -33,7 +33,9 @@ class ModelLoader {
         }catch let error as NSError{
             print("ERROR::CREATING::MESH_FROM_WAVEFRONT::--\(modelName)--::\(error)")
         }
+
         
+
         return meshes
     }
     

@@ -53,7 +53,7 @@ extension ModelGameObject: Renderable {
             }
             let vertexBuffer: MTKMeshBuffer = mtkMesh.vertexBuffers.first!
             renderCommandEncoder.setVertexBuffer(vertexBuffer.buffer, offset: 0, index: 0)
-
+            
             for j in 0..<mtkMesh.submeshes.count{
                 let mtkSubmesh = mtkMesh.submeshes[j]
                 let mdlSubmeshes = mdlMesh.submeshes as? [MDLSubmesh]

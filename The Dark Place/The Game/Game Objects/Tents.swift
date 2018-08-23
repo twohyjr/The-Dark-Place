@@ -13,6 +13,7 @@ class TentWithPoles: ModelGameObject {
     
     init() {
         super.init(.TentWithPoles)
+        addBoundingRegion(BoundingBoxObject())
     }
     
 }

@@ -71,10 +71,10 @@ public class Drag_Camera: Camera {
     private var _projectionMatrix = matrix_identity_float4x4
     var projectionMatrix: matrix_float4x4 {
         if(View.ShouldUpdateViewValues){
-            _projectionMatrix = matrix_float4x4.init(perspectiveDegreesFov: zoom,
-                                                     aspectRatio: View.AspectRatio,
-                                                     nearZ: 0.1,
-                                                     farZ: 1000)
+            _projectionMatrix = matrix_float4x4.perspective(degreesFov: zoom,
+                                                            aspectRatio: View.AspectRatio,
+                                                            near: 0.1,
+                                                            far: 1000)
         }
         return _projectionMatrix
     }
@@ -129,10 +129,10 @@ public class Debug_Camera: Camera {
     private var _projectionMatrix = matrix_identity_float4x4
     var projectionMatrix: matrix_float4x4 {
         if(View.ShouldUpdateViewValues){
-            _projectionMatrix = matrix_float4x4.init(perspectiveDegreesFov: zoom,
-                                                     aspectRatio: View.AspectRatio,
-                                                     nearZ: 0.1,
-                                                     farZ: 1000)
+            _projectionMatrix = matrix_float4x4.perspective(degreesFov: zoom,
+                                                            aspectRatio: View.AspectRatio,
+                                                            near: 0.1,
+                                                            far: 1000)
         }
         return _projectionMatrix
     }

@@ -47,22 +47,25 @@ extension matrix_float4x4{
         
     }
     
-    init(perspectiveDegreesFov degreesFov: Float, aspectRatio: Float, nearZ: Float, farZ: Float){
+    //https://gamedev.stackexchange.com/questions/120338/what-does-a-perspective-projection-matrix-look-like-in-opengl
+    static func perspective(degreesFov: Float, aspectRatio: Float, near: Float, far: Float)->matrix_float4x4{
         let fov = toRadians(degreesFov)
         
-        let y = 1 / tan(fov * 0.5)
-        let x = y / aspectRatio
-        let z1 = farZ / (nearZ - farZ)
-        let w = (z1 * nearZ)
+        let t: Float = tan(fov / 2)
         
-        self.init()
-        
-        columns = (
+        let x: Float = 1 / (aspectRatio * t)
+        let y: Float = 1 / t
+        let z: Float = -((far + near) / (far - near))
+        let w: Float = -((2 * far * near) / (far - near))
+
+        var result = matrix_identity_float4x4
+        result.columns = (
             float4(x,  0,  0,   0),
             float4(0,  y,  0,   0),
-            float4(0,  0, z1,  -1),
+            float4(0,  0,  z,  -1),
             float4(0,  0,  w,   0)
         )
+        return result
     }
     
     mutating func translate(direction: float3){
@@ -167,3 +170,21 @@ public extension Float {
         return Float.random * (max - min) + min
     }
 }
+
+//mat4 LookAt(vec3 eye, vec3 at, vec3 up)
+//{
+//    vec3 zaxis = normalize(eye - at);
+//    vec3 xaxis = normalize(cross(zaxis, up));
+//    vec3 yaxis = cross(xaxis, zaxis);
+//
+//    negate(zaxis);
+//    
+//    mat4 viewMatrix = {
+//        vec4(xaxis.x, xaxis.y, xaxis.z, -dot(xaxis, eye)),
+//        vec4(yaxis.x, yaxis.y, yaxis.z, -dot(yaxis, eye)),
+//        vec4(zaxis.x, zaxis.y, zaxis.z, -dot(zaxis, eye)),
+//        vec4(0, 0, 0, 1)
+//    };
+//
+//    return viewMatrix;
+//}

@@ -29,6 +29,15 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
     return rd;
 }
 
+vertex RasterizerData bounding_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
+                                             constant SceneConstants &sceneConstants [[ buffer(1) ]],
+                                             constant ModelConstants &modelConstants [[ buffer(2) ]]){
+    
+    RasterizerData rd;
+    
+    return rd;
+}
+
 //------- FRAGMENT SHADERS ------------
 fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                      constant Material &material [[ buffer(1) ]],
@@ -131,6 +140,12 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
     
     return half4(color.r, color.g, color.b, 1);
 
+}
+
+fragment half4 bounding_fragment_shader(const RasterizerData rd [[ stage_in ]]){
+    float4 color = float4(1,0,0,1);
+    
+    return half4(color.r, color.g, color.b, color.a);
 }
 
 

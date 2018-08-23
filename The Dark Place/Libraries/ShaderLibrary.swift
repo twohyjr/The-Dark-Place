@@ -2,12 +2,13 @@ import MetalKit
 
 enum VertexShaderTypes{
     case Basic
-    case LitBasic
+    case BoundingRegion
 }
 
 enum FragmentShaderTypes {
     case Basic
     case VillageTerrain
+    case BoundingRegion
 }
 
 class ShaderLibrary {
@@ -24,9 +25,11 @@ class ShaderLibrary {
     
     public static func createDefaultShaders(){
         addVertexShader(.Basic, Shader(functionName: "basic_vertex_shader", label: "Basic Vertex Shader"))
+        addVertexShader(.BoundingRegion, Shader(functionName: "bounding_vertex_shader", label: "Bounding Vertex Shader"))
         
         addFragmentShader(.Basic, Shader(functionName: "basic_fragment_shader", label: "Basic Fragment Shader"))
         addFragmentShader(.VillageTerrain, Shader(functionName: "village_terrain_fragment_shader", label: "Village Terrain Fragment Shader"))
+        addFragmentShader(.BoundingRegion, Shader(functionName: "bounding_fragment_shader", label: "Bounding Fragment Shader"))
     }
     
     private static func addVertexShader(_ vertexShaderType: VertexShaderTypes, _ shader: Shader){
