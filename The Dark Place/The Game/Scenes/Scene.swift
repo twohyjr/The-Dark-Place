@@ -8,7 +8,6 @@ class Scene: Node {
     
     var sceneConstants = SceneConstants()
     private var cameraManager = CameraManager()
-
     private var lightDatas: [LightData] {
         get{ return LightManager.LightData }
         set{ }  // Do nothing here.  Need to be able to pass a non read only property to the render command encoder
@@ -41,10 +40,13 @@ class Scene: Node {
     }
     
     func setSceneConstants(){
-        sceneConstants.viewMatrix = cameraManager.CurrentCamera.viewMatrix
-        sceneConstants.projectionMatrix = cameraManager.CurrentCamera.projectionMatrix
-        sceneConstants.inverseViewMatrix = cameraManager.CurrentCamera.viewMatrix.inverse
-        sceneConstants.eyePosition = cameraManager.CurrentCamera.position
+        if let camera = cameraManager.CurrentCamera {
+            sceneConstants.viewMatrix = camera.viewMatrix
+            sceneConstants.projectionMatrix = camera.projectionMatrix
+            sceneConstants.inverseViewMatrix = camera.viewMatrix.inverse
+            sceneConstants.eyePosition = camera.position
+        }
+        
         sceneConstants.fog.density = fog.density
         sceneConstants.fog.gradient = fog.gradient
     }
@@ -57,9 +59,18 @@ class Scene: Node {
     }
     
     override func update(deltaTime: Float) {
+        generateDefaultItemsIfNessesary()
+        
         setSceneConstants()
         
         super.update(deltaTime: deltaTime)
+    }
+    
+    private func generateDefaultItemsIfNessesary(){
+        if(lightDatas.count == 0){
+            let light = LampGameObject()
+            addChild(light)
+        }
     }
     
     func render(renderCommandEncoder: MTLRenderCommandEncoder) {
