@@ -5,9 +5,13 @@ class GameObject: Node {
     var modelConstants = ModelConstants()
     
     internal var material = Material()
-    var color: float3 = float3(1)
-    var specularity: float3 = float3(0.1)
+    private var _color: float3 = float3(1)
+    
+    
+    
+    var specularity = float3(0.1)
     var shininess: Float = 0.5
+    var diffuse = float3(1)
     
     private var fillMode: MTLTriangleFillMode = .fill
     
@@ -18,6 +22,14 @@ class GameObject: Node {
     
     override init(){
         super.init()
+    }
+    
+    func setColor(_ value: float4){
+        self.material.color = value
+    }
+    
+    func getColor()->float4{
+        return self.material.color
     }
     
     public func lineModeOn(_ isOn: Bool){
@@ -32,7 +44,8 @@ class GameObject: Node {
     private func updateModelConstants(){
         modelConstants.modelMatrix = self.modelMatrix
         modelConstants.normalMatrix = self.modelMatrix.upperLeftMatrix
-        material.diffuse = color
+        material.color = getColor()
+        material.diffuse = diffuse
         material.specular = specularity
         material.shininess = shininess
     }

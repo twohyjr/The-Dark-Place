@@ -171,6 +171,12 @@ public extension Float {
     }
 }
 
+extension float4 {
+    var xyz: float3 {
+        return float3(self.x , self.y, self.z)
+    }
+}
+
 //mat4 LookAt(vec3 eye, vec3 at, vec3 up)
 //{
 //    vec3 zaxis = normalize(eye - at);

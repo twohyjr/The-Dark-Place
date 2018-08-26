@@ -63,11 +63,13 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
         float3 ambient = (lightData.color * material.ambient) / attenuationFactor;
         totalAmbient += ambient * lightData.brightness;
         
+        
         //Diffuse
         float nDot1 = dot(unitNormal, unitLightVector);
         float brightness = max(nDot1, 0.1);
-        float3 diffuse = (brightness * lightData.color * material.diffuse) / attenuationFactor;
+        float3 diffuse = (brightness * material.diffuse * lightData.color) / attenuationFactor;
         totalDiffuse = totalDiffuse + diffuse * lightData.brightness;
+        
         
         //Specular
         float3 unitVectorToCamera = normalize(rd.toCameraVector);

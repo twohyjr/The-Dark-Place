@@ -34,7 +34,7 @@ class LampGameObject: GameObject {
     }
     
     func getAttenuation()->float3{
-        return _attenuation 
+        return _attenuation
     }
     
     func hideGameModel(){
@@ -46,11 +46,11 @@ class LampGameObject: GameObject {
     }
     
     override func update(deltaTime: Float) {
-        LightManager.GetLight(lightName).position = self.getPosition()
-        LightManager.GetLight(lightName).brightness = self.brightness
-        LightManager.GetLight(lightName).color = self.color
-        LightManager.GetLight(lightName).attenuation = self.getAttenuation()
-        self.material.color = float4(self.color.x, self.color.y, self.color.z, 1)
+        LightManager.GetLight(lightName).setPosition(self.getPosition())
+        LightManager.GetLight(lightName).setBrightness(self.brightness)
+        LightManager.GetLight(lightName).setColor(self.getColor().xyz)
+        LightManager.GetLight(lightName).setAttenuation(self.getAttenuation())
+        self.material.color = self.getColor()
         
         super.update(deltaTime: deltaTime)
     }
