@@ -34,9 +34,6 @@ class BasicSamplerState: SamplerState {
         samplerDescriptor.compareFunction = .less
         samplerDescriptor.minFilter = .linear
         samplerDescriptor.magFilter = .linear
-        samplerDescriptor.rAddressMode = .clampToZero
-        samplerDescriptor.sAddressMode = .clampToZero
-        samplerDescriptor.tAddressMode = .clampToZero
         samplerState = Engine.Device.makeSamplerState(descriptor: samplerDescriptor)!
     }
 }
