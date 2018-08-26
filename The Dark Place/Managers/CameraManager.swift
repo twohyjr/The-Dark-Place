@@ -138,29 +138,29 @@ public class Debug_Camera: Camera {
     }
     
     func update(deltaTime: Float) {
-//        if(Keyboard.IsKeyPressed(.upArrow)){
-//            self.position.z -= deltaTime * speed
-//        }
-//        
-//        if(Keyboard.IsKeyPressed(.downArrow)){
-//            self.position.z += deltaTime * speed
-//        }
-//        
-//        if(Keyboard.IsKeyPressed(.rightArrow)){
-//            self.position.x += deltaTime * speed
-//        }
-//        
-//        if(Keyboard.IsKeyPressed(.leftArrow)){
-//            self.position.x -= deltaTime * speed
-//        }
-//        
-//        if(Keyboard.IsKeyPressed(.s)){
-//            self.position.y -= deltaTime * speed
-//        }
-//        
-//        if(Keyboard.IsKeyPressed(.w)){
-//            self.position.y += deltaTime * speed
-//        }
+        if(Keyboard.IsKeyPressed(.upArrow)){
+            self.position.z -= deltaTime * speed
+        }
+        
+        if(Keyboard.IsKeyPressed(.downArrow)){
+            self.position.z += deltaTime * speed
+        }
+        
+        if(Keyboard.IsKeyPressed(.rightArrow)){
+            self.position.x += deltaTime * speed
+        }
+        
+        if(Keyboard.IsKeyPressed(.leftArrow)){
+            self.position.x -= deltaTime * speed
+        }
+        
+        if(Keyboard.IsKeyPressed(.s)){
+            self.position.y -= deltaTime * speed
+        }
+        
+        if(Keyboard.IsKeyPressed(.w)){
+            self.position.y += deltaTime * speed
+        }
         
         if(Mouse.IsMouseButtonPressed(button: .left)){
             self.pitch += Mouse.GetDY() * 0.002
