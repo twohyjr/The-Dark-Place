@@ -17,8 +17,9 @@ class Terrain: Node {
         self._texture = TextureLibrary.Texture(textureType)
         self._mesh = TerrainMeshGenerator.GenerateTerrainMesh(gridSize: gridSize,
                                                               terrainData: terrainData)
-        self.position.x -= Float(gridSize) / 2.0
-        self.position.z -= Float(gridSize) / 2.0
+        
+        self.moveX(-(Float(gridSize) / 2.0))
+        self.moveZ(-(Float(gridSize) / 2.0))
     }
     
     override func update(deltaTime: Float) {

@@ -25,7 +25,7 @@ class Scene: Node {
     //Camera Stuff
     func setupCameras() { }
     func addCamera(camera: Camera, setAsCurrent: Bool = true){
-        cameraManager.registerCamera(camera: camera)
+        cameraManager.registerCamera(camera)
         if(setAsCurrent){
             cameraManager.setCamera(camera.cameraType)
         }
@@ -44,7 +44,7 @@ class Scene: Node {
             sceneConstants.viewMatrix = camera.viewMatrix
             sceneConstants.projectionMatrix = camera.projectionMatrix
             sceneConstants.inverseViewMatrix = camera.viewMatrix.inverse
-            sceneConstants.eyePosition = camera.position
+            sceneConstants.eyePosition = camera.getPosition()
         }
         
         sceneConstants.fog.density = fog.density

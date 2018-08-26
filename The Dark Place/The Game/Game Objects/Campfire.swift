@@ -8,7 +8,7 @@ class Campfire: LampModelObject {
         self.brightness = 2
         self.attenuation = float3(0.0006, 0.045, 0.002);
         self.lightPosition.y = 0.1
-        self.scale = float3(1.3)
+        self.setScale(float3(1.3))
     }
     
     var time: Float = 0.0

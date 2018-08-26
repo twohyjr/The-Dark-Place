@@ -11,9 +11,9 @@ class PracticeScene: Scene {
         addLights()
     }
     
-    let camera = Debug_Camera()
+    let camera = DebugCamera()
     func addCameras(){
-        camera.position = float3(0, 0.5, 1)
+        camera.setPosition(float3(0, 0.5, 1))
         camera.pitch = 0.5
         addCamera(camera: camera)
     }
@@ -26,31 +26,31 @@ class PracticeScene: Scene {
     
     let light = LampGameObject()
     func addLights(){
-        light.position = float3(0,0.2,0)
+        light.setPosition(float3(0,0.2,0))
         light.showObject = true
-        light.scale = float3(0.01)
+        light.setScale(0.01)
         light.attenuation = float3(1)
         addChild(light)
     }
     
     override func update(deltaTime: Float) {
         if(Keyboard.IsKeyPressed(.s)){
-            light.position.z += deltaTime / 3
+            light.moveZ(deltaTime / 3)
         }
         if(Keyboard.IsKeyPressed(.w)){
-            light.position.z -= deltaTime / 3
+            light.moveZ(-(deltaTime / 3))
         }
         if(Keyboard.IsKeyPressed(.d)){
-            light.position.x += deltaTime / 3
+            light.moveX(deltaTime / 3)
         }
         if(Keyboard.IsKeyPressed(.a)){
-            light.position.x -= deltaTime / 3
+            light.moveX(-(deltaTime / 3))
         }
         if(Keyboard.IsKeyPressed(.upArrow)){
-            light.position.y += deltaTime / 3
+            light.moveY(deltaTime / 3)
         }
         if(Keyboard.IsKeyPressed(.downArrow)){
-            light.position.y -= deltaTime / 3
+            light.moveY(-(deltaTime / 3))
         }
         if(Keyboard.IsKeyPressed(.one)){
             light.brightness += deltaTime

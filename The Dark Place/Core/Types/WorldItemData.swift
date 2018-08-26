@@ -42,9 +42,7 @@ class WorldItemsGenerator {
                     let posZ: Float = Float(z) - depth / Float(2) + 0.25
                     let posY = terrainData != nil ? terrainData?.getHeightAt(x: x, z: z) : 0
                     if(object != nil){
-                        object?.position.x = posX
-                        object?.position.z = posZ
-                        object?.position.y = posY!
+                        object?.setPosition(float3(posX, posY!, posZ))
                         result.worldItems.append(object!)
                     }
                 }
