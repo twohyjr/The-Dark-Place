@@ -1,64 +1,21 @@
 import MetalKit
 
-class PracticeScene: Scene {
-
+class PracticeScene: Scene{
     
+    var debugCamera = Debug_Camera()
+    
+    var cube = Cube()
     override func buildScene() {
-        addCameras()
+        addCamera(debugCamera)
         
-        addTerrain()
+        debugCamera.position.z = 8
         
-        addLights()
-    }
-    
-    let camera = Debug_Camera()
-    func addCameras(){
-        camera.position = float3(0, 0.5, 1)
-        camera.pitch = 0.5
-        addCamera(camera: camera)
-    }
-    
-    func addTerrain(){
-        let terrainData = TerrainData(width: 10, depth: 10)
-        let terrain = Terrain(gridSize: 1, terrainData: terrainData, textureType: TextureTypes.CartoonSand)
-        addChild(terrain)
-    }
-    
-    let light = LampGameObject()
-    func addLights(){
-        light.position = float3(0,0.2,0)
-        light.showObject = true
-        light.scale = float3(0.01)
-        light.attenuation = float3(1)
-        addChild(light)
+        addChild(cube)
     }
     
     override func update(deltaTime: Float) {
-        if(Keyboard.IsKeyPressed(.s)){
-            light.position.z += deltaTime / 3
-        }
-        if(Keyboard.IsKeyPressed(.w)){
-            light.position.z -= deltaTime / 3
-        }
-        if(Keyboard.IsKeyPressed(.d)){
-            light.position.x += deltaTime / 3
-        }
-        if(Keyboard.IsKeyPressed(.a)){
-            light.position.x -= deltaTime / 3
-        }
-        if(Keyboard.IsKeyPressed(.upArrow)){
-            light.position.y += deltaTime / 3
-        }
-        if(Keyboard.IsKeyPressed(.downArrow)){
-            light.position.y -= deltaTime / 3
-        }
-        if(Keyboard.IsKeyPressed(.one)){
-            light.brightness += deltaTime
-        }
-        if(Keyboard.IsKeyPressed(.two)){
-            light.brightness -= deltaTime
-        }
+        cube.rotation.x += deltaTime
+        cube.rotation.y += deltaTime
         super.update(deltaTime: deltaTime)
     }
-    
 }

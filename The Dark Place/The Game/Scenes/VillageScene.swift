@@ -38,7 +38,7 @@ class VillageScene: Scene {
         let debugCamera = Debug_Camera()
         debugCamera.position = float3(-1.4901161e-08, 10.499996, 16.08331)
         debugCamera.pitch = 0.5
-        addCamera(camera: debugCamera)
+        addCamera(debugCamera)
     }
     
     private func addLights(){

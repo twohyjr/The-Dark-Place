@@ -171,6 +171,22 @@ public extension Float {
     }
 }
 
+func >(left: float3, right: Float) -> Bool {
+    return left.x > right && left.y > right && left.z > right
+}
+
+func >(left: Float, right: float3) -> Bool {
+    return right.x > left && right.y > left && right.z > left
+}
+
+func <(left: float3, right: Float) -> Bool {
+    return left.x < right && left.y < right && left.z < right
+}
+
+func <(left: Float, right: float3) -> Bool {
+    return right.x < left && right.y < left && right.z < left
+}
+
 //mat4 LookAt(vec3 eye, vec3 at, vec3 up)
 //{
 //    vec3 zaxis = normalize(eye - at);
