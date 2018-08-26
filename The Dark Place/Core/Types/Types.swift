@@ -55,8 +55,8 @@ struct SceneConstants: sizeable {
 struct Material: sizeable {
     var shininess: Float = 0.1
     var ambient = float3(1) //Ka
-    var diffuse = float3(0.25) //Kd
-    var specular = float3(2) //Ks
+    var diffuse = float3(0) //Kd
+    var specular = float3(3) //Ks
     var isLit: Bool = true
     var color = float4(1);
 }

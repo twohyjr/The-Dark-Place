@@ -3,7 +3,7 @@ import MetalKit
 class ModelGameObject: Node {
     private var _modelConstants = ModelConstants()
     private var _modelMesh: Mesh!
-    var material = Material()
+    private var _material = Material()
     
     var fillMode: MTLTriangleFillMode = .fill
     
@@ -60,10 +60,10 @@ extension ModelGameObject: Renderable {
                 let ambient = float3(0)
                 let diffuse = mdlSubmeshes![j].material?.properties(with: MDLMaterialSemantic.baseColor).first?.float3Value
                 let specular = mdlSubmeshes![j].material?.properties(with: MDLMaterialSemantic.specular).first?.float3Value
-                material.ambient = ambient > 0 ? ambient : material.ambient
-                material.diffuse = diffuse! > 0 ? diffuse! : material.diffuse
-                material.specular = specular! > 0 ? specular! : material.specular
-                renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
+                _material.ambient = ambient
+                _material.diffuse = diffuse!
+                _material.specular = specular!
+                renderCommandEncoder.setFragmentBytes(&_material, length: Material.stride, index: 1)
                 renderCommandEncoder.drawIndexedPrimitives(type: mtkSubmesh.primitiveType,
                                                            indexCount: mtkSubmesh.indexCount,
                                                            indexType: mtkSubmesh.indexType,

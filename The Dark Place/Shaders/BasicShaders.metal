@@ -43,9 +43,8 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                      constant Material &material [[ buffer(1) ]],
                                      constant LightData *lightDatas [[ buffer(2) ]],
                                      constant int &lightCount [[ buffer(3) ]]){
-    
     float4 color = material.isLit ? float4(material.diffuse,1) : material.color;
-
+    
     float3 totalAmbient = float3(0.0);
     float3 totalDiffuse = float3(0.0);
     float3 totalSpecular = float3(0.0);
@@ -67,7 +66,7 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
         //Diffuse
         float nDot1 = dot(unitNormal, unitLightVector);
         float brightness = max(nDot1, 0.1);
-        float3 diffuse = (brightness * material.diffuse * lightData.color) / attenuationFactor;
+        float3 diffuse = (brightness * lightData.color * material.diffuse) / attenuationFactor;
         totalDiffuse = totalDiffuse + diffuse * lightData.brightness;
         
         //Specular
@@ -86,8 +85,8 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     }
     
     color = mix(float4(rd.skyColor, 1), color, rd.visibility);
-    
-    return half4(color.r, color.b, color.g, 1);
+
+    return half4(color.r, color.g, color.b, 1);
 }
 
 fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_in ]],
@@ -130,7 +129,7 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
         specularFactor = max(specularFactor, 0.1);
         float dampedFactor = pow(specularFactor, material.shininess);
         float3 specular = (dampedFactor * material.specular * lightData.color) / attenuationFactor;
-        totalSpecular = totalSpecular + specular * lightData.brightness;
+//        totalSpecular = totalSpecular + specular * lightData.brightness;
     }
 
     if(material.isLit){
