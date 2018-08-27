@@ -38,6 +38,89 @@ vertex RasterizerData bounding_vertex_shader(const VertexIn vertexIn [[ stage_in
     return rd;
 }
 
+float3 specular(float3 normal,
+                float3 toCameraVector,
+                float3 toLightVector,
+                float3 lightColor,
+                float lightBrightness,
+                float materialShininess,
+                float3 materialSpecular){
+    float3 unitVectorToCamera = normalize(toCameraVector);
+    float3 unitToLightVector = normalize(toLightVector);
+    float3 unitNormal = normalize(normal);
+    
+    float3 lightDirection = -unitToLightVector;
+    float3 reflectedLightDirection = reflect(lightDirection, unitNormal);
+    float specularFactor = max(saturate(dot(reflectedLightDirection, unitVectorToCamera)), 0.1);
+    float dampedFactor = pow(specularFactor, materialShininess);
+    float3 specular = dampedFactor * materialSpecular * lightColor;
+    return specular * lightBrightness;
+}
+
+float3 diffuse(float3 normal,
+               float3 toLightVector,
+               float3 materialDiffuse,
+               float lightBrightness,
+               float3 lightColor){
+    float3 unitNormal = normalize(normal);
+    float3 unitToLightVector = normalize(toLightVector);
+    float nDot1 = dot(unitNormal, unitToLightVector);
+    float brightness = max(nDot1, 0.1);
+    float3 diffuse = (brightness * materialDiffuse * lightColor);
+    
+    return diffuse;
+}
+
+float3 ambient(float3 lightColor,
+               float3 materialAmbient,
+               float lightBrightness){
+    float3 ambientFactor = (lightColor * materialAmbient);
+    return ambientFactor * lightBrightness;
+}
+
+float4 phongShade(LightData lightData,
+                  Material material,
+                  float3 worldPosition,
+                  float3 normal,
+                  float3 toCameraVector){
+    float3 toLightVector = lightData.position - worldPosition;
+    
+    //Ambient
+    float3 ambientFactor = ambient(lightData.color,
+                                   material.ambient,
+                                   lightData.brightness);
+    
+    
+    //Diffuse
+    float3 diffuseFactor = diffuse(normal,
+                                   toLightVector,
+                                   material.diffuse,
+                                   lightData.brightness,
+                                   lightData.color);
+
+
+    //Specular
+    float3 specularFactor = specular(normal,
+                                     toCameraVector,
+                                     toLightVector,
+                                     lightData.color,
+                                     lightData.brightness,
+                                     material.shininess,
+                                     material.specular);
+    
+    float3 phong = ambientFactor + diffuseFactor + specularFactor;
+    return float4(phong, 1.0);
+}
+
+float4 attenuate(float4 currentColor,
+                 float3 attenuation,
+                 float3 lightPosition,
+                 float3 worldPosition){
+    float3 toLightVector = lightPosition - worldPosition;
+    float distance = length(toLightVector);
+    return currentColor / (attenuation.x + (attenuation.y * distance) + (attenuation.z * distance * distance));
+}
+
 //------- FRAGMENT SHADERS ------------
 fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                      constant Material &material [[ buffer(1) ]],
@@ -45,48 +128,26 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                      constant int &lightCount [[ buffer(3) ]]){
     float4 color = material.isLit ? float4(material.diffuse,1) : material.color;
     
-    float3 totalAmbient = float3(0.0);
-    float3 totalDiffuse = float3(0.0);
-    float3 totalSpecular = float3(0.0);
+    float4 totalColor = float4(0);
     
     for(int i = 0; i < lightCount; i++){
         LightData lightData = lightDatas[i];
+        float4 phongColor = phongShade(lightData,
+                                  material,
+                                  rd.worldPosition,
+                                  rd.surfaceNormal,
+                                  rd.toCameraVector);
         
-        float3 toLightVector = lightData.position - rd.worldPosition;
-        float3 unitLightVector = normalize(toLightVector);
-        float distance = length(toLightVector);
-        float3 attenuation = lightData.attenuation;
-        float attenuationFactor = attenuation.x + (attenuation.y * distance) + (attenuation.z * distance * distance);
-        float3 unitNormal = normalize(rd.surfaceNormal);
-        
-        //Ambient
-        float3 ambient = (lightData.color * material.ambient) / attenuationFactor;
-        totalAmbient += ambient * lightData.brightness;
-        
-        
-        //Diffuse
-        float nDot1 = dot(unitNormal, unitLightVector);
-        float brightness = max(nDot1, 0.1);
-        float3 diffuse = (brightness * material.diffuse * lightData.color) / attenuationFactor;
-        totalDiffuse = totalDiffuse + diffuse * lightData.brightness;
-        
-        
-        //Specular
-        float3 unitVectorToCamera = normalize(rd.toCameraVector);
-        float3 lightDirection = -unitLightVector;
-        float3 reflectedLightDirection = reflect(lightDirection, unitNormal);
-        float specularFactor = saturate(dot(reflectedLightDirection, unitVectorToCamera));
-        specularFactor = max(specularFactor, 0.1);
-        float dampedFactor = pow(specularFactor, material.shininess);
-        float3 specular = (dampedFactor * material.specular * lightData.color) / attenuationFactor;
-        totalSpecular = totalSpecular + specular * lightData.brightness;
+        totalColor += attenuate(phongColor,
+                                lightData.attenuation,
+                                lightData.position,
+                                rd.worldPosition);
     }
     
+    //Apply Lighting Calculations
     if(material.isLit){
-        color *= (float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0) + float4(totalAmbient,1));
+        color *= totalColor + float4(material.contrastDelta, 1.0);
     }
-    
-    color = mix(float4(rd.skyColor, 1), color, rd.visibility);
 
     return half4(color.r, color.g, color.b, 1);
 }
@@ -98,48 +159,29 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
                                                constant LightData *lightDatas [[ buffer(2) ]],
                                                constant int &lightCount [[ buffer(3) ]]){
     float4 color = texture.sample(sampler2d, rd.textureCoordinate);
-
-    float3 totalAmbient = float3(0.0);
-    float3 totalDiffuse = float3(0.0);
-    float3 totalSpecular = float3(0.0);
-
+    
+    float4 totalColor = float4(0);
+    
     for(int i = 0; i < lightCount; i++){
         LightData lightData = lightDatas[i];
-
-        float3 toLightVector = lightData.position - rd.worldPosition;
-        float3 unitLightVector = normalize(toLightVector);
-        float distance = length(toLightVector);
-        float3 attenuation = lightData.attenuation;
-        float attenuationFactor = attenuation.x + (attenuation.y * distance) + (attenuation.z * distance * distance);
-        float3 unitNormal = normalize(rd.surfaceNormal);
-
-        //Ambient
-        float3 ambient = (lightData.color * material.ambient) / attenuationFactor;
-        totalAmbient += ambient * lightData.brightness;
-
-        //Diffuse
-        float nDot1 = dot(unitNormal, unitLightVector);
-        float brightness = max(nDot1, 0.1);
-        float3 diffuse = (brightness * material.diffuse * lightData.color) / attenuationFactor;
-        totalDiffuse = totalDiffuse + diffuse * lightData.brightness;
-
-        //Specular
-        float3 unitVectorToCamera = normalize(rd.toCameraVector);
-        float3 lightDirection = -unitLightVector;
-        float3 reflectedLightDirection = reflect(lightDirection, unitNormal);
-        float specularFactor = saturate(dot(reflectedLightDirection, unitVectorToCamera));
-        specularFactor = max(specularFactor, 0.1);
-        float dampedFactor = pow(specularFactor, material.shininess);
-        float3 specular = (dampedFactor * material.specular * lightData.color) / attenuationFactor;
-        totalSpecular = totalSpecular + specular * lightData.brightness;
+        float4 phongColor = phongShade(lightData,
+                                       material,
+                                       rd.worldPosition,
+                                       rd.surfaceNormal,
+                                       rd.toCameraVector);
+        
+        totalColor += attenuate(phongColor,
+                                lightData.attenuation,
+                                lightData.position,
+                                rd.worldPosition);
+        
     }
-
+    
+    //Apply Lighting Calculations
     if(material.isLit){
-        color *= (float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0) + float4(totalAmbient,1));
+        color *= totalColor + float4(material.contrastDelta, 1.0);
     }
-
-    color = mix(float4(rd.skyColor, 1), color, rd.visibility);
-
+    
     return half4(color.r, color.b, color.g, 1);
 
 }
@@ -150,5 +192,14 @@ fragment half4 bounding_fragment_shader(const RasterizerData rd [[ stage_in ]]){
     return half4(color.r, color.g, color.b, color.a);
 }
 
+
+//FOG
+//    color = mix(float4(rd.skyColor, 1), color, rd.visibility);
+
+//ATTENUATION
+//float3 toLightVector = lightData.position - rd.worldPosition;
+//float distance = length(toLightVector);
+//float3 attenuation = lightData.attenuation;
+//float attenuationFactor = attenuation.x + (attenuation.y * distance) + (attenuation.z * distance * distance);
 
 

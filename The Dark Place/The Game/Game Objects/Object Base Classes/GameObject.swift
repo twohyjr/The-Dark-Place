@@ -7,11 +7,48 @@ class GameObject: Node {
     internal var material = Material()
     private var _color: float3 = float3(1)
     
+    private var _ambient = float3(1.0)
+    var getAmbient: float3 {
+        return _ambient
+    }
+    func setAmbient(_ value: float3){
+        self._ambient = value
+    }
     
+    private var _diffuse = float3(0.2)
+    var getDiffuse: float3 {
+        return _diffuse
+    }
+    func setDiffuse(_ value: float3){
+        self._diffuse = value
+    }
     
-    var specularity = float3(0.1)
-    var shininess: Float = 0.5
-    var diffuse = float3(1)
+    private var _shininess: Float = 0.1
+    var getShininess: Float {
+        return _shininess
+    }
+    func setShininess(_ value: Float){
+        self._shininess = value
+    }
+    
+    private var _specular = float3(0.1)
+    var getSpecular: float3 {
+        return _specular
+    }
+    func setSpecular(_ value: float3){
+        self._specular = value
+    }
+    
+    private var _contrastDelta = float3(0)
+    var getContrastDelta: float3 {
+        return _contrastDelta
+    }
+    func setContrastDelta(_ value: float3){
+        self._contrastDelta = value
+    }
+    func setContrastDelta(_ value: Float){
+        self._contrastDelta = float3(value)
+    }
     
     private var fillMode: MTLTriangleFillMode = .fill
     
@@ -45,9 +82,11 @@ class GameObject: Node {
         modelConstants.modelMatrix = self.modelMatrix
         modelConstants.normalMatrix = self.modelMatrix.upperLeftMatrix
         material.color = getColor()
-        material.diffuse = diffuse
-        material.specular = specularity
-        material.shininess = shininess
+        material.diffuse = _diffuse
+        material.ambient = _ambient
+        material.specular = _specular
+        material.shininess = _shininess
+        material.contrastDelta = _contrastDelta
     }
 }
 

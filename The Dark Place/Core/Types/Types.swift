@@ -55,15 +55,16 @@ struct SceneConstants: sizeable {
 struct Material: sizeable {
     var shininess: Float = 0.1
     var ambient = float3(1) //Ka
-    var diffuse = float3(0) //Kd
+    var diffuse = float3(1) //Kd
     var specular = float3(3) //Ks
     var isLit: Bool = true
     var color = float4(1);
+    var contrastDelta = float3(0)
 }
 
 struct LightData: sizeable{
     var brightness: Float = 1.0
     var position = float3(0)
     var color = float3(1)
-    var attenuation = float3(0,0,0)
+    var attenuation = float3(0.7, 0.01, 0.0)
 }

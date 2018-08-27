@@ -31,7 +31,7 @@ class Light {
         self._color = value
     }
 
-    private var _attenuation = float3(1)
+    private var _attenuation = float3(0)
     var attenuation: float3 {
         return _attenuation
     }

@@ -5,6 +5,17 @@ class ModelGameObject: Node {
     private var _modelMesh: Mesh!
     private var _material = Material()
     
+    private var _contrastDelta = float3(0)
+    var getContrastDelta: float3 {
+        return _contrastDelta
+    }
+    func setContrastDelta(_ value: float3){
+        self._contrastDelta = value
+    }
+    func setContrastDelta(_ value: Float){
+        self._contrastDelta = float3(value)
+    }
+    
     var fillMode: MTLTriangleFillMode = .fill
     
     init(_ modelMeshType: ModelMeshTypes){
@@ -24,6 +35,7 @@ class ModelGameObject: Node {
     private func updateModelConstants(){
         _modelConstants.modelMatrix = self.modelMatrix
         _modelConstants.normalMatrix = self.modelMatrix.upperLeftMatrix
+        _material.contrastDelta = self._contrastDelta
     }
 }
 

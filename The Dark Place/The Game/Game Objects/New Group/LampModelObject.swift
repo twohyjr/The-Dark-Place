@@ -12,6 +12,7 @@ class LampModelObject: ModelGameObject {
     var color = float3(1)
     var lightPosition = float3(0)
     
+    
     override init(_ meshType: ModelMeshTypes) {
         super.init(meshType)
         lightName = LightManager.AddLightAndGetName()

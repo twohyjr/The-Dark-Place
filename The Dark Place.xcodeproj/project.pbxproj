@@ -37,7 +37,6 @@
 		EB614D3020F85C2800E61EFA /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2F20F85C2800E61EFA /* Terrain.swift */; };
 		EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */; };
 		EB6AEE50210D1F4400C291AA /* Types.metal in Sources */ = {isa = PBXBuildFile; fileRef = EB6AEE4F210D1F4400C291AA /* Types.metal */; };
-		EBC491EE212B253500CF009D /* BoundingBoxObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC491ED212B253500CF009D /* BoundingBoxObject.swift */; };
 		EBC491F0212B25E800CF009D /* BoundingRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC491EF212B25E800CF009D /* BoundingRegion.swift */; };
 		EBDB6E4320FD9E740061E7A3 /* cartoon_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */; };
 		EBDB6E4720FDA5620061E7A3 /* TextureLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */; };
@@ -123,7 +122,6 @@
 		EB614D2F20F85C2800E61EFA /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainMeshGenerator.swift; sourceTree = "<group>"; };
 		EB6AEE4F210D1F4400C291AA /* Types.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Types.metal; sourceTree = "<group>"; };
-		EBC491ED212B253500CF009D /* BoundingBoxObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBoxObject.swift; sourceTree = "<group>"; };
 		EBC491EF212B25E800CF009D /* BoundingRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingRegion.swift; sourceTree = "<group>"; };
 		EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cartoon_grass.png; sourceTree = "<group>"; };
 		EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLibrary.swift; sourceTree = "<group>"; };
@@ -459,7 +457,6 @@
 				EBF1452B20FAF98600B89FE9 /* Cube.swift */,
 				EBF1458E20FC50DE00B89FE9 /* Tents.swift */,
 				EBF145A820FC5F6900B89FE9 /* RedMushroom.swift */,
-				EBC491ED212B253500CF009D /* BoundingBoxObject.swift */,
 				EBF145AE20FCD14E00B89FE9 /* LargeGreenOak.swift */,
 				EB1B985A211515DB0076BBB8 /* Campfire.swift */,
 			);
@@ -624,7 +621,6 @@
 				EB6AEE50210D1F4400C291AA /* Types.metal in Sources */,
 				EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */,
 				EBF4A63820F8363400DAC145 /* Renderable.swift in Sources */,
-				EBC491EE212B253500CF009D /* BoundingBoxObject.swift in Sources */,
 				EBF4A63F20F83C0700DAC145 /* Types.swift in Sources */,
 				EBF4A64B20F83F3500DAC145 /* Scene.swift in Sources */,
 				EB614D2820F8514100E61EFA /* Keyboard.swift in Sources */,
