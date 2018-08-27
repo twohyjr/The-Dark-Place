@@ -13,6 +13,20 @@ class Light {
         self._position = value
     }
     
+    public func moveX(_ value: Float){
+        self._position.x += value
+    }
+    
+    public func moveY(_ value: Float){
+        self._position.y += value
+    }
+    
+    public func moveZ(_ value: Float){
+        self._position.z += value
+    }
+    
+    
+    
     private var _brightness: Float = 1
     var brightness: Float {
         return _brightness
@@ -38,6 +52,15 @@ class Light {
     
     func setAttenuation(_ value: float3){
         self._attenuation = value
+    }
+    func setAttenuationX(_ value: Float){
+        self._attenuation.x = value
+    }
+    func setAttenuationY(_ value: Float){
+        self._attenuation.y = value
+    }
+    func setAttenuationZ(_ value: Float){
+        self._attenuation.z = value
     }
  
     func update(deltaTime: Float){

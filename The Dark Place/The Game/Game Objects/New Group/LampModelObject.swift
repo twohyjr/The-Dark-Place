@@ -16,10 +16,12 @@ class LampModelObject: ModelGameObject {
     override init(_ meshType: ModelMeshTypes) {
         super.init(meshType)
         lightName = LightManager.AddLightAndGetName()
+        
     }
     
     override func update(deltaTime: Float) {
-        LightManager.GetLight(lightName).setPosition(self.getPosition() + lightPosition + float3(0.5,0,-0.5))
+        
+        LightManager.GetLight(lightName).setPosition(self.getPosition() + light.position)
         LightManager.GetLight(lightName).setBrightness(self.brightness)
         LightManager.GetLight(lightName).setAttenuation(self.attenuation)
         LightManager.GetLight(lightName).setColor(self.color)

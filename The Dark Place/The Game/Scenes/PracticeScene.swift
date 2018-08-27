@@ -8,7 +8,9 @@ class PracticeScene: Scene {
         
         addTerrain()
         
-        addObjects()
+        addTents()
+        
+        addTrees()
         
         addLights()
     }
@@ -22,11 +24,11 @@ class PracticeScene: Scene {
     
     func addTerrain(){
         let terrainData = TerrainData(width: 10, depth: 10)
-        let terrain = Terrain(gridSize: 10, terrainData: terrainData, textureType: TextureTypes.CartoonSand)
+        let terrain = Terrain(gridSize: 30, terrainData: terrainData, textureType: TextureTypes.CartoonSand)
         addChild(terrain)
     }
     
-    func addObjects(){
+    func addTents(){
         let tent = Tent()
         tent.setRotation(float3(0.0, 3.3833308, 0.0))
         tent.setPosition(float3(-1,-0.01,0))
@@ -38,68 +40,38 @@ class PracticeScene: Scene {
         addChild(tentWithPoles)
     }
     
-    let light = LampGameObject()
     func addLights(){
-        light.setPosition(float3(0,0.2,0))
-        light.showGameModel()
-        light.setScale(0.01)
-        addChild(light)
+        let lantern = Lantern(.Red)
+        lantern.setRotation(float3(0.0, 3.3833308, 0.0))
+        lantern.attenuation = float3(6.3999963, -3.0099976, 0.40499836)
+        lantern.color = float3(1,0,0)
+        lantern.brightness = 2
+        lantern.moveZ(-4)
+        lantern.moveX(4)
+        addChild(lantern)
+        
+        let lanternGreen = Lantern(.Green)
+        lanternGreen.setRotation(float3(0.0, 3, 0.0))
+        lanternGreen.attenuation = float3(6.3999963, -3.0099976, 0.40499836)
+        lanternGreen.color = float3(0,1,0)
+        lanternGreen.brightness = 1
+        lanternGreen.moveZ(-4)
+        lanternGreen.moveX(-4)
+        addChild(lanternGreen)
+        
+        let campfire = Campfire()
+        campfire.moveZ(4)
+        addChild(campfire)
     }
     
-    override func update(deltaTime: Float) {
-        let delta: Float = 0.01
-        if(Keyboard.IsKeyPressed(.one)){
-            light.setAttenuation(float3(light.getAttenuation().x + delta, light.getAttenuation().y, light.getAttenuation().z))
+    func addTrees(){
+        for y in -50..<50{
+            let tree = LargeGreenOak()
+            let posZ: Float = Float.random(min: -15, max: -4)
+            let posX: Float = Float.random(min: -15, max: 12)
+            tree.setPosition(float3(posX,0,posZ))
+            addChild(tree)
         }
-        
-        if(Keyboard.IsKeyPressed(.two)){
-            light.setAttenuation(float3(light.getAttenuation().x - delta, light.getAttenuation().y, light.getAttenuation().z))
-        }
-        
-        if(Keyboard.IsKeyPressed(.three)){
-            light.setAttenuation(float3(light.getAttenuation().x, light.getAttenuation().y + delta, light.getAttenuation().z))
-        }
-        
-        if(Keyboard.IsKeyPressed(.four)){
-            light.setAttenuation(float3(light.getAttenuation().x, light.getAttenuation().y - delta, light.getAttenuation().z))
-        }
-        
-        if(Keyboard.IsKeyPressed(.five)){
-            light.setAttenuation(float3(light.getAttenuation().x, light.getAttenuation().y, light.getAttenuation().z + delta))
-        }
-        
-        if(Keyboard.IsKeyPressed(.six)){
-            light.setAttenuation(float3(light.getAttenuation().x, light.getAttenuation().y, light.getAttenuation().z - delta))
-        }
-        
-        print(light.getAttenuation())
-        
-        
-        if(Keyboard.IsKeyPressed(.s)){
-            light.moveZ(deltaTime)
-        }
-        if(Keyboard.IsKeyPressed(.w)){
-            light.moveZ(-deltaTime)
-        }
-        if(Keyboard.IsKeyPressed(.d)){
-            light.moveX(deltaTime)
-        }
-        if(Keyboard.IsKeyPressed(.a)){
-            light.moveX(-deltaTime)
-        }
-        if(Keyboard.IsKeyPressed(.upArrow)){
-            light.moveY(deltaTime)
-        }
-        if(Keyboard.IsKeyPressed(.downArrow)){
-            light.moveY(-deltaTime)
-        }
-        if(Keyboard.IsKeyPressed(.one)){
-            light.brightness += deltaTime
-        }
-        if(Keyboard.IsKeyPressed(.two)){
-            light.brightness -= deltaTime
-        }
-        super.update(deltaTime: deltaTime)
     }
     
 }

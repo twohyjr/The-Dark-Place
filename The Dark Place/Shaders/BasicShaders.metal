@@ -132,6 +132,8 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     
     for(int i = 0; i < lightCount; i++){
         LightData lightData = lightDatas[i];
+        
+        lightData.brightness = lightData.brightness;
         float4 phongColor = phongShade(lightData,
                                   material,
                                   rd.worldPosition,
@@ -164,6 +166,8 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
     
     for(int i = 0; i < lightCount; i++){
         LightData lightData = lightDatas[i];
+        
+        lightData.brightness = lightData.brightness;
         float4 phongColor = phongShade(lightData,
                                        material,
                                        rd.worldPosition,
@@ -174,7 +178,6 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
                                 lightData.attenuation,
                                 lightData.position,
                                 rd.worldPosition);
-        
     }
     
     //Apply Lighting Calculations
@@ -182,7 +185,7 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
         color *= totalColor + float4(material.contrastDelta, 1.0);
     }
     
-    return half4(color.r, color.b, color.g, 1);
+    return half4(color.r, color.g, color.b, 1);
 
 }
 

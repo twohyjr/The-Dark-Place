@@ -44,8 +44,8 @@ extension ModelGameObject: Renderable {
         renderCommandEncoder.pushDebugGroup("Model Game Object Render Call")
 
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
-        renderCommandEncoder.setTriangleFillMode(fillMode)
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
+        renderCommandEncoder.setTriangleFillMode(fillMode)
         renderCommandEncoder.setVertexBytes(&_modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setFragmentBytes(lights,
                                               length: LightData.stride(lights.count),
@@ -72,8 +72,9 @@ extension ModelGameObject: Renderable {
                 let ambient = float3(0)
                 let diffuse = mdlSubmeshes![j].material?.properties(with: MDLMaterialSemantic.baseColor).first?.float3Value
                 let specular = mdlSubmeshes![j].material?.properties(with: MDLMaterialSemantic.specular).first?.float3Value
+                _material.color = float4(diffuse!.x, diffuse!.y, diffuse!.z, 1.0)
                 _material.ambient = ambient
-                _material.diffuse = diffuse!
+                _material.diffuse = float3(0.2)
                 _material.specular = specular!
                 renderCommandEncoder.setFragmentBytes(&_material, length: Material.stride, index: 1)
                 renderCommandEncoder.drawIndexedPrimitives(type: mtkSubmesh.primitiveType,

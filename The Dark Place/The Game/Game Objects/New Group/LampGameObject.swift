@@ -8,7 +8,7 @@ class LampGameObject: GameObject {
     private var showObject: Bool = true
     
     var brightness: Float = 1
-    private var _attenuation = float3(1.05, 0.12, 0.0)
+    private var _attenuation = float3(1,0,0)
     
     init(_ meshType: CustomMeshTypes) {
         super.init(meshType: meshType)
@@ -46,11 +46,14 @@ class LampGameObject: GameObject {
     }
     
     override func update(deltaTime: Float) {
-        LightManager.GetLight(lightName).setPosition(self.getPosition())
+        
+        LightManager.GetLight(lightName).setPosition(self.getPosition() + light.position)
         LightManager.GetLight(lightName).setBrightness(self.brightness)
         LightManager.GetLight(lightName).setColor(self.getColor().xyz)
         LightManager.GetLight(lightName).setAttenuation(self.getAttenuation())
         self.material.color = self.getColor()
+ 
+
         
         super.update(deltaTime: deltaTime)
     }
