@@ -65,7 +65,7 @@ class PracticeScene: Scene {
     }
     
     func addTrees(){
-        for y in -50..<50{
+        for _ in -50..<50{
             let tree = LargeGreenOak()
             let posZ: Float = Float.random(min: -15, max: -4)
             let posX: Float = Float.random(min: -15, max: 12)
