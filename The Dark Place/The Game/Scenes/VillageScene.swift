@@ -2,79 +2,75 @@ import MetalKit
 
 class VillageScene: Scene {
     
-//    var gridSize: Int = 15
-//    var sunBackLeft = LampGameObject(.Cube_Custom)
-//    var sunBackRight = LampGameObject()
-//
-//    let campfire = Campfire()
     override func buildScene() {
-//        setupWorld()
-//
-//        setCameras()
-//
-//        setFog()
-//
-//        addTents()
-//
-//        addCampfire()
-//
-//        addLights()
+        addCameras()
         
-        super.buildScene()
+        addTerrain()
+        
+        addTents()
+        
+        addTrees()
+        
+        addLights()
     }
     
-    private func setupWorld(){
-//        let itemGenerator = WorldItemsGenerator()
-//        .withItemPlacementMap("VillageSceneItemMap")
-//        addWorldItems(itemGenerator)
+    let debugCamera = DebugCamera()
+    func addCameras(){
+        debugCamera.setPosition(float3(-1.4901161e-08, 10.499996, 16.08331))
+        debugCamera.setPitch(0.5)
+        addCamera(camera: debugCamera)
     }
     
-    private func setFog(){
-//        self.fog.gradient = 6.5663
-//        self.fog.density = 0.0324
+    func addTerrain(){
+        let terrainData = TerrainData(width: 10, depth: 10)
+        let terrain = Terrain(gridSize: 30, terrainData: terrainData, textureType: TextureTypes.CartoonSand)
+        addChild(terrain)
     }
     
-    private func setCameras(){
-//        let debugCamera = Debug_Camera()
-//        debugCamera.position = float3(-1.4901161e-08, 10.499996, 16.08331)
-//        debugCamera.pitch = 0.5
-//        addCamera(camera: debugCamera)
+    func addTents(){
+        let tent = Tent()
+        tent.setRotation(float3(0.0, 3.3833308, 0.0))
+        tent.setPosition(float3(-1,-0.01,0))
+        addChild(tent)
+        
+        let tentWithPoles = TentWithPoles()
+        tentWithPoles.setRotation(float3(0.0, 3.0, 0.0))
+        tentWithPoles.setPosition(float3(3,0,0))
+        addChild(tentWithPoles)
     }
     
-    private func addLights(){
-//        sunBackLeft.position = float3(-1000, 300, 1000)
-//        sunBackLeft.brightness = 0.5
-//        addChild(sunBackLeft)
-//
-//        sunBackRight.position = float3(1000, 700, 1000)
-//        sunBackRight.brightness = 1
-//        addChild(sunBackRight)
-//
-//        sunMiddleBack.position = float3(0, 100, 1000)
-//        sunMiddleBack.brightness = 0.1
-//        addChild(sunMiddleBack)
-    }
-
-    private func addTents(){
-//        let tent = Tent()
-//        tent.rotation = float3(0.0, 3.3833308, 0.0)
-//        tent.position.x = -1
-//        tent.position.y = -0.01
-//        addChild(tent)
-//
-//        let tentWithPoles = TentWithPoles()
-//        tentWithPoles.rotation = float3(0.0, 3.0, 0.0)
-//        tentWithPoles.position.x = 3
-//
-//        addChild(tentWithPoles)
+    func addLights(){
+        let lantern = Lantern(.Red)
+        lantern.setRotation(float3(0.0, 3.3833308, 0.0))
+        lantern.attenuation = float3(6.3999963, -3.0099976, 0.40499836)
+        lantern.color = float3(1,0,0)
+        lantern.brightness = 2
+        lantern.moveZ(-4)
+        lantern.moveX(4)
+        addChild(lantern)
+        
+        let lanternGreen = Lantern(.Green)
+        lanternGreen.setRotation(float3(0.0, 3, 0.0))
+        lanternGreen.attenuation = float3(6.3999963, -3.0099976, 0.40499836)
+        lanternGreen.color = float3(0,1,0)
+        lanternGreen.brightness = 1
+        lanternGreen.moveZ(-4)
+        lanternGreen.moveX(-4)
+        addChild(lanternGreen)
+        
+        let campfire = Campfire()
+        campfire.moveZ(4)
+        addChild(campfire)
     }
     
-    private func addCampfire(){
-//        campfire.position.x = -0.5
-//        campfire.position.z = 4.5
-//        addChild(campfire)
+    func addTrees(){
+        for _ in -50..<50{
+            let tree = LargeGreenOak()
+            let posZ: Float = Float.random(min: -15, max: -4)
+            let posX: Float = Float.random(min: -15, max: 12)
+            tree.setPosition(float3(posX,0,posZ))
+            addChild(tree)
+        }
     }
     
-
-
 }
