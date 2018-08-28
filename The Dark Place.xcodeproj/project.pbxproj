@@ -323,14 +323,6 @@
 			path = AnimatedModel;
 			sourceTree = "<group>";
 		};
-		EBBBF74B213500BC00457FBA /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Animation;
-			path = Animation/Animation;
-			sourceTree = "<group>";
-		};
 		EBBBF74C213500E500457FBA /* AnimationLogic */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,7 +434,6 @@
 			isa = PBXGroup;
 			children = (
 				EBF1459020FC514C00B89FE9 /* Assets */,
-				EBBBF74B213500BC00457FBA /* Animation */,
 				EBF4A62120F80DEC00DAC145 /* Core */,
 				EBBBF7452135007600457FBA /* Animation */,
 				EBF4A64E20F83FE900DAC145 /* Managers */,
