@@ -39,8 +39,9 @@ class ModelLoader {
         return meshes
     }
     
-    public static func CreateMeshFromDAEFile(_ modelName: String){
-        
+    public static func CreateMeshFromDAEFile(_ modelName: String)->RiggedMesh{
+        print("FILE LOADING FOR DAE NOT YET IMPLEMENTED")
+        return RiggedMesh()
     }
     
 }

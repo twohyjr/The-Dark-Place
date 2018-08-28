@@ -28,11 +28,13 @@ class Engine {
 
         RenderPipelineStateLibrary.Initialize()
         
-        MeshLibrary.Initialize()
-        
         TextureLibrary.Initialize()
         
+        MeshLibrary.Initialize()
+        
         ModelMeshLibrary.Initialize()
+        
+        RiggedMeshLibrary.Initialize()
         
     }
     

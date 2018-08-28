@@ -44,6 +44,7 @@
 		EBBBF7282133A62F00457FBA /* LanternGreen.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7262133A62F00457FBA /* LanternGreen.mtl */; };
 		EBBBF7332134EDE200457FBA /* CobowyTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7312134EDE200457FBA /* CobowyTexture.png */; };
 		EBBBF7342134EDE200457FBA /* Cowboy.dae in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7322134EDE200457FBA /* Cowboy.dae */; };
+		EBBBF7422134FB2300457FBA /* RiggedMeshLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF7412134FB2300457FBA /* RiggedMeshLibrary.swift */; };
 		EBC491F0212B25E800CF009D /* BoundingRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC491EF212B25E800CF009D /* BoundingRegion.swift */; };
 		EBDB6E4320FD9E740061E7A3 /* cartoon_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */; };
 		EBDB6E4720FDA5620061E7A3 /* TextureLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */; };
@@ -136,6 +137,7 @@
 		EBBBF7262133A62F00457FBA /* LanternGreen.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LanternGreen.mtl; sourceTree = "<group>"; };
 		EBBBF7312134EDE200457FBA /* CobowyTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CobowyTexture.png; sourceTree = "<group>"; };
 		EBBBF7322134EDE200457FBA /* Cowboy.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Cowboy.dae; sourceTree = "<group>"; };
+		EBBBF7412134FB2300457FBA /* RiggedMeshLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiggedMeshLibrary.swift; sourceTree = "<group>"; };
 		EBC491EF212B25E800CF009D /* BoundingRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingRegion.swift; sourceTree = "<group>"; };
 		EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cartoon_grass.png; sourceTree = "<group>"; };
 		EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLibrary.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				EBF4A64420F83DC600DAC145 /* ShaderLibrary.swift */,
 				EBF4A64020F83C7B00DAC145 /* CustomMeshLibrary.swift */,
 				EBF1458A20FC4E6700B89FE9 /* ModelMeshLibrary.swift */,
+				EBBBF7412134FB2300457FBA /* RiggedMeshLibrary.swift */,
 				EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */,
 				EBF1457720FC488200B89FE9 /* Meshes */,
 			);
@@ -656,6 +659,7 @@
 				EBF1457A20FC489E00B89FE9 /* Triangle_CustomMesh.swift in Sources */,
 				EB6AEE50210D1F4400C291AA /* Types.metal in Sources */,
 				EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */,
+				EBBBF7422134FB2300457FBA /* RiggedMeshLibrary.swift in Sources */,
 				EBF4A63820F8363400DAC145 /* Renderable.swift in Sources */,
 				EBF4A63F20F83C0700DAC145 /* Types.swift in Sources */,
 				EBF4A64B20F83F3500DAC145 /* Scene.swift in Sources */,

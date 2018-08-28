@@ -12,7 +12,7 @@ enum ModelMeshTypes {
 
 class ModelMeshLibrary {
     
-    private static var _meshes: [ModelMeshTypes:BasicMesh] = [:]
+    private static var _meshes: [ModelMeshTypes:ModelMesh] = [:]
     
     public static func Initialize(){
         createDefaultMeshes()
@@ -33,16 +33,12 @@ class ModelMeshLibrary {
         _meshes.updateValue(ModelMesh(modelName), forKey: modelMeshType)
     }
 
-    public static func Mesh(_ meshType: ModelMeshTypes)->BasicMesh{
+    public static func Mesh(_ meshType: ModelMeshTypes)->ModelMesh{
         return _meshes[meshType]!
     }
 }
 
-protocol BasicMesh {
-    var meshes: [MDLMesh] { get }
-}
-
-public class ModelMesh: BasicMesh {
+public class ModelMesh {
     var meshes: [MDLMesh] = []
     
     init(_ modelName: String) {
