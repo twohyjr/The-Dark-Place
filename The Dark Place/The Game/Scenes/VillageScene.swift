@@ -5,6 +5,8 @@ class VillageScene: Scene {
     override func buildScene() {
         addCameras()
         
+        setFog()
+        
         addTerrain()
         
         addTents()
@@ -16,14 +18,19 @@ class VillageScene: Scene {
     
     let debugCamera = DebugCamera()
     func addCameras(){
-        debugCamera.setPosition(float3(-1.4901161e-08, 10.499996, 16.08331))
-        debugCamera.setPitch(0.5)
+        debugCamera.setPosition(float3(-1.4901161e-08, 10.499996, 25.08331))
+        debugCamera.setPitch(0.3)
         addCamera(camera: debugCamera)
     }
     
+    func setFog(){
+        fog.density = 0.019000001
+        fog.gradient = 2.0999603
+    }
+    
     func addTerrain(){
-        let terrainData = TerrainData(width: 10, depth: 10)
-        let terrain = Terrain(gridSize: 30, terrainData: terrainData, textureType: TextureTypes.CartoonSand)
+        let terrainData = TerrainData(width: 40, depth: 40)
+        let terrain = Terrain(gridSize: 100, terrainData: terrainData, textureType: TextureTypes.CartoonSand)
         addChild(terrain)
     }
     
@@ -71,6 +78,25 @@ class VillageScene: Scene {
             tree.setPosition(float3(posX,0,posZ))
             addChild(tree)
         }
+    }
+    
+    override func update(deltaTime: Float) {
+        if(Keyboard.IsKeyPressed(.one)){
+            self.fog.density -= 0.001
+        }
+        if(Keyboard.IsKeyPressed(.two)){
+            self.fog.density += 0.001
+        }
+        
+        if(Keyboard.IsKeyPressed(.three)){
+            self.fog.gradient -= 0.1
+        }
+        if(Keyboard.IsKeyPressed(.four)){
+            self.fog.gradient += 0.1
+        }
+        
+        print("Density: \(fog.density) --- Gradient: \(fog.gradient)")
+        super.update(deltaTime: deltaTime)
     }
     
 }

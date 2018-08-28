@@ -150,6 +150,8 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     if(material.isLit){
         color *= totalColor;
     }
+    
+    color = mix(float4(rd.skyColor, 1), color, rd.visibility);
 
     return half4(color.r, color.g, color.b, 1);
 }
@@ -185,6 +187,8 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
         color *= totalColor;
     }
     
+    color = mix(float4(rd.skyColor, 1), color, rd.visibility);
+    
     return half4(color.r, color.g, color.b, 1);
 
 }
@@ -194,15 +198,3 @@ fragment half4 bounding_fragment_shader(const RasterizerData rd [[ stage_in ]]){
     
     return half4(color.r, color.g, color.b, color.a);
 }
-
-
-//FOG
-//    color = mix(float4(rd.skyColor, 1), color, rd.visibility);
-
-//ATTENUATION
-//float3 toLightVector = lightData.position - rd.worldPosition;
-//float distance = length(toLightVector);
-//float3 attenuation = lightData.attenuation;
-//float attenuationFactor = attenuation.x + (attenuation.y * distance) + (attenuation.z * distance * distance);
-
-
