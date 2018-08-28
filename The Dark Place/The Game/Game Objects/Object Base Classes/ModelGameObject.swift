@@ -2,7 +2,7 @@ import MetalKit
 
 class ModelGameObject: Node {
     private var _modelConstants = ModelConstants()
-    private var _modelMesh: Mesh!
+    private var _modelMesh: BasicMesh!
     private var _materials: [Material] = [Material]()
 
     var fillMode: MTLTriangleFillMode = .fill

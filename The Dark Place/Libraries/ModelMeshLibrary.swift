@@ -8,17 +8,11 @@ enum ModelMeshTypes {
     case LargeGreenOak
     case StreetLanternRed
     case StreetLanternGreen
-    case Cowboy
-}
-
-enum FileTypes {
-    case OBJ
-    case DAE
 }
 
 class ModelMeshLibrary {
     
-    private static var _meshes: [ModelMeshTypes:Mesh] = [:]
+    private static var _meshes: [ModelMeshTypes:BasicMesh] = [:]
     
     public static func Initialize(){
         createDefaultMeshes()
@@ -33,39 +27,26 @@ class ModelMeshLibrary {
         addModel_OBJ("Large_Oak_Green_01", .LargeGreenOak)
         addModel_OBJ("LanternRed", .StreetLanternRed)
         addModel_OBJ("LanternGreen", .StreetLanternGreen)
-        
-        //DAE FILES
-        addModel_DAE("Cowboy", .Cowboy)
     }
     
     private static func addModel_OBJ(_ modelName: String, _ modelMeshType: ModelMeshTypes){
-        _meshes.updateValue(ModelMesh(modelName, .OBJ), forKey: modelMeshType)
+        _meshes.updateValue(ModelMesh(modelName), forKey: modelMeshType)
     }
-    
-    private static func addModel_DAE(_ modelName: String, _ modelMeshType: ModelMeshTypes){
-        _meshes.updateValue(ModelMesh(modelName, .DAE), forKey: modelMeshType)
-    }
-    
-    public static func Mesh(_ meshType: ModelMeshTypes)->Mesh{
+
+    public static func Mesh(_ meshType: ModelMeshTypes)->BasicMesh{
         return _meshes[meshType]!
     }
 }
 
-protocol Mesh {
+protocol BasicMesh {
     var meshes: [MDLMesh] { get }
 }
 
-public class ModelMesh: Mesh {
+public class ModelMesh: BasicMesh {
     var meshes: [MDLMesh] = []
     
-    init(_ modelName: String, _ fileType: FileTypes) {
-        switch fileType {
-        case .OBJ:
-            meshes = ModelLoader.CreateMtkMeshArrayFromWavefront(modelName)
-        case .DAE:
-            //meshes = ModelLoader.CreateMeshFromDAEFile(modelName)
-            print("NOT A VALID FILE YET")
-        }
+    init(_ modelName: String) {
+        meshes = ModelLoader.CreateMtkMeshArrayFromWavefront(modelName)
     }
 }
 
