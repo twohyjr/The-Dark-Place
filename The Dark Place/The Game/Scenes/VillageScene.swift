@@ -78,25 +78,5 @@ class VillageScene: Scene {
             tree.setPosition(float3(posX,0,posZ))
             addChild(tree)
         }
-    }
-    
-    override func update(deltaTime: Float) {
-        if(Keyboard.IsKeyPressed(.one)){
-            self.fog.density -= 0.001
-        }
-        if(Keyboard.IsKeyPressed(.two)){
-            self.fog.density += 0.001
-        }
-        
-        if(Keyboard.IsKeyPressed(.three)){
-            self.fog.gradient -= 0.1
-        }
-        if(Keyboard.IsKeyPressed(.four)){
-            self.fog.gradient += 0.1
-        }
-        
-        print("Density: \(fog.density) --- Gradient: \(fog.gradient)")
-        super.update(deltaTime: deltaTime)
-    }
-    
+    }    
 }
