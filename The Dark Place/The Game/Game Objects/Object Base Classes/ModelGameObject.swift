@@ -4,24 +4,7 @@ class ModelGameObject: Node {
     private var _modelConstants = ModelConstants()
     private var _modelMesh: Mesh!
     private var _materials: [Material] = [Material]()
-    
-    private var _color = float4(1)
-    private var _diffuse = float3(0.1)
-    private var _ambient = float3(0.1)
-    private var _specular = float3(0.1)
-    private var _shininess: Float = 0.1
-    
-    private var _contrastDelta = float3(0)
-    var getContrastDelta: float3 {
-        return _contrastDelta
-    }
-    func setContrastDelta(_ value: float3){
-        self._contrastDelta = value
-    }
-    func setContrastDelta(_ value: Float){
-        self._contrastDelta = float3(value)
-    }
-    
+
     var fillMode: MTLTriangleFillMode = .fill
     
     init(_ modelMeshType: ModelMeshTypes){

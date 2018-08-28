@@ -17,7 +17,7 @@ class Campfire: LampModelObject {
         time += deltaTime
         self.brightness = (((cos(time) / 6) * (sin(time) / 8) + 6) * Float.random(min: 0.35, max: 0.5))
 
-        self.lightPosition = self.getPosition() + light.position
+        self.lightPosition = self.getPosition() + light.getPosition()
         super.update(deltaTime: deltaTime)
     }
     

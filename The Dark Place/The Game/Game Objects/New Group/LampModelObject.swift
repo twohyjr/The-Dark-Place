@@ -21,7 +21,7 @@ class LampModelObject: ModelGameObject {
     
     override func update(deltaTime: Float) {
         
-        LightManager.GetLight(lightName).setPosition(self.getPosition() + light.position)
+        LightManager.GetLight(lightName).setPosition(self.getPosition() + light.getPosition())
         LightManager.GetLight(lightName).setBrightness(self.brightness)
         LightManager.GetLight(lightName).setAttenuation(self.attenuation)
         LightManager.GetLight(lightName).setColor(self.color)

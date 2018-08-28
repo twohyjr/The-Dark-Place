@@ -6,54 +6,43 @@ class GameObject: Node {
     internal var material = Material()
     
     private var _color: float4 = float4(1)
-    func setColor(_ value: float4){
+    public func setColor(_ value: float4){
         self._color = value
     }
-    func getColor()->float4{
+    public func getColor()->float4{
         return self._color
     }
     
     private var _ambient = float3(1.0)
-    var getAmbient: float3 {
+    public func getAmbient()->float3 {
         return _ambient
     }
-    func setAmbient(_ value: float3){
+    public func setAmbient(_ value: float3){
         self._ambient = value
     }
     
     private var _diffuse = float3(0.2)
-    var getDiffuse: float3 {
+    public func getDiffuse()->float3 {
         return _diffuse
     }
-    func setDiffuse(_ value: float3){
+    public func setDiffuse(_ value: float3){
         self._diffuse = value
     }
     
     private var _shininess: Float = 0.1
-    var getShininess: Float {
+    public func getShininess()->Float {
         return _shininess
     }
-    func setShininess(_ value: Float){
+    public func setShininess(_ value: Float){
         self._shininess = value
     }
     
     private var _specular = float3(0.1)
-    var getSpecular: float3 {
+    public func getSpecular()->float3{
         return _specular
     }
-    func setSpecular(_ value: float3){
+    public func setSpecular(_ value: float3){
         self._specular = value
-    }
-    
-    private var _contrastDelta = float3(0)
-    var getContrastDelta: float3 {
-        return _contrastDelta
-    }
-    func setContrastDelta(_ value: float3){
-        self._contrastDelta = value
-    }
-    func setContrastDelta(_ value: Float){
-        self._contrastDelta = float3(value)
     }
     
     private var fillMode: MTLTriangleFillMode = .fill
@@ -84,7 +73,6 @@ class GameObject: Node {
         material.ambient = _ambient
         material.specular = _specular
         material.shininess = _shininess
-        material.contrastDelta = _contrastDelta
     }
 }
 

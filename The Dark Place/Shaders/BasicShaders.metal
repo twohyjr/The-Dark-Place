@@ -135,10 +135,10 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
         
         lightData.brightness = lightData.brightness;
         float4 phongColor = phongShade(lightData,
-                                  material,
-                                  rd.worldPosition,
-                                  rd.surfaceNormal,
-                                  rd.toCameraVector);
+                                       material,
+                                       rd.worldPosition,
+                                       rd.surfaceNormal,
+                                       rd.toCameraVector);
         
         totalColor += attenuate(phongColor,
                                 lightData.attenuation,
@@ -148,7 +148,7 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     
     //Apply Lighting Calculations
     if(material.isLit){
-        color *= totalColor + float4(material.contrastDelta, 1.0);
+        color *= totalColor;
     }
 
     return half4(color.r, color.g, color.b, 1);
@@ -182,7 +182,7 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
     
     //Apply Lighting Calculations
     if(material.isLit){
-        color *= totalColor + float4(material.contrastDelta, 1.0);
+        color *= totalColor;
     }
     
     return half4(color.r, color.g, color.b, 1);

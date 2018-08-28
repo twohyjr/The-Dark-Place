@@ -23,10 +23,10 @@ class CustomModelMesh: CustomMesh {
         createBuffers()
     }
     
-    internal func addVertex(position: float3,
-                            color: float4 = float4(0.25, 0.25, 0.25, 1.0),
-                            normal: float3 = float3(0,1,0),
-                            textureCoordinate: float2 = float2(0,0)){
+    func addVertex(position: float3,
+                   color: float4 = float4(0.25, 0.25, 0.25, 1.0),
+                   normal: float3 = float3(0,1,0),
+                   textureCoordinate: float2 = float2(0,0)){
         updateMinsAndMaxes(position)
         vertices.append(Vertex(position: position, color: color, normal: normal, textureCoordinate: textureCoordinate))
     }
