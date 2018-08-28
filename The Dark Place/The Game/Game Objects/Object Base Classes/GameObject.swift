@@ -3,9 +3,15 @@ import MetalKit
 class GameObject: Node {
     var mesh: CustomMesh!
     var modelConstants = ModelConstants()
-    
     internal var material = Material()
-    private var _color: float3 = float3(1)
+    
+    private var _color: float4 = float4(1)
+    func setColor(_ value: float4){
+        self._color = value
+    }
+    func getColor()->float4{
+        return self._color
+    }
     
     private var _ambient = float3(1.0)
     var getAmbient: float3 {
@@ -61,14 +67,6 @@ class GameObject: Node {
         super.init()
     }
     
-    func setColor(_ value: float4){
-        self.material.color = value
-    }
-    
-    func getColor()->float4{
-        return self.material.color
-    }
-    
     public func lineModeOn(_ isOn: Bool){
         self.fillMode = isOn ? MTLTriangleFillMode.lines : MTLTriangleFillMode.fill
     }
@@ -81,7 +79,7 @@ class GameObject: Node {
     private func updateModelConstants(){
         modelConstants.modelMatrix = self.modelMatrix
         modelConstants.normalMatrix = self.modelMatrix.upperLeftMatrix
-        material.color = getColor()
+        material.color = _color
         material.diffuse = _diffuse
         material.ambient = _ambient
         material.specular = _specular
