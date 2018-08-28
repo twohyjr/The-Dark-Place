@@ -8,6 +8,12 @@ enum ModelMeshTypes {
     case LargeGreenOak
     case StreetLanternRed
     case StreetLanternGreen
+    case Cowboy
+}
+
+enum FileTypes {
+    case OBJ
+    case DAE
 }
 
 class ModelMeshLibrary {
@@ -19,13 +25,25 @@ class ModelMeshLibrary {
     }
     
     private static func createDefaultMeshes(){
-        _meshes.updateValue(ModelMesh("Tent_01"), forKey: .Tent)
-        _meshes.updateValue(ModelMesh("Tent_Poles_01"), forKey: .TentWithPoles)
-        _meshes.updateValue(ModelMesh("Campfire_01"), forKey: .Campfire)
-        _meshes.updateValue(ModelMesh("Mushroom_Red_01"), forKey: .RedMushroom)
-        _meshes.updateValue(ModelMesh("Large_Oak_Green_01"), forKey: .LargeGreenOak)
-        _meshes.updateValue(ModelMesh("LanternRed"), forKey: .StreetLanternRed)
-        _meshes.updateValue(ModelMesh("LanternGreen"), forKey: .StreetLanternGreen)
+        //OBJ FILES
+        addModel_OBJ("Tent_01", .Tent)
+        addModel_OBJ("Tent_Poles_01", .TentWithPoles)
+        addModel_OBJ("Campfire_01", .Campfire)
+        addModel_OBJ("Mushroom_Red_01", .RedMushroom)
+        addModel_OBJ("Large_Oak_Green_01", .LargeGreenOak)
+        addModel_OBJ("LanternRed", .StreetLanternRed)
+        addModel_OBJ("LanternGreen", .StreetLanternGreen)
+        
+        //DAE FILES
+        addModel_DAE("Cowboy", .Cowboy)
+    }
+    
+    private static func addModel_OBJ(_ modelName: String, _ modelMeshType: ModelMeshTypes){
+        _meshes.updateValue(ModelMesh(modelName, .OBJ), forKey: modelMeshType)
+    }
+    
+    private static func addModel_DAE(_ modelName: String, _ modelMeshType: ModelMeshTypes){
+        _meshes.updateValue(ModelMesh(modelName, .DAE), forKey: modelMeshType)
     }
     
     public static func Mesh(_ meshType: ModelMeshTypes)->Mesh{
@@ -39,10 +57,15 @@ protocol Mesh {
 
 public class ModelMesh: Mesh {
     var meshes: [MDLMesh] = []
-    var center: float3 = float3(0)
     
-    init(_ modelName: String) {
-        meshes = ModelLoader.CreateMtkMeshArrayFromWavefront(modelName)
+    init(_ modelName: String, _ fileType: FileTypes) {
+        switch fileType {
+        case .OBJ:
+            meshes = ModelLoader.CreateMtkMeshArrayFromWavefront(modelName)
+        case .DAE:
+            //meshes = ModelLoader.CreateMeshFromDAEFile(modelName)
+            print("NOT A VALID FILE YET")
+        }
     }
 }
 

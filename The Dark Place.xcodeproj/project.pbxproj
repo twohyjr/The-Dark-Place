@@ -42,8 +42,8 @@
 		EBBBF71F2133904000457FBA /* Lantern.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF71E2133904000457FBA /* Lantern.swift */; };
 		EBBBF7272133A62F00457FBA /* LanternGreen.obj in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7252133A62F00457FBA /* LanternGreen.obj */; };
 		EBBBF7282133A62F00457FBA /* LanternGreen.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7262133A62F00457FBA /* LanternGreen.mtl */; };
-		EBBBF7332134EDE200457FBA /* diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7312134EDE200457FBA /* diffuse.png */; };
-		EBBBF7342134EDE200457FBA /* model.dae in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7322134EDE200457FBA /* model.dae */; };
+		EBBBF7332134EDE200457FBA /* CobowyTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7312134EDE200457FBA /* CobowyTexture.png */; };
+		EBBBF7342134EDE200457FBA /* Cowboy.dae in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7322134EDE200457FBA /* Cowboy.dae */; };
 		EBC491F0212B25E800CF009D /* BoundingRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC491EF212B25E800CF009D /* BoundingRegion.swift */; };
 		EBDB6E4320FD9E740061E7A3 /* cartoon_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */; };
 		EBDB6E4720FDA5620061E7A3 /* TextureLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */; };
@@ -134,8 +134,8 @@
 		EBBBF71E2133904000457FBA /* Lantern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lantern.swift; sourceTree = "<group>"; };
 		EBBBF7252133A62F00457FBA /* LanternGreen.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LanternGreen.obj; sourceTree = "<group>"; };
 		EBBBF7262133A62F00457FBA /* LanternGreen.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LanternGreen.mtl; sourceTree = "<group>"; };
-		EBBBF7312134EDE200457FBA /* diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diffuse.png; sourceTree = "<group>"; };
-		EBBBF7322134EDE200457FBA /* model.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = model.dae; sourceTree = "<group>"; };
+		EBBBF7312134EDE200457FBA /* CobowyTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CobowyTexture.png; sourceTree = "<group>"; };
+		EBBBF7322134EDE200457FBA /* Cowboy.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Cowboy.dae; sourceTree = "<group>"; };
 		EBC491EF212B25E800CF009D /* BoundingRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingRegion.swift; sourceTree = "<group>"; };
 		EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cartoon_grass.png; sourceTree = "<group>"; };
 		EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLibrary.swift; sourceTree = "<group>"; };
@@ -288,7 +288,6 @@
 			children = (
 				EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */,
 				EBDB6E4820FE5D160061E7A3 /* cartoon_sand.png */,
-				EBBBF7312134EDE200457FBA /* diffuse.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -336,7 +335,8 @@
 		EBF1459520FC516B00B89FE9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EBBBF7322134EDE200457FBA /* model.dae */,
+				EBBBF7312134EDE200457FBA /* CobowyTexture.png */,
+				EBBBF7322134EDE200457FBA /* Cowboy.dae */,
 				EBBBF7222133A1FA00457FBA /* Lanterns */,
 				EBF145AB20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl */,
 				EBF145AA20FCD13E00B89FE9 /* Large_Oak_Green_01.obj */,
@@ -594,7 +594,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBBBF7342134EDE200457FBA /* model.dae in Resources */,
+				EBBBF7342134EDE200457FBA /* Cowboy.dae in Resources */,
 				EBDB6E4320FD9E740061E7A3 /* cartoon_grass.png in Resources */,
 				EBF145AC20FCD13E00B89FE9 /* Large_Oak_Green_01.obj in Resources */,
 				EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */,
@@ -613,7 +613,7 @@
 				EBF145A620FC5F3A00B89FE9 /* Mushroom_Red_01.mtl in Resources */,
 				EBBBF7272133A62F00457FBA /* LanternGreen.obj in Resources */,
 				EBBBF7282133A62F00457FBA /* LanternGreen.mtl in Resources */,
-				EBBBF7332134EDE200457FBA /* diffuse.png in Resources */,
+				EBBBF7332134EDE200457FBA /* CobowyTexture.png in Resources */,
 				EBF145A720FC5F3A00B89FE9 /* Mushroom_Red_01.obj in Resources */,
 				EBDB6E4920FE5D160061E7A3 /* cartoon_sand.png in Resources */,
 				EBF145AD20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl in Resources */,

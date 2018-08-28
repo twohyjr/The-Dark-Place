@@ -39,4 +39,8 @@ class ModelLoader {
         return meshes
     }
     
+    public static func CreateMeshFromDAEFile(_ modelName: String){
+        
+    }
+    
 }
