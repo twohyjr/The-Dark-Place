@@ -34,14 +34,13 @@ class ModelLoader {
             print("ERROR::CREATING::MESH_FROM_WAVEFRONT::--\(modelName)--::\(error)")
         }
 
-        
-
         return meshes
     }
     
     public static func CreateMeshFromDAEFile(_ modelName: String)->RiggedMesh{
-        print("FILE LOADING FOR DAE NOT YET IMPLEMENTED")
-        return RiggedMesh()
+        let result = RiggedMesh()
+        
+        return result
     }
     
 }
