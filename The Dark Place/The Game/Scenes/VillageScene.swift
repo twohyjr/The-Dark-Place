@@ -47,15 +47,15 @@ class VillageScene: Scene {
         addChild(tentWithPoles)
     }
     
+    let lanternRed = Lantern(.Red)
     func addLights(){
-        let lantern = Lantern(.Red)
-        lantern.setRotation(float3(0.0, 3.3833308, 0.0))
-        lantern.attenuation = float3(6.3999963, -3.0099976, 0.40499836)
-        lantern.color = float3(1,0,0)
-        lantern.brightness = 2
-        lantern.moveZ(-4)
-        lantern.moveX(4)
-        addChild(lantern)
+        lanternRed.setRotation(float3(0.0, 3.3833308, 0.0))
+        lanternRed.attenuation = float3(6.3999963, -3.0099976, 0.40499836)
+        lanternRed.color = float3(1,0,0)
+        lanternRed.brightness = 2
+        lanternRed.moveZ(-4)
+        lanternRed.moveX(4)
+        addChild(lanternRed)
         
         let lanternGreen = Lantern(.Green)
         lanternGreen.setRotation(float3(0.0, 3, 0.0))
@@ -87,6 +87,7 @@ class VillageScene: Scene {
     }
     
     override func update(deltaTime: Float) {
+        lanternRed.doRotationZ(deltaTime)
         super.update(deltaTime: deltaTime)
     }
 }

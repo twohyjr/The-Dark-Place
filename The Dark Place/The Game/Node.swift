@@ -57,6 +57,18 @@ class Node {
         return self._rotation
     }
     
+    public func doRotationX(_ rotationX: Float){
+        self._rotation.x += rotationX
+    }
+    
+    public func doRotationY(_ rotationY: Float){
+        self._rotation.y += rotationY
+    }
+    
+    public func doRotationZ(_ rotationZ: Float){
+        self._rotation.z += rotationZ
+    }
+    
     //Positioning
     public func getPosition()->float3{
         return self._position
