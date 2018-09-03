@@ -19,8 +19,8 @@ class VillageScene: Scene {
     let debugCamera = DebugCamera()
     func addCameras(){
         debugCamera.setPosition(float3(-1.5, 10.5, 25.10))
-        debugCamera.setPitch(0.22)
-        debugCamera.setYaw(-0.98)
+        debugCamera.setPitch(0.20)
+        debugCamera.setYaw(0.04)
         addCamera(camera: debugCamera)
     }
     
