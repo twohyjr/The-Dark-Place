@@ -85,9 +85,4 @@ class VillageScene: Scene {
             addChild(tree)
         }
     }
-    
-    override func update(deltaTime: Float) {
-        lanternRed.doRotationZ(deltaTime)
-        super.update(deltaTime: deltaTime)
-    }
 }
