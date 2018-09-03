@@ -37,10 +37,10 @@ class ModelLoader {
         return meshes
     }
     
-    public static func CreateMeshFromDAEFile(_ modelName: String)->RiggedMesh{
+    public static func CreateMeshFromColladaFile(_ modelName: String)->RiggedMesh{
         let result = RiggedMesh()
         
-        AnimatedModelLoader.LoadEntity("")
+//        AnimatedModelLoader.LoadEntity("")
         
         return result
     }

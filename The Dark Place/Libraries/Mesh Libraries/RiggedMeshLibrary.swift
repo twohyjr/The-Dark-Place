@@ -34,7 +34,7 @@ class RiggedModelMesh {
     var mesh: RiggedMesh!
     
     init(_ fileName: String){
-        mesh = ModelLoader.CreateMeshFromDAEFile(fileName)
+        mesh = ModelLoader.CreateMeshFromColladaFile(fileName)
     }
 }
 
