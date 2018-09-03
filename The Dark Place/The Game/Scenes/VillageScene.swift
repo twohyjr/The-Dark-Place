@@ -14,6 +14,8 @@ class VillageScene: Scene {
         addTrees()
         
         addLights()
+        
+        addAnimatedModel()
     }
     
     let debugCamera = DebugCamera()
@@ -84,6 +86,34 @@ class VillageScene: Scene {
             tree.setPosition(float3(posX,0,posZ))
             addChild(tree)
         }
+    }
+    
+    let animatedModel = RedMushroom()
+    func addAnimatedModel(){
+        animatedModel.setPosition(float3(-14.020157, 4.9133453, 17.379887))
+        addChild(animatedModel)
+    }
+    
+    override func update(deltaTime: Float) {
+        if(Keyboard.IsKeyPressed(.w)){
+            animatedModel.moveZ(-deltaTime)
+        }
+        if(Keyboard.IsKeyPressed(.s)){
+            animatedModel.moveZ(deltaTime)
+        }
+        if(Keyboard.IsKeyPressed(.a)){
+            animatedModel.moveX(-deltaTime)
+        }
+        if(Keyboard.IsKeyPressed(.d)){
+            animatedModel.moveX(deltaTime)
+        }
+        if(Keyboard.IsKeyPressed(.q)){
+            animatedModel.moveY(deltaTime)
+        }
+        if(Keyboard.IsKeyPressed(.z)){
+            animatedModel.moveY(-deltaTime)
+        }
+        super.update(deltaTime: deltaTime)
     }
 
 }

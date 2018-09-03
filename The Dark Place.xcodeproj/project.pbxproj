@@ -39,23 +39,25 @@
 		EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */; };
 		EB6AEE50210D1F4400C291AA /* Types.metal in Sources */ = {isa = PBXBuildFile; fileRef = EB6AEE4F210D1F4400C291AA /* Types.metal */; };
 		EBB0791A213DBD44009B1371 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB07919213DBD44009B1371 /* DebugView.swift */; };
+		EBB0791C213DCAC8009B1371 /* AnimatedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0791B213DCAC8009B1371 /* AnimatedModel.swift */; };
+		EBB0791E213DCB66009B1371 /* ColladaLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0791D213DCB66009B1371 /* ColladaLoader.swift */; };
+		EBB07920213DCBE0009B1371 /* AnimatedModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0791F213DCBE0009B1371 /* AnimatedModelData.swift */; };
+		EBB07926213DE57B009B1371 /* XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB07925213DE57B009B1371 /* XML.swift */; };
 		EBBBF71C21338FC600457FBA /* LanternRed.obj in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF71A21338FC600457FBA /* LanternRed.obj */; };
 		EBBBF71D21338FC600457FBA /* LanternRed.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF71B21338FC600457FBA /* LanternRed.mtl */; };
 		EBBBF71F2133904000457FBA /* Lantern.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF71E2133904000457FBA /* Lantern.swift */; };
 		EBBBF7272133A62F00457FBA /* LanternGreen.obj in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7252133A62F00457FBA /* LanternGreen.obj */; };
 		EBBBF7282133A62F00457FBA /* LanternGreen.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7262133A62F00457FBA /* LanternGreen.mtl */; };
 		EBBBF7332134EDE200457FBA /* CobowyTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7312134EDE200457FBA /* CobowyTexture.png */; };
-		EBBBF7342134EDE200457FBA /* Cowboy.dae in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7322134EDE200457FBA /* Cowboy.dae */; };
+		EBBBF7342134EDE200457FBA /* Cowboy.xml in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7322134EDE200457FBA /* Cowboy.xml */; };
 		EBBBF7422134FB2300457FBA /* RiggedMeshLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF7412134FB2300457FBA /* RiggedMeshLibrary.swift */; };
 		EBBBF7472135008D00457FBA /* Joint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF7462135008D00457FBA /* Joint.swift */; };
-		EBBBF74A213500AF00457FBA /* AnimatedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF749213500AF00457FBA /* AnimatedModel.swift */; };
 		EBBBF74E213500FF00457FBA /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF74D213500FF00457FBA /* Animation.swift */; };
 		EBBBF7502135010B00457FBA /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF74F2135010B00457FBA /* Animator.swift */; };
 		EBBBF7522135012900457FBA /* JointTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF7512135012900457FBA /* JointTransform.swift */; };
 		EBBBF7542135013600457FBA /* KeyFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF7532135013600457FBA /* KeyFrame.swift */; };
 		EBBBF7562135014100457FBA /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF7552135014100457FBA /* Quaternion.swift */; };
 		EBBBF7592135016800457FBA /* AnimatedModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF7582135016800457FBA /* AnimatedModelLoader.swift */; };
-		EBBBF75B2135017500457FBA /* AnimationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF75A2135017500457FBA /* AnimationLoader.swift */; };
 		EBBBF75E2135064100457FBA /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF75D2135064100457FBA /* TODO */; };
 		EBC491F0212B25E800CF009D /* BoundingRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC491EF212B25E800CF009D /* BoundingRegion.swift */; };
 		EBDB6E4320FD9E740061E7A3 /* cartoon_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */; };
@@ -144,23 +146,25 @@
 		EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainMeshGenerator.swift; sourceTree = "<group>"; };
 		EB6AEE4F210D1F4400C291AA /* Types.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Types.metal; sourceTree = "<group>"; };
 		EBB07919213DBD44009B1371 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
+		EBB0791B213DCAC8009B1371 /* AnimatedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedModel.swift; sourceTree = "<group>"; };
+		EBB0791D213DCB66009B1371 /* ColladaLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColladaLoader.swift; sourceTree = "<group>"; };
+		EBB0791F213DCBE0009B1371 /* AnimatedModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedModelData.swift; sourceTree = "<group>"; };
+		EBB07925213DE57B009B1371 /* XML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XML.swift; sourceTree = "<group>"; };
 		EBBBF71A21338FC600457FBA /* LanternRed.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LanternRed.obj; sourceTree = "<group>"; };
 		EBBBF71B21338FC600457FBA /* LanternRed.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LanternRed.mtl; sourceTree = "<group>"; };
 		EBBBF71E2133904000457FBA /* Lantern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lantern.swift; sourceTree = "<group>"; };
 		EBBBF7252133A62F00457FBA /* LanternGreen.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LanternGreen.obj; sourceTree = "<group>"; };
 		EBBBF7262133A62F00457FBA /* LanternGreen.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LanternGreen.mtl; sourceTree = "<group>"; };
 		EBBBF7312134EDE200457FBA /* CobowyTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CobowyTexture.png; sourceTree = "<group>"; };
-		EBBBF7322134EDE200457FBA /* Cowboy.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Cowboy.dae; sourceTree = "<group>"; };
+		EBBBF7322134EDE200457FBA /* Cowboy.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cowboy.xml; sourceTree = "<group>"; };
 		EBBBF7412134FB2300457FBA /* RiggedMeshLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiggedMeshLibrary.swift; sourceTree = "<group>"; };
 		EBBBF7462135008D00457FBA /* Joint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joint.swift; sourceTree = "<group>"; };
-		EBBBF749213500AF00457FBA /* AnimatedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedModel.swift; sourceTree = "<group>"; };
 		EBBBF74D213500FF00457FBA /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		EBBBF74F2135010B00457FBA /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		EBBBF7512135012900457FBA /* JointTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointTransform.swift; sourceTree = "<group>"; };
 		EBBBF7532135013600457FBA /* KeyFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFrame.swift; sourceTree = "<group>"; };
 		EBBBF7552135014100457FBA /* Quaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quaternion.swift; sourceTree = "<group>"; };
 		EBBBF7582135016800457FBA /* AnimatedModelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedModelLoader.swift; sourceTree = "<group>"; };
-		EBBBF75A2135017500457FBA /* AnimationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLoader.swift; sourceTree = "<group>"; };
 		EBBBF75D2135064100457FBA /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		EBC491EF212B25E800CF009D /* BoundingRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingRegion.swift; sourceTree = "<group>"; };
 		EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cartoon_grass.png; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 			children = (
 				EBF4A63A20F83A4700DAC145 /* GameObject.swift */,
 				EBF1458C20FC4F8100B89FE9 /* ModelGameObject.swift */,
+				EBB0791B213DCAC8009B1371 /* AnimatedModel.swift */,
 				EB614D2F20F85C2800E61EFA /* Terrain.swift */,
 			);
 			path = "Object Base Classes";
@@ -324,7 +329,6 @@
 			isa = PBXGroup;
 			children = (
 				EBBBF7462135008D00457FBA /* Joint.swift */,
-				EBBBF749213500AF00457FBA /* AnimatedModel.swift */,
 			);
 			path = AnimatedModel;
 			sourceTree = "<group>";
@@ -344,16 +348,10 @@
 			isa = PBXGroup;
 			children = (
 				EBBBF7582135016800457FBA /* AnimatedModelLoader.swift */,
-				EBBBF75A2135017500457FBA /* AnimationLoader.swift */,
+				EBB0791F213DCBE0009B1371 /* AnimatedModelData.swift */,
+				EBB0791D213DCB66009B1371 /* ColladaLoader.swift */,
 			);
 			path = Loaders;
-			sourceTree = "<group>";
-		};
-		EBBBF75C2135061600457FBA /* Collada */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Collada;
 			sourceTree = "<group>";
 		};
 		EBDB6E4120FD9D940061E7A3 /* Images */ = {
@@ -388,7 +386,6 @@
 		EBF1458420FC4B7500B89FE9 /* Loaders */ = {
 			isa = PBXGroup;
 			children = (
-				EBBBF75C2135061600457FBA /* Collada */,
 				EBF1458520FC4B8700B89FE9 /* ModelLoader.swift */,
 			);
 			name = Loaders;
@@ -410,7 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				EBBBF7312134EDE200457FBA /* CobowyTexture.png */,
-				EBBBF7322134EDE200457FBA /* Cowboy.dae */,
+				EBBBF7322134EDE200457FBA /* Cowboy.xml */,
 				EBBBF7222133A1FA00457FBA /* Lanterns */,
 				EBF145AB20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl */,
 				EBF145AA20FCD13E00B89FE9 /* Large_Oak_Green_01.obj */,
@@ -504,6 +501,7 @@
 				EB614D2620F8513200E61EFA /* Input */,
 				EB614D2320F8508700E61EFA /* Math */,
 				EBF4A62D20F8174E00DAC145 /* Types */,
+				EBB07925213DE57B009B1371 /* XML.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -673,7 +671,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBBBF7342134EDE200457FBA /* Cowboy.dae in Resources */,
+				EBBBF7342134EDE200457FBA /* Cowboy.xml in Resources */,
 				EBDB6E4320FD9E740061E7A3 /* cartoon_grass.png in Resources */,
 				EBF145AC20FCD13E00B89FE9 /* Large_Oak_Green_01.obj in Resources */,
 				EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */,
@@ -714,6 +712,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBB07920213DCBE0009B1371 /* AnimatedModelData.swift in Sources */,
 				EBBBF7502135010B00457FBA /* Animator.swift in Sources */,
 				EBF4A63120F818DE00DAC145 /* View.swift in Sources */,
 				EB614D3020F85C2800E61EFA /* Terrain.swift in Sources */,
@@ -724,6 +723,7 @@
 				EBBBF71F2133904000457FBA /* Lantern.swift in Sources */,
 				EBF4A62020F80D6400DAC145 /* Renderer.swift in Sources */,
 				EB1B9859211515240076BBB8 /* LampModelObject.swift in Sources */,
+				EBB0791C213DCAC8009B1371 /* AnimatedModel.swift in Sources */,
 				EBC491F0212B25E800CF009D /* BoundingRegion.swift in Sources */,
 				EBF1452C20FAF98600B89FE9 /* Cube.swift in Sources */,
 				EBF4A64120F83C7B00DAC145 /* CustomMeshLibrary.swift in Sources */,
@@ -740,13 +740,12 @@
 				EB6AEE50210D1F4400C291AA /* Types.metal in Sources */,
 				EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */,
 				EBBBF7422134FB2300457FBA /* RiggedMeshLibrary.swift in Sources */,
-				EBBBF74A213500AF00457FBA /* AnimatedModel.swift in Sources */,
 				EBF4A63820F8363400DAC145 /* Renderable.swift in Sources */,
-				EBBBF75B2135017500457FBA /* AnimationLoader.swift in Sources */,
 				EBF4A63F20F83C0700DAC145 /* Types.swift in Sources */,
 				EBBBF7522135012900457FBA /* JointTransform.swift in Sources */,
 				EBF4A64B20F83F3500DAC145 /* Scene.swift in Sources */,
 				EBBBF7592135016800457FBA /* AnimatedModelLoader.swift in Sources */,
+				EBB0791E213DCB66009B1371 /* ColladaLoader.swift in Sources */,
 				EB614D2820F8514100E61EFA /* Keyboard.swift in Sources */,
 				EBF1458D20FC4F8100B89FE9 /* ModelGameObject.swift in Sources */,
 				EBF145A920FC5F6900B89FE9 /* RedMushroom.swift in Sources */,
@@ -777,6 +776,7 @@
 				EB614D2C20F8516100E61EFA /* KeyCodes.swift in Sources */,
 				EB1B9869211566C00076BBB8 /* TerrainData.swift in Sources */,
 				EB1B987A2116480F0076BBB8 /* Extensions.swift in Sources */,
+				EBB07926213DE57B009B1371 /* XML.swift in Sources */,
 				EBF145AF20FCD14E00B89FE9 /* LargeGreenOak.swift in Sources */,
 				EBF4A64720F83DF100DAC145 /* VertexDescriptorLibrary.swift in Sources */,
 				EB1B985B211515DB0076BBB8 /* Campfire.swift in Sources */,

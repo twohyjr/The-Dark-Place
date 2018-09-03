@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+
  <asset>
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
@@ -9,6 +10,7 @@
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
+
  <library_animations>
   <animation id="unnamed_animation__0" name="unnamed_animation__0">
    <animation id="keyframedAnimations1">
@@ -381,6 +383,7 @@
    </animation>
   </animation>
  </library_animations>
+
  <library_cameras>
   <camera id="Camera-camera" name="Camera">
    <optics>
@@ -394,16 +397,19 @@
    </optics>
   </camera>
  </library_cameras>
+
  <library_images>
   <image id="image97">
    <init_from>CobowyTexture.png</init_from>
   </image>
  </library_images>
+
  <library_materials>
   <material id="Material-material" name="Material">
    <instance_effect url="#effect_Material-material"/>
   </material>
  </library_materials>
+
  <library_effects>
   <effect id="effect_Material-material">
    <profile_COMMON>
@@ -453,6 +459,7 @@
    </extra>
   </effect>
  </library_effects>
+
  <library_geometries>
   <geometry id="geometry99">
    <mesh>
@@ -509,6 +516,7 @@
    </mesh>
   </geometry>
  </library_geometries>
+
  <library_controllers>
   <controller id="skin105">
    <skin source="#geometry99">
@@ -550,6 +558,7 @@
    </skin>
   </controller>
  </library_controllers>
+
  <library_visual_scenes>
   <visual_scene id="scene107">
    <node id="Camera" name="Camera">
@@ -620,7 +629,9 @@
    </node>
   </visual_scene>
  </library_visual_scenes>
+
  <scene>
   <instance_visual_scene url="#scene107"/>
  </scene>
+
 </COLLADA>

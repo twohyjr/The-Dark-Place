@@ -40,6 +40,8 @@ class ModelLoader {
     public static func CreateMeshFromDAEFile(_ modelName: String)->RiggedMesh{
         let result = RiggedMesh()
         
+        AnimatedModelLoader.LoadEntity("")
+        
         return result
     }
     
