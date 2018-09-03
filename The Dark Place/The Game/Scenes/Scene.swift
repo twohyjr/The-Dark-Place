@@ -7,7 +7,7 @@ class LightCollection {
 class Scene: Node {
     
     var sceneConstants = SceneConstants()
-    private var cameraManager = CameraManager()
+    var cameraManager = CameraManager()
     private var lightDatas: [LightData] {
         get{ return LightManager.LightData }
         set{ }  // Do nothing here.  Need to be able to pass a non read only property to the render command encoder

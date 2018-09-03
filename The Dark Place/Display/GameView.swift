@@ -2,6 +2,8 @@ import MetalKit
 
 class GameView: MTKView {
     
+    var debugViewController: DebugViewController!
+    
     var renderer: Renderer!
     required init(coder: NSCoder) {
         super.init(coder: coder)
@@ -19,6 +21,15 @@ class GameView: MTKView {
         self.depthStencilPixelFormat = .depth32Float
         
         self.delegate = renderer
+    }
+    
+    
+    func setControllers(debugViewController: DebugViewController){
+        self.debugViewController = debugViewController
+    }
+    
+    func updateControllers(){
+        debugViewController.updateDebugCameraValues(SceneManager.CurrentScene.cameraManager.CurrentCamera.debugCameraValues)
     }
     
 }

@@ -25,6 +25,7 @@
 		EB1B98882118C6AA0076BBB8 /* VillageSceneTerrainMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B98872118C6AA0076BBB8 /* VillageSceneTerrainMap.png */; };
 		EB1B988A2118C6BF0076BBB8 /* VillageSceneItemMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B98892118C6BF0076BBB8 /* VillageSceneItemMap.png */; };
 		EB1B988C211AADD10076BBB8 /* WorldItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B988B211AADD10076BBB8 /* WorldItemData.swift */; };
+		EB5C6F45213DA0950097D16F /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C6F44213DA0950097D16F /* DebugViewController.swift */; };
 		EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1820F8403800E61EFA /* SceneManager.swift */; };
 		EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1A20F840C000E61EFA /* GameManager.swift */; };
 		EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1D20F8431100E61EFA /* BasicShaders.metal */; };
@@ -128,6 +129,7 @@
 		EB1B98872118C6AA0076BBB8 /* VillageSceneTerrainMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VillageSceneTerrainMap.png; sourceTree = "<group>"; };
 		EB1B98892118C6BF0076BBB8 /* VillageSceneItemMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VillageSceneItemMap.png; sourceTree = "<group>"; };
 		EB1B988B211AADD10076BBB8 /* WorldItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldItemData.swift; sourceTree = "<group>"; };
+		EB5C6F44213DA0950097D16F /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		EB614D1820F8403800E61EFA /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		EB614D1A20F840C000E61EFA /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		EB614D1D20F8431100E61EFA /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 			children = (
 				EBF4A63020F818DE00DAC145 /* View.swift */,
 				EBF4A61F20F80D6400DAC145 /* Renderer.swift */,
+				EB5C6F44213DA0950097D16F /* DebugViewController.swift */,
 				EBF4A61C20F8058B00DAC145 /* GameView.swift */,
 				EBF4A60320F8056400DAC145 /* Main.storyboard */,
 			);
@@ -756,6 +759,7 @@
 				EBF4A64320F83D7700DAC145 /* RenderPipelineStateLibrary.swift in Sources */,
 				EBF1458B20FC4E6700B89FE9 /* ModelMeshLibrary.swift in Sources */,
 				EB1B983F211139160076BBB8 /* SamplerStateLibrary.swift in Sources */,
+				EB5C6F45213DA0950097D16F /* DebugViewController.swift in Sources */,
 				EBF4A64D20F83F7E00DAC145 /* VillageScene.swift in Sources */,
 				EB1B984A21117FAA0076BBB8 /* LightManager.swift in Sources */,
 				EBF4A64520F83DC600DAC145 /* ShaderLibrary.swift in Sources */,

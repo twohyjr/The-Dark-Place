@@ -25,6 +25,10 @@ extension Renderer: MTKViewDelegate {
     }
     
     func draw(in view: MTKView) {
+        if let gameView = view as? GameView {
+            gameView.updateControllers()
+        }
+        
         GameManager.Tick(view: view)
     }
     
