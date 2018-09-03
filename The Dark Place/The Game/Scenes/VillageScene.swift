@@ -20,6 +20,7 @@ class VillageScene: Scene {
     func addCameras(){
         debugCamera.setPosition(float3(-1.4901161e-08, 10.499996, 25.08331))
         debugCamera.setPitch(0.3)
+        debugCamera.setYaw(5.33)
         addCamera(camera: debugCamera)
     }
     
@@ -29,8 +30,8 @@ class VillageScene: Scene {
     }
     
     func addTerrain(){
-        let terrainData = TerrainData(width: 40, depth: 40)
-        let terrain = Terrain(gridSize: 100, terrainData: terrainData, textureType: TextureTypes.CartoonSand)
+        let terrainData = TerrainData(width: 200, depth: 200)
+        let terrain = Terrain(gridSize: 1000, terrainData: terrainData, textureType: TextureTypes.CartoonSand)
         addChild(terrain)
     }
     
@@ -68,6 +69,11 @@ class VillageScene: Scene {
         let campfire = Campfire()
         campfire.moveZ(4)
         addChild(campfire)
+        
+        let sun = LampGameObject(.Cube_Custom)
+        sun.setPositionY(100)
+        sun.brightness = 0.4
+        addChild(sun)
     }
     
     func addTrees(){
@@ -78,5 +84,9 @@ class VillageScene: Scene {
             tree.setPosition(float3(posX,0,posZ))
             addChild(tree)
         }
-    }    
+    }
+    
+    override func update(deltaTime: Float) {
+        super.update(deltaTime: deltaTime)
+    }
 }

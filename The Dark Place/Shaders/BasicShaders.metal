@@ -189,7 +189,7 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
     
     color = mix(float4(rd.skyColor, 1), color, rd.visibility);
     
-    return half4(color.r, color.g, color.b, 1);
+    return half4(color.r, color.b, color.g, 1);
 
 }
 

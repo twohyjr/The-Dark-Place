@@ -10,6 +10,18 @@ class Node {
         self._position = position
     }
     
+    public func setPositionX(_ xPosition: Float){
+        self._position.x = xPosition
+    }
+    
+    public func setPositionY(_ yPosition: Float){
+        self._position.y = yPosition
+    }
+    
+    public func setPositionZ(_ zPosition: Float){
+        self._position.z = zPosition
+    }
+    
     
     public func setRotation(_ rotation: float3){
         self._rotation = rotation
