@@ -12,7 +12,7 @@ struct DebugCameraValues {
     var far: Float = 0.0
 }
 
-class DebugViewController: NSViewController {
+class ViewController: NSViewController {
 
     @IBOutlet weak var txtCameraPosition: NSTextField!
     @IBOutlet weak var txtCameraPitch: NSTextField!

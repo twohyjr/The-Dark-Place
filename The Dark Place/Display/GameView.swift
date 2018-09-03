@@ -2,7 +2,7 @@ import MetalKit
 
 class GameView: MTKView {
     
-    var debugViewController: DebugViewController!
+    var debugViewController: ViewController!
     
     var renderer: Renderer!
     required init(coder: NSCoder) {
@@ -24,7 +24,7 @@ class GameView: MTKView {
     }
     
     
-    func setControllers(debugViewController: DebugViewController){
+    func setControllers(debugViewController: ViewController){
         self.debugViewController = debugViewController
     }
     
