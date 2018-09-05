@@ -73,7 +73,8 @@ class VillageScene: Scene {
         addChild(campfire)
         
         let sun = LampGameObject(.Cube_Custom)
-        sun.setPositionY(100)
+        sun.setPosition(debugCamera.getPosition())
+        sun.setPositionY(0)
         sun.brightness = 0.4
         addChild(sun)
     }
@@ -88,7 +89,7 @@ class VillageScene: Scene {
         }
     }
     
-    let animatedModel = RedMushroom()
+    let animatedModel = Cowboy()
     func addAnimatedModel(){
         animatedModel.setPosition(float3(-14.020157, 4.9133453, 17.379887))
         addChild(animatedModel)

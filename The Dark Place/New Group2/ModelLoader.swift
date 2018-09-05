@@ -37,12 +37,8 @@ class ModelLoader {
         return meshes
     }
     
-    public static func CreateMeshFromColladaFile(_ modelName: String)->RiggedMesh{
-        let result = RiggedMesh()
-        
-//        AnimatedModelLoader.LoadEntity("")
-        
-        return result
+    public static func CreateMeshFromCollada(_ modelName: String)->RiggedMesh{
+        return ColladaFileLoader.GetRiggedMesh(modelName)
     }
     
 }

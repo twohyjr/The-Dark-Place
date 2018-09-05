@@ -38,17 +38,18 @@
 		EB614D3020F85C2800E61EFA /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2F20F85C2800E61EFA /* Terrain.swift */; };
 		EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */; };
 		EB6AEE50210D1F4400C291AA /* Types.metal in Sources */ = {isa = PBXBuildFile; fileRef = EB6AEE4F210D1F4400C291AA /* Types.metal */; };
+		EB702308213F91870091B25E /* Cowboy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB702307213F91870091B25E /* Cowboy.swift */; };
 		EBB0791A213DBD44009B1371 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB07919213DBD44009B1371 /* DebugView.swift */; };
-		EBB0791C213DCAC8009B1371 /* AnimatedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0791B213DCAC8009B1371 /* AnimatedModel.swift */; };
+		EBB0791C213DCAC8009B1371 /* AnimatedGameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0791B213DCAC8009B1371 /* AnimatedGameObject.swift */; };
 		EBB07926213DE57B009B1371 /* XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB07925213DE57B009B1371 /* XML.swift */; };
-		EBB0792D213DFA24009B1371 /* AnimationModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0792C213DFA24009B1371 /* AnimationModelLoader.swift */; };
+		EBB0792D213DFA24009B1371 /* ColladaFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0792C213DFA24009B1371 /* ColladaFileLoader.swift */; };
 		EBBBF71C21338FC600457FBA /* LanternRed.obj in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF71A21338FC600457FBA /* LanternRed.obj */; };
 		EBBBF71D21338FC600457FBA /* LanternRed.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF71B21338FC600457FBA /* LanternRed.mtl */; };
 		EBBBF71F2133904000457FBA /* Lantern.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF71E2133904000457FBA /* Lantern.swift */; };
 		EBBBF7272133A62F00457FBA /* LanternGreen.obj in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7252133A62F00457FBA /* LanternGreen.obj */; };
 		EBBBF7282133A62F00457FBA /* LanternGreen.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7262133A62F00457FBA /* LanternGreen.mtl */; };
 		EBBBF7332134EDE200457FBA /* CobowyTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7312134EDE200457FBA /* CobowyTexture.png */; };
-		EBBBF7342134EDE200457FBA /* Cowboy.xml in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7322134EDE200457FBA /* Cowboy.xml */; };
+		EBBBF7342134EDE200457FBA /* Cowboy.dae in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF7322134EDE200457FBA /* Cowboy.dae */; };
 		EBBBF7422134FB2300457FBA /* RiggedMeshLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF7412134FB2300457FBA /* RiggedMeshLibrary.swift */; };
 		EBBBF7562135014100457FBA /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF7552135014100457FBA /* Quaternion.swift */; };
 		EBBBF75E2135064100457FBA /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF75D2135064100457FBA /* TODO */; };
@@ -138,17 +139,18 @@
 		EB614D2F20F85C2800E61EFA /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainMeshGenerator.swift; sourceTree = "<group>"; };
 		EB6AEE4F210D1F4400C291AA /* Types.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Types.metal; sourceTree = "<group>"; };
+		EB702307213F91870091B25E /* Cowboy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cowboy.swift; sourceTree = "<group>"; };
 		EBB07919213DBD44009B1371 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
-		EBB0791B213DCAC8009B1371 /* AnimatedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedModel.swift; sourceTree = "<group>"; };
+		EBB0791B213DCAC8009B1371 /* AnimatedGameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedGameObject.swift; sourceTree = "<group>"; };
 		EBB07925213DE57B009B1371 /* XML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XML.swift; sourceTree = "<group>"; };
-		EBB0792C213DFA24009B1371 /* AnimationModelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModelLoader.swift; sourceTree = "<group>"; };
+		EBB0792C213DFA24009B1371 /* ColladaFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColladaFileLoader.swift; sourceTree = "<group>"; };
 		EBBBF71A21338FC600457FBA /* LanternRed.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LanternRed.obj; sourceTree = "<group>"; };
 		EBBBF71B21338FC600457FBA /* LanternRed.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LanternRed.mtl; sourceTree = "<group>"; };
 		EBBBF71E2133904000457FBA /* Lantern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lantern.swift; sourceTree = "<group>"; };
 		EBBBF7252133A62F00457FBA /* LanternGreen.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LanternGreen.obj; sourceTree = "<group>"; };
 		EBBBF7262133A62F00457FBA /* LanternGreen.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LanternGreen.mtl; sourceTree = "<group>"; };
 		EBBBF7312134EDE200457FBA /* CobowyTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CobowyTexture.png; sourceTree = "<group>"; };
-		EBBBF7322134EDE200457FBA /* Cowboy.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cowboy.xml; sourceTree = "<group>"; };
+		EBBBF7322134EDE200457FBA /* Cowboy.dae */ = {isa = PBXFileReference; explicitFileType = compiled; fileEncoding = 4; path = Cowboy.dae; sourceTree = "<group>"; };
 		EBBBF7412134FB2300457FBA /* RiggedMeshLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiggedMeshLibrary.swift; sourceTree = "<group>"; };
 		EBBBF7552135014100457FBA /* Quaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quaternion.swift; sourceTree = "<group>"; };
 		EBBBF75D2135064100457FBA /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
@@ -224,7 +226,7 @@
 			children = (
 				EBF4A63A20F83A4700DAC145 /* GameObject.swift */,
 				EBF1458C20FC4F8100B89FE9 /* ModelGameObject.swift */,
-				EBB0791B213DCAC8009B1371 /* AnimatedModel.swift */,
+				EBB0791B213DCAC8009B1371 /* AnimatedGameObject.swift */,
 				EB614D2F20F85C2800E61EFA /* Terrain.swift */,
 			);
 			path = "Object Base Classes";
@@ -344,7 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				EBF1458520FC4B8700B89FE9 /* ModelLoader.swift */,
-				EBB0792C213DFA24009B1371 /* AnimationModelLoader.swift */,
+				EBB0792C213DFA24009B1371 /* ColladaFileLoader.swift */,
 			);
 			name = Loaders;
 			path = "New Group2";
@@ -365,7 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				EBBBF7312134EDE200457FBA /* CobowyTexture.png */,
-				EBBBF7322134EDE200457FBA /* Cowboy.xml */,
+				EBBBF7322134EDE200457FBA /* Cowboy.dae */,
 				EBBBF7222133A1FA00457FBA /* Lanterns */,
 				EBF145AB20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl */,
 				EBF145AA20FCD13E00B89FE9 /* Large_Oak_Green_01.obj */,
@@ -519,6 +521,7 @@
 				EBF1458E20FC50DE00B89FE9 /* Tents.swift */,
 				EBF145A820FC5F6900B89FE9 /* RedMushroom.swift */,
 				EBF145AE20FCD14E00B89FE9 /* LargeGreenOak.swift */,
+				EB702307213F91870091B25E /* Cowboy.swift */,
 			);
 			path = "Game Objects";
 			sourceTree = "<group>";
@@ -625,7 +628,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBBBF7342134EDE200457FBA /* Cowboy.xml in Resources */,
+				EBBBF7342134EDE200457FBA /* Cowboy.dae in Resources */,
 				EBDB6E4320FD9E740061E7A3 /* cartoon_grass.png in Resources */,
 				EBF145AC20FCD13E00B89FE9 /* Large_Oak_Green_01.obj in Resources */,
 				EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */,
@@ -674,7 +677,7 @@
 				EBBBF71F2133904000457FBA /* Lantern.swift in Sources */,
 				EBF4A62020F80D6400DAC145 /* Renderer.swift in Sources */,
 				EB1B9859211515240076BBB8 /* LampModelObject.swift in Sources */,
-				EBB0791C213DCAC8009B1371 /* AnimatedModel.swift in Sources */,
+				EBB0791C213DCAC8009B1371 /* AnimatedGameObject.swift in Sources */,
 				EBC491F0212B25E800CF009D /* BoundingRegion.swift in Sources */,
 				EBF1452C20FAF98600B89FE9 /* Cube.swift in Sources */,
 				EBF4A64120F83C7B00DAC145 /* CustomMeshLibrary.swift in Sources */,
@@ -691,6 +694,7 @@
 				EB6AEE50210D1F4400C291AA /* Types.metal in Sources */,
 				EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */,
 				EBBBF7422134FB2300457FBA /* RiggedMeshLibrary.swift in Sources */,
+				EB702308213F91870091B25E /* Cowboy.swift in Sources */,
 				EBF4A63820F8363400DAC145 /* Renderable.swift in Sources */,
 				EBF4A63F20F83C0700DAC145 /* Types.swift in Sources */,
 				EBF4A64B20F83F3500DAC145 /* Scene.swift in Sources */,
@@ -705,7 +709,7 @@
 				EB614D2E20F8536700E61EFA /* DepthStencilStateLibrary.swift in Sources */,
 				EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */,
 				EBF1458F20FC50DE00B89FE9 /* Tents.swift in Sources */,
-				EBB0792D213DFA24009B1371 /* AnimationModelLoader.swift in Sources */,
+				EBB0792D213DFA24009B1371 /* ColladaFileLoader.swift in Sources */,
 				EBF4A64320F83D7700DAC145 /* RenderPipelineStateLibrary.swift in Sources */,
 				EBF1458B20FC4E6700B89FE9 /* ModelMeshLibrary.swift in Sources */,
 				EB1B983F211139160076BBB8 /* SamplerStateLibrary.swift in Sources */,
