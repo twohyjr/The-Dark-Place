@@ -59,10 +59,11 @@ class RiggedMesh{
 
 class RiggedModelMesh {
     var mesh: RiggedMesh!
+    var vertexBuffer: MTLBuffer!
     
     init(_ fileName: String){
-        mesh = ModelLoader.CreateMeshFromCollada(fileName)
-        
+        mesh = RiggedMesh()
+        mesh.vertices = ModelLoader.CreateMeshFromCollada(fileName)
     }
     
     func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder) {

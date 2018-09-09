@@ -160,4 +160,8 @@ extension String {
         
     }
     
+    var dropHash: String {
+        return self.replacingOccurrences(of: "#", with: "")
+    }
+    
 }
