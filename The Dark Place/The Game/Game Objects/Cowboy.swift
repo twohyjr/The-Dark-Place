@@ -5,7 +5,7 @@ class Cowboy: AnimatedGameObject {
     
     init() {
         super.init(.Cowboy)
-        self.setDiffuse(float3(1))
+        self.setDiffuse(float3(0.5,0.6,0.23))
         self.setShininess(5)
         self.setSpecular(float3(7))
         self.doRotationX(4.7)

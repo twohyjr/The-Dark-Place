@@ -39,7 +39,7 @@ class ColladaFileLoader {
                             data = floatArray.toFloat2Array()
                         }else if(stride == 3) {
                             if(source.contains("color")){
-                                data = floatArray.toFloat4Array()
+                                data = floatArray.toFloat4ArrayFromStride3()
                             }else {
                                data = floatArray.toFloat3Array()
                             }
@@ -84,7 +84,7 @@ class ColladaFileLoader {
                     break
                 }
             }
-
+            print(colors)
             let pList = xml["#library_geometries.geometry.mesh.polylist.p"].string!.toIntArray()
             
             var currentOffset: Int = 0
@@ -109,9 +109,8 @@ class ColladaFileLoader {
                 }else if(currentOffset == textureOffset){
                     texturePoint = textureCoords[value]
                 }else if(currentOffset == colorOffset){
-//                    colorPoint = colors[value]
+                    colorPoint = colors[value]
                 }
-                
 
                 currentOffset += 1
                 currentOffset = currentOffset % inputCount

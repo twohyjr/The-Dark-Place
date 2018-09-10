@@ -55,3 +55,10 @@ struct RasterizerData {
     float visibility;
 };
 
+struct RiggedVertex {
+    float3 position [[ attribute(0) ]];
+    float4 color [[ attribute(1) ]];
+    float3 normal [[ attribute(2) ]];
+    float2 textureCoordinate [[ attribute(3) ]];
+};
+

@@ -192,9 +192,3 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
     return half4(color.r, color.b, color.g, 1);
 
 }
-
-fragment half4 bounding_fragment_shader(const RasterizerData rd [[ stage_in ]]){
-    float4 color = float4(1,0,0,1);
-    
-    return half4(color.r, color.g, color.b, color.a);
-}
