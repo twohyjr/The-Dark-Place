@@ -37,7 +37,7 @@ class ModelLoader {
         return meshes
     }
     
-    public static func CreateMeshFromCollada(_ modelName: String)->[RiggedVertex]{
+    public static func CreateMeshFromCollada(_ modelName: String)->RiggedMesh{
         return ColladaFileLoader.GetRiggedMesh(modelName)
     }
     

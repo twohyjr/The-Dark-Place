@@ -1,25 +1,31 @@
 import Foundation
 import simd
 
-enum Semantic {
+fileprivate enum Semantic {
     static let VERTEX = "VERTEX"
     static let NORMAL = "NORMAL"
     static let TEXCOORD = "TEXCOORD"
     static let COLOR = "COLOR"
 }
 
-class ColladaFileLoader {
-    
+fileprivate struct GeometrySourceInput {
+    var semantic: String
+    var source: String
+    var offset: Int
+    var data: [Any]
+}
 
-    public static func GetRiggedMesh(_ modelName: String)->[RiggedVertex]{
-        var vertices: [RiggedVertex] = []
+class ColladaFileLoader {
+
+    public static func GetRiggedMesh(_ modelName: String)->RiggedMesh{
+        var riggedVertices: [RiggedVertex] = []
         let xml: XML!
         if let url = Bundle.main.url(forResource: modelName, withExtension: "dae") {
             xml = XML(url: url)
             
             //Indices
             let polyList = xml["#library_geometries.geometry.mesh.polylist"]
-            var polyValues: [Input] = []
+            var polyValues: [GeometrySourceInput] = []
             var inputCount: Int = 0
             for input in polyList["#input"] {
                 let semantic = input["@semantic"].string!
@@ -48,7 +54,7 @@ class ColladaFileLoader {
                         }
                     }
                 }
-                polyValues.append(Input(semantic: semantic, source: inputSource, offset: offset, data: data))
+                polyValues.append(GeometrySourceInput(semantic: semantic, source: inputSource, offset: offset, data: data))
             }
             
             var positions: [float3]!
@@ -63,19 +69,19 @@ class ColladaFileLoader {
  
             for poly in polyValues {
                 switch poly.semantic {
-                case "VERTEX":
+                case Semantic.VERTEX:
                     positions = poly.data as? [float3] ?? []
                     positionOffset = poly.offset
                     break
-                case "NORMAL":
+                case Semantic.NORMAL:
                     normals = poly.data as? [float3] ?? []
                     normalOffset = poly.offset
                     break
-                case "TEXCOORD":
+                case Semantic.TEXCOORD:
                     textureCoords = poly.data as? [float2] ?? []
                     textureOffset = poly.offset
                     break
-                case "COLOR":
+                case Semantic.COLOR:
                     colors = poly.data as? [float4] ?? []
                     colorOffset = poly.offset
                     break
@@ -84,7 +90,6 @@ class ColladaFileLoader {
                     break
                 }
             }
-            print(colors)
             let pList = xml["#library_geometries.geometry.mesh.polylist.p"].string!.toIntArray()
             
             var currentOffset: Int = 0
@@ -95,7 +100,7 @@ class ColladaFileLoader {
             var startedListIteration: Bool = false
             for value in pList {
                 if(currentOffset == 0 && startedListIteration){
-                    vertices.append(RiggedVertex(position: vertexPoint, color: colorPoint, normal: normalPoint, textureCoordinate: texturePoint))
+                    riggedVertices.append(RiggedVertex(position: vertexPoint, color: colorPoint, normal: normalPoint, textureCoordinate: texturePoint))
                     colorPoint = float4(0)
                     vertexPoint = float3(0)
                     texturePoint = float2(0)
@@ -111,20 +116,15 @@ class ColladaFileLoader {
                 }else if(currentOffset == colorOffset){
                     colorPoint = colors[value]
                 }
-
                 currentOffset += 1
                 currentOffset = currentOffset % inputCount
             }
         }
-        return vertices
+        
+        let riggedMesh = RiggedMesh()
+        riggedMesh.vertices = riggedVertices
+        return riggedMesh
     }
-}
-
-struct Input {
-    var semantic: String
-    var source: String
-    var offset: Int
-    var data: [Any]
 }
 
 
