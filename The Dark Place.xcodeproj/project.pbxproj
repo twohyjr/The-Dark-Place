@@ -53,7 +53,6 @@
 		EBBBF7422134FB2300457FBA /* RiggedMeshLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF7412134FB2300457FBA /* RiggedMeshLibrary.swift */; };
 		EBBBF7562135014100457FBA /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBBF7552135014100457FBA /* Quaternion.swift */; };
 		EBBBF75E2135064100457FBA /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = EBBBF75D2135064100457FBA /* TODO */; };
-		EBC491F0212B25E800CF009D /* BoundingRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC491EF212B25E800CF009D /* BoundingRegion.swift */; };
 		EBDB6E4320FD9E740061E7A3 /* cartoon_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */; };
 		EBDB6E4720FDA5620061E7A3 /* TextureLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */; };
 		EBDB6E4920FE5D160061E7A3 /* cartoon_sand.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDB6E4820FE5D160061E7A3 /* cartoon_sand.png */; };
@@ -154,7 +153,6 @@
 		EBBBF7412134FB2300457FBA /* RiggedMeshLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiggedMeshLibrary.swift; sourceTree = "<group>"; };
 		EBBBF7552135014100457FBA /* Quaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quaternion.swift; sourceTree = "<group>"; };
 		EBBBF75D2135064100457FBA /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
-		EBC491EF212B25E800CF009D /* BoundingRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingRegion.swift; sourceTree = "<group>"; };
 		EBDB6E4220FD9E740061E7A3 /* cartoon_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cartoon_grass.png; sourceTree = "<group>"; };
 		EBDB6E4620FDA5620061E7A3 /* TextureLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLibrary.swift; sourceTree = "<group>"; };
 		EBDB6E4820FE5D160061E7A3 /* cartoon_sand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cartoon_sand.png; sourceTree = "<group>"; };
@@ -507,7 +505,6 @@
 			children = (
 				EBF4A63720F8363400DAC145 /* Renderable.swift */,
 				EB1B9850211260E40076BBB8 /* Lightable.swift */,
-				EBC491EF212B25E800CF009D /* BoundingRegion.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -678,7 +675,6 @@
 				EBF4A62020F80D6400DAC145 /* Renderer.swift in Sources */,
 				EB1B9859211515240076BBB8 /* LampModelObject.swift in Sources */,
 				EBB0791C213DCAC8009B1371 /* AnimatedGameObject.swift in Sources */,
-				EBC491F0212B25E800CF009D /* BoundingRegion.swift in Sources */,
 				EBF1452C20FAF98600B89FE9 /* Cube.swift in Sources */,
 				EBF4A64120F83C7B00DAC145 /* CustomMeshLibrary.swift in Sources */,
 				EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */,

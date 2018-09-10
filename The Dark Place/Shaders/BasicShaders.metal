@@ -1,7 +1,6 @@
 #include "Types.metal"
 using namespace metal;
 
-
 //------- VERTEX SHADERS ------------
 vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
                                           constant SceneConstants &sceneConstants [[ buffer(1) ]],
@@ -25,15 +24,6 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
     float viewDistance = length(rd.position);
     float visibility = exp(-pow((viewDistance * fog.density), fog.gradient));
     rd.visibility = clamp(visibility, 0.0, 1.0);
-    
-    return rd;
-}
-
-vertex RasterizerData bounding_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
-                                             constant SceneConstants &sceneConstants [[ buffer(1) ]],
-                                             constant ModelConstants &modelConstants [[ buffer(2) ]]){
-    
-    RasterizerData rd;
     
     return rd;
 }

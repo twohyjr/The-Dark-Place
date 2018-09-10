@@ -3,7 +3,6 @@ import MetalKit
 enum RenderPipelineStateTypes {
     case Basic
     case VillageTerrain
-    case BoundingRegion
 }
 
 class RenderPipelineStateLibrary {
@@ -17,7 +16,6 @@ class RenderPipelineStateLibrary {
     private static func createDefaultRenderPipelineStates(){
         renderPipelineStates.updateValue(Basic_RenderPipelineState(), forKey: .Basic)
         renderPipelineStates.updateValue(VillageTerrain_RenderPipelineState(), forKey: .VillageTerrain)
-        renderPipelineStates.updateValue(Bounding_RenderPipelineState(), forKey: .BoundingRegion)
     }
     
     public static func PipelineState(_ renderPipelineStateType: RenderPipelineStateTypes)->MTLRenderPipelineState{
@@ -65,24 +63,5 @@ public struct VillageTerrain_RenderPipelineState: RenderPipelineState {
             print("ERROR::CREATE::RENDER_PIPELINE_STATE::__\(name)__::\(error)")
         }
     }
-}
-
-public struct Bounding_RenderPipelineState: RenderPipelineState {
-    var name: String = "Bounding Render Pipeline State"
-    var renderPipelineState: MTLRenderPipelineState!
-    init(){
-        let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
-        renderPipelineDescriptor.colorAttachments[0].pixelFormat = .rgb10a2Unorm
-        renderPipelineDescriptor.vertexFunction = ShaderLibrary.Vertex(.BoundingRegion)
-        renderPipelineDescriptor.fragmentFunction = ShaderLibrary.Fragment(.BoundingRegion)
-        renderPipelineDescriptor.vertexDescriptor = VertexDescriptorLibrary.Descriptor(.Basic)
-        renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
-        do{
-            renderPipelineState = try Engine.Device.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
-        }catch let error as NSError {
-            print("ERROR::CREATE::RENDER_PIPELINE_STATE::__\(name)__::\(error)")
-        }
-    }
-    
 }
 

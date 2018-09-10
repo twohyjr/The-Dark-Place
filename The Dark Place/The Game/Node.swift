@@ -97,23 +97,14 @@ class Node {
     }
     
     var children: [Node] = []
-    private var boundingRegions: [BoundingRegion] = []
-    
+
     func addChild(_ child: Node){
         children.append(child)
-    }
-    
-    func addBoundingRegion(_ boundingRegion: BoundingRegion){
-        boundingRegions.append(boundingRegion)
     }
     
     func update(deltaTime: Float){
         for child in children{
             child.update(deltaTime: deltaTime)
-        }
-        
-        for boundingRegion in boundingRegions {
-            boundingRegion.update()
         }
     }
     
@@ -121,11 +112,7 @@ class Node {
         for child in children{
             child.render(renderCommandEncoder: renderCommandEncoder, lights: &lights)
         }
-        
-        for boundingRegion in boundingRegions {
-            boundingRegion.render(renderCommandEncoder: renderCommandEncoder)
-        }
-        
+
         if let renderable = self as? Renderable {
             renderable.doRender(renderCommandEncoder, lights: &lights)
         }
