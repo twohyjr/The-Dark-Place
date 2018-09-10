@@ -11,8 +11,8 @@ enum Semantic {
 class ColladaFileLoader {
     
 
-    public static func GetRiggedMesh(_ modelName: String)->[Vertex]{
-        var vertices: [Vertex] = []
+    public static func GetRiggedMesh(_ modelName: String)->[RiggedVertex]{
+        var vertices: [RiggedVertex] = []
         let xml: XML!
         if let url = Bundle.main.url(forResource: modelName, withExtension: "dae") {
             xml = XML(url: url)
@@ -95,7 +95,7 @@ class ColladaFileLoader {
             var startedListIteration: Bool = false
             for value in pList {
                 if(currentOffset == 0 && startedListIteration){
-                    vertices.append(Vertex(position: vertexPoint, color: colorPoint, normal: normalPoint, textureCoordinate: texturePoint))
+                    vertices.append(RiggedVertex(position: vertexPoint, color: colorPoint, normal: normalPoint, textureCoordinate: texturePoint))
                     colorPoint = float4(0)
                     vertexPoint = float3(0)
                     texturePoint = float2(0)

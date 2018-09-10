@@ -77,7 +77,7 @@ extension AnimatedGameObject: Renderable {
         renderCommandEncoder.pushDebugGroup("Animated Game Object Render Call")
         
         renderCommandEncoder.setTriangleFillMode(fillMode)
-        renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
+        renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Rigged))
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
 

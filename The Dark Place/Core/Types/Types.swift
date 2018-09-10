@@ -33,6 +33,13 @@ struct Vertex: sizeable{
     var textureCoordinate: float2
 }
 
+struct RiggedVertex: sizeable{
+    var position: float3
+    var color: float4
+    var normal: float3
+    var textureCoordinate: float2
+}
+
 struct ModelConstants: sizeable{
     var modelMatrix = matrix_identity_float4x4
     var normalMatrix = matrix_identity_float3x3

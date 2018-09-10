@@ -27,7 +27,7 @@ class RiggedMeshLibrary {
 }
 
 class RiggedMesh{
-    var vertices: [Vertex] = []
+    var vertices: [RiggedVertex] = []
     var indices: [UInt16] = []
     private var _vertexBuffer: MTLBuffer!
     var vertexBuffer: MTLBuffer! {
