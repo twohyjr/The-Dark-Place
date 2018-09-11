@@ -102,7 +102,12 @@ fragment half4 rigged_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                         constant Material &material [[ buffer(1) ]],
                                         constant LightData *lightDatas [[ buffer(2) ]],
                                         constant int &lightCount [[ buffer(3) ]]){
-    float4 color = texture.sample(sampler2d, rd.textureCoordinate);
+    float4 color;
+    if(material.useTexture){
+        color = texture.sample(sampler2d, rd.textureCoordinate);
+    }else {
+        color = material.isLit ? material.color : rd.color;
+    }
     float4 totalColor = float4(0);
     
     for(int i = 0; i < lightCount; i++){

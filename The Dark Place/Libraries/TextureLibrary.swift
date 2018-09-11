@@ -1,6 +1,7 @@
 import MetalKit
 
 enum TextureTypes {
+    case None
     case CartoonGrass
     case CartoonSand
     case Cowboy

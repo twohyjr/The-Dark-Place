@@ -7,12 +7,18 @@ class AnimatedGameObject: Node {
     var modelConstants = ModelConstants()
     var material = Material()
     
+    var texture: MTLTexture!
+    
     private var fillMode: MTLTriangleFillMode = .fill
     
-    init(_ riggedMeshType: RiggedMeshTypes){
+    init(riggedMeshType: RiggedMeshTypes,  textureType: TextureTypes = TextureTypes.None){
         super.init()
         
         self.mesh = RiggedMeshLibrary.Mesh(riggedMeshType)
+        if(textureType != TextureTypes.None) {
+            texture = TextureLibrary.Texture(textureType)
+            material.useTexture = true
+        }
     }
     
     override func update(deltaTime: Float){
@@ -31,7 +37,6 @@ extension AnimatedGameObject: Renderable {
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [LightData]) {
         renderCommandEncoder.pushDebugGroup("Animated Game Object Render Call")
         
-        renderCommandEncoder.setTriangleFillMode(fillMode)
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Rigged))
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
@@ -40,10 +45,15 @@ extension AnimatedGameObject: Renderable {
         renderCommandEncoder.setFragmentBytes(lights,
                                               length: LightData.stride(lights.count),
                                               index: 2)
+        if(material.useTexture){
+            renderCommandEncoder.setFragmentSamplerState(SamplerStateLibrary.SamplerState(.Basic), index: 0)
+            renderCommandEncoder.setFragmentTexture(texture, index: 0)
+        }
         
         var lightCount = lights.count
         renderCommandEncoder.setFragmentBytes(&lightCount, length: Int.stride, index: 3)
 
+        renderCommandEncoder.setTriangleFillMode(fillMode)
         mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)
 
         renderCommandEncoder.popDebugGroup()

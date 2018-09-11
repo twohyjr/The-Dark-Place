@@ -84,6 +84,10 @@ extension NSView {
 
 extension String {
     
+    static var Empty: String {
+        return ""
+    }
+    
     func toFloat2Array()->[float2]{
         var result = [float2]()
         

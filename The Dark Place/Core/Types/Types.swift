@@ -66,6 +66,7 @@ struct Material: sizeable {
     var specular = float3(3) //Ks
     var isLit: Bool = true
     var color = float4(1);
+    var useTexture: Bool = false
 }
 
 struct LightData: sizeable{

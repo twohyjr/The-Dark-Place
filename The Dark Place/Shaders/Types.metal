@@ -34,6 +34,7 @@ struct Material {
     float3 specular; //Ks
     bool isLit;
     float4 color;
+    bool useTexture;
 };
 
 struct LightData {
