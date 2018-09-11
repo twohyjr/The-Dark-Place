@@ -12,7 +12,7 @@ class Terrain: GameObject {
         self.moveZ(-(Float(gridSize) / 2.0))
     }
 
-    override func render(renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [LightData]) {
+    override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
         renderCommandEncoder.pushDebugGroup("Terrain Render Call")
         
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.VillageTerrain))
@@ -22,12 +22,7 @@ class Terrain: GameObject {
         renderCommandEncoder.setFragmentTexture(texture, index: 0)
         renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
         renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
-        renderCommandEncoder.setFragmentBytes(lights,
-                                              length: LightData.stride(lights.count),
-                                              index: 2)
-        var lightCount = lights.count
-        renderCommandEncoder.setFragmentBytes(&lightCount, length: Int.stride, index: 3)
-        
+
         mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)
         
         renderCommandEncoder.popDebugGroup()

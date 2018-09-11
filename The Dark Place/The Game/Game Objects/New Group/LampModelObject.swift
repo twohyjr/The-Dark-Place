@@ -25,14 +25,17 @@ class LampModelObject: ModelGameObject {
         LightManager.GetLight(lightName).setBrightness(self.brightness)
         LightManager.GetLight(lightName).setAttenuation(self.attenuation)
         LightManager.GetLight(lightName).setColor(self.color)
+        if(Keyboard.IsKeyPressed(.downArrow)){
+            self.moveZ(deltaTime)
+        }
         super.update(deltaTime: deltaTime)
     }
     
-    override func render(renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [LightData]) {
+    override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
         if(showObject){
             renderCommandEncoder.pushDebugGroup("Light Render Call")
             
-            super.render(renderCommandEncoder: renderCommandEncoder, lights: &lights)
+            super.render(renderCommandEncoder: renderCommandEncoder)
             
             renderCommandEncoder.popDebugGroup()
         }

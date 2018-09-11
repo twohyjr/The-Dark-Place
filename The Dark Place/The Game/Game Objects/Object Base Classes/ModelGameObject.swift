@@ -1,7 +1,6 @@
 import MetalKit
 
 class ModelGameObject: Node {
-    private var _modelConstants = ModelConstants()
     private var _modelMesh: ModelMesh!
     private var _materials: [Material] = [Material]()
 
@@ -37,37 +36,15 @@ class ModelGameObject: Node {
             }
         }
     }
-    
-    public func lineModeOn(_ isOn: Bool){
-        self.fillMode = isOn ? MTLTriangleFillMode.lines : MTLTriangleFillMode.fill
-    }
-    
-    override func update(deltaTime: Float){
-        updateModelConstants()
-        super.update(deltaTime: deltaTime)
-    }
-    
-    private func updateModelConstants(){
-        _modelConstants.modelMatrix = self.modelMatrix
-        _modelConstants.normalMatrix = self.modelMatrix.upperLeftMatrix
-    }
 }
 
 extension ModelGameObject: Renderable {
-    func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [LightData]) {
+    func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder) {
         renderCommandEncoder.pushDebugGroup("Model Game Object Render Call")
 
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
-        renderCommandEncoder.setTriangleFillMode(fillMode)
-        renderCommandEncoder.setVertexBytes(&_modelConstants, length: ModelConstants.stride, index: 2)
-        renderCommandEncoder.setFragmentBytes(lights,
-                                              length: LightData.stride(lights.count),
-                                              index: 2)
-        
-        var lightCount = lights.count
-        renderCommandEncoder.setFragmentBytes(&lightCount, length: Int.stride, index: 3)
-        
+
         for i in 0..<_modelMesh.meshes.count {
             var mtkMesh: MTKMesh! = nil
             do{

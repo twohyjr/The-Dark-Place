@@ -58,11 +58,11 @@ class LampGameObject: GameObject {
         super.update(deltaTime: deltaTime)
     }
     
-    override func render(renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [LightData]) {
+    override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
         if(showObject){
             renderCommandEncoder.pushDebugGroup("Light Render Call")
 
-            super.render(renderCommandEncoder: renderCommandEncoder, lights: &lights)
+            super.render(renderCommandEncoder: renderCommandEncoder)
 
             renderCommandEncoder.popDebugGroup()
         }

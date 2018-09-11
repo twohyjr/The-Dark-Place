@@ -6,6 +6,10 @@ class Node {
     private var _scale: float3 = float3(1)
     private var _rotation: float3 = float3(0)
     
+    var modelConstants = ModelConstants()
+    
+    private var fillMode: MTLTriangleFillMode = .fill
+    
     var modelMatrix: matrix_float4x4{
         var modelMatrix = matrix_identity_float4x4
         modelMatrix.translate(direction: _position)
@@ -22,20 +26,34 @@ class Node {
         children.append(child)
     }
     
+    func lineModeOn(_ isOn: Bool){
+        self.fillMode = isOn ? MTLTriangleFillMode.lines : MTLTriangleFillMode.fill
+    }
+    
+    private func updateModelConstants(){
+        modelConstants.modelMatrix = self.modelMatrix
+        modelConstants.normalMatrix = self.modelMatrix.upperLeftMatrix
+    }
+    
     func update(deltaTime: Float){
         for child in children{
             child.update(deltaTime: deltaTime)
         }
+        
+        updateModelConstants()
     }
     
-    func render(renderCommandEncoder: MTLRenderCommandEncoder, lights: inout [LightData]){
+    func render(renderCommandEncoder: MTLRenderCommandEncoder){
         for child in children{
-            child.render(renderCommandEncoder: renderCommandEncoder, lights: &lights)
+            child.render(renderCommandEncoder: renderCommandEncoder)
         }
 
         if let renderable = self as? Renderable {
-            renderable.doRender(renderCommandEncoder, lights: &lights)
+            renderCommandEncoder.setTriangleFillMode(fillMode)
+            renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
+            renderable.doRender(renderCommandEncoder)
         }
+        
     }
     
 }
