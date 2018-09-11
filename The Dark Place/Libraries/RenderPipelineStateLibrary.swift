@@ -74,7 +74,7 @@ public struct Rigged_RenderPipelineState: RenderPipelineState {
         let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
         renderPipelineDescriptor.colorAttachments[0].pixelFormat = .rgb10a2Unorm
         renderPipelineDescriptor.vertexFunction = ShaderLibrary.Vertex(.Rigged)
-        renderPipelineDescriptor.fragmentFunction = ShaderLibrary.Fragment(.Basic)
+        renderPipelineDescriptor.fragmentFunction = ShaderLibrary.Fragment(.Rigged)
         renderPipelineDescriptor.vertexDescriptor = VertexDescriptorLibrary.Descriptor(.Rigged)
         renderPipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
         do{
@@ -84,4 +84,5 @@ public struct Rigged_RenderPipelineState: RenderPipelineState {
         }
     }
 }
+
 

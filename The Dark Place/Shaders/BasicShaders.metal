@@ -96,6 +96,41 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     return half4(color.r, color.g, color.b, 1);
 }
 
+fragment half4 rigged_fragment_shader(const RasterizerData rd [[ stage_in ]],
+                                        texture2d<float> texture [[ texture(0) ]],
+                                        sampler sampler2d [[ sampler(0) ]],
+                                        constant Material &material [[ buffer(1) ]],
+                                        constant LightData *lightDatas [[ buffer(2) ]],
+                                        constant int &lightCount [[ buffer(3) ]]){
+    float4 color = texture.sample(sampler2d, rd.textureCoordinate);
+    float4 totalColor = float4(0);
+    
+    for(int i = 0; i < lightCount; i++){
+        LightData lightData = lightDatas[i];
+        
+        lightData.brightness = lightData.brightness;
+        float4 phongColor = phongShade(lightData,
+                                       material,
+                                       rd.worldPosition,
+                                       rd.surfaceNormal,
+                                       rd.toCameraVector);
+        
+        totalColor += attenuate(phongColor,
+                                lightData.attenuation,
+                                lightData.position,
+                                rd.worldPosition);
+    }
+    
+    //Apply Lighting Calculations
+    if(material.isLit){
+        color *= totalColor;
+    }
+    
+    color = mix(float4(rd.skyColor, 1), color, rd.visibility);
+    
+    return half4(color.b, color.g, color.r, 1);
+}
+
 fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                                texture2d<float> texture [[ texture(0) ]],
                                                sampler sampler2d [[ sampler(0) ]],

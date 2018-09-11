@@ -3,6 +3,7 @@ import MetalKit
 enum TextureTypes {
     case CartoonGrass
     case CartoonSand
+    case Cowboy
 }
 
 class TextureLibrary {
@@ -16,7 +17,7 @@ class TextureLibrary {
     private static func createDefaultTextures(){
         meshes.updateValue(FileTexture("cartoon_grass.png"), forKey: .CartoonGrass)
         meshes.updateValue(FileTexture("cartoon_sand.png"), forKey: .CartoonSand)
-
+        meshes.updateValue(FileTexture("cowboy.png"), forKey: .Cowboy)
     }
     
     public static func Texture(_ textureType: TextureTypes)->MTLTexture{
@@ -45,7 +46,7 @@ class TextureLoader{
             let url = Bundle.main.url(forResource: imageName, withExtension: nil)
             
             //Put options on the image here
-            let originOption = [MTKTextureLoader.Option.origin:MTKTextureLoader.Origin.topLeft]
+            let originOption = [MTKTextureLoader.Option.origin:MTKTextureLoader.Origin.bottomLeft]
             
             do{
                 texture = try textureLoader.newTexture(URL: url!, options: originOption)

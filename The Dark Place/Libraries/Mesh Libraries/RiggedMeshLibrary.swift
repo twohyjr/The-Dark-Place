@@ -59,16 +59,20 @@ class RiggedMesh{
 
 class RiggedModelMesh {
     var mesh: RiggedMesh!
+    var texture: MTLTexture!
     var vertexBuffer: MTLBuffer!
     
-    init(_ fileName: String){
-        mesh = ModelLoader.CreateMeshFromCollada(fileName)
+    init(_ modelName: String){
+        mesh = ModelLoader.CreateMeshFromCollada(modelName)
+        texture = TextureLibrary.Texture(.Cowboy)
     }
     
     func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder) {
         renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer,
                                              offset: 0,
                                              index: 0)
+        renderCommandEncoder.setFragmentSamplerState(SamplerStateLibrary.SamplerState(.Basic), index: 0)
+        renderCommandEncoder.setFragmentTexture(texture, index: 0)
         if(mesh.indexCount == 0){
             renderCommandEncoder.drawPrimitives(type: mesh.primitiveType,
                                                 vertexStart: 0,

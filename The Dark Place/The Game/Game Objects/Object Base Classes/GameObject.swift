@@ -3,48 +3,8 @@ import MetalKit
 class GameObject: Node {
     var mesh: CustomMesh!
     var modelConstants = ModelConstants()
-    internal var material = Material()
-    
-    private var _color: float4 = float4(1)
-    public func setColor(_ value: float4){
-        self._color = value
-    }
-    public func getColor()->float4{
-        return self._color
-    }
-    
-    private var _ambient = float3(1.0)
-    public func getAmbient()->float3 {
-        return _ambient
-    }
-    public func setAmbient(_ value: float3){
-        self._ambient = value
-    }
-    
-    private var _diffuse = float3(0.2)
-    public func getDiffuse()->float3 {
-        return _diffuse
-    }
-    public func setDiffuse(_ value: float3){
-        self._diffuse = value
-    }
-    
-    private var _shininess: Float = 0.1
-    public func getShininess()->Float {
-        return _shininess
-    }
-    public func setShininess(_ value: Float){
-        self._shininess = value
-    }
-    
-    private var _specular = float3(0.1)
-    public func getSpecular()->float3{
-        return _specular
-    }
-    public func setSpecular(_ value: float3){
-        self._specular = value
-    }
-    
+    var material = Material()
+
     private var fillMode: MTLTriangleFillMode = .fill
     
     init(meshType: CustomMeshTypes) {
@@ -68,11 +28,6 @@ class GameObject: Node {
     private func updateModelConstants(){
         modelConstants.modelMatrix = self.modelMatrix
         modelConstants.normalMatrix = self.modelMatrix.upperLeftMatrix
-        material.color = _color
-        material.diffuse = _diffuse
-        material.ambient = _ambient
-        material.specular = _specular
-        material.shininess = _shininess
     }
 }
 
@@ -97,4 +52,22 @@ extension GameObject: Renderable{
         
         renderCommandEncoder.popDebugGroup()
     }
+}
+
+//Material Getters / Setters
+extension GameObject {
+    func setColor(_ colorValue: float4){ self.material.color = colorValue }
+    func getColor()->float4{ return self.material.color }
+    
+    func setAmbient(_ ambientValue: float3){ self.material.ambient = ambientValue }
+    func getAmbient()->float3 { return self.material.ambient }
+    
+    func setDiffuse(_ diffuseValue: float3){ self.material.diffuse = diffuseValue }
+    func getDiffuse()->float3 { return self.material.diffuse }
+
+    func setShininess(_ shininessValue: Float){  self.material.shininess = shininessValue }
+    func getShininess()->Float { return self.material.shininess }
+
+    func setSpecular(_ specularValue: float3){ self.material.specular = specularValue }
+    func getSpecular()->float3{ return self.material.specular }
 }
