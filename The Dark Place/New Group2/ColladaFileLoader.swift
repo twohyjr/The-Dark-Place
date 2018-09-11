@@ -101,10 +101,6 @@ class ColladaFileLoader {
             for value in pList {
                 if(currentOffset == 0 && startedListIteration){
                     riggedVertices.append(RiggedVertex(position: vertexPoint, color: colorPoint, normal: normalPoint, textureCoordinate: texturePoint))
-                    colorPoint = float4(0)
-                    vertexPoint = float3(0)
-                    texturePoint = float2(0)
-                    normalPoint = float3(0)
                 }
                 startedListIteration = true
                 if(currentOffset == positionOffset){
