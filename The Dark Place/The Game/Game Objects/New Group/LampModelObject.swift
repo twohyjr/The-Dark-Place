@@ -13,8 +13,9 @@ class LampModelObject: ModelGameObject {
     var lightPosition = float3(0)
     
     
-    override init(_ meshType: ModelMeshTypes) {
+    override init(_ meshType: ModelMeshTypes, name: String = String.Empty) {
         super.init(meshType)
+        self.name = name
         lightName = LightManager.AddLightAndGetName()
         
     }
@@ -33,11 +34,7 @@ class LampModelObject: ModelGameObject {
     
     override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
         if(showObject){
-            renderCommandEncoder.pushDebugGroup("Light Render Call")
-            
             super.render(renderCommandEncoder: renderCommandEncoder)
-            
-            renderCommandEncoder.popDebugGroup()
         }
     }
 }

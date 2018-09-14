@@ -1,6 +1,7 @@
 import MetalKit
 
 class Node {
+    public var name: String = ""
     
     private var _position: float3 = float3(0)
     private var _scale: float3 = float3(1)
@@ -44,6 +45,9 @@ class Node {
     }
     
     func render(renderCommandEncoder: MTLRenderCommandEncoder){
+        if(name != String.Empty){
+            renderCommandEncoder.pushDebugGroup("Rendering \(name)")
+        }
         for child in children{
             child.render(renderCommandEncoder: renderCommandEncoder)
         }
@@ -52,6 +56,10 @@ class Node {
             renderCommandEncoder.setTriangleFillMode(fillMode)
             renderCommandEncoder.setVertexBytes(&modelConstants, length: ModelConstants.stride, index: 2)
             renderable.doRender(renderCommandEncoder)
+        }
+        
+        if(name != String.Empty){
+            renderCommandEncoder.popDebugGroup()
         }
         
     }

@@ -10,8 +10,9 @@ class LampGameObject: GameObject {
     var brightness: Float = 1
     private var _attenuation = float3(1,0,0)
     
-    init(_ meshType: CustomMeshTypes) {
+    init(_ meshType: CustomMeshTypes, name: String = String.Empty) {
         super.init(meshType: meshType)
+        self.name = name
         self.setScale(float3(0.1))
         self.material.isLit = false
         lightName = LightManager.AddLightAndGetName()
@@ -60,11 +61,7 @@ class LampGameObject: GameObject {
     
     override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
         if(showObject){
-            renderCommandEncoder.pushDebugGroup("Light Render Call")
-
             super.render(renderCommandEncoder: renderCommandEncoder)
-
-            renderCommandEncoder.popDebugGroup()
         }
     }
 }

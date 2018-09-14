@@ -74,18 +74,16 @@ class Scene: Node {
     }
     
     override func render(renderCommandEncoder: MTLRenderCommandEncoder) {
-        renderCommandEncoder.pushDebugGroup("Scene Render Call")
+        renderCommandEncoder.pushDebugGroup("Scene Render")
+        
         renderCommandEncoder.setVertexBytes(&sceneConstants, length: SceneConstants.stride, index: 1)
         renderCommandEncoder.setFragmentBytes(lightDatas, length: LightData.stride(lightDatas.count), index: 2)
-        
-        renderCommandEncoder.setFragmentBytes(lightDatas,
-                                              length: LightData.stride(lightDatas.count),
-                                              index: 2)
         
         var lightCount = lightDatas.count
         renderCommandEncoder.setFragmentBytes(&lightCount, length: Int.stride, index: 3)
 
         super.render(renderCommandEncoder: renderCommandEncoder)
+        
         renderCommandEncoder.popDebugGroup()
     }
     

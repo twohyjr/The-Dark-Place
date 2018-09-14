@@ -4,7 +4,7 @@ import MetalKit
 class Tent: ModelGameObject {
     
     init() {
-        super.init(.Tent)
+        super.init(.Tent, name: "Basic Tent")
     }
 
 }
@@ -12,7 +12,7 @@ class Tent: ModelGameObject {
 class TentWithPoles: ModelGameObject {
     
     init() {
-        super.init(.TentWithPoles)
+        super.init(.TentWithPoles, name: "Tent With Poles")
     }
     
 }

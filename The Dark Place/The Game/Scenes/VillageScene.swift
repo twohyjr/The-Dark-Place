@@ -33,7 +33,7 @@ class VillageScene: Scene {
     
     func addTerrain(){
         let terrainData = TerrainData(width: 200, depth: 200)
-        let terrain = Terrain(gridSize: 1000, terrainData: terrainData, textureType: TextureTypes.CartoonSand)
+        let terrain = Terrain(gridSize: 1000, terrainData: terrainData, textureType: TextureTypes.CartoonSand, name: "Main Terrain")
         addChild(terrain)
     }
     
@@ -72,7 +72,7 @@ class VillageScene: Scene {
         campfire.moveZ(4)
         addChild(campfire)
         
-        let sun = LampGameObject(.Cube_Custom)
+        let sun = LampGameObject(.Cube_Custom, name: "sun")
         sun.setPosition(debugCamera.getPosition())
         sun.setPositionY(0)
         sun.brightness = 0.2

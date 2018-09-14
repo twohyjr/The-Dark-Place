@@ -3,7 +3,7 @@ import MetalKit
 class Campfire: LampModelObject {
     
     init() {
-        super.init(.Campfire)
+        super.init(.Campfire, name: "Campfire")
         self.color = float3(0.9,0.15,0)
         self.brightness = 2
         self.light.moveY(0.2)

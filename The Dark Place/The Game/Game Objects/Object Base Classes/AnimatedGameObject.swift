@@ -8,9 +8,9 @@ class AnimatedGameObject: Node {
     
     var texture: MTLTexture!
 
-    init(riggedMeshType: RiggedMeshTypes,  textureType: TextureTypes = TextureTypes.None){
+    init(riggedMeshType: RiggedMeshTypes,  textureType: TextureTypes = TextureTypes.None, name: String = String.Empty){
         super.init()
-        
+        self.name = name
         self.mesh = RiggedMeshLibrary.Mesh(riggedMeshType)
         if(textureType != TextureTypes.None) {
             texture = TextureLibrary.Texture(textureType)
@@ -22,8 +22,6 @@ class AnimatedGameObject: Node {
 
 extension AnimatedGameObject: Renderable {
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder) {
-        renderCommandEncoder.pushDebugGroup("Animated Game Object Render Call")
-        
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Rigged))
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
         renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
@@ -34,7 +32,5 @@ extension AnimatedGameObject: Renderable {
         }
         
         mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)
-
-        renderCommandEncoder.popDebugGroup()
     }
 }

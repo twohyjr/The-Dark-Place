@@ -6,8 +6,9 @@ class ModelGameObject: Node {
 
     var fillMode: MTLTriangleFillMode = .fill
     
-    init(_ modelMeshType: ModelMeshTypes){
+    init(_ modelMeshType: ModelMeshTypes, name: String = String.Empty){
         super.init()
+        self.name = name
         _modelMesh = ModelMeshLibrary.Mesh(modelMeshType)
         generateMaterial()
     }
@@ -40,8 +41,6 @@ class ModelGameObject: Node {
 
 extension ModelGameObject: Renderable {
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder) {
-        renderCommandEncoder.pushDebugGroup("Model Game Object Render Call")
-
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
 
@@ -64,7 +63,6 @@ extension ModelGameObject: Renderable {
                                                            indexBuffer: mtkSubmesh.indexBuffer.buffer,
                                                            indexBufferOffset: mtkSubmesh.indexBuffer.offset)
             }
-            renderCommandEncoder.popDebugGroup()
         }
     }
 }

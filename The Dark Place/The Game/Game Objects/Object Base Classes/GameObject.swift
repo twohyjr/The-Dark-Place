@@ -16,17 +16,12 @@ class GameObject: Node {
 
 extension GameObject: Renderable{
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder) {
-        renderCommandEncoder.pushDebugGroup("Game Object Render Call")
-        
         renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.PipelineState(.Basic))
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.DepthStencilState(.Basic))
-        renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer, offset: 0, index: 0)
         
         renderCommandEncoder.setFragmentBytes(&material, length: Material.stride, index: 1)
 
         mesh.drawPrimitives(renderCommandEncoder: renderCommandEncoder)
-        
-        renderCommandEncoder.popDebugGroup()
     }
 }
 

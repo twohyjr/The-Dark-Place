@@ -64,6 +64,7 @@ class CustomModelMesh: CustomMesh {
     }
     
     func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder){
+        renderCommandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         if(indexCount == 0){
             renderCommandEncoder.drawPrimitives(type: primitiveType, vertexStart: 0, vertexCount: vertexCount)
         }else{
