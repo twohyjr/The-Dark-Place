@@ -71,12 +71,6 @@ class VillageScene: Scene {
         let campfire = Campfire()
         campfire.moveZ(4)
         addChild(campfire)
-        
-        let sun = LampGameObject(.Cube_Custom, name: "sun")
-        sun.setPosition(debugCamera.getPosition())
-        sun.setPositionY(0)
-        sun.brightness = 0.2
-        addChild(sun)
     }
     
     func addTrees(){

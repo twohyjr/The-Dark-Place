@@ -143,8 +143,9 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
                                                constant LightData *lightDatas [[ buffer(2) ]],
                                                constant int &lightCount [[ buffer(3) ]]){
     float4 color = texture.sample(sampler2d, rd.textureCoordinate);
+    color = float4(color.r, color.b, color.g, color.a);
     
-    float4 totalColor = float4(0);
+    float4 totalColor = color;
     
     for(int i = 0; i < lightCount; i++){
         LightData lightData = lightDatas[i];
@@ -169,7 +170,7 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
     
     color = mix(float4(rd.skyColor, 1), color, rd.visibility);
     
-    return half4(color.r, color.b, color.g, 1);
+    return half4(color.r, color.g, color.b, 1);
 }
 
 //LIGHTING CODE
