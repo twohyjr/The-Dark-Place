@@ -33,7 +33,6 @@ class PracticeScene: Scene {
         addChild(cube)
     }
     
-
     override func update(deltaTime: Float) {
         if(Keyboard.IsKeyPressed(.w)){
            light.moveY(deltaTime)

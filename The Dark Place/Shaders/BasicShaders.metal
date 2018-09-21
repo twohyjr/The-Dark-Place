@@ -43,6 +43,8 @@ struct LightData {
     float3 color;
     float3 attenuation;
     float ambientIntensity;
+    float diffuseIntensity;
+    float specularIntensity;
 };
 
 struct RasterizerData {
@@ -135,6 +137,8 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
     
     if(material.isLit){
         float3 totalAmbient = float3(0);
+        float3 totalDiffuse = float3(0);
+        float3 totalSpecular = float3(0);
         
         for(int i = 0; i < lightCount; i++){
             LightData lightData = lightDatas[i];
@@ -142,10 +146,24 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
             float distance = length(toLightVector);
             float  attFactor = lightData.attenuation.x + (lightData.attenuation.y * distance) + (lightData.attenuation.z * distance * distance);
             
-            totalAmbient += (material.ambient * lightData.ambientIntensity * lightData.color) / attFactor;
+            //Ambient
+            float3 ambientness = material.ambient * lightData.ambientIntensity;
+            totalAmbient += (ambientness * lightData.color) / attFactor;
+            
+            //Diffuse
+            float3 diffuseness = material.diffuse * lightData.diffuseIntensity;
+            //TODO: Diffuse Calculations
+            totalDiffuse += float3(0);
+            
+            //Specualr
+            float3 specularness = material.specular * lightData.specularIntensity;
+            //TODO: Specular Calculations
+            totalSpecular += float3(0);
         }
         
-        color *= (float4(totalAmbient, 1.0));
+        totalDiffuse = max(totalDiffuse, 0.2);
+        
+        color *= (float4(totalAmbient, 1.0) + float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0));
     }
 
     

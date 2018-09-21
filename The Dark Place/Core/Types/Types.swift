@@ -75,4 +75,6 @@ struct LightData: sizeable{
     var color = float3(1)
     var attenuation = float3(1.0, 0.0, 0.0) //maxes : x y z : 3 10 4
     var ambientIntensity: Float = 1.0
+    var diffuseIntensity: Float = 1.0
+    var specularIntensity: Float = 1.0
 }
