@@ -1,6 +1,5 @@
-#include "Types.metal"
 using namespace metal;
-
+#include <metal_stdlib>
 
 struct VertexIn{
     float3 position [[ attribute(0) ]];
@@ -133,17 +132,22 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
                                      constant LightData *lightDatas [[ buffer(2) ]],
                                      constant int &lightCount [[ buffer(3) ]]){
     float4 color = material.color;
-    float3 totalAmbient = float3(0);
     
-    
-    for(int i = 0; i < lightCount; i++){
-        LightData lightData = lightDatas[i];
-        float3 toLightVector = lightData.position - rd.worldPosition;
-        float distance = length(toLightVector);
-        float  attFactor = lightData.attenuation.x + (lightData.attenuation.y * distance) + (lightData.attenuation.z * distance * distance);
+    if(material.isLit){
+        float3 totalAmbient = float3(0);
         
-        totalAmbient += (material.ambient * lightData.ambientIntensity * lightData.color) / attFactor;
+        for(int i = 0; i < lightCount; i++){
+            LightData lightData = lightDatas[i];
+            float3 toLightVector = lightData.position - rd.worldPosition;
+            float distance = length(toLightVector);
+            float  attFactor = lightData.attenuation.x + (lightData.attenuation.y * distance) + (lightData.attenuation.z * distance * distance);
+            
+            totalAmbient += (material.ambient * lightData.ambientIntensity * lightData.color) / attFactor;
+        }
+        
+        color *= (float4(totalAmbient, 1.0));
     }
+
     
     
 //    float3 unitNormal = normalize(rd.surfaceNormal);
@@ -185,7 +189,7 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
 //
 //    color = (float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0));
     
-    color *= (float4(totalAmbient, 1.0));
+    
     return half4(color.r, color.g, color.b, 1);
 }
 

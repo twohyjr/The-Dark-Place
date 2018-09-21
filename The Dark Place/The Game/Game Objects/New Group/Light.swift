@@ -18,6 +18,9 @@ class Light: Node {
     public func getAttenuation()->float3 {return _attenuation}
     public func setAttenuation(_ value: float3){self._attenuation = value}
     
+    public func getAmbientIntensity()->float3 {return _attenuation}
+    public func setAmbientIntensity(_ value: float3){self._attenuation = value}
+    
     override init(){
         super.init()
         _color = lightData.color
@@ -33,8 +36,5 @@ class Light: Node {
         lightData.attenuation = _attenuation
         lightData.ambientIntensity = _ambientIntensity
     }
-    
-    
-    
 }
 

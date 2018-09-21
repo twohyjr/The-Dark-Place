@@ -24,8 +24,6 @@ class PracticeScene: Scene {
         light.setColor(float4(0.2,0.5,0,1))
         light.showGameModel()
         light.setPositionY(2)
-        light.setAttenuation(float3(1.0, 0.01, 0.002))
-//        light.setPosition(float3(10,20,20))
         addChild(light)
     }
     
@@ -55,6 +53,7 @@ class PracticeScene: Scene {
         if(Keyboard.IsKeyPressed(.z)){
             light.moveZ(deltaTime)
         }
+        
         super.update(deltaTime: deltaTime)
     }
     

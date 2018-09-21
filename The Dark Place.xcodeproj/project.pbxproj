@@ -25,6 +25,7 @@
 		EB1B98882118C6AA0076BBB8 /* VillageSceneTerrainMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B98872118C6AA0076BBB8 /* VillageSceneTerrainMap.png */; };
 		EB1B988A2118C6BF0076BBB8 /* VillageSceneItemMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B98892118C6BF0076BBB8 /* VillageSceneItemMap.png */; };
 		EB1B988C211AADD10076BBB8 /* WorldItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B988B211AADD10076BBB8 /* WorldItemData.swift */; };
+		EB2DCB4C2155793E007E0F50 /* DebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB4B2155793E007E0F50 /* DebugSettings.swift */; };
 		EB5C6F45213DA0950097D16F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C6F44213DA0950097D16F /* ViewController.swift */; };
 		EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1820F8403800E61EFA /* SceneManager.swift */; };
 		EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1A20F840C000E61EFA /* GameManager.swift */; };
@@ -37,7 +38,6 @@
 		EB614D2E20F8536700E61EFA /* DepthStencilStateLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2D20F8536700E61EFA /* DepthStencilStateLibrary.swift */; };
 		EB614D3020F85C2800E61EFA /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D2F20F85C2800E61EFA /* Terrain.swift */; };
 		EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */; };
-		EB6AEE50210D1F4400C291AA /* Types.metal in Sources */ = {isa = PBXBuildFile; fileRef = EB6AEE4F210D1F4400C291AA /* Types.metal */; };
 		EB702308213F91870091B25E /* Cowboy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB702307213F91870091B25E /* Cowboy.swift */; };
 		EB7EA1CC2147CD7B00288446 /* cowboy.png in Resources */ = {isa = PBXBuildFile; fileRef = EB7EA1CB2147CD7B00288446 /* cowboy.png */; };
 		EBB0791A213DBD44009B1371 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB07919213DBD44009B1371 /* DebugView.swift */; };
@@ -126,6 +126,7 @@
 		EB1B98872118C6AA0076BBB8 /* VillageSceneTerrainMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VillageSceneTerrainMap.png; sourceTree = "<group>"; };
 		EB1B98892118C6BF0076BBB8 /* VillageSceneItemMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VillageSceneItemMap.png; sourceTree = "<group>"; };
 		EB1B988B211AADD10076BBB8 /* WorldItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldItemData.swift; sourceTree = "<group>"; };
+		EB2DCB4B2155793E007E0F50 /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
 		EB5C6F44213DA0950097D16F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB614D1820F8403800E61EFA /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		EB614D1A20F840C000E61EFA /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
@@ -138,7 +139,6 @@
 		EB614D2D20F8536700E61EFA /* DepthStencilStateLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthStencilStateLibrary.swift; sourceTree = "<group>"; };
 		EB614D2F20F85C2800E61EFA /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		EB614D3120F85C3200E61EFA /* TerrainMeshGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainMeshGenerator.swift; sourceTree = "<group>"; };
-		EB6AEE4F210D1F4400C291AA /* Types.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Types.metal; sourceTree = "<group>"; };
 		EB702307213F91870091B25E /* Cowboy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cowboy.swift; sourceTree = "<group>"; };
 		EB7EA1CB2147CD7B00288446 /* cowboy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cowboy.png; sourceTree = "<group>"; };
 		EBB07919213DBD44009B1371 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
@@ -256,10 +256,17 @@
 			path = Maps;
 			sourceTree = "<group>";
 		};
+		EB2DCB4D21557AFC007E0F50 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				EB2DCB4B2155793E007E0F50 /* DebugSettings.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		EB614D1C20F842F500E61EFA /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				EB6AEE4F210D1F4400C291AA /* Types.metal */,
 				EB614D1D20F8431100E61EFA /* BasicShaders.metal */,
 			);
 			path = Shaders;
@@ -458,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				EBF4A62220F80E0B00DAC145 /* Engine.swift */,
+				EB2DCB4D21557AFC007E0F50 /* Settings */,
 				EB614D2620F8513200E61EFA /* Input */,
 				EB614D2320F8508700E61EFA /* Math */,
 				EBF4A62D20F8174E00DAC145 /* Types */,
@@ -678,6 +686,7 @@
 				EBBBF71F2133904000457FBA /* Lantern.swift in Sources */,
 				EBF4A62020F80D6400DAC145 /* Renderer.swift in Sources */,
 				EB1B9859211515240076BBB8 /* LampModelObject.swift in Sources */,
+				EB2DCB4C2155793E007E0F50 /* DebugSettings.swift in Sources */,
 				EBB0791C213DCAC8009B1371 /* AnimatedGameObject.swift in Sources */,
 				EBF1452C20FAF98600B89FE9 /* Cube.swift in Sources */,
 				EBF4A64120F83C7B00DAC145 /* CustomMeshLibrary.swift in Sources */,
@@ -691,7 +700,6 @@
 				EB1B984F211186700076BBB8 /* LampGameObject.swift in Sources */,
 				EBF145B320FD0B3400B89FE9 /* PracticeScene.swift in Sources */,
 				EBF1457A20FC489E00B89FE9 /* Triangle_CustomMesh.swift in Sources */,
-				EB6AEE50210D1F4400C291AA /* Types.metal in Sources */,
 				EB614D1E20F8431100E61EFA /* BasicShaders.metal in Sources */,
 				EBBBF7422134FB2300457FBA /* RiggedMeshLibrary.swift in Sources */,
 				EB702308213F91870091B25E /* Cowboy.swift in Sources */,

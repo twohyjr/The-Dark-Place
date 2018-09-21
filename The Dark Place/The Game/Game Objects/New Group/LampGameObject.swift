@@ -47,14 +47,12 @@ class LampGameObject: GameObject {
     }
     
     override func update(deltaTime: Float) {
-        
+//        self.setAttenuation(float3(DebugSettings.lightValue1, DebugSettings.lightValue2, DebugSettings.lightValue3))
         LightManager.GetLight(lightName).setPosition(self.getPosition() + light.getPosition())
         LightManager.GetLight(lightName).setBrightness(self.brightness)
         LightManager.GetLight(lightName).setColor(self.getColor().xyz)
         LightManager.GetLight(lightName).setAttenuation(self.getAttenuation())
         self.material.color = self.getColor()
- 
-
         
         super.update(deltaTime: deltaTime)
     }

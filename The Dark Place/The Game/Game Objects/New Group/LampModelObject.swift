@@ -17,7 +17,6 @@ class LampModelObject: ModelGameObject {
         super.init(meshType)
         self.name = name
         lightName = LightManager.AddLightAndGetName()
-        
     }
     
     override func update(deltaTime: Float) {

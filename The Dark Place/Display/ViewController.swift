@@ -23,12 +23,30 @@ class ViewController: NSViewController {
     @IBOutlet weak var txtCameraNear: NSTextField!
     @IBOutlet weak var txtCameraFar: NSTextField!
     
+    //Light Inputs
+    @IBOutlet weak var sldLightValue1: NSSlider!
+    @IBOutlet weak var sldLightValue2: NSSlider!
+    @IBOutlet weak var sldLightValue3: NSSlider!
+    @IBOutlet weak var txtLightValue1: NSTextField!
+    @IBOutlet weak var txtLightValue2: NSTextField!
+    @IBOutlet weak var txtLightValue3: NSTextField!
+    
     @IBOutlet weak var mtkGameView: GameView!
     var debugCameraValues = DebugCameraValues()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mtkGameView.setControllers(debugViewController: self)
+        DebugSettings.lightValue1 = sldLightValue1.floatValue
+        DebugSettings.lightValue2 = sldLightValue2.floatValue
+        DebugSettings.lightValue3 = sldLightValue3.floatValue
+        txtLightValue1.stringValue = String(format: "%.2f", DebugSettings.lightValue1)
+        txtLightValue2.stringValue = String(format: "%.2f", DebugSettings.lightValue2)
+        txtLightValue3.stringValue = String(format: "%.2f", DebugSettings.lightValue3)
+        sldLightValue1.floatValue = DebugSettings.lightValue1
+        sldLightValue2.floatValue = DebugSettings.lightValue2
+        sldLightValue3.floatValue = DebugSettings.lightValue3
+        
     }
     
     public func updateDebugCameraValues(_ debugCameraValues: DebugCameraValues){
@@ -59,4 +77,26 @@ class ViewController: NSViewController {
         print("\\------End Camera (\(currentCameraValue++)) Values------//")
     }
     
+    
+    @IBAction func sldLightValue1_Changed(_ sender: NSSlider) {
+        let value: Float = sender.floatValue
+        txtLightValue1.stringValue =  String(format: "%.2f", value)
+        DebugSettings.lightValue1 = value
+    }
+    
+    @IBAction func sldLightValue2_Changed(_ sender: NSSlider) {
+        let value: Float = sender.floatValue
+        txtLightValue2.stringValue =  String(format: "%.2f", value)
+        DebugSettings.lightValue2 = value
+    }
+    
+    @IBAction func sldLightValue3_Changed(_ sender: NSSlider) {
+        let value: Float = sender.floatValue
+        txtLightValue3.stringValue =  String(format: "%.2f", value)
+        DebugSettings.lightValue3 = value
+    }
+    
+    @IBAction func btnPrintLightValues(_ sender: NSButton) {
+        DebugSettings.printLightValues()
+    }
 }
