@@ -23,7 +23,7 @@ extension Float: sizeable { }
 extension float2: sizeable { }
 extension float3: sizeable { }
 extension float4: sizeable { }
-extension Int: sizeable { }
+extension Int32: sizeable { }
 extension UInt16: sizeable { }
 
 struct Vertex: sizeable{
@@ -63,9 +63,9 @@ struct Material: sizeable {
     var shininess: Float = 0.1
     var ambient = float3(1) //Ka
     var diffuse = float3(1) //Kd
-    var specular = float3(3) //Ks
+    var specular = float3(0.5) //Ks
     var isLit: Bool = true
-    var color = float4(1);
+    var color = float4(0.7, 0.7, 0.7, 1.0);
     var useTexture: Bool = false
 }
 
@@ -73,5 +73,6 @@ struct LightData: sizeable{
     var brightness: Float = 1.0
     var position = float3(0)
     var color = float3(1)
-    var attenuation = float3(0.7, 0.01, 0.0)
+    var attenuation = float3(1.0, 0.0, 0.0)
+    var ambientIntensity: Float = 1.0
 }

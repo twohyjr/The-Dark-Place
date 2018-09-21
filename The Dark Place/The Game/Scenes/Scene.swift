@@ -80,7 +80,7 @@ class Scene: Node {
         renderCommandEncoder.setFragmentBytes(lightDatas, length: LightData.stride(lightDatas.count), index: 2)
         
         var lightCount = lightDatas.count
-        renderCommandEncoder.setFragmentBytes(&lightCount, length: Int.stride, index: 3)
+        renderCommandEncoder.setFragmentBytes(&lightCount, length: Int32.stride, index: 3)
 
         super.render(renderCommandEncoder: renderCommandEncoder)
         

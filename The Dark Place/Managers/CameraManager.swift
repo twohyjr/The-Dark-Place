@@ -115,6 +115,20 @@ class Camera: Node {
         self._debugCameraValues.pitch = self.getPitch()
         self._debugCameraValues.roll = self.getRoll()
         self._debugCameraValues.yaw = self.getYaw()
+        
+        if(Keyboard.IsKeyPressed(.upArrow)){
+            self.moveZ(-0.05)
+        }
+        if(Keyboard.IsKeyPressed(.downArrow)){
+            self.moveZ(0.05)
+        }
+        if(Keyboard.IsKeyPressed(.leftArrow)){
+            self.moveX(-0.05)
+        }
+        if(Keyboard.IsKeyPressed(.rightArrow)){
+            self.moveX(0.05)
+        }
+        
     }
 }
 
