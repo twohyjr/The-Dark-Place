@@ -4,10 +4,11 @@ class AnimatedGameObject: Node {
     
     private var mesh: RiggedModelMesh!
 
+    //Skin
     var material = Material()
-    
     var texture: MTLTexture!
 
+    
     init(riggedMeshType: RiggedMeshTypes,  textureType: TextureTypes = TextureTypes.None, name: String = String.Empty){
         super.init()
         self.name = name
@@ -16,6 +17,10 @@ class AnimatedGameObject: Node {
             texture = TextureLibrary.Texture(textureType)
             material.useTexture = true
         }
+    }
+    
+    func getRootJoint()->Joint{
+        return mesh.riggedMesh.rootJoint
     }
 
 }

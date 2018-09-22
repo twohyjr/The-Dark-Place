@@ -26,6 +26,7 @@
 		EB1B988A2118C6BF0076BBB8 /* VillageSceneItemMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B98892118C6BF0076BBB8 /* VillageSceneItemMap.png */; };
 		EB1B988C211AADD10076BBB8 /* WorldItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B988B211AADD10076BBB8 /* WorldItemData.swift */; };
 		EB2DCB4C2155793E007E0F50 /* DebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB4B2155793E007E0F50 /* DebugSettings.swift */; };
+		EB2DCB512156ED1C007E0F50 /* GeometryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB502156ED1C007E0F50 /* GeometryLoader.swift */; };
 		EB5C6F45213DA0950097D16F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C6F44213DA0950097D16F /* ViewController.swift */; };
 		EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1820F8403800E61EFA /* SceneManager.swift */; };
 		EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1A20F840C000E61EFA /* GameManager.swift */; };
@@ -127,6 +128,7 @@
 		EB1B98892118C6BF0076BBB8 /* VillageSceneItemMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VillageSceneItemMap.png; sourceTree = "<group>"; };
 		EB1B988B211AADD10076BBB8 /* WorldItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldItemData.swift; sourceTree = "<group>"; };
 		EB2DCB4B2155793E007E0F50 /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
+		EB2DCB502156ED1C007E0F50 /* GeometryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryLoader.swift; sourceTree = "<group>"; };
 		EB5C6F44213DA0950097D16F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB614D1820F8403800E61EFA /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		EB614D1A20F840C000E61EFA /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 			children = (
 				EBF1458520FC4B8700B89FE9 /* ModelLoader.swift */,
 				EBB0792C213DFA24009B1371 /* ColladaFileLoader.swift */,
+				EB2DCB502156ED1C007E0F50 /* GeometryLoader.swift */,
 			);
 			name = Loaders;
 			path = "New Group2";
@@ -733,6 +736,7 @@
 				EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */,
 				EB614D2A20F8515900E61EFA /* Mouse.swift in Sources */,
 				EB614D2C20F8516100E61EFA /* KeyCodes.swift in Sources */,
+				EB2DCB512156ED1C007E0F50 /* GeometryLoader.swift in Sources */,
 				EB1B9869211566C00076BBB8 /* TerrainData.swift in Sources */,
 				EB1B987A2116480F0076BBB8 /* Extensions.swift in Sources */,
 				EBB07926213DE57B009B1371 /* XML.swift in Sources */,

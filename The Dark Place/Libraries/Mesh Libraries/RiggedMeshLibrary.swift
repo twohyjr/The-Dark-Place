@@ -27,9 +27,17 @@ class RiggedMeshLibrary {
 }
 
 class RiggedMesh{
+    
+    //Mesh
     var vertices: [RiggedVertex] = []
     var indices: [UInt16] = []
     private var _vertexBuffer: MTLBuffer!
+    
+    //Skeleton
+    var rootJoint: Joint!
+    var jointCount: Int!
+    
+    
     var vertexBuffer: MTLBuffer! {
         if(_vertexBuffer == nil){
             _vertexBuffer = Engine.Device.makeBuffer(bytes: vertices,
@@ -58,27 +66,25 @@ class RiggedMesh{
 }
 
 class RiggedModelMesh {
-    var mesh: RiggedMesh!
-
-    var vertexBuffer: MTLBuffer!
+    var riggedMesh: RiggedMesh!
     
     init(_ modelName: String){
-        mesh = ModelLoader.CreateMeshFromCollada(modelName)
+        riggedMesh = ModelLoader.CreateMeshFromCollada(modelName)
     }
     
     func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder) {
-        renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer,
+        renderCommandEncoder.setVertexBuffer(riggedMesh.vertexBuffer,
                                              offset: 0,
                                              index: 0)
-        if(mesh.indexCount == 0){
-            renderCommandEncoder.drawPrimitives(type: mesh.primitiveType,
+        if(riggedMesh.indexCount == 0){
+            renderCommandEncoder.drawPrimitives(type: riggedMesh.primitiveType,
                                                 vertexStart: 0,
-                                                vertexCount: mesh.vertexCount)
+                                                vertexCount: riggedMesh.vertexCount)
         }else{
-            renderCommandEncoder.drawIndexedPrimitives(type: mesh.primitiveType,
-                                                       indexCount: mesh.indexCount,
-                                                       indexType: mesh.indexType,
-                                                       indexBuffer: mesh.indexBuffer,
+            renderCommandEncoder.drawIndexedPrimitives(type: riggedMesh.primitiveType,
+                                                       indexCount: riggedMesh.indexCount,
+                                                       indexType: riggedMesh.indexType,
+                                                       indexBuffer: riggedMesh.indexBuffer,
                                                        indexBufferOffset: 0)
         }
     }
