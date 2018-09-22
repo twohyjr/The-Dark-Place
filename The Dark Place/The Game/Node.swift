@@ -6,7 +6,7 @@ class Node {
     private var _position: float3 = float3(0)
     private var _scale: float3 = float3(1)
     private var _rotation: float3 = float3(0)
-    
+
     var modelConstants = ModelConstants()
     
     private var fillMode: MTLTriangleFillMode = .fill
@@ -15,9 +15,7 @@ class Node {
     var modelMatrix: matrix_float4x4{
         var modelMatrix = matrix_identity_float4x4
         modelMatrix.translate(direction: _position)
-        modelMatrix.rotate(angle: _rotation.x, axis: X_AXIS)
-        modelMatrix.rotate(angle: _rotation.y, axis: Y_AXIS)
-        modelMatrix.rotate(angle: _rotation.z, axis: Z_AXIS)
+        modelMatrix.quaternionRotate(rotation: _rotation)
         modelMatrix.scale(axis: _scale)
         return matrix_multiply(parentModelMatrix, modelMatrix)
     }

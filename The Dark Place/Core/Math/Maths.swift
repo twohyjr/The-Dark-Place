@@ -102,7 +102,12 @@ extension matrix_float4x4{
         self = matrix_multiply(self, result)
     }
     
+    mutating func quaternionRotate(rotation: float3){
+        let rotation = Quaternion(X_AXIS, rotation.x).mul(Quaternion(Y_AXIS, rotation.y)).mul(Quaternion(Z_AXIS, rotation.z)).toRotationMatrix
+        self = matrix_multiply(self, rotation)
+    }
     
+    //Euler
     mutating func rotate(angle: Float, axis: float3){
         var result = matrix_identity_float4x4
         
@@ -152,7 +157,6 @@ extension matrix_float4x4{
             float3(columns.2.x, columns.2.y, columns.2.z)
         ))
     }
-
 }
 
 public extension Float {

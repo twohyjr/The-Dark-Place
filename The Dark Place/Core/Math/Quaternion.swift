@@ -1,56 +1,63 @@
+
 import simd
+import Foundation
 
 public class Quaternion {
-    
-    private var position = float4(0)
-    public var x: Float {
-        get {
-            return position.x
-        }
-        set {
-            self.position.x = newValue
-        }
-    }
-    public var y: Float {
-        get {
-            return position.y
-        }
-        set {
-            self.position.y = newValue
-        }
-    }
-    public var z: Float {
-        get {
-            return position.z
-        }
-        set {
-            self.position.z = newValue
-        }
-    }
-    public var w: Float {
-        get {
-            return position.w
-        }
-        set {
-            self.position.w = newValue
-        }
+    private var _x: Float = 0
+    private var _y: Float = 0
+    private var _z: Float = 0
+    private var _w: Float = 0
+
+    init(_ x: Float,_ y: Float,_ z: Float,_ w: Float) {
+        self._x = x
+        self._y = y
+        self._z = z
+        self._w = w
     }
     
-    public init(position: float4){
-        self.position = position
+    init(_ axis: float3, _ angle: Float) {
+        let sinHalfAngle: Float = sin(angle / 2.0)
+        let cosHalfAngle: Float = cos(angle / 2.0)
+        
+        self._x = axis.x * sinHalfAngle
+        self._y = axis.y * sinHalfAngle
+        self._z = axis.z * sinHalfAngle
+        self._w = cosHalfAngle
     }
+}
+
+//Properties
+extension Quaternion {
+    public var forward: float3 { return float3(0,0,1).rotate(self) }
+    public var back: float3 { return float3(0, 0,-1).rotate(self) }
+    public var up: float3 { return float3(0,1,0).rotate(self) }
+    public var down: float3 { return float3(0,-1,0).rotate(self) }
+    public var right: float3 { return float3(1,0,0).rotate(self) }
+    public var left: float3 { return float3(-1,0,0).rotate(self) }
     
-    public func normalize(){
-        let mag: Float = sqrt(w * w + x * x + y * y + z * z)
-        position /= mag
-    }
+    func getX()->Float { return self._x }
+    func getY()->Float { return self._y }
+    func getZ()->Float { return self._z }
+    func getW()->Float { return self._w }
     
-    public func toRotationMatrix()->matrix_float4x4{
+    func setX(_ x: Float) { self._x = x }
+    func setY(_ y: Float) { self._y = y }
+    func setZ(_ z: Float) { self._z = z }
+    func setW(_ w: Float) { self._w = w }
+    
+    
+    public var length: Float { return sqrt(_x * _x + _y * _y + _z * _z + _w * _w) }
+    
+    public var normalized: Quaternion { return Quaternion(_x / self.length, _y / self.length, _z / self.length, _w / self.length) }
+    
+    public var conjugate: Quaternion { return Quaternion(-_x, -_y, -_z, -_w) }
+    
+    public var toRotationMatrix: matrix_float4x4{
         var matrix = matrix_identity_float4x4
-        let x = position.x
-        let y = position.y
-        let z = position.z
-        let w = position.w
+        let x = _x
+        let y = _y
+        let z = _z
+        let w = _w
         
         let xy: Float = x * y
         let xz: Float = x * z
@@ -70,75 +77,92 @@ public class Quaternion {
         )
         return matrix
     }
-    
-    public static func fromMatrix(matrix: matrix_float4x4)->Quaternion{
-        var x: Float = 0
-        var y: Float = 0
-        var z: Float = 0
-        var w: Float = 0
-        
-        let m00 = matrix.columns.0.x
-        let m10 = matrix.columns.0.y
-        let m20 = matrix.columns.0.z
-
-        let m01 = matrix.columns.1.x
-        let m11 = matrix.columns.1.y
-        let m21 = matrix.columns.1.z
-        
-        let m02 = matrix.columns.2.x
-        let m12 = matrix.columns.2.y
-        let m22 = matrix.columns.2.z
-        
-        let diagonal = m00 +  m11 + m22
-
-        if (diagonal > 0) {
-            let w4 = sqrt(diagonal + 1.0) * 2.0
-            w = w4 / 4.0
-            x = (m21 - m12) / w4
-            y = (m02 - m20) / w4
-            z = (m10 - m01) / w4
-        } else if ((m00 > m11) && (m00 > m22)) {
-            let x4 = sqrt(1.0 + m00 - m11 - m22) * 2.0
-            w = (m21 - m12) / x4
-            x = x4 / 4.0
-            y = (m01 + m10) / x4
-            z = (m02 + m20) / x4
-        } else if (m11 > m22) {
-            let y4 = sqrt(1.0 + m11 - m00 - m22) * 2.0
-            w = (m02 - m20) / y4
-            x = (m01 + m10) / y4
-            y = y4 / 4.0
-            z = (m12 + m21) / y4
-        } else {
-            let z4 = sqrt(1.0 + m22 - m00 - m11) * 2.0
-            w = (m10 - m01) / z4
-            x = (m02 + m20) / z4
-            y = (m12 + m21) / z4
-            z = z4 / 4.0
-        }
-        
-        return Quaternion(position: float4(x, y, z, w));
-    }
-    
-    public static func interpolate(a: Quaternion, b: Quaternion, blend: Float)->Quaternion {
-        let result =  Quaternion(position: float4(0, 0, 0, 1))
-
-        let dot = a.w * b.w + a.x * b.x * a.y * b.y + a.z *  b.z
-        let blendI = 1.0 - blend
-
-        if (dot < 0) {
-            result.w = blendI * a.w + blend * -b.w;
-            result.x = blendI * a.x + blend * -b.x;
-            result.y = blendI * a.y + blend * -b.y;
-            result.z = blendI * a.z + blend * -b.z;
-        } else {
-            result.w = blendI * a.w + blend * b.w;
-            result.x = blendI * a.x + blend * b.x;
-            result.y = blendI * a.y + blend * b.y;
-            result.z = blendI * a.z + blend * b.z;
-        }
-        result.normalize();
-        return result
-    }
-    
 }
+
+//Functions
+extension Quaternion {
+    public func mul(_ r: Float)->Quaternion {
+        return Quaternion(_x * r, _y * r, _z * r, _w * r)
+    }
+    
+    public func mul(_ r: Quaternion)->Quaternion {
+        let w: Float = _w * r.getW() - _x * r.getX() - _y * r.getY() - _z * r.getZ()
+        let x: Float = _x * r.getW() + _w * r.getX() + _y * r.getZ() - _z * r.getY()
+        let y: Float = _y * r.getW() + _w * r.getY() + _z * r.getX() - _x * r.getZ()
+        let z: Float = _z * r.getW() + _w * r.getZ() + _x * r.getY() - _y * r.getX()
+        
+        return Quaternion(x, y, z, w)
+    }
+    
+    public func mul(_ r: float3)->Quaternion {
+        let w: Float = -_x * r.x - _y * r.y - _z * r.z
+        let x: Float =  _w * r.x + _y * r.z - _z * r.y
+        let y: Float =  _w * r.y + _z * r.x - _x * r.z
+        let z: Float =  _w * r.z + _x * r.y - _y * r.x
+        
+        return Quaternion(x, y, z, w)
+    }
+    
+    public func sub(_ r: Quaternion)->Quaternion {
+        return Quaternion(_x - r.getX(), _y - r.getY(), _z - r.getZ(), _w - r.getW())
+    }
+    
+    public func add(_ r: Quaternion)->Quaternion {
+        return Quaternion(_x + r.getX(), _y + r.getY(), _z + r.getZ(), _w + r.getW())
+    }
+    
+    public func dot(_ r: Quaternion)->Float {
+        return _x * r.getX() + _y * r.getY() + _z * r.getZ() + _w * r.getW()
+    }
+    
+    public func nLerp(dest: Quaternion, lerpFactor: Float, shortest: Bool)->Quaternion {
+        var correctedDest: Quaternion = dest
+        
+        if(shortest && self.dot(dest) < 0) {
+            correctedDest = Quaternion(-dest.getX(), -dest.getY(), -dest.getZ(), -dest.getW())
+        }
+        
+        return correctedDest.sub(self).mul(lerpFactor).add(self).normalized
+    }
+    
+    public func sLerp(dest: Quaternion, lerpFactor: Float, shortest: Bool)->Quaternion {
+        let EPSILON: Float = Float(CGFloat.ulpOfOne)
+        
+        var cos: Float = self.dot(dest);
+        var correctedDest: Quaternion = dest
+        
+        if(shortest && cos < 0) {
+            cos = -cos
+            correctedDest = Quaternion(-dest.getX(), -dest.getY(), -dest.getZ(), -dest.getW())
+        }
+        
+        if(abs(cos) >= 1 - EPSILON) {
+            return nLerp(dest: correctedDest, lerpFactor: lerpFactor, shortest: false)
+        }
+        
+        let sinVal: Float = sqrt(1.0 - cos * cos)
+        let angle: Float = atan2(sinVal, cos)
+        let invSin: Float =  1.0 / sinVal
+        
+        let srcFactor: Float = sin((1.0 - lerpFactor) * angle) * invSin
+        let destFactor: Float = sin((lerpFactor) * angle) * invSin
+        
+        return self.mul(srcFactor).add(correctedDest.mul(destFactor))
+    }
+    
+    public func set(_ x: Float, _ y: Float, _ z: Float, _ w: Float){
+        self._x = x
+        self._y = y
+        self._z = z
+        self._w = w
+    }
+    
+    public func set(_ r: Quaternion) {
+        set(r.getX(), r.getY(), r.getZ(), r.getW())
+    }
+    
+    public func equals(_ r: Quaternion)->Bool {
+        return _x == r.getX() && _y == r.getY() && _z == r.getZ() && _w == r.getW()
+    }
+}
+

@@ -16,7 +16,6 @@ extension float4 {
     var a: Float {
         return self.w
     }
-
 }
 
 extension float3 {
@@ -26,6 +25,25 @@ extension float3 {
         let y: String = self.y.toString2d
         let z: String = self.z.toString2d
         return "( x:\(x), y:\(y), z:\(z))"
+    }
+    
+    func rotate(_ rotation: Quaternion)->float3 {
+        let conjugate: Quaternion = rotation.conjugate
+        let w: Quaternion = rotation.mul(self).mul(conjugate)
+        return float3(w.getX(), w.getY(), w.getZ())
+    }
+    
+    func add(_ val: Float)->float3{
+        return self + float3(val)
+    }
+    
+    mutating func zeroInit()->float3 {
+        self = float3(0)
+        return self
+    }
+    
+    mutating func set(_ val: float3){
+        self = val
     }
     
 }
