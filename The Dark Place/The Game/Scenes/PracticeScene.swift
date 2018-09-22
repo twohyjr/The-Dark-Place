@@ -8,6 +8,8 @@ class PracticeScene: Scene {
         addLights()
         
         addObjects()
+        
+        setFog()
     }
     
     let debugCamera = DebugCamera()
@@ -39,21 +41,36 @@ class PracticeScene: Scene {
 //        whiteLight.setPosition(float3(0,100,400))
     }
     
+    var terrain: Terrain!
     func addObjects(){
         let terrainData = TerrainData(width: 200, depth: 200)
-        let terrain = Terrain(gridSize: 1000, terrainData: terrainData, textureType: TextureTypes.CartoonGrass, name: "Main Terrain")
+        terrain = Terrain(gridSize: 1000, terrainData: terrainData, textureType: TextureTypes.CartoonGrass, name: "Main Terrain")
         addChild(terrain)
         
         let animatedModel = Cowboy()
         addChild(animatedModel)
     }
     
+    func setFog(){
+        fog.density = 0.019000001
+        fog.gradient = 2.0999603
+    }
+    
     override func update(deltaTime: Float) {
         cubeRed.setPosition(lightRed.getPosition())
         cubeGreen.setPosition(lightGreen.getPosition())
         
+        DebugSettings.nameValue1 = "Att X"
+        DebugSettings.nameValue2 = "Att Y"
+        DebugSettings.nameValue3 = "Att Z"
         lightRed.setAttenuation(float3(DebugSettings.value1, DebugSettings.value2, DebugSettings.value3))
         lightGreen.setAttenuation(float3(DebugSettings.value1, DebugSettings.value2, DebugSettings.value3))
+        
+        DebugSettings.nameValue4 = "Mat Shin"
+        DebugSettings.nameValue5 = "Mat Spec"
+        terrain.setShininess(DebugSettings.value4)
+        terrain.setSpecular(float3(DebugSettings.value5))
+
         super.update(deltaTime: deltaTime)
     }
     

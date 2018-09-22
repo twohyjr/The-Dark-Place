@@ -36,7 +36,13 @@ class ViewController: NSViewController {
     @IBOutlet weak var sldValue4: NSSlider!
     @IBOutlet weak var sldValue5: NSSlider!
     @IBOutlet weak var sldValue6: NSSlider!
-
+    
+    @IBOutlet weak var txtNameValue1: NSTextField!
+    @IBOutlet weak var txtNameValue2: NSTextField!
+    @IBOutlet weak var txtNameValue3: NSTextField!
+    @IBOutlet weak var txtNameValue4: NSTextField!
+    @IBOutlet weak var txtNameValue5: NSTextField!
+    @IBOutlet weak var txtNameValue6: NSTextField!
     
     @IBOutlet weak var mtkGameView: GameView!
     var debugCameraValues = DebugCameraValues()
@@ -62,7 +68,12 @@ class ViewController: NSViewController {
         sldValue4.floatValue = DebugSettings.value4
         sldValue5.floatValue = DebugSettings.value5
         sldValue6.floatValue = DebugSettings.value6
-        
+        txtNameValue1.stringValue = DebugSettings.nameValue1
+        txtNameValue2.stringValue = DebugSettings.nameValue2
+        txtNameValue3.stringValue = DebugSettings.nameValue3
+        txtNameValue4.stringValue = DebugSettings.nameValue4
+        txtNameValue5.stringValue = DebugSettings.nameValue5
+        txtNameValue6.stringValue = DebugSettings.nameValue6
     }
     
     public func updateDebugCameraValues(_ debugCameraValues: DebugCameraValues){
@@ -75,6 +86,15 @@ class ViewController: NSViewController {
         txtCameraZoom.stringValue = debugCameraValues.fov.toString2d
         txtCameraNear.stringValue = debugCameraValues.near.toString2d
         txtCameraFar.stringValue = debugCameraValues.far.toString2d
+    }
+    
+    public func updateValues(){
+        txtNameValue1.stringValue = DebugSettings.nameValue1
+        txtNameValue2.stringValue = DebugSettings.nameValue2
+        txtNameValue3.stringValue = DebugSettings.nameValue3
+        txtNameValue4.stringValue = DebugSettings.nameValue4
+        txtNameValue5.stringValue = DebugSettings.nameValue5
+        txtNameValue6.stringValue = DebugSettings.nameValue6
     }
     
     var currentCameraValue: Int = 0
