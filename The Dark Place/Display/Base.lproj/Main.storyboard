@@ -871,7 +871,7 @@
                                         </buttonCell>
                                         <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                         <connections>
-                                            <action selector="sldValue1_Changed:" target="XfG-lQ-9wD" id="r2c-ie-E4a"/>
+                                            <action selector="btnPrintCameraPressed:" target="XfG-lQ-9wD" id="L2y-aa-7g9"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LjE-Aw-JNX">
@@ -924,7 +924,7 @@
                                     </textField>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TKO-3y-dG5">
                                         <rect key="frame" x="254" y="150" width="176" height="19"/>
-                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="10" doubleValue="1.77" tickMarkPosition="above" sliderType="linear" id="3Nf-KZ-t3c"/>
+                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="10" tickMarkPosition="above" sliderType="linear" id="3Nf-KZ-t3c"/>
                                         <connections>
                                             <action selector="sldValue2_Changed:" target="XfG-lQ-9wD" id="gca-E2-cxE"/>
                                         </connections>

@@ -14,8 +14,8 @@ class PracticeScene: Scene {
     
     let debugCamera = DebugCamera()
     func addCameras(){
-        debugCamera.setPosition(float3(0, 5, 10))
-        debugCamera.setPitch(0.23)
+        debugCamera.setPosition(float3(0, 5, 11.5))
+        debugCamera.setPitch(0.17)
         addCamera(camera: debugCamera)
     }
     
@@ -23,22 +23,27 @@ class PracticeScene: Scene {
     let lightRed = Light()
     let cubeGreen = Cube()
     let lightGreen = Light()
+    let whiteLight = Light()
     func addLights(){
-        lightRed.setPosition(float3(1.5,3,0))
+        lightRed.setPosition(float3(1.5,5,0))
         lightRed.setColor(float3(1,0,0))
+        lightRed.setBrightness(1.5)
+        lightRed.setAttenuation(float3(0,0.532,0))
         cubeRed.setScale(0.2)
         cubeRed.setColor(float4(1,0,0,1))
         addChild(cubeRed)
         
-        lightGreen.setPosition(float3(-1.5,3,0))
+        lightGreen.setPosition(float3(-1.5,5,0))
         lightGreen.setColor(float3(0,1,0))
+        lightGreen.setAttenuation(float3(0,0.532,0))
         cubeGreen.setScale(0.2)
         cubeGreen.setColor(float4(0,1,0,1))
         addChild(cubeGreen)
         
-//        let whiteLight = Light()
-//        whiteLight.setBrightness(0.6)
-//        whiteLight.setPosition(float3(0,100,400))
+        
+        DebugSettings.value1 = 0.4
+        whiteLight.setBrightness(DebugSettings.value1)
+        whiteLight.setPosition(float3(0,100,400))
     }
     
     var terrain: Terrain!
@@ -60,16 +65,10 @@ class PracticeScene: Scene {
         cubeRed.setPosition(lightRed.getPosition())
         cubeGreen.setPosition(lightGreen.getPosition())
         
-        DebugSettings.nameValue1 = "Att X"
-        DebugSettings.nameValue2 = "Att Y"
-        DebugSettings.nameValue3 = "Att Z"
-        lightRed.setAttenuation(float3(DebugSettings.value1, DebugSettings.value2, DebugSettings.value3))
-        lightGreen.setAttenuation(float3(DebugSettings.value1, DebugSettings.value2, DebugSettings.value3))
+        DebugSettings.nameValue1 = "White Light"
+        whiteLight.setBrightness(DebugSettings.value1)
         
-        DebugSettings.nameValue4 = "Mat Shin"
-        DebugSettings.nameValue5 = "Mat Spec"
-        terrain.setShininess(DebugSettings.value4)
-        terrain.setSpecular(float3(DebugSettings.value5))
+        
 
         super.update(deltaTime: deltaTime)
     }

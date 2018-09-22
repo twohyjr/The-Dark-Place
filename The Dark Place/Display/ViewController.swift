@@ -50,30 +50,6 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mtkGameView.setControllers(debugViewController: self)
-        DebugSettings.value1 = sldValue1.floatValue
-        DebugSettings.value2 = sldValue2.floatValue
-        DebugSettings.value3 = sldValue3.floatValue
-        DebugSettings.value4 = sldValue4.floatValue
-        DebugSettings.value5 = sldValue5.floatValue
-        DebugSettings.value6 = sldValue6.floatValue
-        txtValue1.stringValue = String(format: "%.2f", DebugSettings.value1)
-        txtValue2.stringValue = String(format: "%.2f", DebugSettings.value2)
-        txtValue3.stringValue = String(format: "%.2f", DebugSettings.value3)
-        txtValue4.stringValue = String(format: "%.2f", DebugSettings.value4)
-        txtValue5.stringValue = String(format: "%.2f", DebugSettings.value5)
-        txtValue6.stringValue = String(format: "%.2f", DebugSettings.value6)
-        sldValue1.floatValue = DebugSettings.value1
-        sldValue2.floatValue = DebugSettings.value2
-        sldValue3.floatValue = DebugSettings.value3
-        sldValue4.floatValue = DebugSettings.value4
-        sldValue5.floatValue = DebugSettings.value5
-        sldValue6.floatValue = DebugSettings.value6
-        txtNameValue1.stringValue = DebugSettings.nameValue1
-        txtNameValue2.stringValue = DebugSettings.nameValue2
-        txtNameValue3.stringValue = DebugSettings.nameValue3
-        txtNameValue4.stringValue = DebugSettings.nameValue4
-        txtNameValue5.stringValue = DebugSettings.nameValue5
-        txtNameValue6.stringValue = DebugSettings.nameValue6
     }
     
     public func updateDebugCameraValues(_ debugCameraValues: DebugCameraValues){
@@ -95,6 +71,20 @@ class ViewController: NSViewController {
         txtNameValue4.stringValue = DebugSettings.nameValue4
         txtNameValue5.stringValue = DebugSettings.nameValue5
         txtNameValue6.stringValue = DebugSettings.nameValue6
+        
+        sldValue1.floatValue = DebugSettings.value1
+        sldValue2.floatValue = DebugSettings.value2
+        sldValue3.floatValue = DebugSettings.value3
+        sldValue4.floatValue = DebugSettings.value4
+        sldValue5.floatValue = DebugSettings.value5
+        sldValue6.floatValue = DebugSettings.value6
+        
+        txtValue1.stringValue = String(format: "%.2f", DebugSettings.value1)
+        txtValue2.stringValue = String(format: "%.2f", DebugSettings.value2)
+        txtValue3.stringValue = String(format: "%.2f", DebugSettings.value3)
+        txtValue4.stringValue = String(format: "%.2f", DebugSettings.value4)
+        txtValue5.stringValue = String(format: "%.2f", DebugSettings.value5)
+        txtValue6.stringValue = String(format: "%.2f", DebugSettings.value6)
     }
     
     var currentCameraValue: Int = 0
