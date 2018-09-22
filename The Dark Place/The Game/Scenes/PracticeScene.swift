@@ -2,6 +2,8 @@ import MetalKit
 
 class PracticeScene: Scene {
     
+    var lastPos = float3(100,0,0)
+    
     override func buildScene() {
         addCameras()
         
@@ -41,18 +43,18 @@ class PracticeScene: Scene {
         addChild(cubeGreen)
         
         
-        DebugSettings.value1 = 0.4
-        whiteLight.setBrightness(DebugSettings.value1)
+        whiteLight.setBrightness(0.4)
         whiteLight.setPosition(float3(0,100,400))
     }
     
     var terrain: Terrain!
+    let animatedModel = Cowboy()
     func addObjects(){
         let terrainData = TerrainData(width: 200, depth: 200)
         terrain = Terrain(gridSize: 1000, terrainData: terrainData, textureType: TextureTypes.CartoonGrass, name: "Main Terrain")
         addChild(terrain)
         
-        let animatedModel = Cowboy()
+       
         addChild(animatedModel)
     }
     
@@ -61,14 +63,12 @@ class PracticeScene: Scene {
         fog.gradient = 2.0999603
     }
     
+    var time: Float = 0
     override func update(deltaTime: Float) {
+        time += deltaTime
+        
         cubeRed.setPosition(lightRed.getPosition())
         cubeGreen.setPosition(lightGreen.getPosition())
-        
-        DebugSettings.nameValue1 = "White Light"
-        whiteLight.setBrightness(DebugSettings.value1)
-        
-        
 
         super.update(deltaTime: deltaTime)
     }

@@ -100,6 +100,7 @@ class ColladaFileLoader {
             var startedListIteration: Bool = false
             for value in pList {
                 if(currentOffset == 0 && startedListIteration){
+                    vertexPoint.rotate(axis: X_AXIS, angle: toRadians(-90))
                     riggedVertices.append(RiggedVertex(position: vertexPoint, color: colorPoint, normal: normalPoint, textureCoordinate: texturePoint))
                 }
                 startedListIteration = true
