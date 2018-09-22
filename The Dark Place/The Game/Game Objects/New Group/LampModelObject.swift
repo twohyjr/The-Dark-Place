@@ -3,7 +3,7 @@ import MetalKit
 
 class LampModelObject: ModelGameObject {
     
-    var light = Light()
+    var light = Light(lightName: "")
     var lightName: String!
     var showObject: Bool = true
     

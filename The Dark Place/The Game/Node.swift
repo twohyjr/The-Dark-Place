@@ -48,6 +48,7 @@ class Node {
         if(name != String.Empty){
             renderCommandEncoder.pushDebugGroup("Rendering \(name)")
         }
+        
         for child in children{
             child.render(renderCommandEncoder: renderCommandEncoder)
         }

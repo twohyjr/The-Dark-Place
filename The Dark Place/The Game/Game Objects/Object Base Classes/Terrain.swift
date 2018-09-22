@@ -29,3 +29,21 @@ extension Terrain: Renderable{
     }
 }
 
+//Material Getters / Setters
+extension Terrain {
+    func setColor(_ colorValue: float4){ self.material.color = colorValue }
+    func getColor()->float4{ return self.material.color }
+    
+    func setAmbient(_ ambientValue: float3){ self.material.ambient = ambientValue }
+    func getAmbient()->float3 { return self.material.ambient }
+    
+    func setDiffuse(_ diffuseValue: float3){ self.material.diffuse = diffuseValue }
+    func getDiffuse()->float3 { return self.material.diffuse }
+    
+    func setShininess(_ shininessValue: Float){  self.material.shininess = shininessValue }
+    func getShininess()->Float { return self.material.shininess }
+    
+    func setSpecular(_ specularValue: float3){ self.material.specular = specularValue }
+    func getSpecular()->float3{ return self.material.specular }
+}
+

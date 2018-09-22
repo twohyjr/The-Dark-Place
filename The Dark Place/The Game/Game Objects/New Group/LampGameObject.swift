@@ -3,7 +3,7 @@ import MetalKit
 
 class LampGameObject: GameObject {
     
-    var light = Light()
+    var light = Light(lightName: "")
     var lightName: String!
     private var showObject: Bool = true
     
@@ -47,7 +47,7 @@ class LampGameObject: GameObject {
     }
     
     override func update(deltaTime: Float) {
-        self.setAttenuation(float3(DebugSettings.lightValue1, DebugSettings.lightValue2, DebugSettings.lightValue3))
+        self.setAttenuation(float3(DebugSettings.value1, DebugSettings.value2, DebugSettings.value3))
         LightManager.GetLight(lightName).setPosition(self.getPosition() + light.getPosition())
         LightManager.GetLight(lightName).setBrightness(self.brightness)
         LightManager.GetLight(lightName).setColor(self.getColor().xyz)

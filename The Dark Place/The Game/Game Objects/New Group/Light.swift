@@ -4,6 +4,7 @@ class Light: Node {
 
     internal var lightData = LightData()
 
+    private var _lightName: String = ""
     private var _color: float3!
     private var _brightness: Float!
     private var _attenuation: float3!
@@ -18,23 +19,44 @@ class Light: Node {
     public func getAttenuation()->float3 {return _attenuation}
     public func setAttenuation(_ value: float3){self._attenuation = value}
     
-    public func getAmbientIntensity()->float3 {return _attenuation}
-    public func setAmbientIntensity(_ value: float3){self._attenuation = value}
+    public func getAmbientIntensity()->Float {return _ambientIntensity}
+    public func setAmbientIntensity(_ value: Float){self._ambientIntensity = value}
     
-    override init(){
+    init(lightName: String = ""){
         super.init()
-        _color = lightData.color
-        _brightness = lightData.brightness
-        _attenuation = lightData.attenuation
-        _ambientIntensity = lightData.ambientIntensity
+        self._lightName = lightName
+        self._color = lightData.color
+        self._brightness = lightData.brightness
+        self._attenuation = lightData.attenuation
+        self._ambientIntensity = lightData.ambientIntensity
+        self._lightName = String(randomBounded(lowerBound: 0, upperBound: 1000))
+        LightManager.AddLight(lightName: _lightName, light: self)
     }
  
     public override func update(deltaTime: Float){
+        if(Keyboard.IsKeyPressed(.w)){
+            self.moveY(deltaTime)
+        }
+        
+        if(Keyboard.IsKeyPressed(.s)){
+            self.moveY(-deltaTime)
+        }
+        
+        if(Keyboard.IsKeyPressed(.d)){
+            self.moveX(deltaTime)
+        }
+        
+        if(Keyboard.IsKeyPressed(.a)){
+            self.moveX(-deltaTime)
+        }
+        
+        
         lightData.position = getPosition()
         lightData.brightness = _brightness
         lightData.color = _color
         lightData.attenuation = _attenuation
         lightData.ambientIntensity = _ambientIntensity
+        super.update(deltaTime: deltaTime)
     }
 }
 

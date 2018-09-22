@@ -1,15 +1,21 @@
 import simd
 
 struct DebugSettings {
-    public static var lightValue1: Float = 0
-    public static var lightValue2: Float = 0
-    public static var lightValue3: Float = 0
+    public static var value1: Float = 0
+    public static var value2: Float = 0
+    public static var value3: Float = 0
+    public static var value4: Float = 0
+    public static var value5: Float = 0
+    public static var value6: Float = 0
     
-    public static func printLightValues(){
+    public static func printValues(){
         print("""
-        value 1: \(lightValue1)
-        value 2: \(lightValue2)
-        value 3: \(lightValue3)
+        value 1: \(value1)
+        value 2: \(value2)
+        value 3: \(value3)
+        value 1: \(value4)
+        value 2: \(value5)
+        value 3: \(value6)
         """)
     }
 }

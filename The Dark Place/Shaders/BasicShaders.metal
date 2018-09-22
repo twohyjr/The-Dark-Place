@@ -154,21 +154,20 @@ fragment half4 basic_fragment_shader(const RasterizerData rd [[ stage_in ]],
             
             //Ambient
             float3 ambientness = material.ambient * lightData.ambientIntensity;
-            totalAmbient += (ambientness * lightData.color) / attFactor;
+            totalAmbient += (ambientness * lightData.color * lightData.brightness) / attFactor;
             
             //Diffuse
             float3 diffuseness = material.diffuse * lightData.diffuseIntensity;
             float nDot1 = dot(unitNormal, unitLightVector);
             float diffuseBrightness = max(nDot1, 0.0);
-            totalDiffuse += (diffuseBrightness * diffuseness * lightData.color) / attFactor;
+            totalDiffuse += (diffuseBrightness * diffuseness * lightData.color * lightData.brightness) / attFactor;
             
             //Specualr
             float3 specularness = material.specular * lightData.specularIntensity;
             float3 reflectedLightDirection = reflect(lightDirection, unitNormal);
             float specularFactor = max(saturate(dot(reflectedLightDirection, unitCameraVector)), 0.1);
             float dampedFactor = pow(specularFactor, material.shininess);
-            
-            totalSpecular += (dampedFactor * specularness * lightData.color) / attFactor;
+            totalSpecular += (dampedFactor * specularness * lightData.color * lightData.brightness) / attFactor;
         }
         
         totalDiffuse = max(totalDiffuse, 0.2);
@@ -188,6 +187,7 @@ fragment half4 rigged_fragment_shader(const RasterizerData rd [[ stage_in ]],
     float4 color;
     if(material.useTexture){
         color = texture.sample(sampler2d, rd.textureCoordinate);
+        color = float4(color.b, color.g, color.r, color.a);
     }else {
         color = material.isLit ? material.color : rd.color;
     }
@@ -211,21 +211,20 @@ fragment half4 rigged_fragment_shader(const RasterizerData rd [[ stage_in ]],
             
             //Ambient
             float3 ambientness = material.ambient * lightData.ambientIntensity;
-            totalAmbient += (ambientness * lightData.color) / attFactor;
+            totalAmbient += (ambientness * lightData.color * lightData.brightness) / attFactor;
             
             //Diffuse
             float3 diffuseness = material.diffuse * lightData.diffuseIntensity;
             float nDot1 = dot(unitNormal, unitLightVector);
             float diffuseBrightness = max(nDot1, 0.0);
-            totalDiffuse += (diffuseBrightness * diffuseness * lightData.color) / attFactor;
+            totalDiffuse += (diffuseBrightness * diffuseness * lightData.color * lightData.brightness) / attFactor;
             
             //Specualr
             float3 specularness = material.specular * lightData.specularIntensity;
             float3 reflectedLightDirection = reflect(lightDirection, unitNormal);
             float specularFactor = max(saturate(dot(reflectedLightDirection, unitCameraVector)), 0.1);
             float dampedFactor = pow(specularFactor, material.shininess);
-            
-            totalSpecular += (dampedFactor * specularness * lightData.color) / attFactor;
+            totalSpecular += (dampedFactor * specularness * lightData.color * lightData.brightness) / attFactor;
         }
         
         totalDiffuse = max(totalDiffuse, 0.2);
@@ -233,7 +232,7 @@ fragment half4 rigged_fragment_shader(const RasterizerData rd [[ stage_in ]],
         color *= (float4(totalAmbient, 1.0) + float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0));
     }
     
-    return half4(color.b, color.g, color.r, 1);
+    return half4(color.r, color.g, color.b, 1);
 }
 
 fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_in ]],
@@ -243,32 +242,48 @@ fragment half4 village_terrain_fragment_shader(const RasterizerData rd [[ stage_
                                                constant LightData *lightDatas [[ buffer(2) ]],
                                                constant int &lightCount [[ buffer(3) ]]){
     float4 color = texture.sample(sampler2d, rd.textureCoordinate);
-    color = float4(color.r, color.b, color.g, color.a);
-    
-    float4 totalColor = color;
-    
-    for(int i = 0; i < lightCount; i++){
-        LightData lightData = lightDatas[i];
-        
-        lightData.brightness = lightData.brightness;
-        float4 phongColor = phongShade(lightData,
-                                       material,
-                                       rd.worldPosition,
-                                       rd.surfaceNormal,
-                                       rd.toCameraVector);
-        
-        totalColor += attenuate(phongColor,
-                                lightData.attenuation,
-                                lightData.position,
-                                rd.worldPosition);
-    }
-    
-    //Apply Lighting Calculations
+    color = float4(color.b, color.g, color.r, color.a);
+
     if(material.isLit){
-        color *= totalColor;
+        float3 totalAmbient = float3(0);
+        float3 totalDiffuse = float3(0);
+        float3 totalSpecular = float3(0);
+        
+        for(int i = 0; i < lightCount; i++){
+            LightData lightData = lightDatas[i];
+            
+            float3 toLightVector = lightData.position - rd.worldPosition;
+            float3 toCameraVector = rd.toCameraVector;
+            float3 unitLightVector = normalize(toLightVector);
+            float3 unitCameraVector = normalize(toCameraVector);
+            float distance = length(toLightVector);
+            float  attFactor = lightData.attenuation.x + (lightData.attenuation.y * distance) + (lightData.attenuation.z * distance * distance);
+            float3 unitNormal = normalize(rd.surfaceNormal);
+            float3 lightDirection = -unitLightVector;
+            
+            //Ambient
+            float3 ambientness = material.ambient * lightData.ambientIntensity;
+            totalAmbient += (ambientness * lightData.color * lightData.brightness) / attFactor;
+            
+            //Diffuse
+            float3 diffuseness = material.diffuse * lightData.diffuseIntensity;
+            float nDot1 = dot(unitNormal, unitLightVector);
+            float diffuseBrightness = max(nDot1, 0.0);
+            totalDiffuse += (diffuseBrightness * diffuseness * lightData.color * lightData.brightness) / attFactor;
+            
+            //Specualr
+            float3 specularness = material.specular * lightData.specularIntensity;
+            float3 reflectedLightDirection = reflect(lightDirection, unitNormal);
+            float specularFactor = max(saturate(dot(reflectedLightDirection, unitCameraVector)), 0.1);
+            float dampedFactor = pow(specularFactor, material.shininess);
+            totalSpecular += (dampedFactor * specularness * lightData.color * lightData.brightness) / attFactor;
+        }
+        
+        totalDiffuse = max(totalDiffuse, 0.2);
+        
+        color *= (float4(totalAmbient, 1.0) + float4(totalDiffuse, 1.0) + float4(totalSpecular, 1.0));
     }
     
-    color = mix(float4(rd.skyColor, 1), color, rd.visibility);
     
     return half4(color.r, color.g, color.b, 1);
 }
