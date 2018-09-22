@@ -13,17 +13,16 @@ class PracticeScene: Scene {
     
     let debugCamera = DebugCamera()
     func addCameras(){
-        debugCamera.setPosition(float3(4, 5, 8))
-        debugCamera.setPitch(0.5)
+        debugCamera.setPosition(float3(0, 5, 10))
+        debugCamera.setPitch(0.23)
         addCamera(camera: debugCamera)
     }
     
-    let light = LampGameObject()
+    let light = Lantern(.Green)
     func addLights(){
-//        light.brightness = 1.0
-        light.setColor(float4(0.2,0.5,0,1))
-        light.showGameModel()
-        light.setPositionY(2)
+        light.setRotation(float3(0.0, 3, 0.0))
+        light.brightness = 1
+        light.moveY(1)
         addChild(light)
     }
     
@@ -34,25 +33,6 @@ class PracticeScene: Scene {
     }
     
     override func update(deltaTime: Float) {
-        if(Keyboard.IsKeyPressed(.w)){
-           light.moveY(deltaTime)
-        }
-        if(Keyboard.IsKeyPressed(.s)){
-            light.moveY(-deltaTime)
-        }
-        if(Keyboard.IsKeyPressed(.a)){
-            light.moveX(-deltaTime)
-        }
-        if(Keyboard.IsKeyPressed(.d)){
-            light.moveX(deltaTime)
-        }
-        if(Keyboard.IsKeyPressed(.q)){
-            light.moveZ(-deltaTime)
-        }
-        if(Keyboard.IsKeyPressed(.z)){
-            light.moveZ(deltaTime)
-        }
-        
         super.update(deltaTime: deltaTime)
     }
     

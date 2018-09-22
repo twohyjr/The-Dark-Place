@@ -10,6 +10,7 @@ class Node {
     var modelConstants = ModelConstants()
     
     private var fillMode: MTLTriangleFillMode = .fill
+    public var parentModelMatrix = matrix_identity_float4x4
     
     var modelMatrix: matrix_float4x4{
         var modelMatrix = matrix_identity_float4x4
@@ -18,7 +19,7 @@ class Node {
         modelMatrix.rotate(angle: _rotation.y, axis: Y_AXIS)
         modelMatrix.rotate(angle: _rotation.z, axis: Z_AXIS)
         modelMatrix.scale(axis: _scale)
-        return modelMatrix
+        return matrix_multiply(parentModelMatrix, modelMatrix)
     }
     
     var children: [Node] = []
@@ -38,6 +39,7 @@ class Node {
     
     func update(deltaTime: Float){
         for child in children{
+            child.parentModelMatrix = self.modelMatrix
             child.update(deltaTime: deltaTime)
         }
         

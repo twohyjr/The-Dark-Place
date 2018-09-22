@@ -931,7 +931,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="172" id="cOo-Vs-2Rt"/>
                                         </constraints>
-                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="4" tickMarkPosition="above" sliderType="linear" id="0uB-9m-Y1a"/>
+                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="10" tickMarkPosition="above" sliderType="linear" id="0uB-9m-Y1a"/>
                                         <connections>
                                             <action selector="sldLightValue3_Changed:" target="XfG-lQ-9wD" id="rds-kq-zDL"/>
                                         </connections>
