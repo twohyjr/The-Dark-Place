@@ -23,8 +23,10 @@ extension Float: sizeable { }
 extension float2: sizeable { }
 extension float3: sizeable { }
 extension float4: sizeable { }
+extension int3: sizeable { }
 extension Int32: sizeable { }
 extension UInt16: sizeable { }
+extension matrix_float4x4: sizeable { }
 
 struct Vertex: sizeable{
     var position: float3
@@ -38,6 +40,8 @@ struct RiggedVertex: sizeable{
     var color: float4
     var normal: float3
     var textureCoordinate: float2
+    var jointIDs: int3
+    var weights: float3
 }
 
 struct ModelConstants: sizeable{

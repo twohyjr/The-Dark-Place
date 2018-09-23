@@ -97,11 +97,20 @@ class GeometryLoader {
             var vertexPoint: float3 = float3(0)
             var texturePoint: float2 = float2(0)
             var normalPoint: float3 = float3(0)
+            
+            var jointIDs: int3 = int3(0)
+            var weights: float3 = float3(0)
+            
             var startedListIteration: Bool = false
             for value in pList {
                 if(currentOffset == 0 && startedListIteration){
                     vertexPoint.rotate(axis: X_AXIS, angle: toRadians(-90))
-                    riggedVertices.append(RiggedVertex(position: vertexPoint, color: colorPoint, normal: normalPoint, textureCoordinate: texturePoint))
+                    riggedVertices.append(RiggedVertex(position: vertexPoint,
+                                                       color: colorPoint,
+                                                       normal: normalPoint,
+                                                       textureCoordinate: texturePoint,
+                                                       jointIDs: jointIDs,
+                                                       weights: weights))
                 }
                 startedListIteration = true
                 if(currentOffset == positionOffset){

@@ -87,6 +87,17 @@ public struct Rigged_VertexDescriptor: VertexDescriptor{
         vertexDescriptor.attributes[3].bufferIndex = 0
         vertexDescriptor.attributes[3].offset = float3.size + float4.size + float3.size
         
+        //Joint IDs
+        vertexDescriptor.attributes[4].format = .int3
+        vertexDescriptor.attributes[4].bufferIndex = 0
+        vertexDescriptor.attributes[4].offset = float3.size + float4.size + float3.size + float2.size
+        
+        //Weights
+        vertexDescriptor.attributes[5].format = .float3
+        vertexDescriptor.attributes[5].bufferIndex = 0
+        vertexDescriptor.attributes[5].offset = float3.size + float4.size + float3.size + float2.size + int3.size
+        
         vertexDescriptor.layouts[0].stride = RiggedVertex.stride
+        
     }
 }

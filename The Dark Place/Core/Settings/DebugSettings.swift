@@ -8,7 +8,7 @@ struct DebugSettings {
     public static var value5: Float = 0
     public static var value6: Float = 0
     
-    public static var nameValue1: String = "No Names"
+    public static var nameValue1: String = "No Name"
     public static var nameValue2: String = "No Name"
     public static var nameValue3: String = "No Name"
     public static var nameValue4: String = "No Name"

@@ -64,6 +64,8 @@ struct RiggedVertex {
     float4 color [[ attribute(1) ]];
     float3 normal [[ attribute(2) ]];
     float2 textureCoordinate [[ attribute(3) ]];
+    int3 jointIDs [[ attribute(4) ]];
+    float3 weights [[ attribute(5) ]];
 };
 
 
@@ -103,8 +105,9 @@ vertex RasterizerData basic_vertex_shader(const VertexIn vertexIn [[ stage_in ]]
 }
 
 vertex RasterizerData rigged_vertex_shader(const RiggedVertex vertexIn [[ stage_in ]],
-                                                 constant SceneConstants &sceneConstants [[ buffer(1) ]],
-                                                 constant ModelConstants &modelConstants [[ buffer(2) ]]){
+                                           constant SceneConstants &sceneConstants [[ buffer(1) ]],
+                                           constant ModelConstants &modelConstants [[ buffer(2) ]],
+                                           constant float4x4 *jointTransforms [[ buffer(3) ]]){
     RasterizerData rd;
     
     //Vertex Position Descriptors

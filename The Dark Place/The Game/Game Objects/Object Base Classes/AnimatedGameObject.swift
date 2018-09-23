@@ -7,6 +7,8 @@ class AnimatedGameObject: Node {
     //Skin
     var material = Material()
     var texture: MTLTexture!
+    
+
 
     
     init(riggedMeshType: RiggedMeshTypes,  textureType: TextureTypes = TextureTypes.None, name: String = String.Empty){
