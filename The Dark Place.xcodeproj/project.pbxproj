@@ -20,13 +20,19 @@
 		EB1B9862211527A80076BBB8 /* Tent_01.obj in Resources */ = {isa = PBXBuildFile; fileRef = EB1B9860211527A70076BBB8 /* Tent_01.obj */; };
 		EB1B9863211527A80076BBB8 /* Tent_01.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EB1B9861211527A70076BBB8 /* Tent_01.mtl */; };
 		EB1B9869211566C00076BBB8 /* TerrainData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B9868211566C00076BBB8 /* TerrainData.swift */; };
-		EB1B987A2116480F0076BBB8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B98792116480F0076BBB8 /* Extensions.swift */; };
 		EB1B987E21180AB60076BBB8 /* PracticeSceneHeightMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B987D21180AB60076BBB8 /* PracticeSceneHeightMap.png */; };
 		EB1B98882118C6AA0076BBB8 /* VillageSceneTerrainMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B98872118C6AA0076BBB8 /* VillageSceneTerrainMap.png */; };
 		EB1B988A2118C6BF0076BBB8 /* VillageSceneItemMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1B98892118C6BF0076BBB8 /* VillageSceneItemMap.png */; };
 		EB1B988C211AADD10076BBB8 /* WorldItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B988B211AADD10076BBB8 /* WorldItemData.swift */; };
 		EB2DCB4C2155793E007E0F50 /* DebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB4B2155793E007E0F50 /* DebugSettings.swift */; };
 		EB2DCB512156ED1C007E0F50 /* GeometryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB502156ED1C007E0F50 /* GeometryLoader.swift */; };
+		EB2DCB682159A402007E0F50 /* float3_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB672159A402007E0F50 /* float3_extensions.swift */; };
+		EB2DCB6A2159A40D007E0F50 /* float4_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB692159A40D007E0F50 /* float4_extensions.swift */; };
+		EB2DCB6C2159A418007E0F50 /* Float_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB6B2159A418007E0F50 /* Float_extensions.swift */; };
+		EB2DCB6E2159A423007E0F50 /* String_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB6D2159A423007E0F50 /* String_extensions.swift */; };
+		EB2DCB702159A523007E0F50 /* NSImage_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB6F2159A523007E0F50 /* NSImage_extensions.swift */; };
+		EB2DCB722159A59C007E0F50 /* NSView_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB712159A59C007E0F50 /* NSView_extension.swift */; };
+		EB2DCB742159A5BE007E0F50 /* Int_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB732159A5BE007E0F50 /* Int_extension.swift */; };
 		EB5C6F45213DA0950097D16F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C6F44213DA0950097D16F /* ViewController.swift */; };
 		EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1820F8403800E61EFA /* SceneManager.swift */; };
 		EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1A20F840C000E61EFA /* GameManager.swift */; };
@@ -122,13 +128,19 @@
 		EB1B9860211527A70076BBB8 /* Tent_01.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tent_01.obj; sourceTree = "<group>"; };
 		EB1B9861211527A70076BBB8 /* Tent_01.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tent_01.mtl; sourceTree = "<group>"; };
 		EB1B9868211566C00076BBB8 /* TerrainData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainData.swift; sourceTree = "<group>"; };
-		EB1B98792116480F0076BBB8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EB1B987D21180AB60076BBB8 /* PracticeSceneHeightMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PracticeSceneHeightMap.png; sourceTree = "<group>"; };
 		EB1B98872118C6AA0076BBB8 /* VillageSceneTerrainMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VillageSceneTerrainMap.png; sourceTree = "<group>"; };
 		EB1B98892118C6BF0076BBB8 /* VillageSceneItemMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VillageSceneItemMap.png; sourceTree = "<group>"; };
 		EB1B988B211AADD10076BBB8 /* WorldItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldItemData.swift; sourceTree = "<group>"; };
 		EB2DCB4B2155793E007E0F50 /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
 		EB2DCB502156ED1C007E0F50 /* GeometryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryLoader.swift; sourceTree = "<group>"; };
+		EB2DCB672159A402007E0F50 /* float3_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = float3_extensions.swift; sourceTree = "<group>"; };
+		EB2DCB692159A40D007E0F50 /* float4_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = float4_extensions.swift; sourceTree = "<group>"; };
+		EB2DCB6B2159A418007E0F50 /* Float_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float_extensions.swift; sourceTree = "<group>"; };
+		EB2DCB6D2159A423007E0F50 /* String_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_extensions.swift; sourceTree = "<group>"; };
+		EB2DCB6F2159A523007E0F50 /* NSImage_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImage_extensions.swift; sourceTree = "<group>"; };
+		EB2DCB712159A59C007E0F50 /* NSView_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSView_extension.swift; sourceTree = "<group>"; };
+		EB2DCB732159A5BE007E0F50 /* Int_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int_extension.swift; sourceTree = "<group>"; };
 		EB5C6F44213DA0950097D16F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB614D1820F8403800E61EFA /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		EB614D1A20F840C000E61EFA /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
@@ -264,6 +276,20 @@
 				EB2DCB4B2155793E007E0F50 /* DebugSettings.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		EB2DCB662159A3E9007E0F50 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EB2DCB672159A402007E0F50 /* float3_extensions.swift */,
+				EB2DCB692159A40D007E0F50 /* float4_extensions.swift */,
+				EB2DCB6B2159A418007E0F50 /* Float_extensions.swift */,
+				EB2DCB6D2159A423007E0F50 /* String_extensions.swift */,
+				EB2DCB6F2159A523007E0F50 /* NSImage_extensions.swift */,
+				EB2DCB712159A59C007E0F50 /* NSView_extension.swift */,
+				EB2DCB732159A5BE007E0F50 /* Int_extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EB614D1C20F842F500E61EFA /* Shaders */ = {
@@ -494,9 +520,9 @@
 		EBF4A62D20F8174E00DAC145 /* Types */ = {
 			isa = PBXGroup;
 			children = (
+				EB2DCB662159A3E9007E0F50 /* Extensions */,
 				EBF4A62E20F8175500DAC145 /* Size.swift */,
 				EBF4A63E20F83C0700DAC145 /* Types.swift */,
-				EB1B98792116480F0076BBB8 /* Extensions.swift */,
 				EB1B9868211566C00076BBB8 /* TerrainData.swift */,
 				EB1B988B211AADD10076BBB8 /* WorldItemData.swift */,
 			);
@@ -709,6 +735,7 @@
 				EBF4A63820F8363400DAC145 /* Renderable.swift in Sources */,
 				EBF4A63F20F83C0700DAC145 /* Types.swift in Sources */,
 				EBF4A64B20F83F3500DAC145 /* Scene.swift in Sources */,
+				EB2DCB6C2159A418007E0F50 /* Float_extensions.swift in Sources */,
 				EB614D2820F8514100E61EFA /* Keyboard.swift in Sources */,
 				EBF1458D20FC4F8100B89FE9 /* ModelGameObject.swift in Sources */,
 				EBF145A920FC5F6900B89FE9 /* RedMushroom.swift in Sources */,
@@ -721,28 +748,33 @@
 				EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */,
 				EBF1458F20FC50DE00B89FE9 /* Tents.swift in Sources */,
 				EBB0792D213DFA24009B1371 /* ColladaFileLoader.swift in Sources */,
+				EB2DCB742159A5BE007E0F50 /* Int_extension.swift in Sources */,
 				EBF4A64320F83D7700DAC145 /* RenderPipelineStateLibrary.swift in Sources */,
 				EBF1458B20FC4E6700B89FE9 /* ModelMeshLibrary.swift in Sources */,
+				EB2DCB682159A402007E0F50 /* float3_extensions.swift in Sources */,
 				EB1B983F211139160076BBB8 /* SamplerStateLibrary.swift in Sources */,
 				EBB0791A213DBD44009B1371 /* DebugView.swift in Sources */,
+				EB2DCB702159A523007E0F50 /* NSImage_extensions.swift in Sources */,
 				EB5C6F45213DA0950097D16F /* ViewController.swift in Sources */,
 				EBF4A64D20F83F7E00DAC145 /* VillageScene.swift in Sources */,
+				EB2DCB722159A59C007E0F50 /* NSView_extension.swift in Sources */,
 				EB1B984A21117FAA0076BBB8 /* LightManager.swift in Sources */,
 				EBF4A64520F83DC600DAC145 /* ShaderLibrary.swift in Sources */,
 				EBF4A61D20F8058B00DAC145 /* GameView.swift in Sources */,
 				EB1B984221114AFB0076BBB8 /* Light.swift in Sources */,
 				EBF4A63B20F83A4700DAC145 /* GameObject.swift in Sources */,
+				EB2DCB6E2159A423007E0F50 /* String_extensions.swift in Sources */,
 				EBF1458620FC4B8700B89FE9 /* ModelLoader.swift in Sources */,
 				EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */,
 				EB614D2A20F8515900E61EFA /* Mouse.swift in Sources */,
 				EB614D2C20F8516100E61EFA /* KeyCodes.swift in Sources */,
 				EB2DCB512156ED1C007E0F50 /* GeometryLoader.swift in Sources */,
 				EB1B9869211566C00076BBB8 /* TerrainData.swift in Sources */,
-				EB1B987A2116480F0076BBB8 /* Extensions.swift in Sources */,
 				EBB07926213DE57B009B1371 /* XML.swift in Sources */,
 				EBF145AF20FCD14E00B89FE9 /* LargeGreenOak.swift in Sources */,
 				EBF4A64720F83DF100DAC145 /* VertexDescriptorLibrary.swift in Sources */,
 				EB1B985B211515DB0076BBB8 /* Campfire.swift in Sources */,
+				EB2DCB6A2159A40D007E0F50 /* float4_extensions.swift in Sources */,
 				EBF4A62320F80E0B00DAC145 /* Engine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
