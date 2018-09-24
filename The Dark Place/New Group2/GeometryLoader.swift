@@ -8,6 +8,9 @@ class GeometryLoader {
         static let NORMAL = "NORMAL"
         static let TEXCOORD = "TEXCOORD"
         static let COLOR = "COLOR"
+        
+        static let JOINT = "JOINT"
+        static let WEIGHT = "WEIGHT"
     }
     
     private struct GeometrySourceInput {
@@ -56,7 +59,58 @@ class GeometryLoader {
                 }
                 polyValues.append(GeometrySourceInput(semantic: semantic, source: inputSource, offset: offset, data: data))
             }
+
+            let skinXML = xml["#library_controllers.controller.skin"].xml!
             
+            //Weights
+            let controllerSkinData = getControllerSkinData(skinXML: skinXML)
+            var weightValues: [Float] = []
+            for val in controllerSkinData {
+                if(val.key.lowercased().contains("weights")){
+                    weightValues = val.value.arrData as? [Float] ?? []
+                    break
+                }
+            }
+            
+            let vertexWeightsXML = skinXML["#vertex_weights"]
+            var jointOffset: Int = -1
+            var weightOffset: Int = -1
+            var jointWeightInputCount: Int = 0
+            for input in vertexWeightsXML["#input"] {
+                switch input["@semantic"].string! {
+                case Semantic.JOINT:
+                    jointOffset = input["@offset"].int!
+                case Semantic.WEIGHT:
+                    weightOffset = input["@offset"].int!
+                default:
+                    break
+                }
+                jointWeightInputCount += 1
+            }
+            
+            let vCountList = vertexWeightsXML["#vcount"].string!.toIntArray()
+            let vList = vertexWeightsXML["#v"].string!.toIntArray()
+           
+            var vertexWeightDatas: [VertexWeightData] = []
+            var offset = 0
+            
+            for value in vCountList {
+                var vertexWeightData = VertexWeightData()
+                for _ in 0..<value {
+                    let joint = Int32(vList[offset + jointOffset])
+                    let weight = weightValues[vList[offset + weightOffset]]
+                    vertexWeightData.addJointEffect(weight: weight, joint: joint)
+                    offset += jointWeightInputCount
+                }
+                vertexWeightData.normalize()
+                vertexWeightDatas.append(vertexWeightData)
+            }
+
+//            var num: Int = 0
+//            for data in vertexWeightDatas {
+//                print("num: \(num++)     sum: \(data.weightSum)    weights: \(data.weights)  joints: \(data.joints)")
+//            }
+
             var positions: [float3]!
             var normals: [float3]!
             var textureCoords: [float2]!
@@ -98,8 +152,8 @@ class GeometryLoader {
             var texturePoint: float2 = float2(0)
             var normalPoint: float3 = float3(0)
             
-            var jointIDs: int3 = int3(0)
-            var weights: float3 = float3(0)
+            var jointIDs: [Int32] = []
+            var weights: [Float] = []
             
             var startedListIteration: Bool = false
             for value in pList {
@@ -108,13 +162,15 @@ class GeometryLoader {
                     riggedVertices.append(RiggedVertex(position: vertexPoint,
                                                        color: colorPoint,
                                                        normal: normalPoint,
-                                                       textureCoordinate: texturePoint,
-                                                       jointIDs: jointIDs,
-                                                       weights: weights))
+                                                       jointIDs: convertIntArrayToInt3(jointIDs),
+                                                       weights: convertFloatArrayToFloat3(weights),
+                                                       textureCoordinate: texturePoint))
                 }
                 startedListIteration = true
                 if(currentOffset == positionOffset){
                     vertexPoint = positions[value]
+                    jointIDs = vertexWeightDatas[value].joints
+                    weights = vertexWeightDatas[value].weights
                 }else if(currentOffset == normalOffset){
                     normalPoint = normals[value]
                 }else if(currentOffset == textureOffset){
@@ -122,11 +178,93 @@ class GeometryLoader {
                 }else if(currentOffset == colorOffset){
                     colorPoint = colors[value]
                 }
+
                 currentOffset += 1
                 currentOffset = currentOffset % inputCount
             }
         }
+        
+        
         return riggedVertices
+    }
+    
+    
+    
+    private static func getControllerSkinData(skinXML: XML)->[String : ControllerSkinSource<Any>] {
+        var result: [String : ControllerSkinSource<Any>]  = [:]
+        let skinSources = skinXML["#source"]
+        for source in skinSources {
+            var skinSource = ControllerSkinSource<Any>()
+            let id = source["@id"].string!
+            if(source["#float_array"].string != nil){
+                let arr: [Float] = source["#float_array"].string!.toFloatArray()
+                skinSource.id = id
+                skinSource.arrData = arr
+                result.updateValue(skinSource, forKey: id)
+            }else if(source["#Name_array"].string != nil){
+                var skinSource = ControllerSkinSource<Any>()
+                let arr: [String] = source["#Name_array"].string!.toStringArray()
+                skinSource.id = id
+                skinSource.arrData = arr
+                result.updateValue(skinSource, forKey: id)
+            }
+        }
+        return result
+    }
+    
+    private static func convertIntArrayToInt3(_ arr: [Int32])->int3{
+        return int3(arr[0], arr[1], arr[2])
+    }
+    
+    private static func convertFloatArrayToFloat3(_ arr: [Float])->float3{
+        return float3(arr[0], arr[1], arr[2])
+    }
+    
+}
+
+struct ControllerSkinSource<T> {
+    var id: String = ""
+    var arrData: [T] = []
+}
+
+struct VertexWeightData {
+    
+    var weights: [Float] = []
+    var joints: [Int32] = []
+    
+    var weightSum: Float = 0.0
+
+    mutating func normalize(){
+        while(weights.count > 3){
+            let val = weights.last!
+            weightSum -= val
+            weights = Array(weights.dropLast())
+            joints = Array(joints.dropLast())
+        }
+        while(weights.count < 3){
+            weights.append(0)
+            joints.append(0)
+        }
+        
+        weights = weights.map { Float($0) / weightSum }
+        
+        weightSum = 0
+        for weight in weights {
+            weightSum += weight
+        }
+    }
+    
+    mutating func addJointEffect(weight: Float, joint: Int32){
+        weightSum += weight
+        for i in 0..<weights.count {
+            if(weight > weights[i]){
+                joints.insert(joint, at: i)
+                weights.insert(weight, at: i)
+                return
+            }
+        }
+        joints.append(joint)
+        weights.append(weight)
     }
     
 }

@@ -1206,13 +1206,12 @@
                     </view>
                     <connections>
                         <outlet property="mtkGameView" destination="tEr-j2-1As" id="uIY-l0-6ft"/>
-                        <outlet property="sldLightValue1_Changed" destination="g8f-Nn-gtl" id="bnw-ZH-ZhP"/>
-                        <outlet property="sldValue1" destination="g8f-Nn-gtl" id="QlU-Mz-ZY9"/>
-                        <outlet property="sldValue2" destination="TKO-3y-dG5" id="fih-oZ-k1B"/>
-                        <outlet property="sldValue3" destination="U5J-2X-ock" id="Qui-Rk-IQb"/>
-                        <outlet property="sldValue4" destination="ayi-WF-eL6" id="wFW-8g-cHL"/>
-                        <outlet property="sldValue5" destination="v5t-O1-fyc" id="f1p-21-Hsm"/>
-                        <outlet property="sldValue6" destination="OIj-qu-V2f" id="GqI-Ie-KF1"/>
+                        <outlet property="sldValue1" destination="g8f-Nn-gtl" id="pVO-zc-C4f"/>
+                        <outlet property="sldValue2" destination="TKO-3y-dG5" id="nE0-0r-uul"/>
+                        <outlet property="sldValue3" destination="U5J-2X-ock" id="hdY-zm-je5"/>
+                        <outlet property="sldValue4" destination="ayi-WF-eL6" id="eKq-w0-VzG"/>
+                        <outlet property="sldValue5" destination="v5t-O1-fyc" id="YoR-nA-DRt"/>
+                        <outlet property="sldValue6" destination="OIj-qu-V2f" id="7gM-Yb-mbx"/>
                         <outlet property="txtCameraAspectRatio" destination="htu-Wg-xmg" id="YrC-Je-10Q"/>
                         <outlet property="txtCameraFar" destination="eKs-QB-NQt" id="Qyw-Wd-yV7"/>
                         <outlet property="txtCameraNear" destination="WZh-xb-ufq" id="Ifw-eF-HAI"/>

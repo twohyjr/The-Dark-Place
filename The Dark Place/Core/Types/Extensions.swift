@@ -244,6 +244,11 @@ extension String {
         
     }
     
+    func toStringArray()->[String]{
+        return self.split(separator: Character(" ")).map { String($0) }
+        
+    }
+    
     var dropHash: String {
         return self.replacingOccurrences(of: "#", with: "")
     }

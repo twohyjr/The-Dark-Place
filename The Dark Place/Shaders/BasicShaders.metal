@@ -63,9 +63,9 @@ struct RiggedVertex {
     float3 position [[ attribute(0) ]];
     float4 color [[ attribute(1) ]];
     float3 normal [[ attribute(2) ]];
-    float2 textureCoordinate [[ attribute(3) ]];
-    int3 jointIDs [[ attribute(4) ]];
-    float3 weights [[ attribute(5) ]];
+    int3 jointIDs [[ attribute(3) ]];
+    float3 weights [[ attribute(4) ]];
+    float2 textureCoordinate [[ attribute(5) ]];
 };
 
 

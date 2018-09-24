@@ -39,9 +39,9 @@ struct RiggedVertex: sizeable{
     var position: float3
     var color: float4
     var normal: float3
-    var textureCoordinate: float2
     var jointIDs: int3
     var weights: float3
+    var textureCoordinate: float2
 }
 
 struct ModelConstants: sizeable{
