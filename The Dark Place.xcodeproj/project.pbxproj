@@ -33,6 +33,7 @@
 		EB2DCB702159A523007E0F50 /* NSImage_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB6F2159A523007E0F50 /* NSImage_extensions.swift */; };
 		EB2DCB722159A59C007E0F50 /* NSView_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB712159A59C007E0F50 /* NSView_extension.swift */; };
 		EB2DCB742159A5BE007E0F50 /* Int_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB732159A5BE007E0F50 /* Int_extension.swift */; };
+		EB2DCB762159D916007E0F50 /* matrix_float4x4_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2DCB752159D916007E0F50 /* matrix_float4x4_extensions.swift */; };
 		EB5C6F45213DA0950097D16F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C6F44213DA0950097D16F /* ViewController.swift */; };
 		EB614D1920F8403800E61EFA /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1820F8403800E61EFA /* SceneManager.swift */; };
 		EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB614D1A20F840C000E61EFA /* GameManager.swift */; };
@@ -141,6 +142,7 @@
 		EB2DCB6F2159A523007E0F50 /* NSImage_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImage_extensions.swift; sourceTree = "<group>"; };
 		EB2DCB712159A59C007E0F50 /* NSView_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSView_extension.swift; sourceTree = "<group>"; };
 		EB2DCB732159A5BE007E0F50 /* Int_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int_extension.swift; sourceTree = "<group>"; };
+		EB2DCB752159D916007E0F50 /* matrix_float4x4_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = matrix_float4x4_extensions.swift; sourceTree = "<group>"; };
 		EB5C6F44213DA0950097D16F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB614D1820F8403800E61EFA /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		EB614D1A20F840C000E61EFA /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				EB2DCB6F2159A523007E0F50 /* NSImage_extensions.swift */,
 				EB2DCB712159A59C007E0F50 /* NSView_extension.swift */,
 				EB2DCB732159A5BE007E0F50 /* Int_extension.swift */,
+				EB2DCB752159D916007E0F50 /* matrix_float4x4_extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				EBB0791C213DCAC8009B1371 /* AnimatedGameObject.swift in Sources */,
 				EBF1452C20FAF98600B89FE9 /* Cube.swift in Sources */,
 				EBF4A64120F83C7B00DAC145 /* CustomMeshLibrary.swift in Sources */,
+				EB2DCB762159D916007E0F50 /* matrix_float4x4_extensions.swift in Sources */,
 				EB614D3220F85C3200E61EFA /* TerrainMeshGenerator.swift in Sources */,
 				EBF4A62F20F8175500DAC145 /* Size.swift in Sources */,
 				EB1B988C211AADD10076BBB8 /* WorldItemData.swift in Sources */,

@@ -16,4 +16,8 @@ extension float4 {
     var a: Float {
         return self.w
     }
+    
+    var xyz: float3 {
+        return float3(self.x , self.y, self.z)
+    }
 }
