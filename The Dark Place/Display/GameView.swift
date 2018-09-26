@@ -29,7 +29,9 @@ class GameView: MTKView {
     }
     
     func updateControllers(){
-        debugViewController.updateDebugCameraValues(SceneManager.CurrentScene.cameraManager.CurrentCamera.debugCameraValues)
+        if let camera = SceneManager.CurrentScene.cameraManager.CurrentCamera as? DebugCamera {
+             debugViewController.updateDebugCameraValues(camera.debugCameraValues)
+        }
         debugViewController.updateValues()
     }
     

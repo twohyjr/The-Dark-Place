@@ -126,3 +126,25 @@ extension matrix_float4x4{
         ))
     }
 }
+
+extension matrix_float4x4 {
+    var m00: Float { return self[0][0] }
+    var m01: Float { return self[0][1] }
+    var m02: Float { return self[0][2] }
+    var m03: Float { return self[0][3] }
+    
+    var m10: Float { return self[1][0] }
+    var m11: Float { return self[1][1] }
+    var m12: Float { return self[1][2] }
+    var m13: Float { return self[1][3] }
+    
+    var m20: Float { return self[2][0] }
+    var m21: Float { return self[2][1] }
+    var m22: Float { return self[2][2] }
+    var m23: Float { return self[2][3] }
+    
+    var m30: Float { return self[3][0] }
+    var m31: Float { return self[3][1] }
+    var m32: Float { return self[3][2] }
+    var m33: Float { return self[3][3] }
+}

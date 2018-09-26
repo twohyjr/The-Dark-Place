@@ -192,7 +192,7 @@ fragment half4 rigged_fragment_shader(const RasterizerData rd [[ stage_in ]],
     float4 color;
     if(material.useTexture){
         color = texture.sample(sampler2d, rd.textureCoordinate);
-        color = float4(color.b, color.g, color.r, color.a);
+//        color = float4(color.b, color.g, color.r, color.a);
     }else {
         color = material.isLit ? material.color : rd.color;
     }

@@ -83,6 +83,8 @@
 		EBF145AD20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EBF145AB20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl */; };
 		EBF145AF20FCD14E00B89FE9 /* LargeGreenOak.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF145AE20FCD14E00B89FE9 /* LargeGreenOak.swift */; };
 		EBF145B320FD0B3400B89FE9 /* PracticeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF145B220FD0B3400B89FE9 /* PracticeScene.swift */; };
+		EBF3F174215B3AE9008AC3D1 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3F173215B3AE9008AC3D1 /* Camera.swift */; };
+		EBF3F176215B3B0A008AC3D1 /* DebugCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3F175215B3B0A008AC3D1 /* DebugCamera.swift */; };
 		EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */; };
 		EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FE20F8056300DAC145 /* The_Dark_Place.xcdatamodeld */; };
 		EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF4A60120F8056400DAC145 /* Assets.xcassets */; };
@@ -192,6 +194,8 @@
 		EBF145AB20FCD13E00B89FE9 /* Large_Oak_Green_01.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Large_Oak_Green_01.mtl; sourceTree = "<group>"; };
 		EBF145AE20FCD14E00B89FE9 /* LargeGreenOak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeGreenOak.swift; sourceTree = "<group>"; };
 		EBF145B220FD0B3400B89FE9 /* PracticeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeScene.swift; sourceTree = "<group>"; };
+		EBF3F173215B3AE9008AC3D1 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		EBF3F175215B3B0A008AC3D1 /* DebugCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugCamera.swift; sourceTree = "<group>"; };
 		EBF4A5F720F8056300DAC145 /* The Dark Place.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dark Place.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF4A5FF20F8056300DAC145 /* The_Dark_Place.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = The_Dark_Place.xcdatamodel; sourceTree = "<group>"; };
@@ -423,6 +427,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		EBF3F172215B3AD7008AC3D1 /* Cameras */ = {
+			isa = PBXGroup;
+			children = (
+				EBF3F173215B3AE9008AC3D1 /* Camera.swift */,
+				EBF3F175215B3B0A008AC3D1 /* DebugCamera.swift */,
+			);
+			path = Cameras;
+			sourceTree = "<group>";
+		};
 		EBF4A5EE20F8056300DAC145 = {
 			isa = PBXGroup;
 			children = (
@@ -536,6 +549,7 @@
 			isa = PBXGroup;
 			children = (
 				EBF4A63520F823FE00DAC145 /* Node.swift */,
+				EBF3F172215B3AD7008AC3D1 /* Cameras */,
 				EBF4A64920F83F2A00DAC145 /* Scenes */,
 				EBF4A64820F83F1E00DAC145 /* Game Objects */,
 				EBF4A63920F8363900DAC145 /* Protocol */,
@@ -754,6 +768,7 @@
 				EBB0792D213DFA24009B1371 /* ColladaFileLoader.swift in Sources */,
 				EB2DCB742159A5BE007E0F50 /* Int_extension.swift in Sources */,
 				EBF4A64320F83D7700DAC145 /* RenderPipelineStateLibrary.swift in Sources */,
+				EBF3F174215B3AE9008AC3D1 /* Camera.swift in Sources */,
 				EBF1458B20FC4E6700B89FE9 /* ModelMeshLibrary.swift in Sources */,
 				EB2DCB682159A402007E0F50 /* float3_extensions.swift in Sources */,
 				EB1B983F211139160076BBB8 /* SamplerStateLibrary.swift in Sources */,
@@ -777,6 +792,7 @@
 				EBB07926213DE57B009B1371 /* XML.swift in Sources */,
 				EBF145AF20FCD14E00B89FE9 /* LargeGreenOak.swift in Sources */,
 				EBF4A64720F83DF100DAC145 /* VertexDescriptorLibrary.swift in Sources */,
+				EBF3F176215B3B0A008AC3D1 /* DebugCamera.swift in Sources */,
 				EB1B985B211515DB0076BBB8 /* Campfire.swift in Sources */,
 				EB2DCB6A2159A40D007E0F50 /* float4_extensions.swift in Sources */,
 				EBF4A62320F80E0B00DAC145 /* Engine.swift in Sources */,

@@ -164,5 +164,37 @@ extension Quaternion {
     public func equals(_ r: Quaternion)->Bool {
         return _x == r.getX() && _y == r.getY() && _z == r.getZ() && _w == r.getW()
     }
+    
+    public func fromMatrix(matrix: matrix_float4x4)->Quaternion{
+        var val = float4(0)
+        let diagonal = matrix.m00 + matrix.m11 + matrix.m22
+        if (diagonal > 0) {
+            let w4 = sqrt(diagonal + 1.0) * 2.0
+            val.w = w4 / 4.0;
+            val.x = (matrix.m21 - matrix.m12) / w4;
+            val.y = (matrix.m02 - matrix.m20) / w4;
+            val.z = (matrix.m10 - matrix.m01) / w4;
+        }else if ((matrix.m00 > matrix.m11) && (matrix.m00 > matrix.m22)) {
+            let x4 = sqrt(1.0 + matrix.m00 - matrix.m11 - matrix.m22) * 2.0
+            val.w = (matrix.m21 - matrix.m12) / x4;
+            val.x = x4 / 4.0;
+            val.y = (matrix.m01 + matrix.m10) / x4;
+            val.z = (matrix.m02 + matrix.m20) / x4;
+        } else if (matrix.m11 > matrix.m22) {
+            let y4 = sqrt(1.0 + matrix.m11 - matrix.m00 - matrix.m22) * 2.0
+            val.w = (matrix.m02 - matrix.m20) / y4;
+            val.x = (matrix.m01 + matrix.m10) / y4;
+            val.y = y4 / 4.0;
+            val.z = (matrix.m12 + matrix.m21) / y4;
+        } else {
+            let z4 = sqrt(1.0 + matrix.m22 - matrix.m00 - matrix.m11) * 2.0
+            val.w = (matrix.m10 - matrix.m01) / z4;
+            val.x = (matrix.m02 + matrix.m20) / z4;
+            val.y = (matrix.m12 + matrix.m21) / z4;
+            val.z = z4 / 4.0;
+        }
+        
+        return Quaternion(val.x, val.y, val.z, val.w)
+    }
 }
 
