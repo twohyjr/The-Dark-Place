@@ -4,87 +4,138 @@ import simd
 class ColladaFileLoader {
 
     public static func GetRiggedMesh(_ modelName: String)->RiggedMesh{
-        let riggedVertices = GeometryLoader.extractRiggedVertexData(modelName: modelName)
-        
-        
-        
-        
-        
         let riggedMesh = RiggedMesh()
-        riggedMesh.vertices = riggedVertices
+        
+        let xml: XML!
+        if let url = Bundle.main.url(forResource: modelName, withExtension: "dae") {
+            xml = XML(url: url)
+            
+            let riggedVertices = GeometryLoader.extractRiggedVertexData(xml)
+            riggedMesh.vertices = riggedVertices
+            
+            let rootJoint: Joint = JointsLoader.getJointData(xml)!
+            riggedMesh.rootJoint = rootJoint
+            var jointCount: Int = 0
+            JointsLoader.getJointCount(headJoint: rootJoint, jointCount: &jointCount)
+            riggedMesh.jointCount = jointCount
+      
+            let animationData: AnimationData = getAnimationData(xml, rootJoint)
+            riggedMesh.animationData = animationData
+            
+        }
+
         return riggedMesh
     }
-    
 
-}
+    private static func getAnimationData(_ xml: XML, _ rootJoint: Joint)->AnimationData{
+        var times: [Float] = getKeyTimes(xml)
+        let duration = times[times.count - 1]
+        var keyFrames = initKeyFrames(times: times)
+        let animationNodes = xml["#library_animations"].xml!
+        
+        for animationXML in animationNodes["#animation"] {
+            loadJointTransforms(frames: &keyFrames, animationXML: animationXML, rootNode: rootJoint)
+        }
+       print(keyFrames)
+        return AnimationData(lengthSeconds: duration, keyFrames: keyFrames)
+    }
 
-class Joint {
-    var index: Int = 0
-    var name: String = ""
-    var children: [Joint] = []
-    
-    private var animatedTranform = matrix_identity_float4x4
-    private var localBindTransform = matrix_identity_float4x4
-    private var inverseBindTransform = matrix_identity_float4x4
-
-    init(index: Int, name: String, bindLocalTransform: matrix_float4x4){
-        self.index = index
-        self.name = name
-        self.localBindTransform = bindLocalTransform
-    }
-    
-    func addChild(_ child: Joint){
-        children.append(child)
-    }
-    
-    func getAnimatedTransform()->matrix_float4x4{
-        return animatedTranform
-    }
-    
-    func setAnimationTransform(_ animationTrasform: matrix_float4x4){
-        self.animatedTranform = animationTrasform
-    }
-    
-    func getInverseBindTransform()->matrix_float4x4{
-        return inverseBindTransform
-    }
-    
-    internal func calcInverseBindTransform(_ parentBindTransform: matrix_float4x4){
-        let bindTransform = matrix_multiply(parentBindTransform, localBindTransform)
-        self.inverseBindTransform = bindTransform.inverse
-        for child in children {
-            child.calcInverseBindTransform(bindTransform)
+    private static func loadJointTransforms(frames: inout [KeyFrameData], animationXML: XML, rootNode: Joint){
+        let jointNameID = getJointName(jointData: animationXML)
+        let dataID = getDataId(jointData: animationXML)
+        let transformationData = getTransformData(animationXML: animationXML, dataID: dataID)
+        
+        for i in 0..<frames.count {
+            var transform = transformationData[i]
+            if(jointNameID == rootNode.name){
+                transform.rotate(angle: toRadians(-90), axis: X_AXIS)
+            }
+            frames[i].addJointTransform(transform: JointTransformData(jointNameID: jointNameID, jointLocalTransform: transform))
         }
     }
+    
+    private static func getTransformData(animationXML: XML, dataID: String)->[matrix_float4x4]{
+        var data: [matrix_float4x4] = []
+        for node in animationXML["#source"] {
+            if(node["@id"].string! == dataID){
+                data = node["#float_array"].string!.convertToMatrix4x4Array()
+                break;
+            }
+        }
+        return data
+    }
+    
+    private static func getDataId(jointData: XML)->String{
+        let node = jointData["#sampler"]
+        var source: String = ""
+        for input in node["#input"] {
+            if(input["@semantic"].string! == "OUTPUT"){
+                source = input["@source"].string!
+                break;
+            }
+        }
+        return source.dropHash
+    }
+    
+    private static func getJointName(jointData: XML)->String{
+        let channelNode = jointData["#channel"]
+        let data: String = channelNode["@target"].string!
+        return String(data.split(separator: Character("/")).first!)
+    }
+    
+    private static func getKeyTimes(_ xml: XML)->[Float]{
+        var inputXML: XML!
+        for source in xml["#library_animations.animation.source"] {
+            if(source["@id"].string!.contains("input")){
+                inputXML = source
+                break
+            }
+        }
+        return inputXML["#float_array"].string!.toFloatArray()
+    }
+    
+    private static func initKeyFrames(times: [Float])->[KeyFrameData]{
+        var frames = [KeyFrameData].init(repeating: KeyFrameData(time: 0), count: times.count)
+        for i in 0..<frames.count {
+            frames[i] = KeyFrameData(time: times[i])
+        }
+        return frames
+    }
+    
+    
+
 }
 
-class JointTransform {
-    private var position: float3!
-    private var rotation: Quaternion!
+class AnimationData {
+    var legthInSeconds: Float = 0.0
+    var keyFrames: [KeyFrameData] = []
     
-    init(position: float3, rotation: Quaternion){
-        self.position = position
-        self.rotation = rotation
+    init(lengthSeconds: Float, keyFrames: [KeyFrameData]){
+        self.legthInSeconds = lengthSeconds
+        self.keyFrames = keyFrames
+    }
+}
+
+class KeyFrameData {
+    var time: Float = 0.0
+    var jointTransforms: [JointTransformData] = []
+    
+    init(time: Float){
+        self.time = time
     }
     
-    func getLocalTransform()->matrix_float4x4 {
-        var matrix = matrix_identity_float4x4
-        matrix.translate(direction: position)
-        matrix = matrix_multiply(matrix, rotation.toRotationMatrix)
-        return matrix
+    func addJointTransform(transform: JointTransformData) {
+        jointTransforms.append(transform)
     }
+}
+
+class JointTransformData {
+    var jointNameID: String = ""
+    var jointLocalTransform: matrix_float4x4 = matrix_identity_float4x4
     
-    func interpolate(frameA: JointTransform, frameB: JointTransform, progression: Float)->JointTransform{
-        let pos = interpolate(start: frameA.position, end: frameB.position, progression: progression)
-        let rot = frameA.rotation.sLerp(dest: frameB.rotation, lerpFactor: progression, shortest: true)
-        return JointTransform(position: pos, rotation: rot)
-    }
-    
-    func interpolate(start: float3, end: float3, progression: Float)->float3 {
-        let x: Float = start.x + (end.x - start.x) * progression;
-        let y: Float = start.y + (end.y - start.y) * progression;
-        let z: Float = start.z + (end.z - start.z) * progression;
-        return float3(x, y, z);
+    init(jointNameID: String, jointLocalTransform: matrix_float4x4) {
+        self.jointNameID = jointNameID
+        self.jointLocalTransform = jointLocalTransform
     }
 }
 

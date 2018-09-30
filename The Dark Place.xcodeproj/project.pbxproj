@@ -85,6 +85,8 @@
 		EBF145B320FD0B3400B89FE9 /* PracticeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF145B220FD0B3400B89FE9 /* PracticeScene.swift */; };
 		EBF3F174215B3AE9008AC3D1 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3F173215B3AE9008AC3D1 /* Camera.swift */; };
 		EBF3F176215B3B0A008AC3D1 /* DebugCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3F175215B3B0A008AC3D1 /* DebugCamera.swift */; };
+		EBF3F178215BED1B008AC3D1 /* JointsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3F177215BED1B008AC3D1 /* JointsLoader.swift */; };
+		EBF3F17A215C9B13008AC3D1 /* AnimationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3F179215C9B13008AC3D1 /* AnimationLoader.swift */; };
 		EBF4A5FB20F8056300DAC145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */; };
 		EBF4A60020F8056300DAC145 /* The_Dark_Place.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBF4A5FE20F8056300DAC145 /* The_Dark_Place.xcdatamodeld */; };
 		EBF4A60220F8056400DAC145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF4A60120F8056400DAC145 /* Assets.xcassets */; };
@@ -196,6 +198,8 @@
 		EBF145B220FD0B3400B89FE9 /* PracticeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeScene.swift; sourceTree = "<group>"; };
 		EBF3F173215B3AE9008AC3D1 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		EBF3F175215B3B0A008AC3D1 /* DebugCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugCamera.swift; sourceTree = "<group>"; };
+		EBF3F177215BED1B008AC3D1 /* JointsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointsLoader.swift; sourceTree = "<group>"; };
+		EBF3F179215C9B13008AC3D1 /* AnimationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLoader.swift; sourceTree = "<group>"; };
 		EBF4A5F720F8056300DAC145 /* The Dark Place.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dark Place.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF4A5FA20F8056300DAC145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF4A5FF20F8056300DAC145 /* The_Dark_Place.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = The_Dark_Place.xcdatamodel; sourceTree = "<group>"; };
@@ -391,6 +395,8 @@
 				EBF1458520FC4B8700B89FE9 /* ModelLoader.swift */,
 				EBB0792C213DFA24009B1371 /* ColladaFileLoader.swift */,
 				EB2DCB502156ED1C007E0F50 /* GeometryLoader.swift */,
+				EBF3F177215BED1B008AC3D1 /* JointsLoader.swift */,
+				EBF3F179215C9B13008AC3D1 /* AnimationLoader.swift */,
 			);
 			name = Loaders;
 			path = "New Group2";
@@ -759,7 +765,9 @@
 				EBF145A920FC5F6900B89FE9 /* RedMushroom.swift in Sources */,
 				EB614D2220F8505300E61EFA /* CameraManager.swift in Sources */,
 				EB1B984821117F350076BBB8 /* Sun.swift in Sources */,
+				EBF3F17A215C9B13008AC3D1 /* AnimationLoader.swift in Sources */,
 				EB614D1B20F840C000E61EFA /* GameManager.swift in Sources */,
+				EBF3F178215BED1B008AC3D1 /* JointsLoader.swift in Sources */,
 				EB614D2520F8509600E61EFA /* Maths.swift in Sources */,
 				EBDB6E4720FDA5620061E7A3 /* TextureLibrary.swift in Sources */,
 				EB614D2E20F8536700E61EFA /* DepthStencilStateLibrary.swift in Sources */,

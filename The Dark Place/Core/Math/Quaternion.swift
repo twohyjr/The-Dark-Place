@@ -165,7 +165,7 @@ extension Quaternion {
         return _x == r.getX() && _y == r.getY() && _z == r.getZ() && _w == r.getW()
     }
     
-    public func fromMatrix(matrix: matrix_float4x4)->Quaternion{
+    public static func fromMatrix(matrix: matrix_float4x4)->Quaternion{
         var val = float4(0)
         let diagonal = matrix.m00 + matrix.m11 + matrix.m22
         if (diagonal > 0) {

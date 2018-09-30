@@ -37,6 +37,8 @@ class RiggedMesh{
     var rootJoint: Joint!
     var jointCount: Int!
     
+    //Animation
+    var animationData: AnimationData!
     
     var vertexBuffer: MTLBuffer! {
         if(_vertexBuffer == nil){
@@ -67,21 +69,16 @@ class RiggedMesh{
 
 class RiggedModelMesh {
     var riggedMesh: RiggedMesh!
-    var jointTransforms: [matrix_float4x4] = [matrix_identity_float4x4]
-    var jointTransformBuffer: MTLBuffer!
-    
+
     init(_ modelName: String){
         riggedMesh = ModelLoader.CreateMeshFromCollada(modelName)
-        self.jointTransformBuffer = Engine.Device.makeBuffer(bytes: jointTransforms, length: matrix_float4x4.stride(jointTransforms.count), options: [])
     }
     
     func drawPrimitives(renderCommandEncoder: MTLRenderCommandEncoder) {
+
         renderCommandEncoder.setVertexBuffer(riggedMesh.vertexBuffer,
                                              offset: 0,
                                              index: 0)
-        renderCommandEncoder.setVertexBuffer(jointTransformBuffer,
-                                             offset: 0,
-                                             index: 3)
 
         if(riggedMesh.indexCount == 0){
             renderCommandEncoder.drawPrimitives(type: riggedMesh.primitiveType,
