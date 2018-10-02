@@ -131,16 +131,23 @@ vertex RasterizerData rigged_vertex_shader(const RiggedVertex vertexIn [[ stage_
     
     
     
+    float4 totalLocalPos = float4(0.0);
+    float4 totalNormal = float4(0.0);
+    
+    for(int i = 0; i < 3; i++){
+        float4x4 jointTransform = jointTransforms[vertexIn.jointIDs[i]];
+        float4 posePosition = jointTransform * float4(vertexIn.position, 1.0);
+        totalLocalPos += posePosition * vertexIn.weights[i];
+        
+        float4 worldNormal = jointTransform * float4(vertexIn.normal, 0.0);
+        totalNormal += worldNormal * vertexIn.weights[i];
+    }
     
     
-    
-    
-    
-    float4x4 jointTransform = jointTransforms[vertexIn.jointIDs[0]];
     
     //Vertex Position Descriptors
     float4x4 transformationMatrix = modelConstants.modelMatrix;
-    float4 worldPosition = transformationMatrix * float4(vertexIn.position, 1.0);
+    float4 worldPosition = transformationMatrix * totalLocalPos;
     rd.position = sceneConstants.projectionMatrix * sceneConstants.viewMatrix  * worldPosition;
     rd.worldPosition = worldPosition.xyz;
     rd.surfaceNormal = (transformationMatrix * float4(vertexIn.normal, 0.0)).xyz;
